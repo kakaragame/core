@@ -9,6 +9,5 @@ public interface Item {
 
     String getId();
 
-
     void onClick(ClickEvent clickEvent);
 }

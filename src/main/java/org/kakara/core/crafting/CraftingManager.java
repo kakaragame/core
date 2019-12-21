@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface CraftingManager {
 
-
     List<CraftingRecipe> getRecipesForItem(Item item);
 
-    CraftingRecipe getRecipesForRecipe(CraftingRecipe recipe);
+    CraftingRecipe getRecipeForRecipe(CraftingRecipe recipe);
 }
