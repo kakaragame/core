@@ -1,7 +1,7 @@
 package org.kakara.core.game;
 
-import org.kakara.core.events.PlaceEvent;
-import org.kakara.core.events.StepOnEvent;
+import org.kakara.core.events.entity.StepOnEvent;
+import org.kakara.core.events.player.PlaceEvent;
 
 public interface Block extends Item {
 

@@ -1,7 +1,7 @@
 package org.kakara.core.game.entity;
 
 import org.kakara.core.game.Entity;
-import org.kakara.core.game.Location;
+import org.kakara.core.world.Location;
 
 public interface GamePath {
 

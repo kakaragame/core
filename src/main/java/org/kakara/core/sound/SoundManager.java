@@ -1,6 +1,6 @@
 package org.kakara.core.sound;
 
-import org.kakara.core.game.Location;
+import org.kakara.core.world.Location;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.player.Player;
 

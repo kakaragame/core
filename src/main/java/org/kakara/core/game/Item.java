@@ -1,6 +1,7 @@
 package org.kakara.core.game;
 
-import org.kakara.core.events.ClickEvent;
+
+import org.kakara.core.events.player.ClickEvent;
 
 public interface Item {
     String getName();
@@ -8,6 +9,8 @@ public interface Item {
     String getTexture();
 
     String getId();
+
+    float getWeight();
 
     void onClick(ClickEvent clickEvent);
 }

@@ -7,6 +7,6 @@ public interface OfflinePlayer {
 
     String getName();
 
-    long getLastTimeOnline();
+    long getLastJoinTime();
 
 }
