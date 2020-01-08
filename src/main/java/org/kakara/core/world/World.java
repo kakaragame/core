@@ -1,5 +1,8 @@
 package org.kakara.core.world;
 
+import org.kakara.core.game.Block;
+import org.kakara.core.game.ItemStack;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -14,6 +17,11 @@ public interface World {
     GameBlock getBlockAt(int x, int y, int z);
 
     GameBlock getBlockAt(Location location);
+
+    GameBlock setBlock(ItemStack itemStack, Location location);
+
+    GameBlock setBlock(Block block, Location location);
+
 
     Chunk getChunkAt(int x, int z);
 

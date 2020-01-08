@@ -24,6 +24,7 @@ public interface ItemStack {
      */
     MetaData getMetaData();
 
-    int count();
+    int getCount();
 
+    void setCount(int count);
 }
