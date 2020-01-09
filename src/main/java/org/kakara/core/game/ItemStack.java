@@ -7,7 +7,6 @@ package org.kakara.core.game;
  * To create a ItemStack use GameInstance#createItemStack(Item item)
  **/
 public interface ItemStack {
-
     /**
      * This returns the item type this is
      *
