@@ -15,8 +15,7 @@ public interface Mod {
 
     ModType getModType();
 
-
-
+    ModRules getModRules();
 
 
     KakaraCore getKakaraCore();

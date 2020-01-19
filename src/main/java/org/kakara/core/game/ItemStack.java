@@ -1,5 +1,10 @@
 package org.kakara.core.game;
 
+
+import org.kakara.core.charm.Charm;
+
+import java.util.Map;
+
 /**
  * Unlike an Item this represents an specific item in the game.
  * ex. damage data, Meta Data, and count.
@@ -26,4 +31,8 @@ public interface ItemStack {
     int getCount();
 
     void setCount(int count);
+
+    Map<Charm, Byte> getCharms();
+
+    void addCharm(Charm charm, Byte level);
 }

@@ -3,6 +3,7 @@ package org.kakara.core.mod.game;
 import me.kingtux.simpleannotation.MethodFinder;
 import org.kakara.core.KakaraCore;
 import org.kakara.core.mod.Mod;
+import org.kakara.core.mod.ModRules;
 import org.kakara.core.mod.ModType;
 import org.kakara.core.mod.annotations.ModInfo;
 import org.kakara.core.mod.annotations.OnDisable;
@@ -16,9 +17,11 @@ import java.lang.reflect.Method;
 public abstract class GameMod implements Mod {
     private KakaraCore kakaraCore;
     private ModInfo modInfo;
+    private ModRules modRules;
 
     protected GameMod() {
         modInfo = getClass().getAnnotation(ModInfo.class);
+        modRules = new GameModRules(modInfo);
     }
 
     public void setKakaraCore(KakaraCore kakaraCore) {
@@ -89,4 +92,6 @@ public abstract class GameMod implements Mod {
     protected void registerResource(String path, ResourceType type) {
         kakaraCore.getResourceManager().registerResource(path, type, this);
     }
+
+
 }
