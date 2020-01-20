@@ -13,4 +13,29 @@ public class GameModRules implements ModRules {
 
     public GameModRules(ModInfo modInfo) {
     }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getVersion() {
+        return version;
+    }
+
+    @Override
+    public String[] getAuthors() {
+        return authors;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public ModType getModType() {
+        return type;
+    }
 }

@@ -9,5 +9,5 @@ public interface ModLoader {
 
     Mod load(File file) throws IOException, IllegalModException;
 
-    void unload(Mod mod);
+    void unload(Mod mod) throws IOException;
 }

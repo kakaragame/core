@@ -16,11 +16,11 @@ import java.lang.reflect.Method;
 
 public abstract class GameMod implements Mod {
     private KakaraCore kakaraCore;
-    private ModInfo modInfo;
     private ModRules modRules;
+    private ModClassLoader modClassLoader;
 
     protected GameMod() {
-        modInfo = getClass().getAnnotation(ModInfo.class);
+        ModInfo modInfo = getClass().getAnnotation(ModInfo.class);
         modRules = new GameModRules(modInfo);
     }
 
@@ -29,27 +29,27 @@ public abstract class GameMod implements Mod {
     }
 
     public String getName() {
-        return modInfo.name();
+        return modRules.getName();
     }
 
     @Override
     public String getVersion() {
-        return modInfo.version();
+        return modRules.getVersion();
     }
 
     @Override
     public String[] getAuthors() {
-        return modInfo.authors();
+        return modRules.getAuthors();
     }
 
     @Override
     public String getDescription() {
-        return modInfo.description();
+        return modRules.getDescription();
     }
 
     @Override
     public ModType getModType() {
-        return modInfo.modType();
+        return modRules.getModType();
     }
 
     void enable() {
@@ -86,12 +86,18 @@ public abstract class GameMod implements Mod {
 
     @Override
     public KakaraCore getKakaraCore() {
-        return null;
+        return kakaraCore;
     }
 
     protected void registerResource(String path, ResourceType type) {
         kakaraCore.getResourceManager().registerResource(path, type, this);
     }
 
+    protected ModClassLoader getClassLoader() {
+        return modClassLoader;
+    }
 
+    protected void setModClassLoader(ModClassLoader modClassLoader) {
+        this.modClassLoader = modClassLoader;
+    }
 }

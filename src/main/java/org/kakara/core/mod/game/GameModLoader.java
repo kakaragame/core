@@ -7,6 +7,7 @@ import org.kakara.core.mod.ModLoader;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -14,6 +15,11 @@ import java.util.jar.JarFile;
 public class GameModLoader implements ModLoader {
     public static final String MOD_PROPERTIES = "mod.properties";
     public static final String MAIN_CLASS = "main.class";
+    private KakaraCore kakaraCore;
+
+    public GameModLoader(KakaraCore kakaraCore) {
+        this.kakaraCore = kakaraCore;
+    }
 
     @Override
     public Mod load(File file) throws IOException, IllegalModException {
@@ -26,18 +32,28 @@ public class GameModLoader implements ModLoader {
         if (properties.getProperty(MAIN_CLASS) == null) {
             throw new IllegalModException("Missing main.class property " + file.getName());
         }
-        Class<? extends Mod> modClass;
+        Class<?> modClass;
 
         try {
-            modClass = (Class<? extends Mod>) classLoader.loadClass(properties.getProperty(MAIN_CLASS));
+            modClass = classLoader.loadClass(properties.getProperty(MAIN_CLASS));
         } catch (ClassNotFoundException e) {
             throw new IllegalModException("Unable to locate main class for mod " + file.getName(), e);
         }
-        return buildModObject(modClass);
+        if (!modClass.isAssignableFrom(GameMod.class)) {
+            return null;
+        }
+        try {
+            return buildModObject(modClass);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    private Mod buildModObject(Class<? extends Mod> modClass) {
-        Mod mod = null;
+    private Mod buildModObject(Class<?> modClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        GameMod mod = (GameMod) modClass.getConstructor().newInstance();
+        mod.setKakaraCore(kakaraCore);
+
         //TODO build mod object
         return mod;
     }
@@ -53,7 +69,10 @@ public class GameModLoader implements ModLoader {
     }
 
     @Override
-    public void unload(Mod mod) {
-
+    public void unload(Mod mod) throws IOException {
+        if (!(mod instanceof GameMod)) {
+            return;
+        }
+        ((GameMod) mod).getClassLoader().close();
     }
 }
