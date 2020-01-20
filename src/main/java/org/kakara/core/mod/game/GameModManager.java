@@ -54,6 +54,7 @@ public class GameModManager implements ModManager {
             KakaraCore.LOGGER.info("Disabling " + mod.getName() + " " + mod.getVersion());
             if (!(mod instanceof GameMod)) continue;
             ((GameMod) mod).disable();
+            loadedMods.remove(mod);
             try {
                 modLoader.unload(mod);
             } catch (IOException e) {
