@@ -1,13 +1,29 @@
 package org.kakara.core.world;
 
-import org.kakara.core.world.region.RegionFlag;
-import org.kakara.core.world.region.RegionGrid;
-
-import java.util.List;
-import java.util.Map;
-
 public interface ChunkGenerator {
+    class ChunkFormat {
+        private int width, worldHeight, length;
 
+        public ChunkFormat(int width, int worldHeight, int length) {
+            this.width = width;
+            this.worldHeight = worldHeight;
+            this.length = length;
+        }
 
-    Chunk generateChunk(World world, int x, int z, List<RegionFlag> regionFlags, RegionGrid regionGrid);
+        public int getWidth() {
+            return width;
+        }
+
+        public int getWorldHeight() {
+            return worldHeight;
+        }
+
+        public int getLength() {
+            return length;
+        }
+    }
+
+    ChunkFormat getChunkFormat();
+
+    ChunkBase generateChunk(ChunkBase chunkBase);
 }
