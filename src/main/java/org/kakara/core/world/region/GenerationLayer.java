@@ -4,14 +4,12 @@ import org.kakara.core.game.Item;
 
 public class GenerationLayer {
     private double chance;
-    private int highY;
-    private int lowY;
+    private int height;
     private Item[] items;
 
-    public GenerationLayer(double chance, int highY, int lowY, Item... items) {
+    public GenerationLayer(double chance, int height, Item... items) {
         this.chance = chance;
-        this.highY = highY;
-        this.lowY = lowY;
+        this.height = height;
         this.items = items;
     }
 
@@ -19,12 +17,8 @@ public class GenerationLayer {
         return chance;
     }
 
-    public int getHighY() {
-        return highY;
-    }
-
-    public int getLowY() {
-        return lowY;
+    public int getHeight() {
+        return height;
     }
 
     public Item[] getItems() {
