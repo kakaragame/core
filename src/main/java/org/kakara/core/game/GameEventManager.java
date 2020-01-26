@@ -13,10 +13,6 @@ public class GameEventManager implements EventManager {
     private List<EventHandlerObject> registeredEventHandler = new ArrayList<>();
     private KakaraCore kakaraCore;
 
-    public GameEventManager(KakaraCore kakaraCore) {
-        this.kakaraCore = kakaraCore;
-    }
-
     @Override
     public void registerEventHandler(Object handler, Mod mod) {
 //TODO setup registerEventHandler
@@ -25,5 +21,10 @@ public class GameEventManager implements EventManager {
     @Override
     public void callEvent(Event event) {
 //TODO setupCallEvent
+    }
+
+    @Override
+    public void load(KakaraCore kakaraCore) {
+        this.kakaraCore = kakaraCore;
     }
 }

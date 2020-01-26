@@ -19,11 +19,14 @@ public class GameModManager implements ModManager {
     private ModLoader modLoader;
     private Mod coreMod;
     private KakaraCore kakaraCore;
-
-    public GameModManager(ModLoader modLoader, Mod coreMod, KakaraCore kakaraCore) {
-        this.modLoader = modLoader;
+    public GameModManager(Mod coreMod) {
         this.coreMod = coreMod;
+    }
+
+    public void load(KakaraCore kakaraCore) {
         this.kakaraCore = kakaraCore;
+        this.modLoader = new GameModLoader(kakaraCore);
+
     }
 
     @Override

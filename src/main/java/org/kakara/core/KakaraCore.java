@@ -33,6 +33,13 @@ public class KakaraCore {
         this.itemManager = itemManager;
         this.eventManager = eventManager;
         core = this;
+        load();
+    }
+
+    private void load() {
+        modManager.load(this);
+        resourceManager.load(this);
+        itemManager.load(this);
     }
 
     /**

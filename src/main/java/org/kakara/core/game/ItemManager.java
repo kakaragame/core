@@ -1,6 +1,7 @@
 package org.kakara.core.game;
 
 import org.apache.commons.lang3.Validate;
+import org.kakara.core.KakaraCore;
 import org.kakara.core.Utils;
 import org.kakara.core.mod.Mod;
 
@@ -30,4 +31,6 @@ public interface ItemManager {
         if (!(item instanceof Block)) return null;
         return ((Block) item);
     }
+
+    void load(KakaraCore kakaraCore);
 }

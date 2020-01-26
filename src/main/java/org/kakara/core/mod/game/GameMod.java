@@ -100,4 +100,9 @@ public abstract class GameMod implements Mod {
     protected void setModClassLoader(ModClassLoader modClassLoader) {
         this.modClassLoader = modClassLoader;
     }
+
+    @Override
+    public ModRules getModRules() {
+        return modRules;
+    }
 }

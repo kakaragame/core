@@ -8,5 +8,7 @@ public interface CraftingManager {
 
     List<CraftingRecipe> getRecipesForItem(Item item);
 
+    List<CraftingRecipe> getAllCraftingRecipes();
+
     CraftingRecipe getRecipeForRecipe(CraftingRecipe recipe);
 }

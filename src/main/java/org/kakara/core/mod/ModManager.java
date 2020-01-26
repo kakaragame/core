@@ -1,5 +1,7 @@
 package org.kakara.core.mod;
 
+import org.kakara.core.KakaraCore;
+
 import java.io.File;
 import java.util.List;
 
@@ -16,4 +18,6 @@ public interface ModManager {
     void unLoadMods(ModType type);
 
     ModLoader getModLoader();
+
+    void load(KakaraCore kakaraCore);
 }
