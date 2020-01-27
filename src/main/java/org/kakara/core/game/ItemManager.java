@@ -5,6 +5,9 @@ import org.kakara.core.KakaraCore;
 import org.kakara.core.Utils;
 import org.kakara.core.mod.Mod;
 
+import java.util.List;
+import java.util.Map;
+
 public interface ItemManager {
     /**
      * Call this method if you want to register a Item, Block, Tool, or Weapon.
@@ -18,6 +21,10 @@ public interface ItemManager {
     void registerItem(Item item, Mod mod);
 
     void deregisterItem(Item item, Mod mod);
+
+    List<Item> getItemsByMod(Mod mod);
+
+    Map<Item, Mod> getItems();
 
     void deregisterItems(Mod mod);
 
