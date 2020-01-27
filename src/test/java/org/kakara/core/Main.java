@@ -6,21 +6,14 @@ import org.kakara.core.mod.ModSetting;
 import org.kakara.core.modinstance.ModInstance;
 import org.kakara.core.modinstance.ModInstanceType;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 
 public class Main {
-    private static Gson gson  = new Gson();
-    public static void main(String[] args) {
-        Mod mod = new ExampleMod();
-        System.out.println(mod.getName());
-        ModSetting setting = new ModSetting();
+    private static Gson gson = new Gson();
 
-        for (int i = 0; i < 56; i++) {
-            setting.setSetting(String.valueOf(i), i);
-        }
-        ModInstance instance = new ModInstance("Vanilla_Mod", "https://kakara/mods", "1.0",setting, ModInstanceType.FILE);
-        System.out.println(gson.toJson(instance).getBytes().length);
-        System.out.println(gson.toJson(instance));
+    public static void main(String[] args){
 
     }
 }

@@ -8,5 +8,7 @@ public interface GameInstance {
     GameSettings getGameSettings();
 
     ItemStack createItemStack(Item item);
+
+    GameType getType();
 }
 

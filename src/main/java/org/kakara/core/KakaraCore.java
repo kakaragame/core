@@ -1,19 +1,19 @@
 package org.kakara.core;
 
-import org.kakara.core.client.Client;
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.ItemManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
-import org.kakara.core.server.Server;
 import org.kakara.core.sound.SoundManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
+import java.io.IOException;
+
 public class KakaraCore {
     private ModManager modManager;
-    private GameType gameType;
     private GameInstance gameInstance;
     public static Logger LOGGER = LoggerFactory.getLogger(KakaraCore.class);
     private ResourceManager resourceManager;
@@ -22,21 +22,21 @@ public class KakaraCore {
     private static KakaraCore core;
     private ItemManager itemManager;
     private EventManager eventManager;
+    private File workingDirectory;
 
-    public KakaraCore(ModManager modManager, GameType gameType, GameInstance gameInstance, ResourceManager resourceManager, CraftingManager craftingManager, SoundManager soundManager, ItemManager itemManager, EventManager eventManager) {
+    public KakaraCore(ModManager modManager, GameInstance gameInstance, ResourceManager resourceManager, CraftingManager craftingManager, SoundManager soundManager, ItemManager itemManager, EventManager eventManager, File workingDirectory) {
         this.modManager = modManager;
-        this.gameType = gameType;
         this.gameInstance = gameInstance;
         this.resourceManager = resourceManager;
         this.craftingManager = craftingManager;
         this.soundManager = soundManager;
         this.itemManager = itemManager;
         this.eventManager = eventManager;
+        this.workingDirectory = workingDirectory;
         core = this;
-        load();
     }
 
-    private void load() {
+    private void load() throws IOException {
         modManager.load(this);
         resourceManager.load(this);
         itemManager.load(this);
@@ -73,7 +73,7 @@ public class KakaraCore {
     }
 
     public GameType getGameType() {
-        return gameType;
+        return gameInstance.getType();
     }
 
     public GameInstance getGameInstance() {

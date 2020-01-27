@@ -7,23 +7,21 @@ import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
 
+import java.io.File;
+import java.io.IOException;
+
 public class KakaraCoreBuilder {
     private ModManager modManager;
-    private GameType gameType;
     private GameInstance gameInstance;
     private ResourceManager resourceManager;
     private CraftingManager craftingManager;
     private SoundManager soundManager;
     private ItemManager itemManager;
     private EventManager eventManager;
+    private File workingDirectory;
 
     public KakaraCoreBuilder setModManager(ModManager modManager) {
         this.modManager = modManager;
-        return this;
-    }
-
-    public KakaraCoreBuilder setGameType(GameType gameType) {
-        this.gameType = gameType;
         return this;
     }
 
@@ -57,7 +55,18 @@ public class KakaraCoreBuilder {
         return this;
     }
 
+    public void setWorkingDirectory(File workingDirectory) {
+        this.workingDirectory = workingDirectory;
+    }
+
     public KakaraCore createKakaraCore() {
-        return new KakaraCore(modManager, gameType, gameInstance, resourceManager, craftingManager, soundManager, itemManager, eventManager);
+        if (workingDirectory == null) {
+            try {
+                workingDirectory = new File(".").getCanonicalFile();
+            } catch (IOException e) {
+                KakaraCore.LOGGER.error("Unable to get path", e);
+            }
+        }
+        return new KakaraCore(modManager, gameInstance, resourceManager, craftingManager, soundManager, itemManager, eventManager, workingDirectory);
     }
 }
