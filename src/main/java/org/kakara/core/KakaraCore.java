@@ -80,6 +80,9 @@ public class KakaraCore {
         return gameInstance;
     }
 
+    public File getWorkingDirectory() {
+        return workingDirectory;
+    }
 
     public EventManager getEventManager() {
         return eventManager;
