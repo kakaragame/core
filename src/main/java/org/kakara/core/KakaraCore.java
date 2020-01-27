@@ -23,6 +23,7 @@ public class KakaraCore {
     private ItemManager itemManager;
     private EventManager eventManager;
     private File workingDirectory;
+    private boolean loaded;
 
     public KakaraCore(ModManager modManager, GameInstance gameInstance, ResourceManager resourceManager, CraftingManager craftingManager, SoundManager soundManager, ItemManager itemManager, EventManager eventManager, File workingDirectory) {
         this.modManager = modManager;
@@ -36,7 +37,9 @@ public class KakaraCore {
         core = this;
     }
 
-    private void load() throws IOException {
+    public void load() throws IOException {
+        if (loaded) return;
+        loaded = true;
         modManager.load(this);
         resourceManager.load(this);
         itemManager.load(this);
