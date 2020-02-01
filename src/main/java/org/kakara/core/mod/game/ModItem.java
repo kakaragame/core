@@ -1,12 +1,15 @@
 package org.kakara.core.mod.game;
 
-import org.kakara.core.annotations.Id;
-import org.kakara.core.annotations.Name;
-import org.kakara.core.annotations.Texture;
-import org.kakara.core.annotations.Weight;
+import org.kakara.core.annotations.*;
 import org.kakara.core.game.Item;
+import org.kakara.core.mod.Mod;
 
 public abstract class ModItem implements Item {
+    private Mod mod;
+
+    public ModItem(Mod mod) {
+        this.mod = mod;
+    }
 
     @Override
     public String getName() {
@@ -24,8 +27,21 @@ public abstract class ModItem implements Item {
     }
 
     @Override
+    public String getModel() {
+        Model model = getClass().getAnnotation(Model.class);
+        return model == null ? null : model.value();
+    }
+
+    @Override
     public float getWeight() {
         Weight weight = getClass().getAnnotation(Weight.class);
         return weight == null ? 0.0f : weight.value();
     }
+
+    @Override
+    public Mod getMod() {
+        return mod;
+    }
+
+
 }
