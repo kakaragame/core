@@ -53,7 +53,7 @@ public abstract class GameMod implements Mod {
     }
 
     void enable() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnEnable.class, true);
+        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnEnable.class, true).get();
 
         method.setAccessible(true);
         try {
@@ -64,7 +64,7 @@ public abstract class GameMod implements Mod {
     }
 
     void disable() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnDisable.class, true);
+        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnDisable.class, true).get();
         if (method == null) return;
         method.setAccessible(true);
         try {
@@ -75,7 +75,7 @@ public abstract class GameMod implements Mod {
     }
 
     void reload() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), Reload.class, true);
+        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), Reload.class, true).get();
         method.setAccessible(true);
         try {
             method.invoke(this);
