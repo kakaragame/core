@@ -13,7 +13,7 @@ public interface Region {
 
     Entity[] getEntitySpawns();
 
-    AboveBlock[] getAboveBlocks();
+    BlockAbove[] getAboveBlocks();
 
     int getPrecipitationChance();
 
