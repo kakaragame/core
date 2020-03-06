@@ -1,12 +1,12 @@
 package org.kakara.core.world;
 
 import org.kakara.core.charm.Charm;
-import org.kakara.core.game.Item;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.game.MetaData;
 import org.kakara.core.world.region.RegionFlag;
 import org.kakara.core.world.region.RegionGrid;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,14 +24,7 @@ public class ChunkBase {
         this.z = z;
         this.regionFlags = regionFlags;
         this.regionGrid = regionGrid;
-    }
-
-    public List<RegionFlag> getRegionFlags() {
-        return regionFlags;
-    }
-
-    public RegionGrid getRegionGrid() {
-        return regionGrid;
+        this.gameBlocks = new ArrayList<>();
     }
 
     public int getX() {
@@ -42,7 +35,19 @@ public class ChunkBase {
         return z;
     }
 
-    public void setBlock(final int x, final int y, final int z, final Item item, final MetaData metaData) {
+    public List<RegionFlag> getRegionFlags() {
+        return regionFlags;
+    }
+
+    public RegionGrid getRegionGrid() {
+        return regionGrid;
+    }
+
+    public List<GameBlock> getGameBlocks() {
+        return gameBlocks;
+    }
+
+    public void setBlock(final int x, final int y, final int z, final ItemStack itemStack, final MetaData metaData) {
         gameBlocks.add(new GameBlock() {
             @Override
             public Location getLocation() {
@@ -51,22 +56,7 @@ public class ChunkBase {
 
             @Override
             public ItemStack getItemStack() {
-                return new ItemStack() {
-                    @Override
-                    public Item getItem() {
-                        return item;
-                    }
-
-                    @Override
-                    public MetaData getMetaData() {
-                        return metaData;
-                    }
-
-                    @Override public int getCount() { return 0; }
-                    @Override public void setCount(int count) {}
-                    @Override public Map<Charm, Byte> getCharms() { return new HashMap<>(); }
-                    @Override public void addCharm(Charm charm, Byte level) {}
-                };
+                return itemStack;
             }
         });
     }

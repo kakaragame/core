@@ -2,11 +2,11 @@ package org.kakara.core.world.region;
 
 import org.kakara.core.game.Block;
 
-public class AboveBlock {
+public class BlockAbove {
     private Block under, above;
     private int chance;
 
-    public AboveBlock(Block under, Block above, int chance) {
+    public BlockAbove(Block under, Block above, int chance) {
         this.under = under;
         this.above = above;
         this.chance = chance;
