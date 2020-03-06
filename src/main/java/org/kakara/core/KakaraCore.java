@@ -2,7 +2,9 @@ package org.kakara.core;
 
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
+import org.kakara.core.game.Item;
 import org.kakara.core.game.ItemManager;
+import org.kakara.core.game.ItemStack;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
@@ -43,6 +45,10 @@ public class KakaraCore {
         modManager.load(this);
         resourceManager.load(this);
         itemManager.load(this);
+    }
+
+    public ItemStack createItemStack(Item item) {
+        return gameInstance.createItemStack(item);
     }
 
     /**
