@@ -21,7 +21,6 @@ public class KakaraCore {
     private ResourceManager resourceManager;
     private CraftingManager craftingManager;
     private SoundManager soundManager;
-    private static KakaraCore core;
     private ItemManager itemManager;
     private EventManager eventManager;
     private File workingDirectory;
@@ -36,7 +35,6 @@ public class KakaraCore {
         this.itemManager = itemManager;
         this.eventManager = eventManager;
         this.workingDirectory = workingDirectory;
-        core = this;
     }
 
     public void load() throws IOException {
@@ -49,16 +47,6 @@ public class KakaraCore {
 
     public ItemStack createItemStack(Item item) {
         return gameInstance.createItemStack(item);
-    }
-
-    /**
-     * Not Sure if I am actually gonna do this
-     *
-     * @return the kakaracore
-     */
-    @Deprecated
-    public static KakaraCore getKakaraCore() {
-        return core;
     }
 
     public ResourceManager getResourceManager() {
