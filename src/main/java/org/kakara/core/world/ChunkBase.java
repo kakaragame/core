@@ -1,30 +1,30 @@
 package org.kakara.core.world;
 
-import org.kakara.core.charm.Charm;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.game.MetaData;
 import org.kakara.core.world.region.RegionFlag;
 import org.kakara.core.world.region.RegionGrid;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ChunkBase {
     private World world;
     private int x, z;
     private List<RegionFlag> regionFlags;
-    private RegionGrid regionGrid;
     private List<GameBlock> gameBlocks;
+    private RegionGrid regionGrid;
 
-    public ChunkBase(final World world, int x, int z, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
+    public ChunkBase(final World world, int x, int z, List<RegionFlag> regionFlags) {
         this.world = world;
         this.x = x;
         this.z = z;
         this.regionFlags = regionFlags;
-        this.regionGrid = regionGrid;
         this.gameBlocks = new ArrayList<>();
+    }
+
+    public World getWorld() {
+        return world;
     }
 
     public int getX() {
@@ -39,13 +39,15 @@ public class ChunkBase {
         return regionFlags;
     }
 
+    public List<GameBlock> getGameBlocks() {
+        return gameBlocks;
+    }
+
     public RegionGrid getRegionGrid() {
         return regionGrid;
     }
 
-    public List<GameBlock> getGameBlocks() {
-        return gameBlocks;
-    }
+    public void setRegionGrid(RegionGrid grid) { this.regionGrid = grid; }
 
     public void setBlock(final int x, final int y, final int z, final ItemStack itemStack, final MetaData metaData) {
         gameBlocks.add(new GameBlock() {

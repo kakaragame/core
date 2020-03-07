@@ -23,7 +23,9 @@ public interface ChunkGenerator {
         }
     }
 
+    String getName();
+
     ChunkFormat getChunkFormat();
 
-    ChunkBase generateChunk(ChunkBase chunkBase);
+    ChunkBase generateChunk(int seed, ChunkBase chunkBase);
 }

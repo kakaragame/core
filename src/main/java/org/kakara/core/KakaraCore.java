@@ -8,6 +8,7 @@ import org.kakara.core.game.ItemStack;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
+import org.kakara.core.world.WorldGenerationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,10 +24,11 @@ public class KakaraCore {
     private SoundManager soundManager;
     private ItemManager itemManager;
     private EventManager eventManager;
+    private WorldGenerationManager worldGenerationManager;
     private File workingDirectory;
     private boolean loaded;
 
-    public KakaraCore(ModManager modManager, GameInstance gameInstance, ResourceManager resourceManager, CraftingManager craftingManager, SoundManager soundManager, ItemManager itemManager, EventManager eventManager, File workingDirectory) {
+    public KakaraCore(ModManager modManager, GameInstance gameInstance, ResourceManager resourceManager, CraftingManager craftingManager, SoundManager soundManager, ItemManager itemManager, EventManager eventManager, WorldGenerationManager worldGenerationManager, File workingDirectory) {
         this.modManager = modManager;
         this.gameInstance = gameInstance;
         this.resourceManager = resourceManager;
@@ -34,6 +36,7 @@ public class KakaraCore {
         this.soundManager = soundManager;
         this.itemManager = itemManager;
         this.eventManager = eventManager;
+        this.worldGenerationManager = worldGenerationManager;
         this.workingDirectory = workingDirectory;
     }
 
@@ -83,5 +86,9 @@ public class KakaraCore {
 
     public EventManager getEventManager() {
         return eventManager;
+    }
+
+    public WorldGenerationManager getWorldGenerationManager() {
+        return worldGenerationManager;
     }
 }

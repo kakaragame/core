@@ -6,6 +6,7 @@ import org.kakara.core.game.ItemManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
+import org.kakara.core.world.WorldGenerationManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class KakaraCoreBuilder {
     private SoundManager soundManager;
     private ItemManager itemManager;
     private EventManager eventManager;
+    private WorldGenerationManager worldGenerationManager;
     private File workingDirectory;
 
     public KakaraCoreBuilder setModManager(ModManager modManager) {
@@ -55,6 +57,11 @@ public class KakaraCoreBuilder {
         return this;
     }
 
+    public KakaraCoreBuilder setWorldGenerationManager(WorldGenerationManager worldGenerationManager) {
+        this.worldGenerationManager = worldGenerationManager;
+        return this;
+    }
+
     public void setWorkingDirectory(File workingDirectory) {
         this.workingDirectory = workingDirectory;
     }
@@ -67,6 +74,6 @@ public class KakaraCoreBuilder {
                 KakaraCore.LOGGER.error("Unable to get path", e);
             }
         }
-        return new KakaraCore(modManager, gameInstance, resourceManager, craftingManager, soundManager, itemManager, eventManager, workingDirectory);
+        return new KakaraCore(modManager, gameInstance, resourceManager, craftingManager, soundManager, itemManager, eventManager, worldGenerationManager, workingDirectory);
     }
 }
