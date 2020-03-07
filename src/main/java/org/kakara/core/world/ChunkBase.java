@@ -49,7 +49,7 @@ public class ChunkBase {
 
     public void setRegionGrid(RegionGrid grid) { this.regionGrid = grid; }
 
-    public void setBlock(final int x, final int y, final int z, final ItemStack itemStack, final MetaData metaData) {
+    public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
         gameBlocks.add(new GameBlock() {
             @Override
             public Location getLocation() {
