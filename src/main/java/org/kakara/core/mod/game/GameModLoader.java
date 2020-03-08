@@ -4,6 +4,7 @@ import org.kakara.core.KakaraCore;
 import org.kakara.core.exceptions.IllegalModException;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.mod.ModLoader;
+import org.kakara.core.mod.logger.ModLogger;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,7 +54,7 @@ public class GameModLoader implements ModLoader {
     private Mod buildModObject(Class<?> modClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         GameMod mod = (GameMod) modClass.getConstructor().newInstance();
         mod.setKakaraCore(kakaraCore);
-
+        mod.setLogger(new ModLogger(mod.getName()));
         //TODO build mod object
         return mod;
     }

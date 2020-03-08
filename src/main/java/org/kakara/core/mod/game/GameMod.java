@@ -10,6 +10,7 @@ import org.kakara.core.mod.annotations.OnDisable;
 import org.kakara.core.mod.annotations.OnEnable;
 import org.kakara.core.mod.annotations.Reload;
 import org.kakara.core.resources.ResourceType;
+import org.slf4j.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -18,6 +19,7 @@ public abstract class GameMod implements Mod {
     private KakaraCore kakaraCore;
     private ModRules modRules;
     private ModClassLoader modClassLoader;
+    private Logger logger;
 
     protected GameMod() {
         ModInfo modInfo = getClass().getAnnotation(ModInfo.class);
@@ -91,6 +93,15 @@ public abstract class GameMod implements Mod {
 
     protected void registerResource(String path, ResourceType type) {
         kakaraCore.getResourceManager().registerResource(path, type, this);
+    }
+
+    @Override
+    public Logger getLogger() {
+        return logger;
+    }
+
+    protected void setLogger(Logger logger) {
+        this.logger = logger;
     }
 
     protected ModClassLoader getClassLoader() {
