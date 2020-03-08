@@ -1,5 +1,7 @@
 package org.kakara.core.world;
 
+import org.kakara.core.mod.Mod;
+
 public interface ChunkGenerator {
     class ChunkFormat {
         private int width, worldHeight, length;
@@ -22,6 +24,8 @@ public interface ChunkGenerator {
             return length;
         }
     }
+
+    Mod getMod();
 
     String getName();
 

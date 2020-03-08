@@ -46,6 +46,10 @@ public class GameModManager implements ModManager {
         for (File file : modsToLoad) {
             try {
                 GameMod mod = (GameMod) modLoader.load(file);
+                if (mod == null) {
+                    KakaraCore.LOGGER.error("Unable to load(No Error): " + file.getName());
+                    continue;
+                }
                 loadedMods.add(mod);
                 KakaraCore.LOGGER.info(String.format("Enabling %s %s by %s", mod.getName(), mod.getVersion(), StringUtils.join(mod.getAuthors(), ",")));
                 loadResources(mod, file);
@@ -56,16 +60,16 @@ public class GameModManager implements ModManager {
         }
     }
 
-    private void loadResources(GameMod mod, File file) throws IOException {
+    private void loadResources(Mod mod, File file) throws IOException {
         List<String> paths = TheCodeOfAMadMan.getResourcesInJar(file, "resources", true);
         for (String s : paths) {
             String path = s.replace("/resources/", "");
             String[] splitPath = path.split("/");
             if (splitPath[0].equalsIgnoreCase("texture")) {
-                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, path.length());
+                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
                 kakaraCore.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
             } else {
-                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, path.length());
+                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
                 kakaraCore.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
             }
         }

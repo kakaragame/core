@@ -27,12 +27,16 @@ public class GameModLoader implements ModLoader {
         KakaraCore.LOGGER.debug(String.format("Loading Mod File %s", file.getName()));
         //You screwed up somewhere?
         if (!file.exists()) return null;
+
         JarFile jarFile = new JarFile(file);
+
         ModClassLoader classLoader = new ModClassLoader(file.toURI().toURL(), ClassLoader.getSystemClassLoader());
+
         Properties properties = getModProperties(jarFile);
         if (properties.getProperty(MAIN_CLASS) == null) {
             throw new IllegalModException("Missing main.class property " + file.getName());
         }
+
         Class<?> modClass;
 
         try {
@@ -40,21 +44,27 @@ public class GameModLoader implements ModLoader {
         } catch (ClassNotFoundException e) {
             throw new IllegalModException("Unable to locate main class for mod " + file.getName(), e);
         }
-        if (!modClass.isAssignableFrom(GameMod.class)) {
+
+        if (!GameMod.class.isAssignableFrom(modClass)) {
             return null;
         }
+
         try {
-            return buildModObject(modClass);
+            Mod mod = buildModObject(modClass, classLoader);
+
+            return mod;
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
             KakaraCore.LOGGER.error("Unable to create mod object", e);
         }
+
         return null;
     }
 
-    private Mod buildModObject(Class<?> modClass) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private Mod buildModObject(Class<?> modClass, ModClassLoader classLoader) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         GameMod mod = (GameMod) modClass.getConstructor().newInstance();
         mod.setKakaraCore(kakaraCore);
         mod.setLogger(new ModLogger(mod.getName()));
+        mod.setModClassLoader(classLoader);
         //TODO build mod object
         return mod;
     }

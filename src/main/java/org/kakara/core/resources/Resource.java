@@ -6,9 +6,15 @@ import java.net.URL;
 
 public class Resource {
     private File file;
+    private String localPath;
 
-    public Resource(File file) {
+    public Resource(File file, String localPath) {
         this.file = file;
+        this.localPath = localPath;
+    }
+
+    public String getLocalPath() {
+        return localPath;
     }
 
     public URL getURL() {

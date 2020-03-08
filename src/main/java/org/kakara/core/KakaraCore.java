@@ -47,6 +47,7 @@ public class KakaraCore {
         modManager.load(this);
         resourceManager.load(this);
         itemManager.load(this);
+        worldGenerationManager.load(this);
     }
 
     public ItemStack createItemStack(Item item) {

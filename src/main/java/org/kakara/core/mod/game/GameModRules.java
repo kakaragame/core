@@ -12,6 +12,11 @@ public class GameModRules implements ModRules {
     private ModType type;
 
     public GameModRules(ModInfo modInfo) {
+        name=modInfo.name();
+        version=modInfo.version();
+        description=modInfo.description();
+        authors=modInfo.authors();
+        type=modInfo.modType();
     }
 
     @Override
