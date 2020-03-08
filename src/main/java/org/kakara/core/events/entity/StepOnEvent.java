@@ -12,4 +12,8 @@ public class StepOnEvent extends EntityEvent {
         super(gameEntity);
         this.blockSteppedOn = blockSteppedOn;
     }
+
+    public GameBlock getBlockSteppedOn() {
+        return blockSteppedOn;
+    }
 }

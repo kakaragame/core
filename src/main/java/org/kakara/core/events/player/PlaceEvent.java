@@ -10,4 +10,8 @@ public class PlaceEvent extends PlayerEvent {
         super(player);
         this.gameBlock = gameBlock;
     }
+
+    public GameBlock getGameBlock() {
+        return gameBlock;
+    }
 }

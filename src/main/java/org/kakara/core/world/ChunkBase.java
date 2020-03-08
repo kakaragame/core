@@ -47,7 +47,9 @@ public class ChunkBase {
         return regionGrid;
     }
 
-    public void setRegionGrid(RegionGrid grid) { this.regionGrid = grid; }
+    public void setRegionGrid(RegionGrid grid) {
+        this.regionGrid = grid;
+    }
 
     public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
         gameBlocks.add(new GameBlock() {

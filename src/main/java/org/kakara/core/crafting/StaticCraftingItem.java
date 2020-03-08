@@ -5,7 +5,7 @@ import org.kakara.core.game.Item;
 import java.util.List;
 import java.util.Objects;
 
-public class StaticCraftingItem implements CraftingItem{
+public class StaticCraftingItem implements CraftingItem {
     private int x;
     private int y;
     private List<Item> item;
@@ -24,7 +24,7 @@ public class StaticCraftingItem implements CraftingItem{
         StaticCraftingItem that = (StaticCraftingItem) o;
         return x == that.x &&
                 y == that.y &&
-               Utils.hasMatchingItem(item,that.item);
+                Utils.hasMatchingItem(item, that.item);
     }
 
     @Override

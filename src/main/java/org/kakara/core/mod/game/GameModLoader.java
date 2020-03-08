@@ -23,7 +23,7 @@ public class GameModLoader implements ModLoader {
 
     @Override
     public Mod load(File file) throws IOException, IllegalModException {
-        KakaraCore.LOGGER.debug("Loading Mod File " + file.getName());
+        KakaraCore.LOGGER.debug(String.format("Loading Mod File %s", file.getName()));
         //You screwed up somewhere?
         if (!file.exists()) return null;
         JarFile jarFile = new JarFile(file);
@@ -45,7 +45,7 @@ public class GameModLoader implements ModLoader {
         try {
             return buildModObject(modClass);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            e.printStackTrace();
+            KakaraCore.LOGGER.error("Unable to create mod object", e);
         }
         return null;
     }

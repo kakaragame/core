@@ -3,7 +3,6 @@ package org.kakara.core.world;
 import org.kakara.core.game.Block;
 import org.kakara.core.game.ItemStack;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface World {

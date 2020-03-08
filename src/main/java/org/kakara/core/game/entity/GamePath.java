@@ -9,8 +9,9 @@ public interface GamePath {
 
     /**
      * IDK
+     *
      * @param entity the entity to move
-     * @param speed the speed
+     * @param speed  the speed
      */
     @Deprecated
     void moveEntityAlongRoute(Entity entity, float speed);

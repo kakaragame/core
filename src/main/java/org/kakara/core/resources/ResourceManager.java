@@ -1,7 +1,6 @@
 package org.kakara.core.resources;
 
 import org.kakara.core.KakaraCore;
-import org.kakara.core.annotations.Texture;
 import org.kakara.core.mod.Mod;
 
 //~/.kakara/resources/mods/{mod_name}/{resource_type}/path

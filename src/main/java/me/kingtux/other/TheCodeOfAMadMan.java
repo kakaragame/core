@@ -12,10 +12,15 @@ import java.util.jar.JarFile;
 /**
  * This class allows you to get all the files inside a Jar or inside the local jar you are current running in.
  * the goal of this is for locating resources inside the jar file.
+ *
  * @author wherkamps
  * @version 1.0
  */
 public class TheCodeOfAMadMan {
+    private TheCodeOfAMadMan() {
+
+    }
+
     /**
      * Get the current jar for the class
      *

@@ -24,6 +24,6 @@ public class ShapedRecipe implements CraftingRecipe {
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemList,item);
+        return Objects.hash(itemList, item);
     }
 }

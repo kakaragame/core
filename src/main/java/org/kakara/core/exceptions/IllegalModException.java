@@ -6,6 +6,6 @@ public class IllegalModException extends Exception {
     }
 
     public IllegalModException(String s, Exception e) {
-        super(s,e);
+        super(s, e);
     }
 }

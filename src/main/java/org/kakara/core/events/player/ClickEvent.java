@@ -9,4 +9,8 @@ public class ClickEvent extends PlayerEvent {
     public ClickEvent(Player player) {
         super(player);
     }
+
+    public GameBlock getGameBlock() {
+        return gameBlock;
+    }
 }

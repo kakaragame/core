@@ -20,7 +20,7 @@ public class Kakara {
     }
 
     public static void setKakaraCore(KakaraCore kakaraCore) {
-        if(Kakara.kakaraCore !=null){
+        if (Kakara.kakaraCore != null) {
             throw new IllegalArgumentException("Cant do that sonny");
         }
         Kakara.kakaraCore = kakaraCore;

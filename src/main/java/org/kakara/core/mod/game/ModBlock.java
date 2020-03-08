@@ -1,11 +1,10 @@
 package org.kakara.core.mod.game;
 
 import org.kakara.core.annotations.Hardness;
-import org.kakara.core.annotations.Weight;
 import org.kakara.core.game.Block;
 import org.kakara.core.mod.Mod;
 
-public abstract class ModBlock extends ModItem implements Block{
+public abstract class ModBlock extends ModItem implements Block {
     public ModBlock(Mod mod) {
         super(mod);
     }
