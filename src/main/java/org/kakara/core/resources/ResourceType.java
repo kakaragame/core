@@ -1,8 +1,6 @@
 package org.kakara.core.resources;
 
-public enum ResourceType {
-    TEXTURE,
-    MODEL,
+public enum ResourceType {    MODEL,
     AUDIO,
     OTHER
 }
