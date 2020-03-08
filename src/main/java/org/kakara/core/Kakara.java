@@ -2,12 +2,14 @@ package org.kakara.core;
 
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
+import org.kakara.core.game.Block;
 import org.kakara.core.game.Item;
 import org.kakara.core.game.ItemManager;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
+import org.kakara.core.world.WorldGenerationManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,5 +67,21 @@ public class Kakara {
 
     public static EventManager getEventManager() {
         return kakaraCore.getEventManager();
+    }
+
+    public static void load() throws IOException {
+        kakaraCore.load();
+    }
+
+    public static WorldGenerationManager getWorldGenerationManager() {
+        return kakaraCore.getWorldGenerationManager();
+    }
+
+    public static Item getItem(String item) {
+        return kakaraCore.getItem(item);
+    }
+
+    public static Block getBlock(String block) {
+        return kakaraCore.getBlock(block);
     }
 }

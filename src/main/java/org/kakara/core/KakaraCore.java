@@ -2,6 +2,7 @@ package org.kakara.core;
 
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
+import org.kakara.core.game.Block;
 import org.kakara.core.game.Item;
 import org.kakara.core.game.ItemManager;
 import org.kakara.core.game.ItemStack;
@@ -90,5 +91,13 @@ public class KakaraCore {
 
     public WorldGenerationManager getWorldGenerationManager() {
         return worldGenerationManager;
+    }
+
+    public Item getItem(String item) {
+        return itemManager.getItem(item);
+    }
+
+    public Block getBlock(String block) {
+        return itemManager.getBlock(block);
     }
 }
