@@ -15,7 +15,17 @@ public class TestResourceManager implements ResourceManager {
     }
 
     @Override
+    public void registerTexture(String path, int textureResolution, Mod mod) {
+
+    }
+
+    @Override
     public Resource getResource(String path, ResourceType resourceType, Mod mod) {
+        return null;
+    }
+
+    @Override
+    public Resource getTexture(String path, ResourceType resourceType, Mod mod) {
         return null;
     }
 
