@@ -1,6 +1,7 @@
 package org.kakara.core.mod;
 
 import org.kakara.core.KakaraCore;
+import org.slf4j.Logger;
 
 public interface Mod {
 
@@ -17,6 +18,7 @@ public interface Mod {
 
     ModRules getModRules();
 
+    Logger getLogger();
 
     KakaraCore getKakaraCore();
 }

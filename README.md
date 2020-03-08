@@ -5,7 +5,7 @@ The API/Mod API core for Kakara.
 
 ```xml
         <repository>
-            <id>kingtux-repo</id>
+            <id>kakara-repo</id>
             <url>https://repo.kingtux.me/storages/maven/kakara</url>
         </repository>
 
