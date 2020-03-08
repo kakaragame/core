@@ -5,6 +5,7 @@ import org.kakara.core.mod.Mod;
 import org.kakara.core.resources.Resource;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.resources.ResourceType;
+import org.kakara.core.resources.TextureResolution;
 
 public class TestResourceManager implements ResourceManager {
     private KakaraCore kakaraCore;
@@ -15,7 +16,7 @@ public class TestResourceManager implements ResourceManager {
     }
 
     @Override
-    public void registerTexture(String path, int textureResolution, Mod mod) {
+    public void registerTexture(String path, TextureResolution textureResolution, Mod mod) {
 
     }
 
@@ -25,7 +26,7 @@ public class TestResourceManager implements ResourceManager {
     }
 
     @Override
-    public Resource getTexture(String path, ResourceType resourceType, Mod mod) {
+    public Resource getTexture(String path, TextureResolution resourceType, Mod mod) {
         return null;
     }
 

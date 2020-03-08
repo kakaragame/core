@@ -1,6 +1,7 @@
 package org.kakara.core.resources;
 
 import org.kakara.core.KakaraCore;
+import org.kakara.core.annotations.Texture;
 import org.kakara.core.mod.Mod;
 
 //~/.kakara/resources/mods/{mod_name}/{resource_type}/path
@@ -12,11 +13,11 @@ public interface ResourceManager {
 
     void registerResource(String path, ResourceType resourceType, Mod mod);
 
-    void registerTexture(String path, int textureResolution, Mod mod);
+    void registerTexture(String path, TextureResolution resolution, Mod mod);
 
     Resource getResource(String path, ResourceType resourceType, Mod mod);
 
-    Resource getTexture(String path, ResourceType resourceType, Mod mod);
+    Resource getTexture(String path, TextureResolution resolution, Mod mod);
 
     void load(KakaraCore kakaraCore);
 
