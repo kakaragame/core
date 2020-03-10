@@ -2,9 +2,28 @@ package org.kakara.core.world;
 
 import org.kakara.core.game.ItemStack;
 
-public interface GameBlock {
+public class GameBlock {
+    private Location location;
+    private ItemStack itemStack;
 
-    Location getLocation();
+    public GameBlock(Location location, ItemStack itemStack) {
+        this.location = location;
+        this.itemStack = itemStack;
+    }
 
-    ItemStack getItemStack();
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public ItemStack getItemStack() {
+        return itemStack;
+    }
+
+    public void setItemStack(ItemStack itemStack) {
+        this.itemStack = itemStack;
+    }
 }

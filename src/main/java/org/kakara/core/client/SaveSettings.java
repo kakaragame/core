@@ -2,8 +2,10 @@ package org.kakara.core.client;
 
 import org.kakara.core.modinstance.ModInstance;
 
+import java.util.List;
+
 public class SaveSettings {
     private String name;
-    private ModInstance[] modInstance;
+    private List<ModInstance> modInstance;
 
 }

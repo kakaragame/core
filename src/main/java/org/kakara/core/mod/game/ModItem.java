@@ -4,6 +4,8 @@ import org.kakara.core.annotations.*;
 import org.kakara.core.game.Item;
 import org.kakara.core.mod.Mod;
 
+import java.util.Objects;
+
 public abstract class ModItem implements Item {
     private Mod mod;
 
@@ -43,5 +45,16 @@ public abstract class ModItem implements Item {
         return mod;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ModItem modItem = (ModItem) o;
+        return Objects.equals(mod.getName(), modItem.mod.getName()) && Objects.equals(getId(), modItem.getId());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getMod().getName());
+    }
 }

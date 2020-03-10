@@ -1,5 +1,7 @@
 package org.kakara.core.world;
 
+import java.util.Objects;
+
 public class Location {
 
     private World world;
@@ -85,5 +87,23 @@ public class Location {
 
     public void setYaw(float yaw) {
         this.yaw = yaw;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Double.compare(location.x, x) == 0 &&
+                Double.compare(location.y, y) == 0 &&
+                Double.compare(location.z, z) == 0 &&
+                Float.compare(location.pitch, pitch) == 0 &&
+                Float.compare(location.yaw, yaw) == 0 &&
+                Objects.equals(world, location.world);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(world, x, y, z, pitch, yaw);
     }
 }

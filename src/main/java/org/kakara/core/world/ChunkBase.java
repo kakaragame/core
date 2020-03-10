@@ -52,17 +52,7 @@ public class ChunkBase {
     }
 
     public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
-        gameBlocks.add(new GameBlock() {
-            @Override
-            public Location getLocation() {
-                return new Location(world, x, y, z);
-            }
-
-            @Override
-            public ItemStack getItemStack() {
-                return itemStack;
-            }
-        });
+        gameBlocks.add(new GameBlock(new Location(world, x, y, z), itemStack));
     }
 
     public Chunk toChunk() {
