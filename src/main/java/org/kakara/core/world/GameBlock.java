@@ -2,6 +2,8 @@ package org.kakara.core.world;
 
 import org.kakara.core.game.ItemStack;
 
+import java.util.Objects;
+
 public class GameBlock {
     private Location location;
     private ItemStack itemStack;
@@ -25,5 +27,18 @@ public class GameBlock {
 
     public void setItemStack(ItemStack itemStack) {
         this.itemStack = itemStack;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameBlock gameBlock = (GameBlock) o;
+        return Objects.equals(itemStack, gameBlock.itemStack);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(itemStack);
     }
 }
