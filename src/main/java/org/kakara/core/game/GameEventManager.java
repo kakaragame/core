@@ -1,7 +1,8 @@
 package org.kakara.core.game;
 
 import me.kingtux.simpleannotation.MethodFinder;
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
+import org.kakara.core.Kakara;
 import org.kakara.core.events.Cancallable;
 import org.kakara.core.events.Event;
 import org.kakara.core.events.EventHandlerObject;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class GameEventManager implements EventManager {
     private List<EventHandlerObject> registeredEventHandler = new ArrayList<>();
-    private KakaraCore kakaraCore;
+    private GameInstance GameInstance;
 
     @Override
     public void registerEventHandler(Object handler, Mod mod) {
@@ -25,7 +26,7 @@ public class GameEventManager implements EventManager {
 
             Class<?> param = method.getParameters()[0].getType();
             if (!param.isAssignableFrom(Event.class) || method.getParameters().length != 1) {
-                KakaraCore.LOGGER.warn(String.format("Unable to register %s dulse to not taking an event.", method.getName()));
+                Kakara.LOGGER.warn(String.format("Unable to register %s dulse to not taking an event.", method.getName()));
                 continue;
             }
             registeredEventHandler.add(new EventHandlerObject(method, (Class<? extends Event>) param, mod, handler));
@@ -48,7 +49,7 @@ public class GameEventManager implements EventManager {
     }
 
     @Override
-    public void load(KakaraCore kakaraCore) {
-        this.kakaraCore = kakaraCore;
+    public void load(GameInstance GameInstance) {
+        this.GameInstance = GameInstance;
     }
 }

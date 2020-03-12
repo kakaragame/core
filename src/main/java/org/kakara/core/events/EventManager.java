@@ -1,6 +1,6 @@
 package org.kakara.core.events;
 
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
 
 public interface EventManager {
@@ -9,6 +9,6 @@ public interface EventManager {
 
     void callEvent(Event event);
 
-    void load(KakaraCore kakaraCore);
+    void load(GameInstance GameInstance);
 
 }

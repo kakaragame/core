@@ -1,6 +1,7 @@
 package org.kakara.core.mod;
 
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
+import org.kakara.core.GameInstance;
 import org.slf4j.Logger;
 
 public interface Mod {
@@ -20,5 +21,5 @@ public interface Mod {
 
     Logger getLogger();
 
-    KakaraCore getKakaraCore();
+    GameInstance getGameInstance();
 }

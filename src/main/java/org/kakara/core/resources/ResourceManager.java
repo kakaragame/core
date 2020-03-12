@@ -1,6 +1,6 @@
 package org.kakara.core.resources;
 
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
 
 //~/.kakara/resources/mods/{mod_name}/{resource_type}/path
@@ -18,6 +18,6 @@ public interface ResourceManager {
 
     Resource getTexture(String path, TextureResolution resolution, Mod mod);
 
-    void load(KakaraCore kakaraCore);
+    void load(GameInstance kakaraCore);
 
 }

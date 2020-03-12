@@ -2,86 +2,72 @@ package org.kakara.core;
 
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
-import org.kakara.core.game.Block;
-import org.kakara.core.game.Item;
-import org.kakara.core.game.ItemManager;
-import org.kakara.core.game.ItemStack;
+import org.kakara.core.game.*;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 
 public class Kakara {
-    private static KakaraCore kakaraCore;
-
-    public static KakaraCore getKakaraCore() {
-        return kakaraCore;
+    private static GameInstance gameInstance;
+public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
+    public static GameInstance getGameInstance() {
+        return gameInstance;
     }
 
-    public static void setKakaraCore(KakaraCore kakaraCore) {
-        if (Kakara.kakaraCore != null) {
+    public static void setGameInstance(GameInstance gameInstance) {
+        if (Kakara.gameInstance != null) {
             throw new IllegalArgumentException("Cant do that sonny");
         }
-        Kakara.kakaraCore = kakaraCore;
+        Kakara.gameInstance = gameInstance;
     }
 
+    public static GameSettings getGameSettings() {
+        return gameInstance.getGameSettings();
+    }
 
     public static ItemStack createItemStack(Item item) {
-        return kakaraCore.createItemStack(item);
+        return gameInstance.createItemStack(item);
     }
 
     public static ResourceManager getResourceManager() {
-        return kakaraCore.getResourceManager();
+        return gameInstance.getResourceManager();
     }
 
     public static SoundManager getSoundManager() {
-        return kakaraCore.getSoundManager();
+        return gameInstance.getSoundManager();
     }
 
     public static ItemManager getItemManager() {
-        return kakaraCore.getItemManager();
+        return gameInstance.getItemManager();
     }
 
     public static CraftingManager getCraftingManager() {
-        return kakaraCore.getCraftingManager();
+        return gameInstance.getCraftingManager();
     }
 
     public static ModManager getModManager() {
-        return kakaraCore.getModManager();
-    }
-
-    public static GameType getGameType() {
-        return kakaraCore.getGameType();
-    }
-
-    public static GameInstance getGameInstance() {
-        return kakaraCore.getGameInstance();
+        return gameInstance.getModManager();
     }
 
     public static File getWorkingDirectory() {
-        return kakaraCore.getWorkingDirectory();
+        return gameInstance.getWorkingDirectory();
     }
 
     public static EventManager getEventManager() {
-        return kakaraCore.getEventManager();
-    }
-
-    public static void load() throws IOException {
-        kakaraCore.load();
+        return gameInstance.getEventManager();
     }
 
     public static WorldGenerationManager getWorldGenerationManager() {
-        return kakaraCore.getWorldGenerationManager();
+        return gameInstance.getWorldGenerationManager();
     }
 
-    public static Item getItem(String item) {
-        return kakaraCore.getItem(item);
-    }
-
-    public static Block getBlock(String block) {
-        return kakaraCore.getBlock(block);
+    public static GameType getType() {
+        return gameInstance.getType();
     }
 }

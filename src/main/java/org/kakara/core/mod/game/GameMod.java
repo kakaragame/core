@@ -1,7 +1,8 @@
 package org.kakara.core.mod.game;
 
 import me.kingtux.simpleannotation.MethodFinder;
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
+import org.kakara.core.Kakara;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.mod.ModRules;
 import org.kakara.core.mod.ModType;
@@ -16,7 +17,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public abstract class GameMod implements Mod {
-    private KakaraCore kakaraCore;
+    private GameInstance gameInstance;
     private ModRules modRules;
     private ModClassLoader modClassLoader;
     private Logger logger;
@@ -26,8 +27,8 @@ public abstract class GameMod implements Mod {
         modRules = new GameModRules(modInfo);
     }
 
-    public void setKakaraCore(KakaraCore kakaraCore) {
-        this.kakaraCore = kakaraCore;
+    public void setGameInstance(GameInstance Kakara) {
+        this.gameInstance = Kakara;
     }
 
     public String getName() {
@@ -61,7 +62,7 @@ public abstract class GameMod implements Mod {
         try {
             method.invoke(this);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            KakaraCore.LOGGER.error("Unable to invoke enableMethod", e);
+            Kakara.LOGGER.error("Unable to invoke enableMethod", e);
         }
     }
 
@@ -72,7 +73,7 @@ public abstract class GameMod implements Mod {
         try {
             method.invoke(this);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            KakaraCore.LOGGER.error("Unable to invoke onDisable", e);
+            Kakara.LOGGER.error("Unable to invoke onDisable", e);
         }
     }
 
@@ -82,17 +83,17 @@ public abstract class GameMod implements Mod {
         try {
             method.invoke(this);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            KakaraCore.LOGGER.error("Unable to invoke reloadMethod", e);
+            Kakara.LOGGER.error("Unable to invoke reloadMethod", e);
         }
     }
 
     @Override
-    public KakaraCore getKakaraCore() {
-        return kakaraCore;
+    public GameInstance getGameInstance() {
+        return gameInstance;
     }
 
     protected void registerResource(String path, ResourceType type) {
-        kakaraCore.getResourceManager().registerResource(path, type, this);
+        gameInstance.getResourceManager().registerResource(path, type, this);
     }
 
     @Override

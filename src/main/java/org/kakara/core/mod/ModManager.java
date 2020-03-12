@@ -1,6 +1,6 @@
 package org.kakara.core.mod;
 
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
 
 import java.io.File;
 import java.util.List;
@@ -19,5 +19,5 @@ public interface ModManager {
 
     ModLoader getModLoader();
 
-    void load(KakaraCore kakaraCore);
+    void load(GameInstance kakaraCore);
 }

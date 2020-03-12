@@ -1,6 +1,7 @@
 package org.kakara.core.mod.game;
 
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
+import org.kakara.core.Kakara;
 import org.kakara.core.exceptions.IllegalModException;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.mod.ModLoader;
@@ -16,15 +17,15 @@ import java.util.jar.JarFile;
 public class GameModLoader implements ModLoader {
     public static final String MOD_PROPERTIES = "mod.properties";
     public static final String MAIN_CLASS = "main.class";
-    private KakaraCore kakaraCore;
+    private GameInstance gameInstance;
 
-    public GameModLoader(KakaraCore kakaraCore) {
-        this.kakaraCore = kakaraCore;
+    public GameModLoader(GameInstance Kakara) {
+        this.gameInstance = Kakara;
     }
 
     @Override
     public Mod load(File file) throws IOException, IllegalModException {
-        KakaraCore.LOGGER.debug(String.format("Loading Mod File %s", file.getName()));
+        Kakara.LOGGER.debug(String.format("Loading Mod File %s", file.getName()));
         //You screwed up somewhere?
         if (!file.exists()) return null;
 
@@ -54,7 +55,7 @@ public class GameModLoader implements ModLoader {
 
             return mod;
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            KakaraCore.LOGGER.error("Unable to create mod object", e);
+            Kakara.LOGGER.error("Unable to create mod object", e);
         }
 
         return null;
@@ -62,7 +63,7 @@ public class GameModLoader implements ModLoader {
 
     private Mod buildModObject(Class<?> modClass, ModClassLoader classLoader) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         GameMod mod = (GameMod) modClass.getConstructor().newInstance();
-        mod.setKakaraCore(kakaraCore);
+        mod.setGameInstance(gameInstance);
         mod.setLogger(new ModLogger(mod.getName()));
         mod.setModClassLoader(classLoader);
         //TODO build mod object

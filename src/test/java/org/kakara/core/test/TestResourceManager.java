@@ -1,6 +1,6 @@
 package org.kakara.core.test;
 
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.resources.Resource;
 import org.kakara.core.resources.ResourceManager;
@@ -8,7 +8,7 @@ import org.kakara.core.resources.ResourceType;
 import org.kakara.core.resources.TextureResolution;
 
 public class TestResourceManager implements ResourceManager {
-    private KakaraCore kakaraCore;
+    private GameInstance GameInstance;
 
     @Override
     public void registerResource(String path, ResourceType resourceType, Mod mod) {
@@ -31,7 +31,7 @@ public class TestResourceManager implements ResourceManager {
     }
 
     @Override
-    public void load(KakaraCore kakaraCore) {
-        this.kakaraCore = kakaraCore;
+    public void load(GameInstance GameInstance) {
+        this.GameInstance = GameInstance;
     }
 }
