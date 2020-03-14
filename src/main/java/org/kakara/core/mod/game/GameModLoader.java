@@ -10,7 +10,9 @@ import org.kakara.core.mod.logger.ModLogger;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -18,6 +20,7 @@ public class GameModLoader implements ModLoader {
     public static final String MOD_PROPERTIES = "mod.properties";
     public static final String MAIN_CLASS = "main.class";
     private GameInstance gameInstance;
+    private List<ModClassLoader> modClassLoaders = new CopyOnWriteArrayList<>();
 
     public GameModLoader(GameInstance Kakara) {
         this.gameInstance = Kakara;
@@ -31,8 +34,8 @@ public class GameModLoader implements ModLoader {
 
         JarFile jarFile = new JarFile(file);
 
-        ModClassLoader classLoader = new ModClassLoader(file.toURI().toURL(), ClassLoader.getSystemClassLoader());
-
+        ModClassLoader classLoader = new ModClassLoader(file.toURI().toURL(), ClassLoader.getSystemClassLoader(), this);
+        modClassLoaders.add(classLoader);
         Properties properties = getModProperties(jarFile);
         if (properties.getProperty(MAIN_CLASS) == null) {
             throw new IllegalModException("Missing main.class property " + file.getName());
@@ -86,5 +89,18 @@ public class GameModLoader implements ModLoader {
             return;
         }
         ((GameMod) mod).getClassLoader().close();
+    }
+
+    public Class<?> getClassByName(String name) {
+        for (ModClassLoader loader : modClassLoaders) {
+            Class<?> result = null;
+
+            try {
+                result = loader.findClass(name, false);
+            } catch (ClassNotFoundException ignored) {
+            }
+            if (result != null) return result;
+        }
+        return null;
     }
 }

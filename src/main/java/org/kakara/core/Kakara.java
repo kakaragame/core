@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Kakara {
     private static GameInstance gameInstance;
@@ -67,7 +66,7 @@ public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
         return gameInstance.getWorldGenerationManager();
     }
 
-    public static GameType getType() {
+    public static GameTypes getType() {
         return gameInstance.getType();
     }
 }

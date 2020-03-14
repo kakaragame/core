@@ -1,7 +1,7 @@
 package org.kakara.core.test;
 
 import org.kakara.core.GameInstance;
-import org.kakara.core.GameType;
+import org.kakara.core.GameTypes;
 import org.kakara.core.client.ClientSettingsBuilder;
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
@@ -68,7 +68,7 @@ public class TestGameInstance implements GameInstance {
     }
 
     @Override
-    public GameType getType() {
-        return GameType.SERVER;
+    public GameTypes getType() {
+        return GameTypes.SERVER;
     }
 }

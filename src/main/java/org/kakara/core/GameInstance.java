@@ -18,23 +18,23 @@ public interface GameInstance {
 
     ItemStack createItemStack(Item item);
 
-    public ResourceManager getResourceManager();
+    ResourceManager getResourceManager();
 
-    public SoundManager getSoundManager();
+    SoundManager getSoundManager();
 
-    public ItemManager getItemManager();
+    ItemManager getItemManager();
 
-    public CraftingManager getCraftingManager();
+    CraftingManager getCraftingManager();
 
-    public ModManager getModManager();
+    ModManager getModManager();
 
 
-    public File getWorkingDirectory();
+    File getWorkingDirectory();
 
-    public EventManager getEventManager();
+    EventManager getEventManager();
 
-    public WorldGenerationManager getWorldGenerationManager();
+    WorldGenerationManager getWorldGenerationManager();
 
-    GameType getType();
+    GameTypes getType();
 }
 

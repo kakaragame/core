@@ -11,4 +11,10 @@ public interface ModRules {
     String getDescription();
 
     ModType getModType();
+
+    String getMainClass();
+
+    String[] getSoftDepends();
+
+    String[] getDepends();
 }

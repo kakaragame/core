@@ -55,37 +55,6 @@ public abstract class GameMod implements Mod {
         return modRules.getModType();
     }
 
-    void enable() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnEnable.class, true).get();
-
-        method.setAccessible(true);
-        try {
-            method.invoke(this);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            Kakara.LOGGER.error("Unable to invoke enableMethod", e);
-        }
-    }
-
-    void disable() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnDisable.class, true).get();
-        if (method == null) return;
-        method.setAccessible(true);
-        try {
-            method.invoke(this);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            Kakara.LOGGER.error("Unable to invoke onDisable", e);
-        }
-    }
-
-    void reload() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), Reload.class, true).get();
-        method.setAccessible(true);
-        try {
-            method.invoke(this);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            Kakara.LOGGER.error("Unable to invoke reloadMethod", e);
-        }
-    }
 
     @Override
     public GameInstance getGameInstance() {
