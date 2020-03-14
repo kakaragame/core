@@ -5,10 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.kakara.core.GameInstance;
 import org.kakara.core.Kakara;
 import org.kakara.core.exceptions.IllegalModException;
-import org.kakara.core.mod.Mod;
-import org.kakara.core.mod.ModLoader;
-import org.kakara.core.mod.ModManager;
-import org.kakara.core.mod.ModType;
+import org.kakara.core.mod.*;
 import org.kakara.core.resources.ResourceType;
 import org.kakara.core.resources.TextureResolution;
 
@@ -43,23 +40,20 @@ public class GameModManager implements ModManager {
     }
 
     @Override
-    public void loadMods(List<File> modsToLoad) {
-        for (File file : modsToLoad) {
-            try {
-                GameMod mod = (GameMod) modLoader.load(file);
-                if (mod == null) {
-                    Kakara.LOGGER.error("Unable to load(No Error): " + file.getName());
-                    continue;
-                }
-                loadedMods.add(mod);
-                Kakara.LOGGER.info(String.format("Enabling %s %s by %s", mod.getName(), mod.getVersion(), StringUtils.join(mod.getAuthors(), ",")));
-                loadResources(mod, file);
-                mod.enable();
-            } catch (IOException | IllegalModException e) {
-                Kakara.LOGGER.error("Unable to load mod:  " + file.getName(), e);
-            }
-        }
+    public List<UnModObjects> loadModsFile(List<File> modsToLoad) {
+        return null;
     }
+
+    @Override
+    public void loadMods(List<Mod> mods) {
+
+    }
+
+    @Override
+    public void unloadMods(List<Mod> modsToUnload) {
+
+    }
+
 
     private void loadResources(Mod mod, File file) throws IOException {
         List<String> paths = TheCodeOfAMadMan.getResourcesInJar(file, "resources", true);
@@ -76,21 +70,7 @@ public class GameModManager implements ModManager {
         }
     }
 
-    @Override
-    public void unloadMods(List<Mod> modsToUnload) {
-        for (Mod mod : modsToUnload) {
-            if (mod == coreMod) continue;
-            Kakara.LOGGER.info(String.format("Disabling %s %s", mod.getName(), mod.getVersion()));
-            if (!(mod instanceof GameMod)) continue;
-            ((GameMod) mod).disable();
-            loadedMods.remove(mod);
-            try {
-                modLoader.unload(mod);
-            } catch (IOException e) {
-                Kakara.LOGGER.error("Unable to unload mod:  " + mod.getName(), e);
-            }
-        }
-    }
+
 
     @Override
     public List<Mod> getModsByType(ModType modType) {

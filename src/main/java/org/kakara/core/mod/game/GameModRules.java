@@ -43,4 +43,19 @@ public class GameModRules implements ModRules {
     public ModType getModType() {
         return type;
     }
+
+    @Override
+    public String getMainClass() {
+        return null;
+    }
+
+    @Override
+    public String[] getSoftDepends() {
+        return new String[0];
+    }
+
+    @Override
+    public String[] getDepends() {
+        return new String[0];
+    }
 }
