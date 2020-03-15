@@ -1,14 +1,15 @@
 package org.kakara.core.game;
 
 import org.apache.commons.lang3.Validate;
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
 import org.kakara.core.Utils;
+import org.kakara.core.mod.LoadStage;
 import org.kakara.core.mod.Mod;
 
 import java.util.List;
 import java.util.Map;
 
-public interface ItemManager {
+public interface ItemManager extends LoadStage {
     /**
      * Call this method if you want to register a Item, Block, Tool, or Weapon.
      * The Item does not be to be a sub type of ModBlock, ModItem, ModTool, or ModWeapon. Those classes just make things simple.
@@ -39,5 +40,5 @@ public interface ItemManager {
         return ((Block) item);
     }
 
-    void load(KakaraCore kakaraCore);
+    void load(GameInstance GameInstance);
 }

@@ -7,7 +7,9 @@ import java.io.IOException;
 
 public interface ModLoader {
 
-    Mod load(File file) throws IOException, IllegalModException;
+    UnModObject load(File file) throws IOException, IllegalModException;
+
+    Mod createMod(UnModObject unModObject) throws ClassNotFoundException, IllegalModException;
 
     void unload(Mod mod) throws IOException;
 }

@@ -1,6 +1,6 @@
 package org.kakara.core;
 
-public enum GameType {
+public enum GameTypes {
     SERVER,
     CLIENT
 }

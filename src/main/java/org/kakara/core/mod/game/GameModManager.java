@@ -2,12 +2,11 @@ package org.kakara.core.mod.game;
 
 import me.kingtux.other.TheCodeOfAMadMan;
 import org.apache.commons.lang3.StringUtils;
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
+import org.kakara.core.Kakara;
 import org.kakara.core.exceptions.IllegalModException;
-import org.kakara.core.mod.Mod;
-import org.kakara.core.mod.ModLoader;
-import org.kakara.core.mod.ModManager;
-import org.kakara.core.mod.ModType;
+import org.kakara.core.mod.*;
+import org.kakara.core.mod.annotations.LoadingStage;
 import org.kakara.core.resources.ResourceType;
 import org.kakara.core.resources.TextureResolution;
 
@@ -16,22 +15,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
 public class GameModManager implements ModManager {
     private List<Mod> loadedMods = new ArrayList<>();
     private ModLoader modLoader;
     private Mod coreMod;
-    private KakaraCore kakaraCore;
+    private GameInstance gameInstance;
+    private ModLoadingManager loadingManager;
 
     public GameModManager(Mod coreMod) {
         this.coreMod = coreMod;
     }
 
-    public void load(KakaraCore kakaraCore) {
-        this.kakaraCore = kakaraCore;
-        this.modLoader = new GameModLoader(kakaraCore);
-
+    public void load(GameInstance gameInstance, ModLoadingManager loadingManager) {
+        this.gameInstance = gameInstance;
+        this.modLoader = new GameModLoader(gameInstance);
+        this.loadingManager = loadingManager;
     }
 
     @Override
@@ -41,68 +42,56 @@ public class GameModManager implements ModManager {
         return list;
     }
 
+
     @Override
-    public void loadMods(List<File> modsToLoad) {
-        for (File file : modsToLoad) {
+    public ModLoader getModLoader() {
+        return modLoader;
+    }
+
+    @Override
+    public List<UnModObject> loadModsFile(List<File> modsToLoad) {
+        return null;
+    }
+
+    @Override
+    public void loadMods(List<UnModObject> modsToLoad) {
+        for (UnModObject modObject : modsToLoad) {
+            GameMod gameMod = null;
             try {
-                GameMod mod = (GameMod) modLoader.load(file);
-                if (mod == null) {
-                    KakaraCore.LOGGER.error("Unable to load(No Error): " + file.getName());
-                    continue;
-                }
-                loadedMods.add(mod);
-                KakaraCore.LOGGER.info(String.format("Enabling %s %s by %s", mod.getName(), mod.getVersion(), StringUtils.join(mod.getAuthors(), ",")));
-                loadResources(mod, file);
-                mod.enable();
-            } catch (IOException | IllegalModException e) {
-                KakaraCore.LOGGER.error("Unable to load mod:  " + file.getName(), e);
+                gameMod = (GameMod) modLoader.createMod(modObject);
+            } catch (ClassNotFoundException e) {
+                Kakara.LOGGER.error("unable to locate class", e);
+            } catch (IllegalModException e) {
+                Kakara.LOGGER.error("unable to load mod", e);
+            }
+            if (gameMod == null) continue;
+            loadedMods.add(gameMod);
+            gameMod.preEnable();
+            try {
+                loadResources(gameMod, gameMod.getClassLoader().getFile());
+            } catch (IOException e) {
+                Kakara.LOGGER.error("Unable to poll resources", e);
             }
         }
     }
 
-    private void loadResources(Mod mod, File file) throws IOException {
+    public void postEnable() {
+        loadedMods.forEach(Mod::postEnable);
+    }
+
+    private void loadResources(Mod mod, JarFile file) throws IOException {
         List<String> paths = TheCodeOfAMadMan.getResourcesInJar(file, "resources", true);
         for (String s : paths) {
             String path = s.replace("/resources/", "");
             String[] splitPath = path.split("/");
             if (splitPath[0].equalsIgnoreCase("texture")) {
                 String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
-                kakaraCore.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
+                gameInstance.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
             } else {
                 String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
-                kakaraCore.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
+                gameInstance.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
             }
         }
     }
 
-    @Override
-    public void unloadMods(List<Mod> modsToUnload) {
-        for (Mod mod : modsToUnload) {
-            if (mod == coreMod) continue;
-            KakaraCore.LOGGER.info(String.format("Disabling %s %s", mod.getName(), mod.getVersion()));
-            if (!(mod instanceof GameMod)) continue;
-            ((GameMod) mod).disable();
-            loadedMods.remove(mod);
-            try {
-                modLoader.unload(mod);
-            } catch (IOException e) {
-                KakaraCore.LOGGER.error("Unable to unload mod:  " + mod.getName(), e);
-            }
-        }
-    }
-
-    @Override
-    public List<Mod> getModsByType(ModType modType) {
-        return loadedMods.stream().filter(mod -> mod.getModType() == modType).collect(Collectors.toList());
-    }
-
-    @Override
-    public void unLoadMods(ModType type) {
-        unloadMods(getModsByType(type));
-    }
-
-    @Override
-    public ModLoader getModLoader() {
-        return modLoader;
-    }
 }

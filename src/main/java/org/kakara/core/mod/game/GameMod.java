@@ -1,7 +1,8 @@
 package org.kakara.core.mod.game;
 
 import me.kingtux.simpleannotation.MethodFinder;
-import org.kakara.core.KakaraCore;
+import org.kakara.core.GameInstance;
+import org.kakara.core.Kakara;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.mod.ModRules;
 import org.kakara.core.mod.ModType;
@@ -16,18 +17,26 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public abstract class GameMod implements Mod {
-    private KakaraCore kakaraCore;
+    private GameInstance gameInstance;
     private ModRules modRules;
     private ModClassLoader modClassLoader;
     private Logger logger;
 
     protected GameMod() {
-        ModInfo modInfo = getClass().getAnnotation(ModInfo.class);
-        modRules = new GameModRules(modInfo);
     }
 
-    public void setKakaraCore(KakaraCore kakaraCore) {
-        this.kakaraCore = kakaraCore;
+    @Override
+    public void preEnable() {
+
+    }
+
+    @Override
+    public void postEnable() {
+
+    }
+
+    public void setGameInstance(GameInstance Kakara) {
+        this.gameInstance = Kakara;
     }
 
     public String getName() {
@@ -54,45 +63,14 @@ public abstract class GameMod implements Mod {
         return modRules.getModType();
     }
 
-    void enable() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnEnable.class, true).get();
-
-        method.setAccessible(true);
-        try {
-            method.invoke(this);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            KakaraCore.LOGGER.error("Unable to invoke enableMethod", e);
-        }
-    }
-
-    void disable() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), OnDisable.class, true).get();
-        if (method == null) return;
-        method.setAccessible(true);
-        try {
-            method.invoke(this);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            KakaraCore.LOGGER.error("Unable to invoke onDisable", e);
-        }
-    }
-
-    void reload() {
-        Method method = MethodFinder.getFirstMethodWithAnnotation(getClass(), Reload.class, true).get();
-        method.setAccessible(true);
-        try {
-            method.invoke(this);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            KakaraCore.LOGGER.error("Unable to invoke reloadMethod", e);
-        }
-    }
 
     @Override
-    public KakaraCore getKakaraCore() {
-        return kakaraCore;
+    public GameInstance getGameInstance() {
+        return gameInstance;
     }
 
     protected void registerResource(String path, ResourceType type) {
-        kakaraCore.getResourceManager().registerResource(path, type, this);
+        gameInstance.getResourceManager().registerResource(path, type, this);
     }
 
     @Override
@@ -100,20 +78,24 @@ public abstract class GameMod implements Mod {
         return logger;
     }
 
-    protected void setLogger(Logger logger) {
+    void setLogger(Logger logger) {
         this.logger = logger;
     }
 
-    protected ModClassLoader getClassLoader() {
+    ModClassLoader getClassLoader() {
         return modClassLoader;
     }
 
-    protected void setModClassLoader(ModClassLoader modClassLoader) {
+    void setModClassLoader(ModClassLoader modClassLoader) {
         this.modClassLoader = modClassLoader;
     }
 
     @Override
     public ModRules getModRules() {
         return modRules;
+    }
+
+    void setModRules(ModRules modRules) {
+        this.modRules = modRules;
     }
 }
