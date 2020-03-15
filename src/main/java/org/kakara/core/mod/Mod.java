@@ -22,4 +22,7 @@ public interface Mod {
     Logger getLogger();
 
     GameInstance getGameInstance();
+
+    void preEnable();
+    void postEnable();
 }

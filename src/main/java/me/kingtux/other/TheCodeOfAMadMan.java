@@ -55,7 +55,31 @@ public class TheCodeOfAMadMan {
      * @throws IOException if the jar file isnt correct.
      */
     public static List<String> getResourcesInJar(File file, String baseDir, boolean excludeClass) throws IOException {
-        JarFile jarFile = new JarFile(file);
+        return getResourcesInJar(new JarFile(file), baseDir, excludeClass);
+    }
+
+    /**
+     * Get the Resource Files inside the Jar File
+     *
+     * @param file    the file
+     * @param baseDir What should the files path begin with
+     * @return a list of path to use in Class.getResource
+     * @throws IOException if the jar file isnt correct.
+     */
+    public static List<String> getResourcesInJar(JarFile file, String baseDir) throws IOException {
+        return getResourcesInJar(file, baseDir, true);
+    }
+
+    /**
+     * Get the Resource Files inside the Jar File
+     *
+     * @param jarFile         the file
+     * @param baseDir      What should the files path begin with
+     * @param excludeClass Do you want to exclude Class Files.
+     * @return a list of path to use in Class.getResource
+     * @throws IOException if the jar file isnt correct.
+     */
+    public static List<String> getResourcesInJar(JarFile jarFile, String baseDir, boolean excludeClass) throws IOException {
         List<String> contents = new ArrayList<>();
         for (JarEntry jarEntry : Collections.list(jarFile.entries())) {
             if (jarEntry.isDirectory()) continue;

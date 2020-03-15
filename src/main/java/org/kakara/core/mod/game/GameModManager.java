@@ -3,6 +3,8 @@ package org.kakara.core.mod.game;
 import me.kingtux.other.TheCodeOfAMadMan;
 import org.apache.commons.lang3.StringUtils;
 import org.kakara.core.GameInstance;
+import org.kakara.core.Kakara;
+import org.kakara.core.exceptions.IllegalModException;
 import org.kakara.core.mod.*;
 import org.kakara.core.resources.ResourceType;
 import org.kakara.core.resources.TextureResolution;
@@ -12,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
 public class GameModManager implements ModManager {
@@ -37,23 +40,44 @@ public class GameModManager implements ModManager {
         return list;
     }
 
+
+    @Override
+    public ModLoader getModLoader() {
+        return modLoader;
+    }
+
     @Override
     public List<UnModObject> loadModsFile(List<File> modsToLoad) {
         return null;
     }
 
     @Override
-    public void loadMods(List<Mod> mods) {
-
+    public void loadMods(List<UnModObject> modsToLoad) {
+        for (UnModObject modObject : modsToLoad) {
+            GameMod gameMod = null;
+            try {
+                gameMod = (GameMod) modLoader.createMod(modObject);
+            } catch (ClassNotFoundException e) {
+                Kakara.LOGGER.error("unable to locate class", e);
+            } catch (IllegalModException e) {
+                Kakara.LOGGER.error("unable to load mod", e);
+            }
+            if (gameMod == null) continue;
+            loadedMods.add(gameMod);
+            gameMod.preEnable();
+            try {
+                loadResources(gameMod, gameMod.getClassLoader().getFile());
+            } catch (IOException e) {
+                Kakara.LOGGER.error("Unable to poll resources", e);
+            }
+        }
     }
 
-    @Override
-    public void unloadMods(List<Mod> modsToUnload) {
-
+    public void postEnable() {
+        loadedMods.forEach(Mod::postEnable);
     }
 
-
-    private void loadResources(Mod mod, File file) throws IOException {
+    private void loadResources(Mod mod, JarFile file) throws IOException {
         List<String> paths = TheCodeOfAMadMan.getResourcesInJar(file, "resources", true);
         for (String s : paths) {
             String path = s.replace("/resources/", "");
@@ -68,20 +92,4 @@ public class GameModManager implements ModManager {
         }
     }
 
-
-
-    @Override
-    public List<Mod> getModsByType(ModType modType) {
-        return loadedMods.stream().filter(mod -> mod.getModType() == modType).collect(Collectors.toList());
-    }
-
-    @Override
-    public void unLoadMods(ModType type) {
-        unloadMods(getModsByType(type));
-    }
-
-    @Override
-    public ModLoader getModLoader() {
-        return modLoader;
-    }
 }

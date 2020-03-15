@@ -1,5 +1,6 @@
 package org.kakara.core.mod.game;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -41,5 +42,9 @@ public class ModClassLoader extends URLClassLoader {
     public void close() throws IOException {
         file.close();
         super.close();
+    }
+
+    public JarFile getFile() {
+        return file;
     }
 }

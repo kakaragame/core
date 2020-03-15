@@ -9,17 +9,12 @@ public interface ModManager {
 
     List<Mod> getLoadedMods();
 
-    List<UnModObject> loadModsFile(List<File> modsToLoad);
-
-    void loadMods(List<Mod> mods);
-
-    void unloadMods(List<Mod> modsToUnload);
-
-    List<Mod> getModsByType(ModType modType);
-
-    void unLoadMods(ModType type);
-
     ModLoader getModLoader();
 
-    void load(GameInstance kakaraCore);
+
+    List<UnModObject> loadModsFile(List<File> modsToLoad);
+
+    void loadMods(List<UnModObject> modsToLoad);
+
+
 }

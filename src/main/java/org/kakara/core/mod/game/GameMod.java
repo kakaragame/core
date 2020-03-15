@@ -25,6 +25,16 @@ public abstract class GameMod implements Mod {
     protected GameMod() {
     }
 
+    @Override
+    public void preEnable() {
+
+    }
+
+    @Override
+    public void postEnable() {
+
+    }
+
     public void setGameInstance(GameInstance Kakara) {
         this.gameInstance = Kakara;
     }

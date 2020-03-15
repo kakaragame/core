@@ -92,6 +92,7 @@ public class GameModLoader implements ModLoader {
         if (!(mod instanceof GameMod)) {
             return;
         }
+        modClassLoaders.remove(((GameMod) mod).getClassLoader());
         ((GameMod) mod).getClassLoader().close();
     }
 
