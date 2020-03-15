@@ -3,6 +3,7 @@ package org.kakara.core.mod;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.kakara.core.exceptions.IllegalModException;
 
 public class JsonModRules implements ModRules {
     private String name;
@@ -23,6 +24,10 @@ public class JsonModRules implements ModRules {
         softDepends = getOrDefaultArray(jsonObject, "soft-depends", new String[0]);
         depends = getOrDefaultArray(jsonObject, "depends", new String[0]);
         depends = jsonArrayToStringArray(jsonObject.getAsJsonArray("authors"));
+    }
+
+    public static void validate(JsonObject jsonObject) throws IllegalModException {
+        //TODO validate the jsonObject
     }
 
     @Override

@@ -23,8 +23,6 @@ public abstract class GameMod implements Mod {
     private Logger logger;
 
     protected GameMod() {
-        ModInfo modInfo = getClass().getAnnotation(ModInfo.class);
-        modRules = new GameModRules(modInfo);
     }
 
     public void setGameInstance(GameInstance Kakara) {
@@ -70,20 +68,24 @@ public abstract class GameMod implements Mod {
         return logger;
     }
 
-    protected void setLogger(Logger logger) {
+    void setLogger(Logger logger) {
         this.logger = logger;
     }
 
-    protected ModClassLoader getClassLoader() {
+    ModClassLoader getClassLoader() {
         return modClassLoader;
     }
 
-    protected void setModClassLoader(ModClassLoader modClassLoader) {
+    void setModClassLoader(ModClassLoader modClassLoader) {
         this.modClassLoader = modClassLoader;
     }
 
     @Override
     public ModRules getModRules() {
         return modRules;
+    }
+
+    void setModRules(ModRules modRules) {
+        this.modRules = modRules;
     }
 }

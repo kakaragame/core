@@ -1,14 +1,16 @@
 package org.kakara.core.mod.game;
 
+import com.google.gson.JsonObject;
 import org.kakara.core.GameInstance;
 import org.kakara.core.Kakara;
+import org.kakara.core.Utils;
 import org.kakara.core.exceptions.IllegalModException;
-import org.kakara.core.mod.Mod;
-import org.kakara.core.mod.ModLoader;
+import org.kakara.core.mod.*;
 import org.kakara.core.mod.logger.ModLogger;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Properties;
@@ -27,61 +29,63 @@ public class GameModLoader implements ModLoader {
     }
 
     @Override
-    public Mod load(File file) throws IOException, IllegalModException {
+    public UnModObject load(File file) throws IOException, IllegalModException {
         Kakara.LOGGER.debug(String.format("Loading Mod File %s", file.getName()));
         //You screwed up somewhere?
         if (!file.exists()) return null;
 
         JarFile jarFile = new JarFile(file);
 
-        ModClassLoader classLoader = new ModClassLoader(file.toURI().toURL(), ClassLoader.getSystemClassLoader(), this);
+        ModClassLoader classLoader = new ModClassLoader(file.toURI().toURL(), ClassLoader.getSystemClassLoader(), this, jarFile);
         modClassLoaders.add(classLoader);
-        Properties properties = getModProperties(jarFile);
-        if (properties.getProperty(MAIN_CLASS) == null) {
-            throw new IllegalModException("Missing main.class property " + file.getName());
+
+        return new UnModObject(getModRules(jarFile), classLoader);
+    }
+
+    @Override
+    public Mod createMod(UnModObject unModObject) throws ClassNotFoundException, IllegalModException {
+        ModClassLoader classLoader = (ModClassLoader) unModObject.getModClassLoader();
+        Class<?> mod = classLoader.findClass(unModObject.getModRules().getMainClass(), false);
+
+        if (!GameMod.class.isAssignableFrom(mod)) {
+            throw new IllegalModException("sounds like a personal problem. Error 32");
         }
+        GameMod gameMod = easyCreate(mod);
+        if (gameMod == null) return null;
+        gameMod.setGameInstance(gameInstance);
+        gameMod.setLogger(new ModLogger(unModObject.getModRules().getName()));
+        gameMod.setModClassLoader(classLoader);
+        gameMod.setModRules(unModObject.getModRules());
 
-        Class<?> modClass;
 
+        return gameMod;
+    }
+
+    private GameMod easyCreate(Class<?> mod) {
         try {
-            modClass = classLoader.loadClass(properties.getProperty(MAIN_CLASS));
-        } catch (ClassNotFoundException e) {
-            throw new IllegalModException("Unable to locate main class for mod " + file.getName(), e);
+            return (GameMod) mod.getConstructor().newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
         }
-
-        if (!GameMod.class.isAssignableFrom(modClass)) {
-            return null;
-        }
-
-        try {
-            Mod mod = buildModObject(modClass, classLoader);
-
-            return mod;
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException | InstantiationException e) {
-            Kakara.LOGGER.error("Unable to create mod object", e);
-        }
-
         return null;
     }
 
-    private Mod buildModObject(Class<?> modClass, ModClassLoader classLoader) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        GameMod mod = (GameMod) modClass.getConstructor().newInstance();
-        mod.setGameInstance(gameInstance);
-        mod.setLogger(new ModLogger(mod.getName()));
-        mod.setModClassLoader(classLoader);
-        //TODO build mod object
-        return mod;
+    private ModRules getModRules(JarFile jarFile) throws IOException, IllegalModException {
+        JarEntry entry = jarFile.getJarEntry("mod.json");
+        if (entry == null) {
+            //TODO handle
+        }
+        JsonObject jsonObject = Utils.GSON.fromJson(new InputStreamReader(jarFile.getInputStream(entry)), JsonObject.class);
+        JsonModRules.validate(jsonObject);
+        return new JsonModRules(jsonObject);
     }
 
-    private Properties getModProperties(JarFile jarFile) throws IllegalModException, IOException {
-        Properties properties = new Properties();
-        JarEntry jarEntry = jarFile.getJarEntry(MOD_PROPERTIES);
-        if (jarEntry == null) {
-            throw new IllegalModException("Unable to find Mod Properties File");
-        }
-        properties.load(jarFile.getInputStream(jarEntry));
-        return properties;
-    }
 
     @Override
     public void unload(Mod mod) throws IOException {

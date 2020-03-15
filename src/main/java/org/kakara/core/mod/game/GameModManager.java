@@ -3,8 +3,6 @@ package org.kakara.core.mod.game;
 import me.kingtux.other.TheCodeOfAMadMan;
 import org.apache.commons.lang3.StringUtils;
 import org.kakara.core.GameInstance;
-import org.kakara.core.Kakara;
-import org.kakara.core.exceptions.IllegalModException;
 import org.kakara.core.mod.*;
 import org.kakara.core.resources.ResourceType;
 import org.kakara.core.resources.TextureResolution;
@@ -40,7 +38,7 @@ public class GameModManager implements ModManager {
     }
 
     @Override
-    public List<UnModObjects> loadModsFile(List<File> modsToLoad) {
+    public List<UnModObject> loadModsFile(List<File> modsToLoad) {
         return null;
     }
 

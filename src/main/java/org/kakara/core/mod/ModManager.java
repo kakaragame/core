@@ -9,7 +9,7 @@ public interface ModManager {
 
     List<Mod> getLoadedMods();
 
-    List<UnModObjects> loadModsFile(List<File> modsToLoad);
+    List<UnModObject> loadModsFile(List<File> modsToLoad);
 
     void loadMods(List<Mod> mods);
 
