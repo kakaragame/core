@@ -6,6 +6,7 @@ import org.kakara.core.GameInstance;
 import org.kakara.core.Kakara;
 import org.kakara.core.exceptions.IllegalModException;
 import org.kakara.core.mod.*;
+import org.kakara.core.mod.annotations.LoadingStage;
 import org.kakara.core.resources.ResourceType;
 import org.kakara.core.resources.TextureResolution;
 
@@ -22,15 +23,16 @@ public class GameModManager implements ModManager {
     private ModLoader modLoader;
     private Mod coreMod;
     private GameInstance gameInstance;
+    private ModLoadingManager loadingManager;
 
     public GameModManager(Mod coreMod) {
         this.coreMod = coreMod;
     }
 
-    public void load(GameInstance gameInstance) {
+    public void load(GameInstance gameInstance, ModLoadingManager loadingManager) {
         this.gameInstance = gameInstance;
         this.modLoader = new GameModLoader(gameInstance);
-
+        this.loadingManager = loadingManager;
     }
 
     @Override

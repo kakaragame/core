@@ -24,5 +24,6 @@ public interface Mod {
     GameInstance getGameInstance();
 
     void preEnable();
+
     void postEnable();
 }

@@ -3,6 +3,7 @@ package org.kakara.core;
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
+import org.kakara.core.game.entity.EntityManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
@@ -64,6 +65,10 @@ public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
 
     public static WorldGenerationManager getWorldGenerationManager() {
         return gameInstance.getWorldGenerationManager();
+    }
+
+    public static EntityManager getEntityManager() {
+        return gameInstance.getEntityManager();
     }
 
     public static GameTypes getType() {

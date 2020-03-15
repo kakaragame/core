@@ -25,8 +25,8 @@ public class GameEventManager implements EventManager {
         for (Method method : methods) {
 
             Class<?> param = method.getParameters()[0].getType();
-            if (!param.isAssignableFrom(Event.class) || method.getParameters().length != 1) {
-                Kakara.LOGGER.warn(String.format("Unable to register %s dulse to not taking an event.", method.getName()));
+            if (!Event.class.isAssignableFrom(param) || method.getParameters().length != 1) {
+                Kakara.LOGGER.warn("Unable to get EventType from " + method.getName());
                 continue;
             }
             registeredEventHandler.add(new EventHandlerObject(method, (Class<? extends Event>) param, mod, handler));
