@@ -6,6 +6,7 @@ import org.kakara.core.client.ClientSettingsBuilder;
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
+import org.kakara.core.game.entity.EntityManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
@@ -39,6 +40,11 @@ public class TestGameInstance implements GameInstance {
 
     @Override
     public ItemManager getItemManager() {
+        return null;
+    }
+
+    @Override
+    public EntityManager getEntityManager() {
         return null;
     }
 
