@@ -35,9 +35,7 @@ public class GameEventManager implements EventManager {
 
     @Override
     public void callEvent(Event event) {
-        List<EventHandlerObject> eventHandlers = registeredEventHandler.stream().filter(eventHandlerObject -> {
-            return event.getClass() == eventHandlerObject.getEventType();
-        }).collect(Collectors.toList());
+        List<EventHandlerObject> eventHandlers = registeredEventHandler.stream().filter(eventHandlerObject -> event.getClass() == eventHandlerObject.getEventType()).collect(Collectors.toList());
 
         for (EventHandlerObject e : eventHandlers) {
             if (event instanceof Cancallable) {
@@ -52,4 +50,6 @@ public class GameEventManager implements EventManager {
     public void load(GameInstance GameInstance) {
         this.GameInstance = GameInstance;
     }
+
+
 }

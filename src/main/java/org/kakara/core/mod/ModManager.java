@@ -19,5 +19,7 @@ public interface ModManager {
 
     void loadStage(LoadStage loadStage, Mod mod);
 
+    void loadStage(LoadStage loadStage);
+
     void load(GameInstance gameInstance);
 }

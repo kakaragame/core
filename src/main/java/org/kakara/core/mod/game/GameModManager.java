@@ -91,6 +91,14 @@ public class GameModManager implements ModManager {
     }
 
     @Override
+    public void loadStage(LoadStage loadStage) {
+        Kakara.LOGGER.info(String.format("Loading Stage: %s", loadStage.getName()));
+        for (Mod mod : loadedMods) {
+            loadStage(loadStage, mod);
+        }
+    }
+
+    @Override
     public void loadStage(LoadStage loadStage, Mod mod) {
         Method[] methods = MethodFinder.getAllMethodsWithAnnotation(mod.getClass(), LoadingStage.class);
         Method method = null;
