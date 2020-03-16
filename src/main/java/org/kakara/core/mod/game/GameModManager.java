@@ -1,9 +1,11 @@
 package org.kakara.core.mod.game;
 
 import me.kingtux.other.TheCodeOfAMadMan;
+import me.kingtux.simpleannotation.MethodFinder;
 import org.apache.commons.lang3.StringUtils;
 import org.kakara.core.GameInstance;
 import org.kakara.core.Kakara;
+import org.kakara.core.annotations.GameType;
 import org.kakara.core.exceptions.IllegalModException;
 import org.kakara.core.mod.*;
 import org.kakara.core.mod.annotations.LoadingStage;
@@ -12,28 +14,26 @@ import org.kakara.core.resources.TextureResolution;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
+import static me.kingtux.simpleannotation.MethodFinder.getAllMethodsWithAnnotation;
+
 public class GameModManager implements ModManager {
     private List<Mod> loadedMods = new ArrayList<>();
     private ModLoader modLoader;
     private Mod coreMod;
     private GameInstance gameInstance;
-    private ModLoadingManager loadingManager;
 
     public GameModManager(Mod coreMod) {
         this.coreMod = coreMod;
     }
 
-    public void load(GameInstance gameInstance, ModLoadingManager loadingManager) {
-        this.gameInstance = gameInstance;
-        this.modLoader = new GameModLoader(gameInstance);
-        this.loadingManager = loadingManager;
-    }
 
     @Override
     public List<Mod> getLoadedMods() {
@@ -50,7 +50,22 @@ public class GameModManager implements ModManager {
 
     @Override
     public List<UnModObject> loadModsFile(List<File> modsToLoad) {
-        return null;
+        List<UnModObject> objects = new ArrayList<>();
+        for (File file : modsToLoad) {
+            UnModObject unModObject = null;
+            try {
+                unModObject = modLoader.load(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (IllegalModException e) {
+                e.printStackTrace();
+            }
+            if (unModObject == null) {
+                continue;
+            }
+            objects.add(unModObject);
+        }
+        return objects;
     }
 
     @Override
@@ -74,6 +89,41 @@ public class GameModManager implements ModManager {
             }
         }
     }
+
+    @Override
+    public void loadStage(LoadStage loadStage, Mod mod) {
+        Method[] methods = MethodFinder.getAllMethodsWithAnnotation(mod.getClass(), LoadingStage.class);
+        Method method = null;
+        for (Method meth : methods) {
+            if (meth.getParameterTypes().length != 1) {
+                continue;
+            }
+            if (meth.getParameterTypes()[0] != loadStage.getClass()) {
+                continue;
+            }
+            if (meth.isAnnotationPresent(GameType.class)) {
+                GameType gameType = meth.getAnnotation(GameType.class);
+                if (gameType.value() != gameInstance.getType()) continue;
+            }
+            method = meth;
+        }
+        if (method == null) return;
+        try {
+            method.invoke(loadStage);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void load(GameInstance gameInstance) {
+        this.gameInstance = gameInstance;
+        this.modLoader = new GameModLoader(gameInstance);
+    }
+
 
     public void postEnable() {
         loadedMods.forEach(Mod::postEnable);
