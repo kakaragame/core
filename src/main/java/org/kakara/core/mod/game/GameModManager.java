@@ -106,7 +106,7 @@ public class GameModManager implements ModManager {
             if (meth.getParameterTypes().length != 1) {
                 continue;
             }
-            if (meth.getParameterTypes()[0] != loadStage.getClass()) {
+            if (loadStage.getStageClass() != meth.getParameterTypes()[0]) {
                 continue;
             }
             if (meth.isAnnotationPresent(GameType.class)) {
@@ -114,10 +114,16 @@ public class GameModManager implements ModManager {
                 if (gameType.value() != gameInstance.getType()) continue;
             }
             method = meth;
+            break;
         }
         if (method == null) return;
+        System.out.println(method.getName());
+        System.out.println(loadStage.getStageClass().getSimpleName());
+        System.out.println(method.getParameterTypes()[0]);
+
+
         try {
-            method.invoke(loadStage);
+            method.invoke(mod,loadStage);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

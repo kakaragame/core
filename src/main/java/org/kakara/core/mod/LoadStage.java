@@ -4,4 +4,6 @@ public interface LoadStage {
     default String getName() {
         return getClass().getSimpleName();
     }
+
+    Class<?> getStageClass();
 }

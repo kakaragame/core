@@ -52,4 +52,8 @@ public class GameEventManager implements EventManager {
     }
 
 
+    @Override
+    public Class<?> getStageClass() {
+        return EventManager.class;
+    }
 }
