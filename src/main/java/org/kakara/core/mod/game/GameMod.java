@@ -6,10 +6,6 @@ import org.kakara.core.Kakara;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.mod.ModRules;
 import org.kakara.core.mod.ModType;
-import org.kakara.core.mod.annotations.ModInfo;
-import org.kakara.core.mod.annotations.OnDisable;
-import org.kakara.core.mod.annotations.OnEnable;
-import org.kakara.core.mod.annotations.Reload;
 import org.kakara.core.resources.ResourceType;
 import org.slf4j.Logger;
 
