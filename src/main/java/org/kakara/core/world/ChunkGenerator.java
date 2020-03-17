@@ -25,9 +25,9 @@ public interface ChunkGenerator {
         }
     }
 
-    Mod getMod();
-
     String getName();
+
+    String getID();
 
     ChunkFormat getChunkFormat();
 

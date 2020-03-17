@@ -23,7 +23,6 @@ public class JsonModRules implements ModRules {
         modType = ModType.valueOf(tryToGet(jsonObject, "mod-type", "REGULAR"));
         softDepends = getOrDefaultArray(jsonObject, "soft-depends", new String[0]);
         depends = getOrDefaultArray(jsonObject, "depends", new String[0]);
-        depends = jsonArrayToStringArray(jsonObject.getAsJsonArray("authors"));
     }
 
     public static void validate(JsonObject jsonObject) throws IllegalModException {
@@ -83,6 +82,7 @@ public class JsonModRules implements ModRules {
     }
 
     private static String[] jsonArrayToStringArray(JsonArray asJsonArray) {
+        if (asJsonArray == null) return null;
         String[] strings = new String[asJsonArray.size()];
         for (int i = 0; i <= asJsonArray.size(); i++) {
             strings[i] = asJsonArray.get(i).getAsString();

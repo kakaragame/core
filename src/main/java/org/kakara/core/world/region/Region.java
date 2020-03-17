@@ -7,6 +7,8 @@ import org.kakara.core.world.Structure;
 public interface Region {
     String getName();
 
+    String getID();
+
     Structure[] getStructures();
 
     GenerationLayer[] getLayers();
