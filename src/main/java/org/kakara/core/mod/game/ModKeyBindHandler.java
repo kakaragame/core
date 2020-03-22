@@ -3,14 +3,14 @@ package org.kakara.core.mod.game;
 import org.kakara.core.NameKey;
 import org.kakara.core.annotations.Id;
 import org.kakara.core.annotations.Name;
-import org.kakara.core.key.KeyBoundHandler;
+import org.kakara.core.key.KeyBindHandler;
 import org.kakara.core.mod.Mod;
 
-public abstract class ModKeyBoundHandler implements KeyBoundHandler {
+public abstract class ModKeyBindHandler implements KeyBindHandler {
     private Mod mod;
     private NameKey nameKey;
 
-    public ModKeyBoundHandler(Mod mod) {
+    public ModKeyBindHandler(Mod mod) {
         this.mod = mod;
         this.nameKey = new NameKey(mod, getID());
     }

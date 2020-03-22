@@ -7,6 +7,8 @@ import org.kakara.core.game.Item;
 import org.kakara.core.game.ItemManager;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.game.entity.EntityManager;
+import org.kakara.core.key.KeyBind;
+import org.kakara.core.key.KeyBindManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
@@ -37,6 +39,8 @@ public interface GameInstance {
     EventManager getEventManager();
 
     WorldGenerationManager getWorldGenerationManager();
+
+    KeyBindManager getKeyBindManager();
 
     GameTypes getType();
 }

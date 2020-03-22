@@ -7,6 +7,7 @@ import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
+import org.kakara.core.key.KeyBindManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
@@ -70,6 +71,11 @@ public class TestGameInstance implements GameInstance {
 
     @Override
     public WorldGenerationManager getWorldGenerationManager() {
+        return null;
+    }
+
+    @Override
+    public KeyBindManager getKeyBindManager() {
         return null;
     }
 
