@@ -1,5 +1,6 @@
 package org.kakara.core.mod.game;
 
+import org.kakara.core.NameKey;
 import org.kakara.core.annotations.Id;
 import org.kakara.core.annotations.Name;
 import org.kakara.core.mod.Mod;
@@ -10,9 +11,11 @@ import java.util.Objects;
 
 public abstract class ModChunkGenerator implements ChunkGenerator {
     private Mod mod;
+    private NameKey nameKey;
 
     public ModChunkGenerator(Mod mod) {
         this.mod = mod;
+        this.nameKey = new NameKey(mod, getID());
     }
 
     @Override
@@ -22,6 +25,10 @@ public abstract class ModChunkGenerator implements ChunkGenerator {
     }
 
     @Override
+    public NameKey getNameKey() {
+        return nameKey;
+    }
+
     public String getID() {
         Id name = getClass().getAnnotation(Id.class);
         return name == null ? getClass().getSimpleName() : name.value();

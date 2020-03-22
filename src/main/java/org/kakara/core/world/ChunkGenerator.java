@@ -1,6 +1,6 @@
 package org.kakara.core.world;
 
-import org.kakara.core.mod.Mod;
+import org.kakara.core.NameKey;
 
 public interface ChunkGenerator {
     class ChunkFormat {
@@ -27,7 +27,7 @@ public interface ChunkGenerator {
 
     String getName();
 
-    String getID();
+    NameKey getNameKey();
 
     ChunkFormat getChunkFormat();
 
