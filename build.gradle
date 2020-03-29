@@ -23,13 +23,12 @@ configurations {
     deployerJars
     shadow
 }
-ext {
-    username = System.getProperty('credentials.username') != null ? System.getProperty('credentials.username') : mavenUser
-    password = System.getProperty('credentials.password') != null ? System.getProperty('credentials.password') : mavenPassword
-}
+
 
 repositories {
     mavenLocal()
+    mavenCentral()
+    jcenter()
     maven {
         url = 'https://repo.kingtux.me/storages/maven/kingtux-repo'
     }
@@ -59,11 +58,12 @@ jar {
 }
 
 uploadArchives {
+
     repositories.mavenDeployer {
         configuration = configurations.deployerJars
         repository(url: "https://repo.kingtux.me/storages/maven/kakara") {
-            authentication(userName: rootProject.ext.username,
-                    password: rootProject.ext.password)
+            authentication(userName: System.getProperty('credentials.username'),
+                    password: System.getProperty('credentials.password'))
         }
         pom.groupId = "org.kakara"
         pom.artifactId = "core"
