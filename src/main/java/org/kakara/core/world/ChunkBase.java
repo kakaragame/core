@@ -2,6 +2,7 @@ package org.kakara.core.world;
 
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.game.MetaData;
+import org.kakara.core.world.region.Region;
 import org.kakara.core.world.region.RegionFlag;
 import org.kakara.core.world.region.RegionGrid;
 
@@ -9,18 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChunkBase {
-    private World world;
-    private int x, z;
-    private List<RegionFlag> regionFlags;
-    private List<GameBlock> gameBlocks;
+    private final World world;
+    private final int x, y, z;
+    private final List<RegionFlag> regionFlags;
+    private final List<GameBlock> gameBlocks;
     private RegionGrid regionGrid;
 
-    public ChunkBase(final World world, int x, int z, List<RegionFlag> regionFlags) {
+    public ChunkBase(final World world, int x, int y, int z, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
         this.world = world;
         this.x = x;
+        this.y = y;
         this.z = z;
         this.regionFlags = regionFlags;
         this.gameBlocks = new ArrayList<>();
+        this.regionGrid = regionGrid;
     }
 
     public World getWorld() {
@@ -29,6 +32,10 @@ public class ChunkBase {
 
     public int getX() {
         return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public int getZ() {
@@ -55,7 +62,7 @@ public class ChunkBase {
         gameBlocks.add(new GameBlock(new Location(world, x, y, z), itemStack));
     }
 
-    public Chunk toChunk() {
+    public Chunk build() {
         return () -> gameBlocks;
     }
 }
