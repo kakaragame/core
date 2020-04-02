@@ -7,8 +7,15 @@ import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.resources.ResourceType;
 import org.kakara.core.resources.TextureResolution;
 
+import java.util.List;
+
 public class TestResourceManager implements ResourceManager {
     private GameInstance GameInstance;
+
+    @Override
+    public List<Resource> getAllTextures(TextureResolution resolution) {
+        return null;
+    }
 
     @Override
     public void registerResource(String path, ResourceType resourceType, Mod mod) {
