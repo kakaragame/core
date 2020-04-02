@@ -32,10 +32,6 @@ repositories {
     maven {
         url = 'https://repo.kingtux.me/storages/maven/kingtux-repo'
     }
-
-    maven {
-        url = 'http://repo.maven.apache.org/maven2'
-    }
 }
 
 dependencies {

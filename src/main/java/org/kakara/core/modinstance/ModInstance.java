@@ -3,19 +3,23 @@ package org.kakara.core.modinstance;
 
 import org.kakara.core.mod.ModSetting;
 
+import java.io.File;
+
 public class ModInstance {
     private String name;
     private String modServer;
     private String modVersion;
     private ModSetting modSettings;
     private ModInstanceType type;
+    private File modFile;
 
-    public ModInstance(String name, String modServer, String modVersion, ModSetting modSettings, ModInstanceType type) {
+    public ModInstance(String name, String modServer, String modVersion, ModSetting modSettings, ModInstanceType type, File modFile) {
         this.name = name;
         this.modServer = modServer;
         this.modVersion = modVersion;
         this.modSettings = modSettings;
         this.type = type;
+        this.modFile = modFile;
     }
 
     public String getName() {
@@ -56,5 +60,9 @@ public class ModInstance {
 
     public void setType(ModInstanceType type) {
         this.type = type;
+    }
+
+    public File getModFile() {
+        return modFile;
     }
 }

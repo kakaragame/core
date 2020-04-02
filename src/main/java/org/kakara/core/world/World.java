@@ -2,6 +2,7 @@ package org.kakara.core.world;
 
 import org.kakara.core.game.Block;
 import org.kakara.core.game.ItemStack;
+import org.kakara.core.player.Player;
 
 import java.util.UUID;
 
