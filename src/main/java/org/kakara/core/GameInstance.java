@@ -11,6 +11,7 @@ import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
+import org.kakara.core.world.WorldManager;
 
 import java.io.File;
 
@@ -28,6 +29,8 @@ public interface GameInstance {
     EntityManager getEntityManager();
 
     CraftingManager getCraftingManager();
+
+    WorldManager getWorldManager();
 
     ModManager getModManager();
 

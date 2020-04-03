@@ -90,6 +90,19 @@ public class Location {
     }
 
     @Override
+    public String toString() {
+        String worldName = world == null ? "null" : world.getName();
+        return "Location{" +
+                "world=" + worldName +
+                ", x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                ", pitch=" + pitch +
+                ", yaw=" + yaw +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

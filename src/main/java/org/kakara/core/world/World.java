@@ -32,4 +32,5 @@ public interface World {
     boolean isChunkLoaded(int x, int z);
 
     Chunk[] getLoadedChunks();
+
 }

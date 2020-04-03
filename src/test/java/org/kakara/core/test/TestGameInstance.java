@@ -11,6 +11,7 @@ import org.kakara.core.mod.ModManager;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
+import org.kakara.core.world.WorldManager;
 
 import java.io.File;
 
@@ -50,6 +51,11 @@ public class TestGameInstance implements GameInstance {
 
     @Override
     public CraftingManager getCraftingManager() {
+        return null;
+    }
+
+    @Override
+    public WorldManager getWorldManager() {
         return null;
     }
 
