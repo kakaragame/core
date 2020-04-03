@@ -22,6 +22,9 @@ public interface World {
 
     GameBlock setBlock(Block block, Location location);
 
+    Location getWorldSpawn();
+
+    void setWorldSpawn(Location location);
 
     Chunk getChunkAt(int x, int z);
 

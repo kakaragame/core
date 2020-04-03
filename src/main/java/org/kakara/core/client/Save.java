@@ -11,6 +11,8 @@ public interface Save {
 
     List<World> getWorlds();
 
+    World getDefaultWorld();
+
     Player getPlayerLocation(UUID uuid);
 
     SaveSettings getSettings();
