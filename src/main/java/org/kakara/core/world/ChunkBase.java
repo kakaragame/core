@@ -60,8 +60,4 @@ public class ChunkBase {
     public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
         gameBlocks.add(new GameBlock(new Location(world, x, y, z), itemStack));
     }
-
-    public Chunk build() {
-        return () -> gameBlocks;
-    }
 }
