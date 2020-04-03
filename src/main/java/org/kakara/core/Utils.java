@@ -2,16 +2,15 @@ package org.kakara.core;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.kakara.core.serializers.gson.LocationSerializer;
-import org.kakara.core.serializers.gson.WorldSerializer;
-import org.kakara.core.world.Location;
-import org.kakara.core.world.World;
+import org.kakara.core.serializers.gson.GsonSerializerRegistar;
 
 public class Utils {
     private static Gson gson;
 
     static {
-        gson = new GsonBuilder().registerTypeAdapter(Location.class, new LocationSerializer()).registerTypeAdapter(World.class, new WorldSerializer()).create();
+        GsonBuilder js = new GsonBuilder();
+        GsonSerializerRegistar.registerSerializers(js);
+        gson = js.create();
     }
 
     private Utils() {
