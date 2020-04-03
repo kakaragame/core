@@ -13,7 +13,7 @@ public abstract class ModItem implements Item {
 
     public ModItem(Mod mod) {
         this.mod = mod;
-        this.nameKey = new NameKey(mod, getID());
+        this.nameKey = new NameKey(mod, getId());
     }
 
 
@@ -33,7 +33,8 @@ public abstract class ModItem implements Item {
         return nameKey;
     }
 
-    public String getID() {
+    @Override
+    public String getId() {
         Id name = getClass().getAnnotation(Id.class);
         return name == null ? getClass().getSimpleName() : name.value();
     }
