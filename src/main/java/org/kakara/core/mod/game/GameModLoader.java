@@ -81,7 +81,7 @@ public class GameModLoader implements ModLoader {
         if (entry == null) {
             //TODO handle
         }
-        JsonObject jsonObject = Utils.GSON.fromJson(new InputStreamReader(jarFile.getInputStream(entry)), JsonObject.class);
+        JsonObject jsonObject = Utils.getGson().fromJson(new InputStreamReader(jarFile.getInputStream(entry)), JsonObject.class);
         JsonModRules.validate(jsonObject);
         return new JsonModRules(jsonObject);
     }
