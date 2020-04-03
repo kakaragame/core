@@ -3,6 +3,7 @@ package org.kakara.core.game;
 
 import org.kakara.core.charm.Charm;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,5 +31,5 @@ public interface ItemStack {
 
     String getName();
 
-    Object getLore();
+    List<String> getLore();
 }
