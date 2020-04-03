@@ -1,7 +1,6 @@
 package org.kakara.core.world;
 
 import org.kakara.core.game.ItemStack;
-import org.kakara.core.game.MetaData;
 import org.kakara.core.world.region.Region;
 import org.kakara.core.world.region.RegionFlag;
 import org.kakara.core.world.region.RegionGrid;

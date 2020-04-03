@@ -1,5 +1,6 @@
 package org.kakara.core.mod.game;
 
+import org.kakara.core.NameKey;
 import org.kakara.core.annotations.*;
 import org.kakara.core.game.Item;
 import org.kakara.core.mod.Mod;
@@ -7,16 +8,14 @@ import org.kakara.core.mod.Mod;
 import java.util.Objects;
 
 public abstract class ModItem implements Item {
+    private final NameKey nameKey;
     private Mod mod;
 
     public ModItem(Mod mod) {
         this.mod = mod;
+        this.nameKey = new NameKey(mod, getID());
     }
 
-    @Override
-    public String getName() {
-        return getClass().getAnnotation(Name.class).value();
-    }
 
     @Override
     public String getTexture() {
@@ -24,8 +23,19 @@ public abstract class ModItem implements Item {
     }
 
     @Override
-    public String getId() {
-        return getClass().getAnnotation(Id.class).value();
+    public String getName() {
+        Name name = getClass().getAnnotation(Name.class);
+        return name == null ? getClass().getSimpleName() : name.value();
+    }
+
+    @Override
+    public NameKey getNameKey() {
+        return nameKey;
+    }
+
+    public String getID() {
+        Id name = getClass().getAnnotation(Id.class);
+        return name == null ? getClass().getSimpleName() : name.value();
     }
 
     @Override

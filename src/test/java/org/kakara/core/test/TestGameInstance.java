@@ -8,12 +8,14 @@ import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
 import org.kakara.core.mod.ModManager;
+import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
 import org.kakara.core.world.WorldManager;
 
 import java.io.File;
+import java.util.UUID;
 
 public class TestGameInstance implements GameInstance {
     @Override
@@ -76,6 +78,11 @@ public class TestGameInstance implements GameInstance {
 
     @Override
     public WorldGenerationManager getWorldGenerationManager() {
+        return null;
+    }
+
+    @Override
+    public OfflinePlayer getOfflinePlayer(UUID uuid) {
         return null;
     }
 

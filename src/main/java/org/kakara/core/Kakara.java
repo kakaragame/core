@@ -5,6 +5,7 @@ import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
 import org.kakara.core.mod.ModManager;
+import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
@@ -12,10 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.UUID;
 
 public class Kakara {
     private static GameInstance gameInstance;
-public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
+    public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
+
     public static GameInstance getGameInstance() {
         return gameInstance;
     }
@@ -73,5 +76,9 @@ public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
 
     public static GameTypes getType() {
         return gameInstance.getType();
+    }
+
+    public static OfflinePlayer getOfflinePlayer(UUID uuid) {
+        return gameInstance.getOfflinePlayer(uuid);
     }
 }

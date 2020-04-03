@@ -6,8 +6,6 @@ import java.util.Objects;
 
 /**
  * This is a object version of the Mod:Key system.
- *
- *
  */
 public class NameKey {
     private String name;
@@ -20,6 +18,13 @@ public class NameKey {
 
     public NameKey(Mod mod, String key) {
         this(mod.getName().toLowerCase(), key);
+    }
+
+    public NameKey(String asString) {
+        String split[] = asString.split(":");
+        if (split.length == 2) throw new IllegalArgumentException("Must follow key:name");
+        key = split[0];
+        name = split[1];
     }
 
     public String getName() {

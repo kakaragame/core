@@ -20,14 +20,6 @@ public interface ItemStack {
      */
     Item getItem();
 
-    /**
-     * This is the meta data to this item.
-     *
-     * @return The ItemStack MetaData
-     * @see MetaData
-     */
-    MetaData getMetaData();
-
     int getCount();
 
     void setCount(int count);
@@ -35,4 +27,8 @@ public interface ItemStack {
     Map<Charm, Byte> getCharms();
 
     void addCharm(Charm charm, Byte level);
+
+    String getName();
+
+    Object getLore();
 }
