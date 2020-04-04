@@ -46,12 +46,6 @@ public abstract class ModItem implements Item {
     }
 
     @Override
-    public float getWeight() {
-        Weight weight = getClass().getAnnotation(Weight.class);
-        return weight == null ? 0.0f : weight.value();
-    }
-
-    @Override
     public Mod getMod() {
         return mod;
     }

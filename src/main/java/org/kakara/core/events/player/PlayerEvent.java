@@ -1,19 +1,37 @@
 package org.kakara.core.events.player;
 
+import org.kakara.core.events.Cancellable;
 import org.kakara.core.events.Event;
 import org.kakara.core.player.Player;
 
 /**
- * Events that are executed because a Player Did something
+ * This an a Player based event.
  */
-public class PlayerEvent implements Event {
+public class PlayerEvent implements Event, Cancellable {
+    private boolean cancelled;
     private Player player;
 
+    /**
+     * @param player the Player used by the event.
+     */
     public PlayerEvent(Player player) {
         this.player = player;
     }
 
+    /**
+     * @return the Player used by the event.
+     */
     public Player getPlayer() {
         return player;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }

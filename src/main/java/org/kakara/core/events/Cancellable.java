@@ -1,6 +1,6 @@
 package org.kakara.core.events;
 
-public interface Cancallable {
+public interface Cancellable {
     boolean isCancelled();
 
     void setCancelled(boolean b);
