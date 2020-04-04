@@ -2,7 +2,7 @@ package org.kakara.core.game;
 
 
 import org.kakara.core.NameKey;
-import org.kakara.core.events.player.ClickEvent;
+import org.kakara.core.events.player.click.ClickEvent;
 import org.kakara.core.mod.Mod;
 
 public interface Item {
@@ -17,8 +17,6 @@ public interface Item {
     NameKey getNameKey();
 
     Mod getMod();
-
-    float getWeight();
 
     void onClick(ClickEvent clickEvent);
 }

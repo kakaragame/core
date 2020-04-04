@@ -3,7 +3,7 @@ package org.kakara.core.game;
 import me.kingtux.simpleannotation.MethodFinder;
 import org.kakara.core.GameInstance;
 import org.kakara.core.Kakara;
-import org.kakara.core.events.Cancallable;
+import org.kakara.core.events.Cancellable;
 import org.kakara.core.events.Event;
 import org.kakara.core.events.EventHandlerObject;
 import org.kakara.core.events.EventManager;
@@ -38,8 +38,8 @@ public class GameEventManager implements EventManager {
         List<EventHandlerObject> eventHandlers = registeredEventHandler.stream().filter(eventHandlerObject -> event.getClass() == eventHandlerObject.getEventType()).collect(Collectors.toList());
 
         for (EventHandlerObject e : eventHandlers) {
-            if (event instanceof Cancallable) {
-                if (((Cancallable) event).isCancelled()) break;
+            if (event instanceof Cancellable) {
+                if (((Cancellable) event).isCancelled()) break;
             }
             e.invokeEvent(event);
         }

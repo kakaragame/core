@@ -1,20 +1,59 @@
 package org.kakara.core.crafting;
 
-import org.kakara.core.game.Item;
+import org.kakara.core.game.ItemStack;
 
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This represents a CraftingItem which is a list of possible ItemStacks a recipe can accept.
+ */
 public class StaticCraftingItem implements CraftingItem {
     private int x;
     private int y;
-    private List<Item> item;
+    private List<ItemStack> itemStacks;
 
-
-    public StaticCraftingItem(int x, int y, List<Item> item) {
+    /**
+     * @param x the x coordinate of this item in the CraftingRecipe.
+     * @param y the y coordinate of this item in the CraftingRecipe.
+     * @param itemStacks the list items which the recipe can accept as valid.
+     */
+    public StaticCraftingItem(int x, int y, List<ItemStack> itemStacks) {
         this.x = x;
         this.y = y;
-        this.item = item;
+        this.itemStacks = itemStacks;
+    }
+
+    /**
+     * @return the x coordinate of this item in the CraftingRecipe.
+     */
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * @return the y coordinate of this item in the CraftingRecipe.
+     */
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * @param itemStack the ItemStack to match
+     * @return is the inputted ItemStack compatible with this crafting item?
+     */
+    @Override
+    public boolean matches(ItemStack itemStack) {
+        return itemStacks.contains(itemStack);
+    }
+
+    /**
+     * @return the list of items which the recipe can accept as valid.
+     */
+    public List<ItemStack> getItemStacks() {
+        return itemStacks;
     }
 
     @Override
@@ -24,35 +63,19 @@ public class StaticCraftingItem implements CraftingItem {
         StaticCraftingItem that = (StaticCraftingItem) o;
         return x == that.x &&
                 y == that.y &&
-                Utils.hasMatchingItem(item, that.item);
+                hasMatchingItemStack(itemStacks, that.itemStacks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y, item);
+        return Objects.hash(x, y, itemStacks);
     }
 
-    public int getX() {
-        return x;
-    }
+    private static boolean hasMatchingItemStack(List<ItemStack> list, List<ItemStack> list2) {
+        for (ItemStack itemStack : list) {
+            if (list2.contains(itemStack)) return true;
+        }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public List<Item> getItems() {
-        return item;
-    }
-
-    public void setItem(List<Item> item) {
-        this.item = item;
+        return false;
     }
 }
