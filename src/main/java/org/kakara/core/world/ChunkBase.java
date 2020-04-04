@@ -9,36 +9,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChunkBase {
-    private final World world;
-    private final int x, y, z;
+    private ChunkLocation location;
     private final List<RegionFlag> regionFlags;
     private final List<GameBlock> gameBlocks;
     private RegionGrid regionGrid;
 
     public ChunkBase(final World world, int x, int y, int z, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
-        this.world = world;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this(new ChunkLocation(x, y, z, world), regionFlags, regionGrid);
+    }
+
+    public ChunkBase(ChunkLocation chunkLocation, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
+        location = chunkLocation;
         this.regionFlags = regionFlags;
         this.gameBlocks = new ArrayList<>();
         this.regionGrid = regionGrid;
     }
 
     public World getWorld() {
-        return world;
+        return location.getWorld();
     }
 
     public int getX() {
-        return x;
+        return location.getX();
     }
 
     public int getY() {
-        return y;
+        return location.getY();
     }
 
     public int getZ() {
-        return z;
+        return location.getZ();
     }
 
     public List<RegionFlag> getRegionFlags() {
@@ -58,6 +58,6 @@ public class ChunkBase {
     }
 
     public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
-        gameBlocks.add(new GameBlock(new Location(world, x, y, z), itemStack));
+        gameBlocks.add(new GameBlock(new Location(location.getWorld(), x, y, z), itemStack));
     }
 }
