@@ -1,5 +1,7 @@
 package org.kakara.core.world;
 
+import java.util.Objects;
+
 public class ChunkLocation {
     private int x;
     private int y;
@@ -56,5 +58,32 @@ public class ChunkLocation {
 
     public void setWorld(World world) {
         this.world = world;
+    }
+
+    @Override
+    public String toString() {
+        String worldName = world == null ? "null" : world.getName();
+        return "ChunkLocation{" +
+                "world=" + worldName +
+                ", x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChunkLocation location = (ChunkLocation) o;
+        return Double.compare(location.x, x) == 0 &&
+                Double.compare(location.y, y) == 0 &&
+                Double.compare(location.z, z) == 0 &&
+                Objects.equals(world, location.world);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(world, x, y, z);
     }
 }
