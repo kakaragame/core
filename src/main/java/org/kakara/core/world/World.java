@@ -36,7 +36,11 @@ public interface World {
 
     void loadChunk(Chunk chunk);
 
-    boolean isChunkLoaded(int x, int z);
+    default boolean isChunkLoaded(int x, int y, int z) {
+        return isChunkLoaded(new ChunkLocation(x, y, z));
+    }
+
+    boolean isChunkLoaded(ChunkLocation location);
 
     Chunk[] getLoadedChunks();
 
