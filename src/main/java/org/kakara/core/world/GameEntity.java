@@ -5,6 +5,8 @@ import org.kakara.core.game.Entity;
 public interface GameEntity {
     Location getLocation();
 
+    void teleport(Location location);
+
     /**
      * If this is a Player it will return Player
      *

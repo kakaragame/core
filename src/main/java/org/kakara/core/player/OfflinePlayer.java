@@ -4,7 +4,7 @@ import org.kakara.core.command.CommandSender;
 
 import java.util.UUID;
 
-public interface OfflinePlayer extends CommandSender {
+public interface OfflinePlayer{
     UUID getUUID();
 
     String getName();
