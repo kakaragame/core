@@ -26,9 +26,11 @@ public interface World {
 
     void setWorldSpawn(Location location);
 
-    Chunk getChunkAt(int x, int z);
+    default Chunk getChunkAt(int x, int y, int z) {
+        return getChunkAt(new ChunkLocation(x, y, z));
+    }
 
-    Chunk getChunkAt(Location location);
+    Chunk getChunkAt(ChunkLocation location);
 
     void loadChunk(Chunk chunk);
 
