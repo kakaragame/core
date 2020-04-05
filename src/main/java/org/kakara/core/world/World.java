@@ -5,6 +5,7 @@ import org.kakara.core.game.ItemStack;
 import org.kakara.core.player.Player;
 
 import java.util.UUID;
+import java.util.concurrent.Future;
 
 public interface World {
 
@@ -26,11 +27,11 @@ public interface World {
 
     void setWorldSpawn(Location location);
 
-    default Chunk getChunkAt(int x, int y, int z) {
+    default Future<Chunk>  getChunkAt(int x, int y, int z) {
         return getChunkAt(new ChunkLocation(x, y, z));
     }
 
-    Chunk getChunkAt(ChunkLocation location);
+    Future<Chunk> getChunkAt(ChunkLocation location);
 
     void loadChunk(Chunk chunk);
 
