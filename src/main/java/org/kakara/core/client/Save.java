@@ -9,6 +9,7 @@ import java.util.List;
  * This is a save of worlds in Kakara.
  */
 public interface Save {
+    void prepareWorlds();
     /**
      * @return all the worlds present in the save.
      */

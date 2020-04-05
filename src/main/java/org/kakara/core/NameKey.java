@@ -22,7 +22,7 @@ public class NameKey {
 
     public NameKey(String asString) {
         String split[] = asString.split(":");
-        if (split.length == 2) throw new IllegalArgumentException("Must follow key:name");
+        if (split.length != 2) throw new IllegalArgumentException("Must follow key:name");
         key = split[0];
         name = split[1];
     }
