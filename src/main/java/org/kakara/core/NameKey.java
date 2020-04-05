@@ -11,7 +11,7 @@ public class NameKey {
     private String name;
     private String key;
 
-    public NameKey(String name, String key) {
+    public NameKey(String key, String name) {
         this.name = name;
         this.key = key;
     }
@@ -37,7 +37,7 @@ public class NameKey {
 
     @Override
     public String toString() {
-        return String.format("%s:%s", name, key);
+        return String.format("%s:%s", key, name);
     }
 
     @Override
