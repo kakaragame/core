@@ -41,6 +41,22 @@ public class Location {
         this.yaw = yaw;
     }
 
+    public Location add(int x, int y, int z) {
+        return add(new Location(x, y, z));
+    }
+
+    public Location add(Location location) {
+        return new Location(world, x + location.getX(), y + location.y, z + location.z, pitch + location.pitch, yaw + location.yaw);
+    }
+
+    public Location subtract(int x, int y, int z) {
+        return subtract(new Location(x, y, z));
+    }
+
+    public Location subtract(Location location) {
+        return new Location(world, x - location.getX(), y - location.y, z - location.z, pitch - location.pitch, yaw - location.yaw);
+    }
+
     public World getWorld() {
         return world;
     }
