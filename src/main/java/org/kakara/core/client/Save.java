@@ -2,6 +2,7 @@ package org.kakara.core.client;
 
 import org.kakara.core.world.World;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -22,5 +23,10 @@ public interface Save {
      * @return the SaveSettings for this specific save.
      */
     SaveSettings getSettings();
+
+    File getSaveFolder();
+
+    List<File> getModsToLoad();
+
 }
 
