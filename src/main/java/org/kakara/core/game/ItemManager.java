@@ -2,6 +2,7 @@ package org.kakara.core.game;
 
 import org.apache.commons.lang3.Validate;
 import org.kakara.core.GameInstance;
+import org.kakara.core.NameKey;
 import org.kakara.core.Utils;
 import org.kakara.core.mod.LoadStage;
 import org.kakara.core.mod.Mod;
@@ -17,19 +18,22 @@ public interface ItemManager extends LoadStage {
      * Please register the resources required before calling this method. If you fail to do that. You will receive a ResourceNotFoundException.
      *
      * @param item This can be anything that extends an Item(Item, Block, Tool, or Weapon)
-     * @param mod  The Mod to be registering this item.
      */
-    void registerItem(Item item, Mod mod);
+    void registerItem(Item item);
 
-    void deregisterItem(Item item, Mod mod);
+    void deregisterItem(Item item);
 
-    List<Item> getItemsByMod(Mod mod);
+    List<Item> getItemsByKey(String key);
 
-    Map<Item, Mod> getItems();
+    List<Item> getItems();
 
-    void deregisterItems(Mod mod);
+    void deregisterItems(String key);
 
-    Item getItem(String item);
+    default Item getItem(String item) {
+        return getItem(new NameKey(item.toLowerCase()));
+    }
+
+    Item getItem(NameKey item);
 
     default Block getBlock(String block) {
         Validate.notNull(block, "Block must not be null");
