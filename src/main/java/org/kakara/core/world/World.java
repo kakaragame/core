@@ -4,6 +4,7 @@ import org.kakara.core.game.Block;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.player.Player;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
@@ -35,6 +36,8 @@ public interface World {
     CompletableFuture<Chunk> getChunkAt(ChunkLocation location);
 
     void unloadChunk(Chunk chunk);
+
+    void unloadChunks(List<Chunk> chunk);
 
     void loadChunk(Chunk chunk);
 
