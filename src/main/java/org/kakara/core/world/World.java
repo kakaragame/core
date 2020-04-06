@@ -34,6 +34,8 @@ public interface World {
 
     CompletableFuture<Chunk> getChunkAt(ChunkLocation location);
 
+    void unloadChunk(Chunk chunk);
+
     void loadChunk(Chunk chunk);
 
     default boolean isChunkLoaded(int x, int y, int z) {
