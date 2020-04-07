@@ -37,7 +37,7 @@ public class LocationSerializer implements JsonSerializer<Location>, JsonDeseria
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("x", location.getX());
         jsonObject.addProperty("y", location.getY());
-        jsonObject.addProperty("z", location.getX());
+        jsonObject.addProperty("z", location.getZ());
         jsonObject.addProperty("pitch", location.getPitch());
         jsonObject.addProperty("yaw", location.getYaw());
         if (location.getWorld() != null)

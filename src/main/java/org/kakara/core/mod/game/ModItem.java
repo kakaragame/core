@@ -10,9 +10,15 @@ import java.util.Objects;
 public abstract class ModItem implements Item {
     private final NameKey nameKey;
     private Mod mod;
+    private String name;
+    private String id;
 
     public ModItem(Mod mod) {
         this.mod = mod;
+        Id id = getClass().getAnnotation(Id.class);
+        this.id = id == null ? getClass().getSimpleName() : id.value();
+        Name name = getClass().getAnnotation(Name.class);
+        this.name = name == null ? getClass().getSimpleName() : name.value();
         this.nameKey = new NameKey(mod, getId());
     }
 
@@ -24,8 +30,7 @@ public abstract class ModItem implements Item {
 
     @Override
     public String getName() {
-        Name name = getClass().getAnnotation(Name.class);
-        return name == null ? getClass().getSimpleName() : name.value();
+        return name;
     }
 
     @Override
@@ -35,8 +40,7 @@ public abstract class ModItem implements Item {
 
     @Override
     public String getId() {
-        Id name = getClass().getAnnotation(Id.class);
-        return name == null ? getClass().getSimpleName() : name.value();
+        return id;
     }
 
     @Override
