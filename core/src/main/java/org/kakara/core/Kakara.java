@@ -25,7 +25,7 @@ public class Kakara {
 
     public static void setGameInstance(GameInstance gameInstance) {
         if (Kakara.gameInstance != null) {
-            throw new IllegalArgumentException("Cant do that sonny");
+            throw new IllegalArgumentException("GameInstance has already been set. ");
         }
         Kakara.gameInstance = gameInstance;
     }

@@ -11,5 +11,3 @@ rootProject.name = 'core'
 include("auth")
 include("core")
 include("data")
-include("mod")
-include("game")
