@@ -31,5 +31,9 @@ public interface ItemStack {
 
     String getName();
 
+    void setName(String name);
+
     List<String> getLore();
+
+    void setLore(List<String> lore);
 }

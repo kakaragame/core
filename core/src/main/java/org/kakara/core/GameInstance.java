@@ -1,6 +1,7 @@
 package org.kakara.core;
 
 import org.kakara.core.crafting.CraftingManager;
+import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
@@ -33,12 +34,13 @@ public interface GameInstance {
 
     ModManager getModManager();
 
-
     File getWorkingDirectory();
 
     EventManager getEventManager();
 
     WorldGenerationManager getWorldGenerationManager();
+
+    SerializerManager getSerializerManager();
 
     OfflinePlayer getOfflinePlayer(UUID uuid);
 

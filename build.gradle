@@ -22,5 +22,9 @@ subprojects {
         }
     }
 
+    dependencies {
+        compile 'org.msgpack:msgpack-core:0.8.20'
+    }
+
     sourceCompatibility = '1.8'
 }

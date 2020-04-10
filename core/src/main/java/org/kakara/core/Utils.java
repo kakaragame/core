@@ -3,6 +3,7 @@ package org.kakara.core;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.kakara.core.serializers.gson.GsonSerializerRegistar;
+import org.kakara.core.serializers.messagepack.MPSerializerRegistrar;
 
 public class Utils {
     private static Gson gson;
@@ -11,6 +12,8 @@ public class Utils {
         GsonBuilder js = new GsonBuilder();
         GsonSerializerRegistar.registerSerializers(js);
         gson = js.create();
+
+        MPSerializerRegistrar.load();
     }
 
     private Utils() {
