@@ -35,7 +35,7 @@ dependencies {
     compile project(":data")
 }
 
-group = 'org.kakara'
+group = 'org.kakara.core'
 version = '1.0-SNAPSHOT'
 jar {
 
@@ -52,9 +52,7 @@ uploadArchives {
             authentication(userName: System.getProperty('credentials.username'),
                     password: System.getProperty('credentials.password'))
         }
-        pom.groupId = "org.kakara"
-        pom.artifactId = "core"
-        pom.version = "1.0-SNAPSHOT"
+
     }
 }
 task sourcesJar(type: Jar, dependsOn: classes) {
