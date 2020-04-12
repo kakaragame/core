@@ -1,6 +1,7 @@
 package org.kakara.core;
 
 import org.kakara.core.crafting.CraftingManager;
+import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
@@ -9,6 +10,7 @@ import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
+import org.kakara.core.world.WorldManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +27,7 @@ public class Kakara {
 
     public static void setGameInstance(GameInstance gameInstance) {
         if (Kakara.gameInstance != null) {
-            throw new IllegalArgumentException("Cant do that sonny");
+            throw new IllegalArgumentException("GameInstance has already been set. ");
         }
         Kakara.gameInstance = gameInstance;
     }
@@ -54,6 +56,10 @@ public class Kakara {
         return gameInstance.getCraftingManager();
     }
 
+    public static WorldManager getWorldManager() {
+        return gameInstance.getWorldManager();
+    }
+
     public static ModManager getModManager() {
         return gameInstance.getModManager();
     }
@@ -72,6 +78,10 @@ public class Kakara {
 
     public static EntityManager getEntityManager() {
         return gameInstance.getEntityManager();
+    }
+
+    public static SerializerManager getSerializerManager() {
+        return gameInstance.getSerializerManager();
     }
 
     public static GameTypes getType() {

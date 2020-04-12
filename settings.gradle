@@ -8,3 +8,6 @@
  */
 
 rootProject.name = 'core'
+include("auth")
+include("core")
+include("data")
