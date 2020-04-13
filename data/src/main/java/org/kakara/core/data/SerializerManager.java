@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SerializerManager {
-    public Map<Class, Serializer> serializers;
+    private Map<Class, Serializer> serializers;
 
     public SerializerManager() {
         serializers = new HashMap<>();
