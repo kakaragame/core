@@ -1,6 +1,6 @@
 package org.kakara.core.game;
 
-public interface Ore {
+public interface Ore extends Block {
     int getVeinSize();
 
     int getDepth();
