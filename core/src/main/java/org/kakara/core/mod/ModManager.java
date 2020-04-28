@@ -15,6 +15,8 @@ public interface ModManager {
 
     List<UnModObject> loadModsFile(List<File> modsToLoad);
 
+    void unloadMod(Mod mod);
+
     void loadMods(List<UnModObject> modsToLoad);
 
     void loadStage(LoadStage loadStage, Mod mod);

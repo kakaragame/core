@@ -3,14 +3,28 @@ package org.kakara.core.client;
 import org.kakara.core.modinstance.ModInstance;
 
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public class SaveSettings {
     private String name;
-    private List<ModInstance> modInstances;
+    private Set<ModInstance> modInstances;
+    private UUID defaultWorld;
+    private Set<String> worlds;
 
-    public SaveSettings(String name, List<ModInstance> modInstances) {
+    public SaveSettings(String name, Set<ModInstance> modInstances, UUID defaultWorld, Set<String> worlds) {
         this.name = name;
         this.modInstances = modInstances;
+        this.defaultWorld = defaultWorld;
+        this.worlds = worlds;
+    }
+
+    public UUID getDefaultWorld() {
+        return defaultWorld;
+    }
+
+    public void setDefaultWorld(UUID defaultWorld) {
+        this.defaultWorld = defaultWorld;
     }
 
     public void addModInstance(ModInstance modInstance) {
@@ -29,11 +43,19 @@ public class SaveSettings {
         this.name = name;
     }
 
-    public List<ModInstance> getModInstances() {
+    public Set<ModInstance> getModInstances() {
         return modInstances;
     }
 
-    public void setModInstances(List<ModInstance> modInstances) {
+    public void setModInstances(Set<ModInstance> modInstances) {
         this.modInstances = modInstances;
+    }
+
+    public Set<String> getWorlds() {
+        return worlds;
+    }
+
+    public void setWorlds(Set<String> worlds) {
+        this.worlds = worlds;
     }
 }
