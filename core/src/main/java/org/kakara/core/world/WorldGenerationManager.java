@@ -1,5 +1,7 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kakara.core.GameInstance;
 import org.kakara.core.NameKey;
 import org.kakara.core.mod.LoadStage;
@@ -8,19 +10,23 @@ import org.kakara.core.world.region.Region;
 import java.util.List;
 
 public interface WorldGenerationManager extends LoadStage {
-    void registerRegion(Region region);
+    void registerRegion(@NotNull Region region);
 
-    void registerChunkGenerator(ChunkGenerator chunkGenerator);
+    void registerChunkGenerator(@NotNull ChunkGenerator chunkGenerator);
 
+    @Nullable
     ChunkGenerator getGenerator(NameKey nameKey);
 
-    default ChunkGenerator getGenerator(String s) {
-        return getGenerator(new NameKey(s));
+    @Nullable
+    default ChunkGenerator getGenerator(@NotNull String name) {
+        return getGenerator(new NameKey(name));
     }
 
+    @NotNull
     List<Region> getRegions();
 
+    @NotNull
     List<ChunkGenerator> getChunkGenerators();
 
-    void load(GameInstance kakaraCore);
+    void load(@NotNull GameInstance gameInstance);
 }

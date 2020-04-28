@@ -1,11 +1,19 @@
 package org.kakara.core.permission;
 
+import org.kakara.core.player.PermissionSet;
+
 public interface Permissible {
+    PermissionSet getPermissions();
 
+    default boolean hasPermission(String permission) {
+        return getPermissions().contains(permission);
+    }
 
-    boolean hasPermission(String permission);
+    default void addPermission(String permission) {
+        getPermissions().add(permission);
+    }
 
-    void addPermission(String permission);
-
-    void removePermission(String permission);
+    default void removePermission(String permission) {
+        getPermissions().remove(permission);
+    }
 }
