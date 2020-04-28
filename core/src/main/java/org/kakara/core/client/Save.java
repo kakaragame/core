@@ -1,5 +1,6 @@
 package org.kakara.core.client;
 
+import org.kakara.core.exceptions.WorldLoadException;
 import org.kakara.core.world.World;
 
 import java.io.File;
@@ -10,7 +11,8 @@ import java.util.Set;
  * This is a save of worlds in Kakara.
  */
 public interface Save {
-    void prepareWorlds();
+    void prepareWorlds() throws WorldLoadException;
+
     /**
      * @return all the worlds present in the save.
      */
