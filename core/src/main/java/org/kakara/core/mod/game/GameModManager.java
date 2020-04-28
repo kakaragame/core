@@ -69,6 +69,11 @@ public class GameModManager implements ModManager {
     }
 
     @Override
+    public void unloadMod(Mod mod) {
+
+    }
+
+    @Override
     public void loadMods(List<UnModObject> modsToLoad) {
         for (UnModObject modObject : modsToLoad) {
             GameMod gameMod = null;

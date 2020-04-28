@@ -4,6 +4,7 @@ import org.kakara.core.world.World;
 
 import java.io.File;
 import java.util.List;
+import java.util.Set;
 
 /**
  * This is a save of worlds in Kakara.
@@ -13,7 +14,7 @@ public interface Save {
     /**
      * @return all the worlds present in the save.
      */
-    List<World> getWorlds();
+    Set<World> getWorlds();
 
     /**
      * @return the default world where players are first spawned into.
