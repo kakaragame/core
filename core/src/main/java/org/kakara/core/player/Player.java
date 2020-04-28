@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 public interface Player extends OfflinePlayer, GameEntity, CommandSender, Permissible {
     void sendToast(@NotNull Toast toast);
 
+    void sendNotification(@NotNull String message);
+
     void setHealth(short health);
 
     short getHealth();
@@ -32,4 +34,6 @@ public interface Player extends OfflinePlayer, GameEntity, CommandSender, Permis
     Inventory getInventory();
 
     void openMenu(@NotNull Menu menu);
+
+    void sendMessage(@NotNull String message);
 }

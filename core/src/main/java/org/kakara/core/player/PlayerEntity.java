@@ -40,6 +40,6 @@ public class PlayerEntity extends HumanoidEntity {
 
     @Override
     public EntitySpawningPattern getEntitySpawningPattern() {
-        return null;
+        return world -> null;
     }
 }
