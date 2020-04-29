@@ -1,10 +1,44 @@
 package org.kakara.core.command;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
+
 public interface CommandManager {
+    /**
+     * Executes a command.
+     * <b>Do not Include command prefix</b>
+     *
+     * @param command command message
+     * @param sender  the sender of command.
+     */
+    void executeCommand(@NotNull String command, @NotNull CommandSender sender);
 
-    void executeCommand(String command, CommandSender sender);
-
+    /**
+     * Registers a new command to the system
+     *
+     * @param command the command object
+     */
     void registerCommand(Command command);
 
+    /**
+     * Registers a new TabCompleter to the system
+     *
+     * @param completer the completer
+     */
     void registerTabCompleter(TabCompleter completer);
+
+    /**
+     * A set of Registered tab Completers
+     *
+     * @return a set of registered tab Completers
+     */
+    Set<TabCompleter> getRegisterTabCompleters();
+
+    /**
+     * A set of Registered commands
+     *
+     * @return a set of registered commands
+     */
+    Set<Command> getRegsiteredCommands();
 }
