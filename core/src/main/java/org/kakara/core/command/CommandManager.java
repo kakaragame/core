@@ -7,7 +7,7 @@ import java.util.Set;
 public interface CommandManager {
     /**
      * Executes a command.
-     * <b>Do not Include command prefix</b>
+     * <b>Do not include command prefix</b>
      *
      * @param command command message
      * @param sender  the sender of command.
@@ -19,14 +19,14 @@ public interface CommandManager {
      *
      * @param command the command object
      */
-    void registerCommand(Command command);
+    void registerCommand(@NotNull Command command);
 
     /**
      * Registers a new TabCompleter to the system
      *
      * @param completer the completer
      */
-    void registerTabCompleter(TabCompleter completer);
+    void registerAutoCompleter(@NotNull TabCompleter completer);
 
     /**
      * A set of Registered tab Completers
@@ -40,5 +40,5 @@ public interface CommandManager {
      *
      * @return a set of registered commands
      */
-    Set<Command> getRegsiteredCommands();
+    Set<Command> getRegisteredCommands();
 }
