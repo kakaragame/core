@@ -6,7 +6,8 @@ import java.nio.file.Files;
 
 public class CoreFileUtils {
     public static void backupAndDelete(File file) throws IOException {
-        String backup = file.getAbsolutePath() + ".bak";
-        Files.move(file.toPath(), new File(backup).toPath());
+        File backup = new File(file.getAbsolutePath() + ".bak");
+        if (backup.exists()) backup.delete();
+        Files.move(file.toPath(), backup.toPath());
     }
 }

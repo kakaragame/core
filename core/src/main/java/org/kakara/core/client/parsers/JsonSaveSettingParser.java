@@ -50,6 +50,7 @@ public class JsonSaveSettingParser implements SaveSettingsParser {
         if (file.exists()) {
             try {
                 CoreFileUtils.backupAndDelete(file);
+                file.createNewFile();
             } catch (IOException e) {
                 throw new SaveLoadException("Unable to backup old file", e);
             }
@@ -60,7 +61,9 @@ public class JsonSaveSettingParser implements SaveSettingsParser {
         jsonObject.add("worlds", Utils.getGson().toJsonTree(saveSettings.getWorlds()));
         jsonObject.add("mods", Utils.getGson().toJsonTree(saveSettings.getModInstances()));
         try {
-            Utils.getGson().toJson(jsonObject, new FileWriter(file));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            bufferedWriter.write(Utils.getGson().toJson(jsonObject));
+            bufferedWriter.close();
         } catch (IOException e) {
             throw new SaveLoadException(e);
         }
