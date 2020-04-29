@@ -1,5 +1,6 @@
 package org.kakara.core;
 
+import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
@@ -70,6 +71,10 @@ public class Kakara {
 
     public static EventManager getEventManager() {
         return gameInstance.getEventManager();
+    }
+
+    public static CommandManager getCommandManager() {
+        return gameInstance.getCommandManager();
     }
 
     public static WorldGenerationManager getWorldGenerationManager() {
