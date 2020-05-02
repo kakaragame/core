@@ -79,7 +79,7 @@ public class GameModLoader implements ModLoader {
     private ModRules getModRules(JarFile jarFile) throws IOException, IllegalModException {
         JarEntry entry = jarFile.getJarEntry("mod.json");
         if (entry == null) {
-            //TODO handle
+            throw new IllegalModException("Unable to locate mod.json");
         }
         JsonObject jsonObject = Utils.getGson().fromJson(new InputStreamReader(jarFile.getInputStream(entry)), JsonObject.class);
         JsonModRules.validate(jsonObject);
