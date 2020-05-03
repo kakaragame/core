@@ -1,0 +1,32 @@
+package org.kakara.core;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.kakara.core.serializers.gson.GsonSerializerRegistar;
+import org.kakara.core.serializers.messagepack.MPSerializerRegistrar;
+
+public class Utils {
+    private static Gson gson;
+
+    static {
+        GsonBuilder js = new GsonBuilder();
+        GsonSerializerRegistar.registerSerializers(js);
+        gson = js.create();
+
+        MPSerializerRegistrar.load();
+    }
+
+    private Utils() {
+
+    }
+
+    public static final String ITEM_PATTERN = "[a-zA-Z0-9_]*:[a-zA-Z0-9_]*";
+
+    public static boolean isValidItemPattern(String s) {
+        return s.matches(ITEM_PATTERN);
+    }
+
+    public static Gson getGson() {
+        return gson;
+    }
+}
