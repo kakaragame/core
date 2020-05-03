@@ -21,18 +21,21 @@ public class ItemStackSerializer extends Serializer<ItemStack> {
         map.put("c", new Entry(item.getCount()));
 
         List<Entry> charms = new ArrayList<>();
-        item.getCharms().forEach((charm, aByte) ->
-                charms.add(new Entry(charm.getNameKey().toString() + "-" + aByte))
-        );
+        if (item.getCharms() != null) {
+            item.getCharms().forEach((charm, aByte) ->
+                    charms.add(new Entry(charm.getNameKey().toString() + "-" + aByte))
+            );
+        }
 
         map.put("m", new Entry(charms));
         map.put("n", new Entry(item.getName()));
 
         List<Entry> lore = new ArrayList<>();
-        item.getLore().forEach(s ->
-                lore.add(new Entry(s))
-        );
-
+        if (item.getCharms() != null) {
+            item.getLore().forEach(s ->
+                    lore.add(new Entry(s))
+            );
+        }
         map.put("l", new Entry(lore));
 
         return new Entry(map);
