@@ -9,6 +9,5 @@ public interface KeyBindHandler {
 
     String getName();
 
-
     void execute(KeyPressEvent event);
 }
