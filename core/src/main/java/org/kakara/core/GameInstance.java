@@ -4,8 +4,12 @@ import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
-import org.kakara.core.game.*;
+import org.kakara.core.game.GameSettings;
+import org.kakara.core.game.Item;
+import org.kakara.core.game.ItemManager;
+import org.kakara.core.game.ItemStack;
 import org.kakara.core.game.entity.EntityManager;
+import org.kakara.core.key.KeyBindManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
@@ -31,13 +35,18 @@ public interface GameInstance {
 
     CraftingManager getCraftingManager();
 
+    ModManager getModManager();
+
     WorldManager getWorldManager();
 
-    ModManager getModManager();
+    KeyBindManager getKeyBindManager();
 
     File getWorkingDirectory();
 
     EventManager getEventManager();
+
+
+    GameTypes getType();
 
     WorldGenerationManager getWorldGenerationManager();
 
@@ -46,7 +55,5 @@ public interface GameInstance {
     CommandManager getCommandManager();
 
     OfflinePlayer getOfflinePlayer(UUID uuid);
-
-    GameTypes getType();
 }
 
