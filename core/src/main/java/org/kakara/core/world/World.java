@@ -7,6 +7,7 @@ import org.kakara.core.game.ItemStack;
 import org.kakara.core.player.Player;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
@@ -22,16 +23,16 @@ public interface World {
     String getName();
 
     @NotNull
-    GameBlock getBlockAt(int x, int y, int z);
+    Optional<GameBlock> getBlockAt(int x, int y, int z);
 
     @NotNull
-    GameBlock getBlockAt(Location location);
+    Optional<GameBlock> getBlockAt(Location location);
 
     @NotNull
-    GameBlock setBlock(@NotNull ItemStack itemStack, @NotNull Location location);
+    Optional<GameBlock> setBlock(@NotNull ItemStack itemStack, @NotNull Location location);
 
     @NotNull
-    GameBlock setBlock(@Nullable Block block, @NotNull Location location);
+    Optional<GameBlock> setBlock(@Nullable Block block, @NotNull Location location);
 
     @NotNull
     Location getWorldSpawn();
