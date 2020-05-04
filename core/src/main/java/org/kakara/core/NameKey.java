@@ -8,12 +8,14 @@ import java.util.Objects;
  * This is a object version of the Mod:Key system.
  */
 public class NameKey {
-    private String name;
-    private String key;
+    private final String name;
+    private final String key;
+    private final String value;
 
-    public NameKey(String key, String name) {
+    public NameKey(String name, String key) {
         this.name = name;
         this.key = key;
+        value = String.format("%s:%s", key, name);
     }
 
     public NameKey(Mod mod, String key) {
@@ -25,6 +27,7 @@ public class NameKey {
         if (split.length != 2) throw new IllegalArgumentException("Must follow key:name");
         key = split[0];
         name = split[1];
+        value = asString;
     }
 
     public String getName() {
@@ -37,7 +40,7 @@ public class NameKey {
 
     @Override
     public String toString() {
-        return String.format("%s:%s", key, name);
+        return value;
     }
 
     @Override
@@ -45,8 +48,7 @@ public class NameKey {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NameKey that = (NameKey) o;
-        return name.equalsIgnoreCase(that.name) &&
-                key.equalsIgnoreCase(that.key);
+        return that.toString().equals(toString());
     }
 
     @Override
