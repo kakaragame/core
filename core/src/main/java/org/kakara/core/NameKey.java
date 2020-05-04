@@ -15,7 +15,7 @@ public class NameKey {
     public NameKey(String name, String key) {
         this.name = name;
         this.key = key;
-        value = String.format("%s:%s", key, name);
+        value = String.format("%s:%s", name, key);
     }
 
     public NameKey(Mod mod, String key) {
@@ -48,7 +48,7 @@ public class NameKey {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NameKey that = (NameKey) o;
-        return that.toString().equals(toString());
+        return that.toString().equalsIgnoreCase(toString());
     }
 
     @Override
