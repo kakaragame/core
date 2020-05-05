@@ -6,6 +6,7 @@ import org.msgpack.core.MessageUnpacker;
 
 import java.io.IOException;
 
+@Deprecated
 public abstract class Serializer<T> {
     public abstract Entry disassembleObject(T item);
 

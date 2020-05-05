@@ -3,6 +3,7 @@ package org.kakara.core.data;
 import java.util.HashMap;
 import java.util.Map;
 
+@Deprecated
 public class SerializerManager {
     private Map<Class, Serializer> serializers;
 

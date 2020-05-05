@@ -5,6 +5,7 @@ import org.msgpack.value.ValueFactory;
 
 import java.util.*;
 
+@Deprecated
 public class Entry {
     final Value value;
 
@@ -15,9 +16,7 @@ public class Entry {
     public Entry(Map<String, Entry> map) {
         Map<Value, Value> valueMap = new HashMap<>();
 
-        map.forEach((s, entry) -> {
-            valueMap.put(ValueFactory.newString(s), entry.value);
-        });
+        map.forEach((s, entry) -> valueMap.put(ValueFactory.newString(s), entry.value));
 
         this.value = ValueFactory.newMap(valueMap);
     }
