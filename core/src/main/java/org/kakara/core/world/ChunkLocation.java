@@ -1,14 +1,16 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
 
 public class ChunkLocation {
     private int x;
     private int y;
     private int z;
-    private World world;
+    @Nullable private World world;
 
-    public ChunkLocation(int x, int y, int z, World world) {
+    public ChunkLocation(int x, int y, int z, @Nullable World world) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -16,16 +18,16 @@ public class ChunkLocation {
     }
 
     public ChunkLocation(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this(x, y, z, null);
     }
 
     public ChunkLocation(Location location) {
-        this.x = (int) location.getX();
-        this.y = (int) location.getY();
-        this.z = (int) location.getY();
-        this.world = location.getWorld();
+        this(
+                (int) location.getX(),
+                (int) location.getY(),
+                (int) location.getY(),
+                location.getWorld()
+        );
     }
 
     public int getX() {
@@ -52,19 +54,18 @@ public class ChunkLocation {
         this.z = z;
     }
 
-    public World getWorld() {
+    @Nullable public World getWorld() {
         return world;
     }
 
-    public void setWorld(World world) {
+    public void setWorld(@Nullable World world) {
         this.world = world;
     }
 
     @Override
     public String toString() {
-        String worldName = world == null ? "null" : world.getName();
         return "ChunkLocation{" +
-                "world=" + worldName +
+                "world=" + (world == null ? "null" : world.getName()) +
                 ", x=" + x +
                 ", y=" + y +
                 ", z=" + z +

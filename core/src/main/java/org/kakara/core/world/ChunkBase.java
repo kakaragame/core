@@ -1,63 +1,45 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.kakara.core.Kakara;
 import org.kakara.core.game.ItemStack;
-import org.kakara.core.world.region.Region;
-import org.kakara.core.world.region.RegionFlag;
 import org.kakara.core.world.region.RegionGrid;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChunkBase {
-    private ChunkLocation location;
-    private final List<RegionFlag> regionFlags;
-    private final List<GameBlock> gameBlocks;
-    private RegionGrid regionGrid;
+    @NotNull private final ChunkLocation chunkLocation;
+    @NotNull private final List<GameBlock> gameBlocks;
+    @Nullable private final RegionGrid regionGrid;
 
-    public ChunkBase(final World world, int x, int y, int z, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
-        this(new ChunkLocation(x, y, z, world), regionFlags, regionGrid);
-    }
+    public ChunkBase(@NotNull ChunkLocation chunkLocation, @NotNull List<GameBlock> gameBlocks, @Nullable RegionGrid regionGrid) {
+        if (chunkLocation.getWorld() == null) {
+            Kakara.LOGGER.error("ChunkBase locations may not have null as a value of world.");
+        }
 
-    public ChunkBase(ChunkLocation chunkLocation, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
-        location = chunkLocation;
-        this.regionFlags = regionFlags;
-        this.gameBlocks = new ArrayList<>();
+        this.chunkLocation = chunkLocation;
+        this.gameBlocks = gameBlocks;
         this.regionGrid = regionGrid;
     }
 
-    public World getWorld() {
-        return location.getWorld();
+    @NotNull
+    public ChunkLocation getChunkLocation() {
+        return chunkLocation;
     }
 
-    public int getX() {
-        return location.getX();
-    }
-
-    public int getY() {
-        return location.getY();
-    }
-
-    public int getZ() {
-        return location.getZ();
-    }
-
-    public List<RegionFlag> getRegionFlags() {
-        return regionFlags;
-    }
-
+    @NotNull
     public List<GameBlock> getGameBlocks() {
         return gameBlocks;
     }
 
+    @Nullable
     public RegionGrid getRegionGrid() {
         return regionGrid;
     }
 
-    public void setRegionGrid(RegionGrid grid) {
-        this.regionGrid = grid;
-    }
-
-    public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
-        gameBlocks.add(new GameBlock(new Location(location.getWorld(), x, y, z), itemStack));
+    public void setBlock(int x, int y, int z, @NotNull ItemStack itemStack) {
+        gameBlocks.add(new GameBlock(new Location(chunkLocation.getWorld(), x, y, z), itemStack));
     }
 }
