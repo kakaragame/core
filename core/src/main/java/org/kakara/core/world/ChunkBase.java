@@ -15,7 +15,7 @@ public class ChunkBase {
     private RegionGrid regionGrid;
 
     public ChunkBase(final World world, int x, int y, int z, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
-        this(new ChunkLocation(x, y, z, world), regionFlags, regionGrid);
+        this(new ChunkLocation(world, x, y, z), regionFlags, regionGrid);
     }
 
     public ChunkBase(ChunkLocation chunkLocation, List<RegionFlag> regionFlags, RegionGrid regionGrid) {
@@ -26,7 +26,7 @@ public class ChunkBase {
     }
 
     public World getWorld() {
-        return location.getWorld();
+        return location.getWorld().get();
     }
 
     public int getX() {
@@ -58,6 +58,6 @@ public class ChunkBase {
     }
 
     public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
-        gameBlocks.add(new GameBlock(new Location(location.getWorld(), x, y, z), itemStack));
+        gameBlocks.add(new GameBlock(new Location(location.getWorld().get(), x, y, z), itemStack));
     }
 }

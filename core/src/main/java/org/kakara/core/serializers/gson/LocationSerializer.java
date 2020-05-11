@@ -2,6 +2,7 @@ package org.kakara.core.serializers.gson;
 
 import com.google.gson.*;
 import org.kakara.core.Kakara;
+import org.kakara.core.data.Entry;
 import org.kakara.core.world.Location;
 import org.kakara.core.world.World;
 
@@ -40,8 +41,9 @@ public class LocationSerializer implements JsonSerializer<Location>, JsonDeseria
         jsonObject.addProperty("z", location.getZ());
         jsonObject.addProperty("pitch", location.getPitch());
         jsonObject.addProperty("yaw", location.getYaw());
-        if (location.getWorld() != null)
-            jsonObject.addProperty("world", location.getWorld().getUUID().toString());
+        location.getWorld().ifPresent(world -> {
+            jsonObject.addProperty("world", world.getUUID().toString());
+        });
         return jsonObject;
     }
 }
