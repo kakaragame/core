@@ -9,6 +9,7 @@ import org.kakara.core.mod.Mod;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public interface ItemManager extends LoadStage {
     /**
@@ -23,26 +24,21 @@ public interface ItemManager extends LoadStage {
 
     void deregisterItem(Item item);
 
-    List<Item> getItemsByKey(String key);
+    List<Item> getItemsByName(String name);
 
     List<Item> getItems();
 
     void deregisterItems(String key);
 
-    default Item getItem(String item) {
+    default Optional<Item> getItem(String item) {
         return getItem(new NameKey(item.toLowerCase()));
     }
 
-    Item getItem(NameKey item);
-
-    default Block getBlock(String block) {
-        Validate.notNull(block, "Block must not be null");
-        Validate.isTrue(Utils.isValidItemPattern(block), "Must follow the following pattern MOD:BLOCK");
-        Item item = getItem(block);
-        if (item == null) return null;
-        if (!(item instanceof Block)) return null;
-        return ((Block) item);
+    default Optional<Item> getItem(NameKey item) {
+        return getItem(item.hashCode());
     }
+
+    Optional<Item> getItem(int id);
 
     void load(GameInstance GameInstance);
 }

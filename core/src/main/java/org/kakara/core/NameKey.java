@@ -10,12 +10,11 @@ import java.util.Objects;
 public class NameKey {
     private final String name;
     private final String key;
-    private final String value;
+    private String value;
 
     public NameKey(String name, String key) {
         this.name = name;
         this.key = key;
-        value = String.format("%s:%s", name, key);
     }
 
     public NameKey(Mod mod, String key) {
@@ -40,6 +39,7 @@ public class NameKey {
 
     @Override
     public String toString() {
+        if(value==null) value = String.format("%s:%s", name, key);
         return value;
     }
 
@@ -48,7 +48,7 @@ public class NameKey {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NameKey that = (NameKey) o;
-        return that.toString().equalsIgnoreCase(toString());
+        return that.hashCode()==hashCode();
     }
 
     @Override
