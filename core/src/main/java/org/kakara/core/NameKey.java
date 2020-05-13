@@ -48,7 +48,7 @@ public class NameKey {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NameKey that = (NameKey) o;
-        return that.hashCode()==hashCode();
+        return that.toString().equals(toString());
     }
 
     @Override
