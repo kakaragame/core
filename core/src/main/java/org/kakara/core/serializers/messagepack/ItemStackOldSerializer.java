@@ -1,11 +1,8 @@
 package org.kakara.core.serializers.messagepack;
 
-import org.apache.commons.lang3.CharSequenceUtils;
 import org.kakara.core.Kakara;
-import org.kakara.core.charm.Charm;
 import org.kakara.core.data.Entry;
-import org.kakara.core.data.Serializer;
-import org.kakara.core.game.Item;
+import org.kakara.core.data.OldSerializer;
 import org.kakara.core.game.ItemStack;
 
 import java.util.ArrayList;
@@ -13,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ItemStackSerializer extends Serializer<ItemStack> {
+public class ItemStackOldSerializer extends OldSerializer<ItemStack> {
     @Override
     public Entry disassembleObject(ItemStack item) {
         Map<String, Entry> map = new HashMap<>();

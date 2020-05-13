@@ -5,8 +5,8 @@ plugins {
 
 }
 compileJava {
-    targetCompatibility = JavaVersion.VERSION_11
-    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_1_10
+    sourceCompatibility = JavaVersion.VERSION_1_10
     options.encoding = 'UTF-8'
 }
 
@@ -25,6 +25,9 @@ repositories {
     maven {
         url = 'https://repo.kingtux.me/storages/maven/kingtux-repo'
     }
+    maven {
+        url = 'https://jitpack.io'
+    }
 }
 
 
@@ -32,10 +35,11 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.30'
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'org.msgpack:msgpack-core:0.8.20'
+    compile 'com.github.ryandw11:ODS:05aecb798e'
 }
 
 group = 'org.kakara.core'
-version = '1.0-SNAPSHOT'
+version = '1.0-SNAPSHOT-ods'
 jar {
 
     from {

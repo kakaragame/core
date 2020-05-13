@@ -1,7 +1,7 @@
 package org.kakara.core.serializers.messagepack;
 
 import org.kakara.core.data.Entry;
-import org.kakara.core.data.Serializer;
+import org.kakara.core.data.OldSerializer;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.world.GameBlock;
 import org.kakara.core.world.Location;
@@ -9,7 +9,7 @@ import org.kakara.core.world.Location;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameBlockSerializer extends Serializer<GameBlock> {
+public class GameBlockOldSerializer extends OldSerializer<GameBlock> {
     @Override
     public Entry disassembleObject(GameBlock item) {
         Map<String, Entry> entries = new HashMap<>();

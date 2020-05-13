@@ -5,18 +5,18 @@ import java.util.Map;
 
 @Deprecated
 public class SerializerManager {
-    private Map<Class, Serializer> serializers;
+    private Map<Class, OldSerializer> serializers;
 
     public SerializerManager() {
         serializers = new HashMap<>();
     }
 
-    public <C> void register(Class<C> cClass, Serializer<C> serializer) {
-        serializers.put(cClass, serializer);
+    public <C> void register(Class<C> cClass, OldSerializer<C> oldSerializer) {
+        serializers.put(cClass, oldSerializer);
     }
 
     public byte[] serialize(Object object) {
-        for (Map.Entry<Class, Serializer> entry : serializers.entrySet()) {
+        for (Map.Entry<Class, OldSerializer> entry : serializers.entrySet()) {
             if (entry.getKey() == object.getClass()) {
                 return entry.getValue().serialize(object);
             }
@@ -26,7 +26,7 @@ public class SerializerManager {
     }
 
     public <T> T deserialize(Class<T> aClass, byte[] bytes) {
-        for (Map.Entry<Class, Serializer> entry : serializers.entrySet()) {
+        for (Map.Entry<Class, OldSerializer> entry : serializers.entrySet()) {
             if (entry.getKey() == aClass) {
                 return (T) entry.getValue().deserialize(bytes);
             }
@@ -36,7 +36,7 @@ public class SerializerManager {
     }
 
     public Entry createEntry(Object serializableObject) {
-        for (Map.Entry<Class, Serializer> entry : serializers.entrySet()) {
+        for (Map.Entry<Class, OldSerializer> entry : serializers.entrySet()) {
             if (entry.getKey() == serializableObject.getClass()) {
                 return entry.getValue().disassembleObject(serializableObject);
             }

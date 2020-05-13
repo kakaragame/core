@@ -2,14 +2,14 @@ package org.kakara.core.serializers.messagepack;
 
 import org.kakara.core.Kakara;
 import org.kakara.core.data.Entry;
-import org.kakara.core.data.Serializer;
+import org.kakara.core.data.OldSerializer;
 import org.kakara.core.world.Location;
 import org.kakara.core.world.World;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LocationSerializer extends Serializer<Location> {
+public class LocationOldSerializer extends OldSerializer<Location> {
     @Override
     public Entry disassembleObject(Location l) {
         Map<String, Entry> map = new HashMap<>();

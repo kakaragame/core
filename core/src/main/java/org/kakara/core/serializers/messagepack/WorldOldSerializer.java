@@ -2,10 +2,10 @@ package org.kakara.core.serializers.messagepack;
 
 import org.kakara.core.Kakara;
 import org.kakara.core.data.Entry;
-import org.kakara.core.data.Serializer;
+import org.kakara.core.data.OldSerializer;
 import org.kakara.core.world.World;
 
-public class WorldSerializer extends Serializer<World> {
+public class WorldOldSerializer extends OldSerializer<World> {
     @Override
     public Entry disassembleObject(World item) {
         return new Entry(item.getUUID());
