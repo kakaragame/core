@@ -23,9 +23,9 @@ public class NameKey {
 
     public NameKey(String asString) {
         String[] split = asString.split(":");
-        if (split.length != 2) throw new IllegalArgumentException("Must follow key:name");
-        key = split[0];
-        name = split[1];
+        if (split.length != 2) throw new IllegalArgumentException("Must follow name:key");
+        name = split[0];
+        key = split[1];
         value = asString;
     }
 

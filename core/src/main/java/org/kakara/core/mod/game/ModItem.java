@@ -59,7 +59,7 @@ public abstract class ModItem implements Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ModItem modItem = (ModItem) o;
-        return nameKey.equals(modItem.nameKey);
+        return modItem.getId() == getId();
     }
 
     @Override

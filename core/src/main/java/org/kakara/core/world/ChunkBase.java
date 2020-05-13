@@ -58,6 +58,6 @@ public class ChunkBase {
     }
 
     public void setBlock(final int x, final int y, final int z, final ItemStack itemStack) {
-        gameBlocks.add(new GameBlock(new Location(location.getWorld().get(), x, y, z), itemStack));
+        gameBlocks.add(new GameBlock(new Location(location.getWorld().isPresent() ? location.getWorld().get() : null, x, y, z), itemStack));
     }
 }
