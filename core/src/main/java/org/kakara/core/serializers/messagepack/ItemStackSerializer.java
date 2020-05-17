@@ -44,7 +44,7 @@ public class ItemStackSerializer extends Serializer<ItemStack> {
     @Override
     public ItemStack assembleObject(Entry entry) {
         Map<String, Entry> map = entry.map();
-        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem(map.get("i").string()));
+        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem(map.get("i").string()).orElseThrow(RuntimeException::new));
 
         itemStack.setCount(map.get("c").integer());
         itemStack.setName(map.get("n").string());

@@ -10,12 +10,11 @@ import java.util.Objects;
 public class NameKey {
     private final String name;
     private final String key;
-    private final String value;
+    private String value;
 
     public NameKey(String name, String key) {
         this.name = name;
         this.key = key;
-        value = String.format("%s:%s", name, key);
     }
 
     public NameKey(Mod mod, String key) {
@@ -24,9 +23,9 @@ public class NameKey {
 
     public NameKey(String asString) {
         String[] split = asString.split(":");
-        if (split.length != 2) throw new IllegalArgumentException("Must follow key:name");
-        key = split[0];
-        name = split[1];
+        if (split.length != 2) throw new IllegalArgumentException("Must follow name:key");
+        name = split[0];
+        key = split[1];
         value = asString;
     }
 
@@ -40,6 +39,7 @@ public class NameKey {
 
     @Override
     public String toString() {
+        if(value==null) value = String.format("%s:%s", name, key);
         return value;
     }
 
@@ -48,7 +48,7 @@ public class NameKey {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NameKey that = (NameKey) o;
-        return that.toString().equalsIgnoreCase(toString());
+        return that.toString().equals(toString());
     }
 
     @Override

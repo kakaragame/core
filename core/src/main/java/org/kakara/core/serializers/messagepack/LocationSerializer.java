@@ -18,7 +18,9 @@ public class LocationSerializer extends Serializer<Location> {
         map.put("z", new Entry(l.getZ()));
         map.put("p", new Entry(l.getPitch()));
         map.put("a", new Entry(l.getYaw()));
-        if (l.getWorld() != null) map.put("w", new Entry(l.getWorld().getUUID()));
+        l.getWorld().ifPresent(world -> {
+            map.put("w", new Entry(world.getUUID()));
+        });
 
         return new Entry(map);
     }

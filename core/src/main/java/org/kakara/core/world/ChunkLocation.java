@@ -3,14 +3,16 @@ package org.kakara.core.world;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class ChunkLocation {
     private int x;
     private int y;
     private int z;
-    @Nullable private World world;
+    @Nullable
+    private World world;
 
-    public ChunkLocation(int x, int y, int z, @Nullable World world) {
+    public ChunkLocation(@Nullable World world, int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -18,16 +20,11 @@ public class ChunkLocation {
     }
 
     public ChunkLocation(int x, int y, int z) {
-        this(x, y, z, null);
+        this(null, x, y, z);
     }
 
     public ChunkLocation(Location location) {
-        this(
-                (int) location.getX(),
-                (int) location.getY(),
-                (int) location.getY(),
-                location.getWorld()
-        );
+        this(location.getWorld().isPresent() ? location.getWorld().get() : null, (int) location.getX(), (int) location.getY(), (int) location.getZ());
     }
 
     public int getX() {
@@ -54,18 +51,19 @@ public class ChunkLocation {
         this.z = z;
     }
 
-    @Nullable public World getWorld() {
-        return world;
+    public Optional<World> getWorld() {
+        return Optional.ofNullable(world);
     }
 
-    public void setWorld(@Nullable World world) {
+    public void setWorld(World world) {
         this.world = world;
     }
 
     @Override
     public String toString() {
+        String worldName = world == null ? "null" : world.getName();
         return "ChunkLocation{" +
-                "world=" + (world == null ? "null" : world.getName()) +
+                "world=" + worldName +
                 ", x=" + x +
                 ", y=" + y +
                 ", z=" + z +

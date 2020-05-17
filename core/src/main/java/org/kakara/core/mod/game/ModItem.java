@@ -11,15 +11,15 @@ public abstract class ModItem implements Item {
     private final NameKey nameKey;
     private Mod mod;
     private String name;
-    private String id;
+    private int id;
 
     public ModItem(Mod mod) {
         this.mod = mod;
-        Id id = getClass().getAnnotation(Id.class);
-        this.id = id == null ? getClass().getSimpleName() : id.value();
         Name name = getClass().getAnnotation(Name.class);
         this.name = name == null ? getClass().getSimpleName() : name.value();
-        this.nameKey = new NameKey(mod, getId());
+        Id id = getClass().getAnnotation(Id.class);
+        this.nameKey = new NameKey(mod, id == null ? getClass().getSimpleName() : id.value());
+        this.id = nameKey.hashCode();
     }
 
 
@@ -39,7 +39,7 @@ public abstract class ModItem implements Item {
     }
 
     @Override
-    public String getId() {
+    public final int getId() {
         return id;
     }
 
@@ -59,7 +59,7 @@ public abstract class ModItem implements Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ModItem modItem = (ModItem) o;
-        return nameKey.equals(modItem.nameKey);
+        return modItem.getId() == getId();
     }
 
     @Override
