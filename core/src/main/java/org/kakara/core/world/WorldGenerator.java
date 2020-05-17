@@ -9,5 +9,5 @@ public interface WorldGenerator {
 
     NameKey getNameKey();
 
-    ChunkBase generateChunk(long seed, Random random, World world, int x, int y, int z);
+    ChunkBase generateChunk(int seed, Random random, World world, int x, int y, int z);
 }
