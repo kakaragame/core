@@ -4,13 +4,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 public class ChunkLocation {
+    @Nullable private World world;
     private int x;
     private int y;
     private int z;
-    @Nullable
-    private World world;
 
     public ChunkLocation(@Nullable World world, int x, int y, int z) {
         this.x = x;
@@ -55,8 +55,18 @@ public class ChunkLocation {
         return Optional.ofNullable(world);
     }
 
-    public void setWorld(World world) {
+    public void setWorld(@Nullable World world) {
         this.world = world;
+    }
+
+    public void forEach(Consumer<ChunkLocation> consumer) {
+        for (int a = x; a < x + 16; a++) {
+            for (int b = x; b < x + 16; b++) {
+                for (int c = x; c < x + 16; c++) {
+                    consumer.accept(new ChunkLocation(world, a, b, c));
+                }
+            }
+        }
     }
 
     @Override

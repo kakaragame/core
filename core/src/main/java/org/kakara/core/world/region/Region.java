@@ -15,5 +15,5 @@ public interface Region {
 
     Entity[] getEntitySpawns();
 
-    List<GameBlock> generate(ChunkLocation chunkLocation, int x, int groundHeight, int z, long seed, Random random);
+    List<GameBlock> generate(ChunkLocation chunkLocation, int x, int y, int z, int groundHeight, int seed, Random random);
 }
