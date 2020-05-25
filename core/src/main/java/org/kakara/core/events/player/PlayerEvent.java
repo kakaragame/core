@@ -2,12 +2,13 @@ package org.kakara.core.events.player;
 
 import org.kakara.core.events.Cancellable;
 import org.kakara.core.events.Event;
+import org.kakara.core.events.HandlerList;
 import org.kakara.core.player.Player;
 
 /**
  * This an a Player based event.
  */
-public class PlayerEvent implements Event, Cancellable {
+public abstract class PlayerEvent implements Event, Cancellable {
     private boolean cancelled;
     private Player player;
 
@@ -34,4 +35,5 @@ public class PlayerEvent implements Event, Cancellable {
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
+
 }

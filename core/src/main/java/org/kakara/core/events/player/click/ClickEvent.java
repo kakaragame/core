@@ -1,5 +1,6 @@
 package org.kakara.core.events.player.click;
 
+import org.kakara.core.events.HandlerList;
 import org.kakara.core.events.player.PlayerEvent;
 import org.kakara.core.player.Player;
 import org.kakara.core.world.GameBlock;
@@ -11,11 +12,12 @@ public class ClickEvent extends PlayerEvent {
     private GameBlock gameBlock;
     private ClickType clickType;
     private MouseButtonType mouseButtonType;
+    private static HandlerList handlerList = new HandlerList();
 
     /**
-     * @param player the Player used by the event.
-     * @param gameBlock the GameBlock which was clicked.
-     * @param clickType the type of click.
+     * @param player          the Player used by the event.
+     * @param gameBlock       the GameBlock which was clicked.
+     * @param clickType       the type of click.
      * @param mouseButtonType the mouse button used to click.
      */
     public ClickEvent(Player player, GameBlock gameBlock, ClickType clickType, MouseButtonType mouseButtonType) {
@@ -44,5 +46,14 @@ public class ClickEvent extends PlayerEvent {
      */
     public MouseButtonType getMouseButtonType() {
         return mouseButtonType;
+    }
+
+    @Override
+    public HandlerList getHandlerList() {
+        return handlerList;
+    }
+
+    public static HandlerList getHandlers() {
+        return handlerList;
     }
 }

@@ -8,6 +8,7 @@ import org.kakara.core.events.Event;
 import org.kakara.core.events.EventHandlerObject;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.events.annotations.EventHandler;
+import org.kakara.core.events.player.Listener;
 import org.kakara.core.mod.Mod;
 
 import java.lang.reflect.Method;
@@ -20,7 +21,7 @@ public class GameEventManager implements EventManager {
     private GameInstance GameInstance;
 
     @Override
-    public void registerEventHandler(Object handler, Mod mod) {
+    public void registerEventHandler(Listener handler, Mod mod) {
         Method[] methods = MethodFinder.getAllMethodsWithAnnotation(handler.getClass(), EventHandler.class, false);
         for (Method method : methods) {
 

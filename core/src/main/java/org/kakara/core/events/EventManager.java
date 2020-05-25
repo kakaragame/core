@@ -1,6 +1,7 @@
 package org.kakara.core.events;
 
 import org.kakara.core.GameInstance;
+import org.kakara.core.events.player.Listener;
 import org.kakara.core.mod.LoadStage;
 import org.kakara.core.mod.Mod;
 
@@ -13,7 +14,7 @@ public interface EventManager extends LoadStage {
      * @param handler The object containing the event listeners.
      * @param mod The mod of the EventHandler.
      */
-    void registerEventHandler(Object handler, Mod mod);
+    void registerEventHandler(Listener handler, Mod mod);
 
     /**
      * Calls EventHandlers which are instances of the inputted event.

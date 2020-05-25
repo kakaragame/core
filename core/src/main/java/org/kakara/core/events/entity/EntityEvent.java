@@ -2,12 +2,13 @@ package org.kakara.core.events.entity;
 
 import org.kakara.core.events.Cancellable;
 import org.kakara.core.events.Event;
+import org.kakara.core.events.HandlerList;
 import org.kakara.core.world.GameEntity;
 
 /**
  * This an a GameEntity based event.
  */
-public class EntityEvent implements Event, Cancellable {
+public abstract class EntityEvent implements Event, Cancellable {
     private boolean cancelled;
     private GameEntity gameEntity;
 
@@ -34,4 +35,5 @@ public class EntityEvent implements Event, Cancellable {
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
+
 }
