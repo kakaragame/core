@@ -1,14 +1,18 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 public class ChunkLocation {
+    @Nullable private World world;
     private int x;
     private int y;
     private int z;
-    private World world;
 
-    public ChunkLocation(int x, int y, int z, World world) {
+    public ChunkLocation(@Nullable World world, int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -16,16 +20,11 @@ public class ChunkLocation {
     }
 
     public ChunkLocation(int x, int y, int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this(null, x, y, z);
     }
 
     public ChunkLocation(Location location) {
-        this.x = (int) location.getX();
-        this.y = (int) location.getY();
-        this.z = (int) location.getY();
-        this.world = location.getWorld();
+        this(location.getWorld().isPresent() ? location.getWorld().get() : null, (int) location.getX(), (int) location.getY(), (int) location.getZ());
     }
 
     public int getX() {
@@ -52,12 +51,22 @@ public class ChunkLocation {
         this.z = z;
     }
 
-    public World getWorld() {
-        return world;
+    public Optional<World> getWorld() {
+        return Optional.ofNullable(world);
     }
 
-    public void setWorld(World world) {
+    public void setWorld(@Nullable World world) {
         this.world = world;
+    }
+
+    public void forEach(Consumer<ChunkLocation> consumer) {
+        for (int a = x; a < x + 16; a++) {
+            for (int b = x; b < x + 16; b++) {
+                for (int c = x; c < x + 16; c++) {
+                    consumer.accept(new ChunkLocation(world, a, b, c));
+                }
+            }
+        }
     }
 
     @Override

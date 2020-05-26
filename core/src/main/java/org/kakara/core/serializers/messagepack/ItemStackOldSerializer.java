@@ -18,18 +18,21 @@ public class ItemStackOldSerializer extends OldSerializer<ItemStack> {
         map.put("c", new Entry(item.getCount()));
 
         List<Entry> charms = new ArrayList<>();
-        item.getCharms().forEach((charm, aByte) ->
-                charms.add(new Entry(charm.getNameKey().toString() + "-" + aByte))
-        );
+        if (item.getCharms() != null) {
+            item.getCharms().forEach((charm, aByte) ->
+                    charms.add(new Entry(charm.getNameKey().toString() + "-" + aByte))
+            );
+        }
 
         map.put("m", new Entry(charms));
         map.put("n", new Entry(item.getName()));
 
         List<Entry> lore = new ArrayList<>();
-        item.getLore().forEach(s ->
-                lore.add(new Entry(s))
-        );
-
+        if (item.getCharms() != null) {
+            item.getLore().forEach(s ->
+                    lore.add(new Entry(s))
+            );
+        }
         map.put("l", new Entry(lore));
 
         return new Entry(map);
@@ -38,7 +41,7 @@ public class ItemStackOldSerializer extends OldSerializer<ItemStack> {
     @Override
     public ItemStack assembleObject(Entry entry) {
         Map<String, Entry> map = entry.map();
-        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem(map.get("i").string()));
+        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem(map.get("i").string()).orElseThrow(RuntimeException::new));
 
         itemStack.setCount(map.get("c").integer());
         itemStack.setName(map.get("n").string());

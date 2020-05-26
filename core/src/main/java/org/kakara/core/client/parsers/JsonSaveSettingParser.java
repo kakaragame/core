@@ -49,10 +49,15 @@ public class JsonSaveSettingParser implements SaveSettingsParser {
     public void toFile(File file, SaveSettings saveSettings) throws SaveLoadException {
         if (file.exists()) {
             try {
-                CoreFileUtils.backupAndDelete(file);
-                file.createNewFile();
+                CoreFileUtils.backupDeleteAndRecreate(file);
             } catch (IOException e) {
                 throw new SaveLoadException("Unable to backup old file", e);
+            }
+        } else {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                throw new SaveLoadException("Unable to create file", e);
             }
         }
         JsonObject jsonObject = new JsonObject();

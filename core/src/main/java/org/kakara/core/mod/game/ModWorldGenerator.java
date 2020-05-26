@@ -4,16 +4,15 @@ import org.kakara.core.NameKey;
 import org.kakara.core.annotations.Id;
 import org.kakara.core.annotations.Name;
 import org.kakara.core.mod.Mod;
-import org.kakara.core.world.ChunkGenerator;
+import org.kakara.core.world.WorldGenerator;
 
-import java.net.IDN;
 import java.util.Objects;
 
-public abstract class ModChunkGenerator implements ChunkGenerator {
+public abstract class ModWorldGenerator implements WorldGenerator {
     private Mod mod;
     private NameKey nameKey;
 
-    public ModChunkGenerator(Mod mod) {
+    public ModWorldGenerator(Mod mod) {
         this.mod = mod;
         this.nameKey = new NameKey(mod, getID());
     }
@@ -38,7 +37,7 @@ public abstract class ModChunkGenerator implements ChunkGenerator {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ModChunkGenerator modChunkGenerator = (ModChunkGenerator) o;
+        ModWorldGenerator modChunkGenerator = (ModWorldGenerator) o;
         return Objects.equals(mod, modChunkGenerator.mod) && Objects.equals(getID(), modChunkGenerator.getID());
     }
 

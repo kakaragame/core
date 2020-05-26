@@ -122,9 +122,6 @@ public class GameModManager implements ModManager {
             break;
         }
         if (method == null) return;
-        System.out.println(method.getName());
-        System.out.println(loadStage.getStageClass().getSimpleName());
-        System.out.println(method.getParameterTypes()[0]);
 
 
         try {

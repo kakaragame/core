@@ -3,10 +3,13 @@ package org.kakara.core.test;
 import org.kakara.core.GameInstance;
 import org.kakara.core.GameTypes;
 import org.kakara.core.client.ClientSettingsBuilder;
+import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
+import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
+import org.kakara.core.key.KeyBindManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
@@ -57,12 +60,17 @@ public class TestGameInstance implements GameInstance {
     }
 
     @Override
+    public ModManager getModManager() {
+        return null;
+    }
+
+    @Override
     public WorldManager getWorldManager() {
         return null;
     }
 
     @Override
-    public ModManager getModManager() {
+    public KeyBindManager getKeyBindManager() {
         return null;
     }
 
@@ -77,7 +85,22 @@ public class TestGameInstance implements GameInstance {
     }
 
     @Override
+    public GameTypes getType() {
+        return null;
+    }
+
+    @Override
     public WorldGenerationManager getWorldGenerationManager() {
+        return null;
+    }
+
+    @Override
+    public SerializerManager getSerializerManager() {
+        return null;
+    }
+
+    @Override
+    public CommandManager getCommandManager() {
         return null;
     }
 
@@ -86,8 +109,4 @@ public class TestGameInstance implements GameInstance {
         return null;
     }
 
-    @Override
-    public GameTypes getType() {
-        return GameTypes.SERVER;
-    }
 }

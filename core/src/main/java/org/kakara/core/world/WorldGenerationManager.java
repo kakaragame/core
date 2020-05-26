@@ -12,13 +12,13 @@ import java.util.List;
 public interface WorldGenerationManager extends LoadStage {
     void registerRegion(@NotNull Region region);
 
-    void registerChunkGenerator(@NotNull ChunkGenerator chunkGenerator);
+    void registerChunkGenerator(@NotNull WorldGenerator worldGenerator);
 
     @Nullable
-    ChunkGenerator getGenerator(NameKey nameKey);
+    WorldGenerator getGenerator(NameKey nameKey);
 
     @Nullable
-    default ChunkGenerator getGenerator(@NotNull String name) {
+    default WorldGenerator getGenerator(@NotNull String name) {
         return getGenerator(new NameKey(name));
     }
 
@@ -26,7 +26,7 @@ public interface WorldGenerationManager extends LoadStage {
     List<Region> getRegions();
 
     @NotNull
-    List<ChunkGenerator> getChunkGenerators();
+    List<WorldGenerator> getChunkGenerators();
 
     void load(@NotNull GameInstance gameInstance);
 }

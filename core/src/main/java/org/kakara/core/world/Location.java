@@ -1,9 +1,13 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Objects;
+import java.util.Optional;
 
 public class Location {
-
+    @Nullable
     private World world;
     private double x;
     private double y;
@@ -12,27 +16,18 @@ public class Location {
     private float yaw;
 
     public Location(double x, double y, double z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
+        this(null, x, y, z);
     }
 
-    public Location(World world, double x, double y, double z) {
-        this.world = world;
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public Location(@Nullable World world, double x, double y, double z) {
+        this(world, x, y, z, 0, 0);
     }
 
     public Location(double x, double y, double z, float pitch, float yaw) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.pitch = pitch;
-        this.yaw = yaw;
+        this(null, x, y, z, pitch, yaw);
     }
 
-    public Location(World world, double x, double y, double z, float pitch, float yaw) {
+    public Location(@Nullable World world, double x, double y, double z, float pitch, float yaw) {
         this.world = world;
         this.x = x;
         this.y = y;
@@ -41,26 +36,12 @@ public class Location {
         this.yaw = yaw;
     }
 
-    public Location add(double x, double y, double z) {
-        return add(new Location(x, y, z));
+    public Optional<World> getWorld() {
+        return Optional.ofNullable(world);
     }
 
-    public Location add(Location location) {
-        return new Location(world, x + location.getX(), y + location.y, z + location.z, pitch + location.pitch, yaw + location.yaw);
-    }
-    public Location subtract(double x, double y, double z) {
-        return subtract(new Location(x, y, z));
-    }
 
-    public Location subtract(Location location) {
-        return new Location(world, x - location.getX(), y - location.y, z - location.z, pitch - location.pitch, yaw - location.yaw);
-    }
-
-    public World getWorld() {
-        return world;
-    }
-
-    public void setWorld(World world) {
+    public void setWorld(@Nullable World world) {
         this.world = world;
     }
 
@@ -103,6 +84,31 @@ public class Location {
     public void setYaw(float yaw) {
         this.yaw = yaw;
     }
+
+    public ChunkLocation getAsChunkLocation() {
+        return new ChunkLocation(this);
+    }
+
+    @NotNull
+    public Location add(double x, double y, double z) {
+        return add(new Location(x, y, z));
+    }
+
+    @NotNull
+    public Location add(Location location) {
+        return new Location(world, x + location.getX(), y + location.y, z + location.z, pitch + location.pitch, yaw + location.yaw);
+    }
+
+    @NotNull
+    public Location subtract(double x, double y, double z) {
+        return subtract(new Location(x, y, z));
+    }
+
+    @NotNull
+    public Location subtract(Location location) {
+        return new Location(world, x - location.getX(), y - location.y, z - location.z, pitch - location.pitch, yaw - location.yaw);
+    }
+
 
     @Override
     public String toString() {
