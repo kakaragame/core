@@ -14,8 +14,8 @@ public class LocationTag extends ObjectTag {
 
     public LocationTag(String key, Location loc){
         super(key);
-        if(loc.getWorld() != null)
-            addTag(new StringTag("world", loc.getWorld().getUUID().toString()));
+        if(loc.getWorld().isPresent())
+            addTag(new StringTag("world", loc.getWorld().get().getUUID().toString()));
         addTag(new DoubleTag("x", loc.getX()));
         addTag(new DoubleTag("y", loc.getY()));
         addTag(new DoubleTag("z", loc.getZ()));

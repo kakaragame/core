@@ -9,23 +9,25 @@ import java.util.UUID;
 
 public class ChunkLocationTag extends ObjectTag {
 
-    public ChunkLocationTag(String key, ChunkLocation loc){
+    public ChunkLocationTag(String key, ChunkLocation loc) {
         super(key);
-        if(loc.getWorld() != null)
-            addTag(new StringTag("world", loc.getWorld().getUUID().toString()));
+        if (loc.getWorld().isPresent())
+            addTag(new StringTag("world", loc.getWorld().get().getUUID().toString()));
         addTag(new IntTag("x", loc.getX()));
         addTag(new IntTag("y", loc.getY()));
         addTag(new IntTag("z", loc.getZ()));
     }
 
-    public ChunkLocation getChunkLocation(){
+    public ChunkLocation getChunkLocation() {
         World w = null;
-        if(hasTag("world")) w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
+        if (hasTag("world"))
+            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
         int x = (Integer) getTag("x").getValue();
         int y = (Integer) getTag("y").getValue();
-        int z = (Integer) getTag("z").getValue();;
+        int z = (Integer) getTag("z").getValue();
+        ;
 
-        return new ChunkLocation(x, y, z, w);
+        return new ChunkLocation(w, x, y, z);
     }
 
 }

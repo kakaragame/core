@@ -27,7 +27,7 @@ public class ItemStackTag extends ObjectTag {
     }
 
     public ItemStack getItemStack(){
-        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem((String) getTag("item").getValue()));
+        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem((String) getTag("item").getValue()).orElseThrow(() -> new RuntimeException("TODO make ItemNotFoundException")));
         itemStack.setCount((Integer) getTag("count").getValue());
         itemStack.setName(ODS.unwrap((StringTag) getTag("name")));
         itemStack.setLore(ODS.unwrapListTag((ListTag<? extends Tag<String>>) getTag("lore")));
