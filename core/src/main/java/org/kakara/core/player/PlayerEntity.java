@@ -18,14 +18,19 @@ public class PlayerEntity extends HumanoidEntity {
     }
 
     @Override
+    public int getId() {
+        return 0;
+    }
+
+    @Override
     public String getModel() {
         //TODO Use Player Model Service type thing
         return null;
     }
 
     @Override
-    public String getId() {
-        return nameKey.getName();
+    public String getTexture() {
+        return null;
     }
 
     @Override
