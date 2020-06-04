@@ -1,31 +1,34 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.NotNull;
 import org.kakara.core.game.ItemStack;
 
 import java.util.Objects;
 
 public class GameBlock {
-    private Location location;
-    private ItemStack itemStack;
+    @NotNull private Location location;
+    @NotNull private ItemStack itemStack;
 
-    public GameBlock(Location location, ItemStack itemStack) {
+    public GameBlock(@NotNull Location location, @NotNull ItemStack itemStack) {
         this.location = location;
         this.itemStack = itemStack;
     }
 
+    @NotNull
     public Location getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(@NotNull Location location) {
         this.location = location;
     }
 
+    @NotNull
     public ItemStack getItemStack() {
         return itemStack;
     }
 
-    public void setItemStack(ItemStack itemStack) {
+    public void setItemStack(@NotNull ItemStack itemStack) {
         this.itemStack = itemStack;
     }
 

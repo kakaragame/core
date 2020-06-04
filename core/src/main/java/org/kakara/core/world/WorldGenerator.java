@@ -4,10 +4,10 @@ import org.kakara.core.NameKey;
 
 import java.util.Random;
 
-public interface ChunkGenerator {
+public interface WorldGenerator {
     String getName();
 
     NameKey getNameKey();
 
-    ChunkBase generateChunk(int seed, Random r, ChunkBase chunkBase);
+    ChunkBase generateChunk(int seed, Random random, World world, int x, int y, int z);
 }
