@@ -9,7 +9,7 @@ import org.kakara.core.world.GameEntity;
  */
 public class StepOnEvent extends EntityEvent {
     private GameBlock blockSteppedOn;
-    private static HandlerList handlerList = new HandlerList();
+    private static HandlerList handlerList = new HandlerList(StepOnEvent.class);
 
     /**
      * @param gameEntity     the GameEntity used by the event.

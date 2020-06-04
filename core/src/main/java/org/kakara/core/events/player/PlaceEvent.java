@@ -9,7 +9,7 @@ import org.kakara.core.world.GameBlock;
  */
 public class PlaceEvent extends PlayerEvent {
     private GameBlock gameBlock;
-    private static HandlerList handlerList = new HandlerList();
+    private static HandlerList handlerList = new HandlerList(PlaceEvent.class);
 
     public PlaceEvent(Player player, GameBlock gameBlock) {
         super(player);

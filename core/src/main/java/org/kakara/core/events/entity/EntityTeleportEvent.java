@@ -8,7 +8,7 @@ import org.kakara.core.world.Location;
 public class EntityTeleportEvent extends EntityEvent implements Cancellable {
     private Location oldLocation;
     private Location newLocation;
-    private static HandlerList handlerList = new HandlerList();
+    private static HandlerList handlerList = new HandlerList(EntityTeleportEvent.class);
 
     /**
      * @param gameEntity  the GameEntity used by the event.

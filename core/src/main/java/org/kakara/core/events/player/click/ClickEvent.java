@@ -12,7 +12,7 @@ public class ClickEvent extends PlayerEvent {
     private GameBlock gameBlock;
     private ClickType clickType;
     private MouseButtonType mouseButtonType;
-    private static HandlerList handlerList = new HandlerList();
+    private static HandlerList handlerList = new HandlerList(ClickEvent.class);
 
     /**
      * @param player          the Player used by the event.
