@@ -20,14 +20,30 @@ public class GameEventManager implements EventManager {
     public void registerEventHandler(Listener handler, Mod mod) {
         Method[] methods = MethodFinder.getAllMethodsWithAnnotation(handler.getClass(), EventHandler.class, false);
         for (Method method : methods) {
-
+            if (method.getParameterTypes().length == 1) {
+                @SuppressWarnings("unchecked")
+                HandlerList handlerList = EventUtils.getHandlerList((Class<? extends Event>) method.getParameterTypes()[0]);
+                if (handlerList == null) {
+                    Kakara.LOGGER.error(String.format("Unable to locate HandlerList for %s", method.getName()));
+                    continue;
+                }
+                handlerList.addHandler(mod, handler, method);
+            }
         }
     }
 
     @Override
     public void callEvent(Event event) {
         for (RegisteredListener registeredListener : event.getHandlerList().getListenerList()) {
-
+            if (event instanceof Cancellable) {
+                if (((Cancellable) event).isCancelled()) break;
+            }
+            EventExecutor eventExecutor = registeredListener.call();
+            try {
+                eventExecutor.execute(event);
+            } catch (EventException e) {
+                e.printStackTrace();
+            }
         }
     }
 
