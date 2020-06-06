@@ -7,4 +7,5 @@ public interface Identifiable {
 
     int getId();
 
+    String getKey();
 }

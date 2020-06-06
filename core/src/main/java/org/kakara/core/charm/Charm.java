@@ -1,22 +1,13 @@
 package org.kakara.core.charm;
 
+import org.kakara.core.Identifiable;
 import org.kakara.core.NameKey;
 import org.kakara.core.game.Item;
 
 /**
  * This defines a type of charm in Kakara used to modify items in specific ways.
  */
-public interface Charm {
-    /**
-     * @return the name of a charm.
-     */
-    String getName();
-
-    /**
-     * @return the unique NameKey of the charm.
-     */
-    NameKey getNameKey();
-
+public interface Charm extends Identifiable {
     /**
      * @return the maximum usable level for the charm.
      */
