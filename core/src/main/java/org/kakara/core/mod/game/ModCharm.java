@@ -51,6 +51,11 @@ public abstract class ModCharm implements Charm {
         return modItem.getId() == getId();
     }
 
+
+    @Override
+    public String getKey() {
+        return nameKey.getKey();
+    }
     @Override
     public int hashCode() {
         return Objects.hash(getId(), mod.getName());

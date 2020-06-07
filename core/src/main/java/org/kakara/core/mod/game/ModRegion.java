@@ -25,15 +25,6 @@ public abstract class ModRegion implements Region {
     }
 
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
 
     @Override
     public NameKey getNameKey() {
@@ -51,5 +42,19 @@ public abstract class ModRegion implements Region {
     @Override
     public int hashCode() {
         return Objects.hash(mod, getName());
+    }
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getKey() {
+        return nameKey.getKey();
     }
 }

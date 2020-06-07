@@ -22,6 +22,10 @@ public abstract class ModItem implements Item {
         this.id = nameKey.hashCode();
     }
 
+    @Override
+    public String getKey() {
+        return nameKey.getKey();
+    }
 
     @Override
     public String getTexture() {

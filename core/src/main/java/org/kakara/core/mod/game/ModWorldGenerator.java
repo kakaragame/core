@@ -45,4 +45,19 @@ public abstract class ModWorldGenerator implements WorldGenerator {
     public int hashCode() {
         return Objects.hash(mod, getName(), getKey());
     }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String getKey() {
+        return key;
+    }
 }
