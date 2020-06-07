@@ -40,7 +40,7 @@ dependencies {
 }
 
 group = 'org.kakara.core'
-version = '1.0-SNAPSHOT-ods'
+version = '1.0-SNAPSHOT'
 jar {
 
     from {
