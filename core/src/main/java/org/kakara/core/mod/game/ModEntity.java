@@ -65,4 +65,9 @@ public abstract class ModEntity implements Entity {
     public int hashCode() {
         return Objects.hash(getId(), mod.getName());
     }
+
+    @Override
+    public String getKey() {
+        return nameKey.getKey();
+    }
 }
