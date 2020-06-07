@@ -35,7 +35,7 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.30'
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'org.msgpack:msgpack-core:0.8.20'
-    compile 'com.github.ryandw11:ODS:05aecb798e'
+    implementation 'com.github.ryandw11:ODS:129e2c573f'
 }
 
 group = 'org.kakara.core'
