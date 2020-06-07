@@ -26,4 +26,6 @@ public interface Mod {
     void preEnable();
 
     void postEnable();
+
+    String getUppercaseName();
 }

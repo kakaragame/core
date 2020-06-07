@@ -3,19 +3,18 @@ package org.kakara.core.mod.game;
 import org.kakara.core.NameKey;
 import org.kakara.core.annotations.Key;
 import org.kakara.core.annotations.Name;
+import org.kakara.core.charm.Charm;
 import org.kakara.core.mod.Mod;
-import org.kakara.core.world.region.Region;
 
 import java.util.Objects;
 
-public abstract class ModRegion implements Region {
+public abstract class ModCharm implements Charm {
+    private final NameKey nameKey;
+    private Mod mod;
+    private String name;
+    private int id;
 
-    protected final Mod mod;
-    protected final NameKey nameKey;
-    protected final int id;
-    protected final String name;
-
-    public ModRegion(Mod mod) {
+    public ModCharm(Mod mod) {
         this.mod = mod;
         Name nameA = getClass().getAnnotation(Name.class);
         this.name = nameA == null ? getClass().getSimpleName() : nameA.value();
@@ -25,6 +24,10 @@ public abstract class ModRegion implements Region {
     }
 
 
+    @Override
+    public String getName() {
+        return name;
+    }
 
     @Override
     public NameKey getNameKey() {
@@ -32,29 +35,29 @@ public abstract class ModRegion implements Region {
     }
 
     @Override
+    public final int getId() {
+        return id;
+    }
+
+    public Mod getMod() {
+        return mod;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ModRegion modRegion = (ModRegion) o;
-        return Objects.equals(mod, modRegion.mod) && Objects.equals(getName(), modRegion.getName());
+        ModItem modItem = (ModItem) o;
+        return modItem.getId() == getId();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(mod, getName());
-    }
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
 
     @Override
     public String getKey() {
         return nameKey.getKey();
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), mod.getName());
     }
 }

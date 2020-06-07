@@ -1,19 +1,22 @@
 package org.kakara.core.mod.game;
 
 import org.kakara.core.NameKey;
-import org.kakara.core.annotations.*;
-import org.kakara.core.game.Item;
+import org.kakara.core.annotations.Key;
+import org.kakara.core.annotations.Model;
+import org.kakara.core.annotations.Name;
+import org.kakara.core.annotations.Texture;
+import org.kakara.core.game.Entity;
 import org.kakara.core.mod.Mod;
 
 import java.util.Objects;
 
-public abstract class ModItem implements Item {
+public abstract class ModEntity implements Entity {
     protected final NameKey nameKey;
     protected final Mod mod;
     protected final String name;
     protected final int id;
 
-    public ModItem(Mod mod) {
+    public ModEntity(Mod mod) {
         this.mod = mod;
         Name nameA = getClass().getAnnotation(Name.class);
         this.name = nameA == null ? getClass().getSimpleName() : nameA.value();
@@ -22,10 +25,6 @@ public abstract class ModItem implements Item {
         this.id = nameKey.hashCode();
     }
 
-    @Override
-    public String getKey() {
-        return nameKey.getKey();
-    }
 
     @Override
     public String getTexture() {
@@ -42,8 +41,9 @@ public abstract class ModItem implements Item {
         return nameKey;
     }
 
+
     @Override
-    public final int getId() {
+    public int getId() {
         return id;
     }
 
@@ -51,11 +51,6 @@ public abstract class ModItem implements Item {
     public String getModel() {
         Model model = getClass().getAnnotation(Model.class);
         return model == null ? null : model.value();
-    }
-
-    @Override
-    public Mod getMod() {
-        return mod;
     }
 
     @Override
@@ -68,6 +63,11 @@ public abstract class ModItem implements Item {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getMod().getName());
+        return Objects.hash(getId(), mod.getName());
+    }
+
+    @Override
+    public String getKey() {
+        return nameKey.getKey();
     }
 }

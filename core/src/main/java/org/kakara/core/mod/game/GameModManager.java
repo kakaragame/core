@@ -122,14 +122,11 @@ public class GameModManager implements ModManager {
             break;
         }
         if (method == null) return;
-
-
+        Kakara.LOGGER.debug(String.format("Loading %s Stage: %s", mod.getName(), loadStage.getName()));
         try {
-            method.invoke(mod,loadStage);
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            method.invoke(mod, loadStage);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            Kakara.LOGGER.error(String.format("Unable to call %s Stage: %s", mod.getName(), loadStage.getName()), e);
         }
     }
 
