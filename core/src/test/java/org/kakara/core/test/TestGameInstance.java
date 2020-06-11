@@ -5,7 +5,6 @@ import org.kakara.core.GameTypes;
 import org.kakara.core.client.ClientSettingsBuilder;
 import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
-import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
@@ -94,10 +93,6 @@ public class TestGameInstance implements GameInstance {
         return null;
     }
 
-    @Override
-    public SerializerManager getSerializerManager() {
-        return null;
-    }
 
     @Override
     public CommandManager getCommandManager() {
