@@ -2,7 +2,6 @@ package org.kakara.core;
 
 import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
-import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.*;
 import org.kakara.core.game.entity.EntityManager;
@@ -85,9 +84,6 @@ public class Kakara {
         return gameInstance.getEntityManager();
     }
 
-    public static SerializerManager getSerializerManager() {
-        return gameInstance.getSerializerManager();
-    }
 
     public static GameTypes getType() {
         return gameInstance.getType();

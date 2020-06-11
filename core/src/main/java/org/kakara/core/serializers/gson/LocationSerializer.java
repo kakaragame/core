@@ -2,7 +2,6 @@ package org.kakara.core.serializers.gson;
 
 import com.google.gson.*;
 import org.kakara.core.Kakara;
-import org.kakara.core.data.Entry;
 import org.kakara.core.world.Location;
 import org.kakara.core.world.World;
 
