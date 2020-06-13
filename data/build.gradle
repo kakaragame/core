@@ -26,6 +26,9 @@ repositories {
         url = 'https://repo.kingtux.me/storages/maven/kingtux-repo'
     }
     maven {
+        url = 'https://repo.kingtux.me/storages/maven/ryandw11'
+    }
+    maven {
         url = 'https://jitpack.io'
     }
 }
@@ -35,7 +38,7 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.30'
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'org.msgpack:msgpack-core:0.8.20'
-    compile 'com.github.ryandw11:ODS:master-SNAPSHOT'
+    compile 'me.ryandw11:ods:1.0-SNAPSHOT'
 }
 
 group = 'org.kakara.core'
