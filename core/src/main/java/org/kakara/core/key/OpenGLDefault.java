@@ -32,9 +32,7 @@ public enum OpenGLDefault implements Key {
     KP_DECIMAL, KP_DEVIDE, KP_MULTIPLY, KP_SUBTRACT, KP_ADD, KP_ENTER, KP_EQUAL, LEFT_SHIFT, LEFT_CONTROL, LEFT_ALT, LEFT_SUPER, MENU;
 
     @Override
-    public String
-
-    getName() {
+    public String getName() {
         return name();
     }
 }
