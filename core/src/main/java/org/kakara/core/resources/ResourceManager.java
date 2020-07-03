@@ -21,6 +21,8 @@ public interface ResourceManager {
 
     Resource getTexture(String path, TextureResolution resolution, Mod mod);
 
+    Texture getTexture(String path, Mod mod);
+
     void load(GameInstance kakaraCore);
 
 }
