@@ -4,6 +4,7 @@ import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
 
 import java.util.List;
+import java.util.Optional;
 
 //~/.kakara/resources/mods/{mod_name}/{resource_type}/path
 //~/.kakara/resources/mods/{mod_name}/texture/{resolution}/path
@@ -21,7 +22,7 @@ public interface ResourceManager {
 
     Resource getTexture(String path, TextureResolution resolution, Mod mod);
 
-    Texture getTexture(String path, Mod mod);
+    Optional<Texture> getTexture(String path, Mod mod);
 
     void load(GameInstance kakaraCore);
 

@@ -60,4 +60,16 @@ public class Texture {
         if (resolutionResourceMap.containsKey(resolution)) return resolutionResourceMap.get(resolution);
         return get();
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public Mod getMod() {
+        return mod;
+    }
+
+    public TextureResolution getDefaultResolution() {
+        return defaultResolution;
+    }
 }
