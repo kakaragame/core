@@ -12,7 +12,7 @@ import java.util.Optional;
 // resources/{resource_type}/path
 // resources/texture/{resolution}/path
 public interface ResourceManager {
-    List<Resource> getAllTextures(TextureResolution resolution);
+    Texture getAllTextures();
 
     void registerResource(String path, ResourceType resourceType, Mod mod);
 
