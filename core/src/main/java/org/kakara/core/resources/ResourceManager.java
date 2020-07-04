@@ -5,6 +5,7 @@ import org.kakara.core.mod.Mod;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 //~/.kakara/resources/mods/{mod_name}/{resource_type}/path
 //~/.kakara/resources/mods/{mod_name}/texture/{resolution}/path
@@ -12,7 +13,7 @@ import java.util.Optional;
 // resources/{resource_type}/path
 // resources/texture/{resolution}/path
 public interface ResourceManager {
-    Texture getAllTextures();
+    Set<Texture> getAllTextures();
 
     void registerResource(String path, ResourceType resourceType, Mod mod);
 
