@@ -8,13 +8,14 @@ import org.kakara.core.player.Player;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 public interface World {
     @NotNull
-    Chunk[] getChunks();
+    Set<Chunk> getChunks();
 
     @NotNull
     UUID getUUID();
@@ -40,25 +41,15 @@ public interface World {
     void setWorldSpawn(@NotNull Location location);
 
     @NotNull
-    default CompletableFuture<Chunk> getChunkAt(int x, int y, int z) {
+    default Chunk getChunkAt(int x, int y, int z) {
         return getChunkAt(new ChunkLocation(x, y, z));
     }
 
     @NotNull
-    CompletableFuture<Chunk> getChunkAt(ChunkLocation location);
+    Chunk getChunkAt(ChunkLocation location);
 
     void unloadChunk(@NotNull Chunk chunk);
 
     void unloadChunks(@NotNull List<Chunk> chunk);
 
-    void loadChunk(@NotNull Chunk chunk);
-
-    default boolean isChunkLoaded(int x, int y, int z) {
-        return isChunkLoaded(new ChunkLocation(x, y, z));
-    }
-
-    boolean isChunkLoaded(@NotNull ChunkLocation location);
-
-    @NotNull
-    Chunk[] getLoadedChunks();
 }

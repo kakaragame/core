@@ -93,6 +93,6 @@ public class ChunkLocation {
 
     @Override
     public int hashCode() {
-        return Objects.hash(world, x, y, z);
+        return Objects.hash(x, y, z);
     }
 }
