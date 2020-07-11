@@ -20,7 +20,7 @@ public interface ChunkWriter {
      *
      * @param locations the locations to find
      * @return the chunks no value if not found
-     * @throws ChunkLoadException thrown when chunk fails to read. When this is thrown it will continue to read all possible chunks.
+     * @throws ChunkLoadException thrown when chunk fails to read.
      */
     List<ChunkContent> getChunksByLocation(List<ChunkLocation> locations) throws ChunkLoadException;
 
@@ -36,7 +36,7 @@ public interface ChunkWriter {
      * Writes a group of chunks. This will sort the locations so we dont have to open a file multiple times
      *
      * @param chunks the chunks to save
-     * @throws ChunkWriteException thrown when chunk fails to write. When this is thrown it will continue to save all possible chunks.
+     * @throws ChunkWriteException thrown when chunk fails to write.
      */
     void writeChunks(List<ChunkContent> chunks) throws ChunkWriteException;
 
