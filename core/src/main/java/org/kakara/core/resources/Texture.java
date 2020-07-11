@@ -5,6 +5,7 @@ import org.kakara.core.mod.Mod;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Texture {
     private Map<TextureResolution, Resource> resolutionResourceMap = new HashMap<>();
@@ -67,6 +68,20 @@ public class Texture {
 
     public Mod getMod() {
         return mod;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Texture texture = (Texture) o;
+        return Objects.equals(getPath(), texture.getPath()) &&
+                Objects.equals(getMod(), texture.getMod());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getPath(), getMod());
     }
 
     public TextureResolution getDefaultResolution() {
