@@ -7,7 +7,8 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ChunkLocation {
-    @Nullable private World world;
+    @Nullable
+    private World world;
     private int x;
     private int y;
     private int z;
@@ -94,5 +95,9 @@ public class ChunkLocation {
     @Override
     public int hashCode() {
         return Objects.hash(x, y, z);
+    }
+
+    public String toSimpleString() {
+        return "x=" + x + " y=" + y + " z=" + z;
     }
 }
