@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class ChunkWriteException extends IOException {
-    private static final String MESSAGE = "Unable to load chunk: %s inside file %s";
+    private static final String MESSAGE = "Unable to write chunk: %s inside file %s";
     private final ChunkLocation chunkLocation;
     private final File file;
 
