@@ -1,5 +1,6 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -59,7 +60,25 @@ public class ChunkLocation {
     public void setWorld(@Nullable World world) {
         this.world = world;
     }
+    @NotNull
+    public ChunkLocation add(int x, int y, int z) {
+        return add(new ChunkLocation(x, y, z));
+    }
 
+    @NotNull
+    public ChunkLocation add(ChunkLocation location) {
+        return new ChunkLocation(world, x + location.getX(), y + location.y, z + location.z);
+    }
+
+    @NotNull
+    public ChunkLocation subtract(int x, int y, int z) {
+        return subtract(new ChunkLocation(x, y, z));
+    }
+
+    @NotNull
+    public ChunkLocation subtract(ChunkLocation location) {
+        return new ChunkLocation(world, x - location.getX(), y - location.y, z - location.z);
+    }
     public void forEach(Consumer<ChunkLocation> consumer) {
         for (int a = x; a < x + 16; a++) {
             for (int b = x; b < x + 16; b++) {
