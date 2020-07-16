@@ -58,6 +58,11 @@ public class ChunkLocation {
         return Optional.ofNullable(world);
     }
 
+    @Nullable
+    public World getNullableWorld() {
+        return world;
+    }
+
     public void setWorld(@Nullable World world) {
         this.world = world;
     }
