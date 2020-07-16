@@ -12,6 +12,7 @@ public abstract class ModItem implements Item {
     protected final Mod mod;
     protected final String name;
     protected final int id;
+    protected String texture;
 
     public ModItem(Mod mod) {
         this.mod = mod;
@@ -20,6 +21,7 @@ public abstract class ModItem implements Item {
         Key keyA = getClass().getAnnotation(Key.class);
         this.nameKey = new NameKey(mod, keyA == null ? getClass().getSimpleName() : keyA.value());
         this.id = nameKey.hashCode();
+        texture = getClass().getAnnotation(Texture.class).value();
     }
 
     @Override
@@ -29,7 +31,7 @@ public abstract class ModItem implements Item {
 
     @Override
     public String getTexture() {
-        return getClass().getAnnotation(Texture.class).value();
+        return texture;
     }
 
     @Override
