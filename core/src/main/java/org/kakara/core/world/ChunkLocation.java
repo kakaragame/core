@@ -115,8 +115,7 @@ public class ChunkLocation {
         ChunkLocation location = (ChunkLocation) o;
         return Double.compare(location.x, x) == 0 &&
                 Double.compare(location.y, y) == 0 &&
-                Double.compare(location.z, z) == 0 &&
-                Objects.equals(world, location.world);
+                Double.compare(location.z, z) == 0;
     }
 
     @Override

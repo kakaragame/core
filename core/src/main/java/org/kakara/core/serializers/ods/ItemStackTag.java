@@ -26,12 +26,16 @@ public class ItemStackTag extends ObjectTag {
         addTag(ODS.wrap("lore", stack.getLore()));
     }
 
-    public ItemStack getItemStack() {
-        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem((Integer) getTag("item").getValue()).orElseThrow(() -> new RuntimeException("TODO make ItemNotFoundException")));
-        itemStack.setCount((Integer) getTag("count").getValue());
-        itemStack.setName(ODS.unwrap((StringTag) getTag("name")));
-        itemStack.setLore(ODS.unwrapListTag((ListTag<? extends Tag<String>>) getTag("lore")));
+    public static ItemStack getItemStack(ObjectTag tag) {
+        ItemStack itemStack = Kakara.createItemStack(Kakara.getItemManager().getItem((Integer) tag.getTag("item").getValue()).orElseThrow(() -> new RuntimeException("TODO make ItemNotFoundException")));
+        itemStack.setCount((Integer) tag.getTag("count").getValue());
+        itemStack.setName(ODS.unwrap((StringTag) tag.getTag("name")));
+        itemStack.setLore(ODS.unwrapListTag((ListTag<? extends Tag<String>>) tag.getTag("lore")));
         //TODO add support for charms.
         return itemStack;
+    }
+
+    public ItemStack getItemStack() {
+        return getItemStack(this);
     }
 }

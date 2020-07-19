@@ -12,9 +12,9 @@ import java.util.UUID;
 
 public class LocationTag extends ObjectTag {
 
-    public LocationTag(String key, Location loc){
+    public LocationTag(String key, Location loc) {
         super(key);
-        if(loc.getWorld().isPresent())
+        if (loc.getWorld().isPresent())
             addTag(new StringTag("world", loc.getWorld().get().getUUID().toString()));
         addTag(new DoubleTag("x", loc.getX()));
         addTag(new DoubleTag("y", loc.getY()));
@@ -23,9 +23,25 @@ public class LocationTag extends ObjectTag {
         addTag(new DoubleTag("pitch", loc.getPitch()));
     }
 
-    public Location getLocation(){
+    public static Location getLocation(ObjectTag tag) {
         World w = null;
-        if(hasTag("world")) w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
+        if (tag.hasTag("world")) {
+            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
+        }
+        double x = (Double) tag.getTag("x").getValue();
+        double y = (Double) tag.getTag("y").getValue();
+        double z = (Double) tag.getTag("z").getValue();
+        float yaw = (Float) tag.getTag("yaw").getValue();
+        float pitch = (Float) tag.getTag("pitch").getValue();
+        return new Location(w, x, y, z, pitch, yaw);
+
+    }
+
+
+    public Location getLocation() {
+        World w = null;
+        if (hasTag("world"))
+            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
         double x = (Double) getTag("x").getValue();
         double y = (Double) getTag("y").getValue();
         double z = (Double) getTag("z").getValue();

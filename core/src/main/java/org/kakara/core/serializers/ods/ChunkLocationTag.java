@@ -25,7 +25,19 @@ public class ChunkLocationTag extends ObjectTag {
         int x = (Integer) getTag("x").getValue();
         int y = (Integer) getTag("y").getValue();
         int z = (Integer) getTag("z").getValue();
-        ;
+
+
+        return new ChunkLocation(w, x, y, z);
+    }
+
+    public static ChunkLocation getChunkLocation(ObjectTag tag) {
+        World w = null;
+        if (tag.hasTag("world"))
+            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
+        int x = (Integer) tag.getTag("x").getValue();
+        int y = (Integer) tag.getTag("y").getValue();
+        int z = (Integer) tag.getTag("z").getValue();
+
 
         return new ChunkLocation(w, x, y, z);
     }

@@ -5,6 +5,7 @@ import me.ryandw11.ods.tags.ObjectTag;
 import org.kakara.core.serializers.ods.ChunkLocationTag;
 import org.kakara.core.serializers.ods.GameBlockTag;
 import org.kakara.core.world.ChunkContent;
+import org.kakara.core.world.ChunkLocation;
 import org.kakara.core.world.GameBlock;
 
 import java.util.ArrayList;
@@ -24,14 +25,14 @@ public class ChunkContentTag extends ObjectTag {
         addTag(new ListTag<>("blocks", gameBlocks));
     }
 
-    public ChunkContent getChunk() {
-        ChunkLocationTag loc = (ChunkLocationTag) getTag("location");
-        ListTag<GameBlockTag> blocks = (ListTag<GameBlockTag>) getTag("blocks");
+    public static ChunkContent getChunk(ObjectTag tag) {
+        ChunkLocation loc = ChunkLocationTag.getChunkLocation((ChunkLocationTag) tag.getTag("location"));
+        ListTag<ObjectTag> blocks = (ListTag<ObjectTag>) tag.getTag("blocks");
         List<GameBlock> gameBlocks = new ArrayList<>();
         blocks.getValue().forEach(block -> {
-            gameBlocks.add(block.getGameBlock());
+            gameBlocks.add(GameBlockTag.getGameBlock(block));
         });
 
-        return new ChunkContent(gameBlocks, loc.getChunkLocation() );
+        return new ChunkContent(gameBlocks, loc);
     }
 }
