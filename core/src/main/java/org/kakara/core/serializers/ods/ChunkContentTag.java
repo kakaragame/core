@@ -26,7 +26,7 @@ public class ChunkContentTag extends ObjectTag {
     }
 
     public static ChunkContent getChunk(ObjectTag tag) {
-        ChunkLocation loc = ChunkLocationTag.getChunkLocation((ChunkLocationTag) tag.getTag("location"));
+        ChunkLocation loc = ChunkLocationTag.getChunkLocation((ObjectTag) tag.getTag("location"));
         ListTag<ObjectTag> blocks = (ListTag<ObjectTag>) tag.getTag("blocks");
         List<GameBlock> gameBlocks = new ArrayList<>();
         blocks.getValue().forEach(block -> {

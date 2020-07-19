@@ -20,13 +20,14 @@ public class LocationTag extends ObjectTag {
         addTag(new DoubleTag("y", loc.getY()));
         addTag(new DoubleTag("z", loc.getZ()));
         addTag(new FloatTag("yaw", loc.getYaw()));
-        addTag(new DoubleTag("pitch", loc.getPitch()));
+        addTag(new FloatTag("pitch", loc.getPitch()));
     }
 
     public static Location getLocation(ObjectTag tag) {
         World w = null;
         if (tag.hasTag("world")) {
-            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
+            //Ignore this for now
+            //w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
         }
         double x = (Double) tag.getTag("x").getValue();
         double y = (Double) tag.getTag("y").getValue();
