@@ -26,8 +26,7 @@ public class LocationTag extends ObjectTag {
     public static Location getLocation(ObjectTag tag) {
         World w = null;
         if (tag.hasTag("world")) {
-            //Ignore this for now
-            //w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
+            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
         }
         double x = (Double) tag.getTag("x").getValue();
         double y = (Double) tag.getTag("y").getValue();
