@@ -12,6 +12,7 @@ public interface Inventory extends Iterable<ItemStack> {
     @NotNull
     ItemStack[] getContents();
 
+    void addItemStack(@NotNull ItemStack itemStack);
 
     void setItemStack(@NotNull ItemStack itemStack, int index);
 }

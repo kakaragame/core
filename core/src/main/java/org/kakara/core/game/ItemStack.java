@@ -38,4 +38,6 @@ public interface ItemStack {
     void setLore(List<String> lore);
 
     ItemStack clone();
+
+    boolean equalsIgnoreCount(ItemStack itemStack);
 }

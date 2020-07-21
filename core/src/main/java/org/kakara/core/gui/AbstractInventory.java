@@ -9,12 +9,22 @@ import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbstractInventory implements Inventory {
-    private final List<ItemStack> contents;
+    protected final List<ItemStack> contents;
     private final int capacity;
 
     public AbstractInventory(int capacity) {
         contents = InventoryUtils.listWithAir(capacity);
         this.capacity = capacity;
+    }
+
+    @Override
+    public void addItemStack(@NotNull ItemStack itemStack) {
+        for (int i = 0; i < contents.size(); i++) {
+            if (contents.get(i).getItem().getId() == 0) {
+                contents.set(i, itemStack);
+                return;
+            }
+        }
     }
 
     @Override
