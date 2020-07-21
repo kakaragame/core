@@ -36,4 +36,6 @@ public interface ItemStack {
     List<String> getLore();
 
     void setLore(List<String> lore);
+
+    ItemStack clone();
 }
