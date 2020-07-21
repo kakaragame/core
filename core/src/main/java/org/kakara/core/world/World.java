@@ -2,6 +2,7 @@ package org.kakara.core.world;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kakara.core.Statusable;
 import org.kakara.core.game.Block;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.player.Player;
@@ -13,7 +14,7 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
-public interface World {
+public interface World extends Statusable {
     @NotNull
     Set<Chunk> getChunks();
 
