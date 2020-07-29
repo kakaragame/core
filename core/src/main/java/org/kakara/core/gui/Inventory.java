@@ -3,7 +3,7 @@ package org.kakara.core.gui;
 import org.jetbrains.annotations.NotNull;
 import org.kakara.core.game.ItemStack;
 
-public interface Inventory extends Iterable<ItemStack> {
+public interface Inventory extends Iterable<ItemStack>, Menu {
     @NotNull
     ItemStack getItemStack(int index);
 
