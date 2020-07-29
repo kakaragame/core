@@ -5,7 +5,8 @@ import org.kakara.core.mod.Mod;
 import java.util.Objects;
 
 /**
- * This is a object version of the Mod:Key system.
+ * This is a object version of the MOD:KEY system.
+ * All Values must be uppercase
  */
 public class NameKey {
     private final String name;
@@ -13,17 +14,17 @@ public class NameKey {
     private String value;
 
     public NameKey(String name, String key) {
-        this.name = name;
-        this.key = key;
+        this.name = name.toUpperCase();
+        this.key = key.toUpperCase();
     }
 
     public NameKey(Mod mod, String key) {
-        this(mod.getName(), key);
+        this(mod.getUppercaseName(), key);
     }
 
     public NameKey(String asString) {
-        String[] split = asString.split(":");
-        if (split.length != 2) throw new IllegalArgumentException("Must follow name:key");
+        String[] split = asString.toUpperCase().split(":");
+        if (split.length != 2) throw new IllegalArgumentException("Must follow NAME:KEY");
         name = split[0];
         key = split[1];
         value = asString;
@@ -39,7 +40,7 @@ public class NameKey {
 
     @Override
     public String toString() {
-        if(value==null) value = String.format("%s:%s", name, key);
+        if (value == null) value = String.format("%s:%s", name, key);
         return value;
     }
 

@@ -39,6 +39,11 @@ public class PlayerEntity extends HumanoidEntity {
     }
 
     @Override
+    public String getKey() {
+        return null;
+    }
+
+    @Override
     public PathFinder getPathFinder() {
         return null;
     }

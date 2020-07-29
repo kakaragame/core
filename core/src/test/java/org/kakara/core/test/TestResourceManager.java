@@ -2,18 +2,18 @@ package org.kakara.core.test;
 
 import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
-import org.kakara.core.resources.Resource;
-import org.kakara.core.resources.ResourceManager;
-import org.kakara.core.resources.ResourceType;
-import org.kakara.core.resources.TextureResolution;
+import org.kakara.core.resources.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public class TestResourceManager implements ResourceManager {
     private GameInstance GameInstance;
 
+
     @Override
-    public List<Resource> getAllTextures(TextureResolution resolution) {
+    public Set<Texture> getAllTextures() {
         return null;
     }
 
@@ -23,7 +23,7 @@ public class TestResourceManager implements ResourceManager {
     }
 
     @Override
-    public void registerTexture(String path, TextureResolution textureResolution, Mod mod) {
+    public void registerTexture(String path, TextureResolution resolution, Mod mod) {
 
     }
 
@@ -33,12 +33,17 @@ public class TestResourceManager implements ResourceManager {
     }
 
     @Override
-    public Resource getTexture(String path, TextureResolution resourceType, Mod mod) {
+    public Resource getTexture(String path, TextureResolution resolution, Mod mod) {
         return null;
     }
 
     @Override
-    public void load(GameInstance GameInstance) {
-        this.GameInstance = GameInstance;
+    public Optional<Texture> getTexture(String path, Mod mod) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void load(org.kakara.core.GameInstance kakaraCore) {
+
     }
 }

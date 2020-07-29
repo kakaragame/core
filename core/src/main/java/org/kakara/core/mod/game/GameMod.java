@@ -1,22 +1,18 @@
 package org.kakara.core.mod.game;
 
-import me.kingtux.simpleannotation.MethodFinder;
 import org.kakara.core.GameInstance;
-import org.kakara.core.Kakara;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.mod.ModRules;
 import org.kakara.core.mod.ModType;
 import org.kakara.core.resources.ResourceType;
 import org.slf4j.Logger;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 public abstract class GameMod implements Mod {
     private GameInstance gameInstance;
     private ModRules modRules;
     private ModClassLoader modClassLoader;
     private Logger logger;
+    private String upperCaseName;
 
     protected GameMod() {
     }
@@ -93,5 +89,11 @@ public abstract class GameMod implements Mod {
 
     void setModRules(ModRules modRules) {
         this.modRules = modRules;
+        upperCaseName = modRules.getName().toUpperCase();
+    }
+
+    @Override
+    public String getUppercaseName() {
+        return upperCaseName;
     }
 }

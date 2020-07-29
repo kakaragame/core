@@ -1,7 +1,7 @@
 package org.kakara.core.mod.game;
 
 import org.kakara.core.NameKey;
-import org.kakara.core.annotations.Id;
+import org.kakara.core.annotations.Key;
 import org.kakara.core.annotations.Name;
 import org.kakara.core.key.KeyBindHandler;
 import org.kakara.core.mod.Mod;
@@ -27,7 +27,7 @@ public abstract class ModKeyBindHandler implements KeyBindHandler {
     }
 
     public String getID() {
-        Id name = getClass().getAnnotation(Id.class);
+        Key name = getClass().getAnnotation(Key.class);
         return name == null ? getClass().getSimpleName() : name.value();
     }
 

@@ -1,13 +1,16 @@
 package org.kakara.core.world;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
 public class ChunkLocation {
-    @Nullable private World world;
+    @Nullable
+    private World world;
     private int x;
     private int y;
     private int z;
@@ -55,8 +58,33 @@ public class ChunkLocation {
         return Optional.ofNullable(world);
     }
 
+    @Nullable
+    public World getNullableWorld() {
+        return world;
+    }
+
     public void setWorld(@Nullable World world) {
         this.world = world;
+    }
+
+    @NotNull
+    public ChunkLocation add(int x, int y, int z) {
+        return add(new ChunkLocation(x, y, z));
+    }
+
+    @NotNull
+    public ChunkLocation add(ChunkLocation location) {
+        return new ChunkLocation(world, x + location.getX(), y + location.y, z + location.z);
+    }
+
+    @NotNull
+    public ChunkLocation subtract(int x, int y, int z) {
+        return subtract(new ChunkLocation(x, y, z));
+    }
+
+    @NotNull
+    public ChunkLocation subtract(ChunkLocation location) {
+        return new ChunkLocation(world, x - location.getX(), y - location.y, z - location.z);
     }
 
     public void forEach(Consumer<ChunkLocation> consumer) {
@@ -87,12 +115,15 @@ public class ChunkLocation {
         ChunkLocation location = (ChunkLocation) o;
         return Double.compare(location.x, x) == 0 &&
                 Double.compare(location.y, y) == 0 &&
-                Double.compare(location.z, z) == 0 &&
-                Objects.equals(world, location.world);
+                Double.compare(location.z, z) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(world, x, y, z);
+        return Arrays.hashCode(new Integer[]{x, y, z});
+    }
+
+    public String toSimpleString() {
+        return "x=" + x + " y=" + y + " z=" + z;
     }
 }

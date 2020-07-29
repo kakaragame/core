@@ -2,7 +2,6 @@ package org.kakara.core;
 
 import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
-import org.kakara.core.data.SerializerManager;
 import org.kakara.core.events.EventManager;
 import org.kakara.core.game.GameSettings;
 import org.kakara.core.game.Item;
@@ -13,6 +12,7 @@ import org.kakara.core.key.KeyBindManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
+import org.kakara.core.resources.Texture;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
 import org.kakara.core.world.WorldManager;
@@ -49,8 +49,6 @@ public interface GameInstance {
     GameTypes getType();
 
     WorldGenerationManager getWorldGenerationManager();
-
-    SerializerManager getSerializerManager();
 
     CommandManager getCommandManager();
 

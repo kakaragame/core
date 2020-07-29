@@ -8,24 +8,30 @@ import org.kakara.core.mod.Mod;
 import java.util.Objects;
 
 public abstract class ModItem implements Item {
-    private final NameKey nameKey;
-    private Mod mod;
-    private String name;
-    private int id;
+    protected final NameKey nameKey;
+    protected final Mod mod;
+    protected final String name;
+    protected final int id;
+    protected String texture;
 
     public ModItem(Mod mod) {
         this.mod = mod;
-        Name name = getClass().getAnnotation(Name.class);
-        this.name = name == null ? getClass().getSimpleName() : name.value();
-        Id id = getClass().getAnnotation(Id.class);
-        this.nameKey = new NameKey(mod, id == null ? getClass().getSimpleName() : id.value());
+        Name nameA = getClass().getAnnotation(Name.class);
+        this.name = nameA == null ? getClass().getSimpleName() : nameA.value();
+        Key keyA = getClass().getAnnotation(Key.class);
+        this.nameKey = new NameKey(mod, keyA == null ? getClass().getSimpleName() : keyA.value());
         this.id = nameKey.hashCode();
+        texture = getClass().getAnnotation(Texture.class).value();
     }
 
+    @Override
+    public String getKey() {
+        return nameKey.getKey();
+    }
 
     @Override
     public String getTexture() {
-        return getClass().getAnnotation(Texture.class).value();
+        return texture;
     }
 
     @Override

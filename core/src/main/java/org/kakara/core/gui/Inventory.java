@@ -1,4 +1,20 @@
 package org.kakara.core.gui;
 
-public interface Inventory {
+import org.jetbrains.annotations.NotNull;
+import org.kakara.core.game.ItemStack;
+
+public interface Inventory extends Iterable<ItemStack>, Menu {
+    @NotNull
+    ItemStack getItemStack(int index);
+
+    int getSize();
+
+    @NotNull
+    ItemStack[] getContents();
+
+    void addItemStack(@NotNull ItemStack itemStack);
+
+    void setItemStack(@NotNull ItemStack itemStack, int index);
+
+    InventoryRenderer getRenderer();
 }
