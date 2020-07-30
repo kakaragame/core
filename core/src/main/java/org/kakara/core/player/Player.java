@@ -21,6 +21,8 @@ public interface Player extends OfflinePlayer, GameEntity, CommandSender, Permis
 
     short getHealth();
 
+
+
     void setHunger(short hunger);
 
     short getHunger();
