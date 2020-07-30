@@ -142,17 +142,17 @@ public class GameModManager implements ModManager {
         loadedMods.forEach(Mod::postEnable);
     }
 
-    private void loadResources(Mod mod, JarFile file) throws IOException {
+    public static void loadResources(Mod mod, JarFile file) throws IOException {
         List<String> paths = TheCodeOfAMadMan.getResourcesInJar(file, "resources", true);
         for (String s : paths) {
             String path = s.replace("/resources/", "");
             String[] splitPath = path.split("/");
             if (splitPath[0].equalsIgnoreCase("texture")) {
                 String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
-                gameInstance.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
+                Kakara.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
             } else {
                 String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
-                gameInstance.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
+                Kakara.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
             }
         }
     }
