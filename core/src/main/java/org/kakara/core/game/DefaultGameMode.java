@@ -18,4 +18,10 @@ public enum DefaultGameMode implements GameMode {
     public Set<String> getProperties() {
         return properties;
     }
+
+    @Override
+    public String getName() {
+        return name();
+    }
 }
+
