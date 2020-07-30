@@ -1,33 +1,33 @@
 package org.kakara.core.gui.menu.items;
 
 import org.kakara.core.events.FunctionalEvent;
-import org.kakara.core.gui.events.ItemGrabEvent;
-import org.kakara.core.gui.events.ItemPlaceEvent;
+import org.kakara.core.gui.events.ItemGrabInventoryEvent;
+import org.kakara.core.gui.events.ItemPlaceInventoryEvent;
 
 import java.awt.*;
 
 public class ItemStackElement implements MenuElement {
     private final Point position;
-    private FunctionalEvent<ItemGrabEvent> itemGrabEvent;
-    private FunctionalEvent<ItemPlaceEvent> itemPlaceEvent;
+    private FunctionalEvent<ItemGrabInventoryEvent> itemGrabEvent;
+    private FunctionalEvent<ItemPlaceInventoryEvent> itemPlaceEvent;
 
     public ItemStackElement(Point position) {
         this.position = position;
     }
 
-    public FunctionalEvent<ItemGrabEvent> getItemGrabEvent() {
+    public FunctionalEvent<ItemGrabInventoryEvent> getItemGrabEvent() {
         return itemGrabEvent;
     }
 
-    public void setItemGrabEvent(FunctionalEvent<ItemGrabEvent> itemGrabEvent) {
+    public void setItemGrabEvent(FunctionalEvent<ItemGrabInventoryEvent> itemGrabEvent) {
         this.itemGrabEvent = itemGrabEvent;
     }
 
-    public FunctionalEvent<ItemPlaceEvent> getItemPlaceEvent() {
+    public FunctionalEvent<ItemPlaceInventoryEvent> getItemPlaceEvent() {
         return itemPlaceEvent;
     }
 
-    public void setItemPlaceEvent(FunctionalEvent<ItemPlaceEvent> itemPlaceEvent) {
+    public void setItemPlaceEvent(FunctionalEvent<ItemPlaceInventoryEvent> itemPlaceEvent) {
         this.itemPlaceEvent = itemPlaceEvent;
     }
 
