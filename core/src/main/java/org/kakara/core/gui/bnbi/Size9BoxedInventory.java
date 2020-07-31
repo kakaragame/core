@@ -13,7 +13,7 @@ public class Size9BoxedInventory extends BasicNineBoxedInventory {
     }
 
     public static void setRenderer(InventoryRenderer renderer) {
-        if (Size9BoxedInventory.renderer == null) {
+        if (Size9BoxedInventory.renderer != null) {
             throw new IllegalStateException("InventoryRenderer already set");
         }
         Size9BoxedInventory.renderer = renderer;

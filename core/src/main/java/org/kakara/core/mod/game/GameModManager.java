@@ -147,12 +147,16 @@ public class GameModManager implements ModManager {
         for (String s : paths) {
             String path = s.replace("/resources/", "");
             String[] splitPath = path.split("/");
-            if (splitPath[0].equalsIgnoreCase("texture")) {
-                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
-                Kakara.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
-            } else {
-                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
-                Kakara.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
+            try {
+                if (splitPath[0].equalsIgnoreCase("texture")) {
+                    String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
+                    Kakara.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
+                } else {
+                    String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
+                    Kakara.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
+                }
+            }catch (IllegalArgumentException e){
+
             }
         }
     }
