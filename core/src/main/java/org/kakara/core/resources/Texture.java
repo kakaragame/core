@@ -3,15 +3,14 @@ package org.kakara.core.resources;
 import org.kakara.core.Kakara;
 import org.kakara.core.mod.Mod;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Texture {
     private Map<TextureResolution, Resource> resolutionResourceMap = new HashMap<>();
     private String path;
     private Mod mod;
     private TextureResolution defaultResolution = TextureResolution._16;
+    private Set<String> properties = new HashSet<>();
 
     public Texture(String path, Mod mod) {
         this.path = path;
@@ -70,6 +69,13 @@ public class Texture {
         return mod;
     }
 
+    public void addProperty(String property) {
+        properties.add(property);
+    }
+
+    public Set<String> getProperties() {
+        return properties;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
