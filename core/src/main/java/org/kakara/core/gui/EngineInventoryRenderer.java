@@ -11,7 +11,6 @@ public class EngineInventoryRenderer implements InventoryRenderer {
     private EngineController engineController;
     private final Texture inventoryBackground;
     private final List<MenuElement> elementList;
-    private UUID uuid;
 
     public EngineInventoryRenderer(Texture inventoryBackground, List<MenuElement> elementList) {
         this.inventoryBackground = inventoryBackground;
@@ -23,25 +22,12 @@ public class EngineInventoryRenderer implements InventoryRenderer {
         if (engineController == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        if (uuid == null) {
-            throw new IllegalStateException("Inventory is already rendered");
-
-        }
-        uuid = engineController.render(itemStacks, inventoryBackground, elementList);
-    }
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
+        engineController.render(itemStacks, inventoryBackground, elementList);
     }
 
     @Override
     public void closeInventory() {
-        engineController.close(uuid);
-        uuid = null;
+        engineController.close();
     }
 
     public void setEngineController(EngineController engineController) {
