@@ -32,7 +32,7 @@ repositories {
         url = 'https://jitpack.io'
     }
     maven {
-        url 'https://repo.thevideogamevillage.com/repository/maven-snapshots/'
+        url 'https://repo.ryandw11.com/repository/maven-snapshots/'
     }
 
 }
