@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface EngineController {
-    void render(ItemStack[] itemStacks, Texture inventoryBackground, List<MenuElement> elementList);
+    void render(Inventory inventory, Texture inventoryBackground, List<MenuElement> elementList);
 
     void close();
 }
+

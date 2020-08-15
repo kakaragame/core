@@ -18,11 +18,11 @@ public class EngineInventoryRenderer implements InventoryRenderer {
     }
 
     @Override
-    public void render(ItemStack[] itemStacks) {
+    public void render(Inventory inventory) {
         if (engineController == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        engineController.render(itemStacks, inventoryBackground, elementList);
+        engineController.render(inventory, inventoryBackground, elementList);
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public interface InventoryRenderer {
 
-    void render(ItemStack[] itemStacks);
+    void render(Inventory inventory);
 
     void closeInventory();
 }
