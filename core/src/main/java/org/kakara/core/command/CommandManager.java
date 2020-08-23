@@ -1,10 +1,11 @@
 package org.kakara.core.command;
 
 import org.jetbrains.annotations.NotNull;
+import org.kakara.core.mod.annotations.LoadingStage;
 
 import java.util.Set;
 
-public interface CommandManager {
+public interface CommandManager extends LoadingStage {
     /**
      * Executes a command.
      * <b>Do not include command prefix</b>
