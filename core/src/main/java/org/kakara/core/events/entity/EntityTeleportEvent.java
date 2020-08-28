@@ -9,8 +9,8 @@ public class EntityTeleportEvent extends EntityEvent implements Cancellable {
     private Location newLocation;
     /**
      * @param gameEntity the GameEntity used by the event.
-     * @param oldLocation
-     * @param newLocation
+     * @param oldLocation The GameEntity starting location
+     * @param newLocation the GameEntity new location
      */
     public EntityTeleportEvent(GameEntity gameEntity, Location oldLocation, Location newLocation) {
         super(gameEntity);
