@@ -18,7 +18,9 @@ public abstract class AbstractInventory implements Inventory {
     @Override
     public void addItemStack(@NotNull ItemStack itemStack) {
         for (int i = 0; i < contents.size(); i++) {
-            if (contents.get(i).getItem().getId() == 0) {
+            if (contents.get(i).equalsIgnoreCount(itemStack)) {
+                contents.get(i).setCount(contents.get(i).getCount() + itemStack.getCount());
+            } else if (contents.get(i).getItem().getId() == 0) {
                 contents.set(i, itemStack);
                 return;
             }
