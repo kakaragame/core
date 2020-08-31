@@ -22,7 +22,6 @@ public abstract class AbstractInventory implements Inventory {
                 contents.get(i).setCount(contents.get(i).getCount() + itemStack.getCount());
             } else if (contents.get(i).getItem().getId() == 0) {
                 contents.set(i, itemStack);
-                return;
             }
         }
         redraw();
