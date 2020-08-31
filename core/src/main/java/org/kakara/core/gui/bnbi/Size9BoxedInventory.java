@@ -21,6 +21,11 @@ public class Size9BoxedInventory extends BasicNineBoxedInventory {
 
 
     @Override
+    public void redraw() {
+renderer.redraw(this);
+    }
+
+    @Override
     public InventoryRenderer getRenderer() {
         return renderer;
     }

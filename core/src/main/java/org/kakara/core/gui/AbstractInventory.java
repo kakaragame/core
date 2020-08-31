@@ -2,9 +2,7 @@ package org.kakara.core.gui;
 
 import org.jetbrains.annotations.NotNull;
 import org.kakara.core.game.ItemStack;
-import org.kakara.core.gui.Inventory;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,6 +23,12 @@ public abstract class AbstractInventory implements Inventory {
                 return;
             }
         }
+        redraw();
+    }
+
+    @Override
+    public void clear() {
+        contents.clear();
     }
 
     @Override

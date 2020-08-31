@@ -20,7 +20,10 @@ public class Size27BoxedInventory extends BasicNineBoxedInventory {
         Size27BoxedInventory.renderer = renderer;
     }
 
-
+    @Override
+    public void redraw() {
+        renderer.redraw(this);
+    }
     @Override
     public InventoryRenderer getRenderer() {
         return renderer;

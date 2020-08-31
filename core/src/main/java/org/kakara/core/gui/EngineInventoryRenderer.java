@@ -1,11 +1,9 @@
 package org.kakara.core.gui;
 
-import org.kakara.core.game.ItemStack;
 import org.kakara.core.gui.menu.items.MenuElement;
 import org.kakara.core.resources.Texture;
 
 import java.util.List;
-import java.util.UUID;
 
 public class EngineInventoryRenderer implements InventoryRenderer {
     private EngineController engineController;
@@ -28,6 +26,14 @@ public class EngineInventoryRenderer implements InventoryRenderer {
     @Override
     public void closeInventory() {
         engineController.close();
+    }
+
+    @Override
+    public void redraw(Inventory inventory) {
+        if (engineController == null) {
+            throw new IllegalStateException("Engine Controller is not ready");
+        }
+        engineController.redraw(inventory, inventoryBackground, elementList);
     }
 
     public void setEngineController(EngineController engineController) {

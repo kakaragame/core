@@ -16,5 +16,9 @@ public interface Inventory extends Iterable<ItemStack>, Menu {
 
     void setItemStack(@NotNull ItemStack itemStack, int index);
 
+    void clear();
+
+    void redraw();
+
     InventoryRenderer getRenderer();
 }
