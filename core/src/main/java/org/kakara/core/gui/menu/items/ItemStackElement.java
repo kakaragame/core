@@ -12,13 +12,16 @@ public class ItemStackElement implements MenuElement {
     private final Point position;
     private FunctionalEvent<ItemGrabInventoryEvent> itemGrabEvent;
     private FunctionalEvent<ItemPlaceInventoryEvent> itemPlaceEvent;
+    private final int slot;
 
-    public ItemStackElement(Point position) {
+    public ItemStackElement(Point position, int slot) {
         this.position = position;
+        this.slot = slot;
     }
 
     public ItemStackElement(JsonObject jo) {
         position = ParsingUtils.parsePoint(jo.get("position").getAsString());
+        slot = jo.get("slot").getAsInt();
     }
 
     public FunctionalEvent<ItemGrabInventoryEvent> getItemGrabEvent() {
@@ -40,5 +43,9 @@ public class ItemStackElement implements MenuElement {
     @Override
     public Point getPosition() {
         return position;
+    }
+
+    public int getSlot() {
+        return slot;
     }
 }
