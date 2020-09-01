@@ -4,11 +4,12 @@ import org.kakara.core.gui.menu.items.MenuElement;
 import org.kakara.core.resources.Texture;
 
 import java.util.List;
+import java.util.Set;
 
 public interface EngineController {
-    void render(Inventory inventory, Texture inventoryBackground, List<MenuElement> elementList);
+    void render(Inventory inventory, Texture inventoryBackground, Set<MenuElement> elementList);
 
-    void redraw(Inventory inventory, Texture inventoryBackground, List<MenuElement> elementList);
+    void redraw(Inventory inventory, Texture inventoryBackground, Set<MenuElement> elementList);
 
     void close();
 }

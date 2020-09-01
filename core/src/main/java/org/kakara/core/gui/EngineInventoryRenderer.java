@@ -4,13 +4,14 @@ import org.kakara.core.gui.menu.items.MenuElement;
 import org.kakara.core.resources.Texture;
 
 import java.util.List;
+import java.util.Set;
 
 public class EngineInventoryRenderer implements InventoryRenderer {
     private EngineController engineController;
     private final Texture inventoryBackground;
-    private final List<MenuElement> elementList;
+    private final Set<MenuElement> elementList;
 
-    public EngineInventoryRenderer(Texture inventoryBackground, List<MenuElement> elementList) {
+    public EngineInventoryRenderer(Texture inventoryBackground, Set<MenuElement> elementList) {
         this.inventoryBackground = inventoryBackground;
         this.elementList = elementList;
     }
