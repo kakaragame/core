@@ -3,7 +3,7 @@ package org.kakara.core.gui.menu.items;
 import com.google.gson.JsonObject;
 import org.kakara.core.events.FunctionalEvent;
 import org.kakara.core.gui.events.ItemGrabInventoryEvent;
-import org.kakara.core.gui.events.ItemPlaceInventoryEvent;
+import org.kakara.core.gui.events.ItemPlaceEvent;
 import org.kakara.core.utils.ParsingUtils;
 
 import java.awt.*;
@@ -12,7 +12,7 @@ public class ItemStackElement implements MenuElement {
     private final Point position;
     private final int slot;
     private FunctionalEvent<ItemGrabInventoryEvent> itemGrabEvent;
-    private FunctionalEvent<ItemPlaceInventoryEvent> itemPlaceEvent;
+    private FunctionalEvent<ItemPlaceEvent> itemPlaceEvent;
 
     public ItemStackElement(Point position, int slot) {
         this.position = position;
@@ -32,11 +32,11 @@ public class ItemStackElement implements MenuElement {
         this.itemGrabEvent = itemGrabEvent;
     }
 
-    public FunctionalEvent<ItemPlaceInventoryEvent> getItemPlaceEvent() {
+    public FunctionalEvent<ItemPlaceEvent> getItemPlaceEvent() {
         return itemPlaceEvent;
     }
 
-    public void setItemPlaceEvent(FunctionalEvent<ItemPlaceInventoryEvent> itemPlaceEvent) {
+    public void setItemPlaceEvent(FunctionalEvent<ItemPlaceEvent> itemPlaceEvent) {
         this.itemPlaceEvent = itemPlaceEvent;
     }
 

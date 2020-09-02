@@ -7,7 +7,7 @@ import org.kakara.core.gui.Inventory;
 import org.kakara.core.player.Player;
 
 public class ItemPlaceEvent extends InventoryEvent implements Cancellable {
-    private final static HandlerList HANDLERLIST = new HandlerList(ItemGrabEvent.class);
+    private final static HandlerList HANDLERLIST = new HandlerList(ItemPlaceEvent.class);
     private boolean cancelled = false;
     private ItemStack itemStack;
 
