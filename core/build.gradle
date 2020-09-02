@@ -32,7 +32,7 @@ repositories {
         url = 'https://jitpack.io'
     }
     maven {
-        url 'https://repo.thevideogamevillage.com/repository/maven-snapshots/'
+        url 'https://repo.ryandw11.com/repository/maven-snapshots/'
     }
 
 }
@@ -42,7 +42,7 @@ dependencies {
     compile 'org.apache.commons:commons-lang3:3.11'
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'com.google.guava:guava:29.0-jre'
-    compile group: 'org.jetbrains', name: 'annotations', version: '19.0.0'
+    compile group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
     compileOnly 'me.ryandw11:ods:1.0-MEM-SNAPSHOT'
 }
 

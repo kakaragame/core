@@ -2,7 +2,6 @@ package org.kakara.core.serializers.gson;
 
 import com.google.gson.GsonBuilder;
 import org.kakara.core.NameKey;
-import org.kakara.core.client.SaveSettings;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.modinstance.ModInstance;
 import org.kakara.core.player.OfflinePlayer;

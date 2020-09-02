@@ -6,6 +6,7 @@ public class PermissionSet extends HashSet<String> {
     /**
      * This is essentially a normal HashSet#contains except it also checks for wildcard permissions.
      * e.g. if the set contained "thing.*", and you checked for "thing.other.extra", it would return true.
+     *
      * @param object the object to check the containment of
      * @return whether this set contains object
      */

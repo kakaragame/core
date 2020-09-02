@@ -4,7 +4,6 @@ import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.resources.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 

@@ -12,6 +12,14 @@ public class BasicNineBoxedInventoryBuilder implements InventoryBuilder<BasicNin
 
     @Override
     public BasicNineBoxedInventory build() {
-        return new BasicNineBoxedInventory(capacity);
+        switch (capacity) {
+            case 9:
+                return new Size9BoxedInventory();
+            case 27:
+                return new Size27BoxedInventory();
+            //TODO add more sizes
+        }
+
+        throw new IllegalArgumentException("Capacity cannot be " + capacity);
     }
 }

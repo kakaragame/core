@@ -2,13 +2,12 @@ package org.kakara.core.serializers.ods;
 
 import me.ryandw11.ods.ODS;
 import me.ryandw11.ods.Tag;
-import me.ryandw11.ods.tags.*;
+import me.ryandw11.ods.tags.IntTag;
+import me.ryandw11.ods.tags.ListTag;
+import me.ryandw11.ods.tags.ObjectTag;
+import me.ryandw11.ods.tags.StringTag;
 import org.kakara.core.Kakara;
 import org.kakara.core.game.ItemStack;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ItemStackTag extends ObjectTag {
 

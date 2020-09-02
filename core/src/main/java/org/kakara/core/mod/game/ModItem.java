@@ -1,7 +1,10 @@
 package org.kakara.core.mod.game;
 
 import org.kakara.core.NameKey;
-import org.kakara.core.annotations.*;
+import org.kakara.core.annotations.Key;
+import org.kakara.core.annotations.Model;
+import org.kakara.core.annotations.Name;
+import org.kakara.core.annotations.Texture;
 import org.kakara.core.game.Item;
 import org.kakara.core.mod.Mod;
 

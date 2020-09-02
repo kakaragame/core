@@ -7,15 +7,17 @@ import java.util.Optional;
 
 /**
  * A Method finder!
- * @since 1.3
+ *
  * @author KingTux
+ * @since 1.3
  */
 public class MethodFinder {
 
 
     /**
      * All methods found with that annotation
-     * @param classToCheck class to check
+     *
+     * @param classToCheck    class to check
      * @param annotationClass the annotation class
      * @return The methods found
      */
@@ -25,9 +27,10 @@ public class MethodFinder {
 
     /**
      * Finds all methods with that Annotation
-     * @param classToCheck class to check
+     *
+     * @param classToCheck    class to check
      * @param annotationClass The annotation class
-     * @param checkPrivate do I check private
+     * @param checkPrivate    do I check private
      * @return the methods found
      */
     public static Method[] getAllMethodsWithAnnotation(Class<?> classToCheck, Class<? extends Annotation> annotationClass, boolean checkPrivate) {
@@ -37,7 +40,8 @@ public class MethodFinder {
 
     /**
      * The number of methods found
-     * @param classToCheck the class to check
+     *
+     * @param classToCheck    the class to check
      * @param annotationClass the Annotation class
      * @return the number of methods found
      */
@@ -47,9 +51,10 @@ public class MethodFinder {
 
     /**
      * The number of methods found
-     * @param classToCheck the class to check
+     *
+     * @param classToCheck    the class to check
      * @param annotationClass the annotation class
-     * @param checkPrivate check private methods
+     * @param checkPrivate    check private methods
      * @return the number of methods found
      */
     public static int getNumberOfMethodsWithAnnotation(Class<?> classToCheck, Class<? extends Annotation> annotationClass, boolean checkPrivate) {
@@ -58,18 +63,21 @@ public class MethodFinder {
 
     /**
      * The first method found with that Annotation
-     * @param classToCheck class to check
+     *
+     * @param classToCheck    class to check
      * @param annotationClass The annotation class
      * @return the method found
      */
     public static Optional<Method> getFirstMethodWithAnnotation(Class<?> classToCheck, Class<? extends Annotation> annotationClass) {
         return getFirstMethodWithAnnotation(classToCheck, annotationClass, false);
     }
+
     /**
      * The first method found with that Annotation
-     * @param classToCheck class to check
+     *
+     * @param classToCheck    class to check
      * @param annotationClass The annotation class
-     * @param checkPrivate check private methods
+     * @param checkPrivate    check private methods
      * @return the method found
      */
     public static Optional<Method> getFirstMethodWithAnnotation(Class<?> classToCheck, Class<? extends Annotation> annotationClass, boolean checkPrivate) {

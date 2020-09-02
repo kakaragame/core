@@ -1,7 +1,6 @@
 package org.kakara.core.game;
 
 import org.kakara.core.Identifiable;
-import org.kakara.core.NameKey;
 import org.kakara.core.game.entity.EntitySpawningPattern;
 import org.kakara.core.game.entity.PathFinder;
 

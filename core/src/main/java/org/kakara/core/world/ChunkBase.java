@@ -9,12 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChunkBase {
-    @NotNull private final World world;
+    @NotNull
+    private final World world;
     private final int x;
     private final int y;
     private final int z;
-    @NotNull private final List<@NotNull GameBlock> gameBlocks;
-    @Nullable private final RegionGrid regionGrid;
+    @NotNull
+    private final List<@NotNull GameBlock> gameBlocks;
+    @Nullable
+    private final RegionGrid regionGrid;
 
     public ChunkBase(@NotNull World world, int x, int y, int z, @Nullable RegionGrid regionGrid) {
         this.world = world;

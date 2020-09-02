@@ -22,18 +22,34 @@ import java.util.List;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
-import static me.kingtux.simpleannotation.MethodFinder.getAllMethodsWithAnnotation;
-
 public class GameModManager implements ModManager {
-    private List<Mod> loadedMods = new ArrayList<>();
+    private final List<Mod> loadedMods = new ArrayList<>();
     private ModLoader modLoader;
-    private Mod coreMod;
+    private final Mod coreMod;
     private GameInstance gameInstance;
 
     public GameModManager(Mod coreMod) {
         this.coreMod = coreMod;
     }
 
+    public static void loadResources(Mod mod, JarFile file) throws IOException {
+        List<String> paths = TheCodeOfAMadMan.getResourcesInJar(file, "resources", true);
+        for (String s : paths) {
+            String path = s.replace("/resources/", "");
+            String[] splitPath = path.split("/");
+            try {
+                if (splitPath[0].equalsIgnoreCase("texture")) {
+                    String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
+                    Kakara.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
+                } else {
+                    String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
+                    Kakara.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
+                }
+            } catch (IllegalArgumentException e) {
+
+            }
+        }
+    }
 
     @Override
     public List<Mod> getLoadedMods() {
@@ -41,7 +57,6 @@ public class GameModManager implements ModManager {
         list.add(coreMod);
         return list;
     }
-
 
     @Override
     public ModLoader getModLoader() {
@@ -130,31 +145,14 @@ public class GameModManager implements ModManager {
         }
     }
 
-
     @Override
     public void load(GameInstance gameInstance) {
         this.gameInstance = gameInstance;
         this.modLoader = new GameModLoader(gameInstance);
     }
 
-
     public void postEnable() {
         loadedMods.forEach(Mod::postEnable);
-    }
-
-    private void loadResources(Mod mod, JarFile file) throws IOException {
-        List<String> paths = TheCodeOfAMadMan.getResourcesInJar(file, "resources", true);
-        for (String s : paths) {
-            String path = s.replace("/resources/", "");
-            String[] splitPath = path.split("/");
-            if (splitPath[0].equalsIgnoreCase("texture")) {
-                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
-                gameInstance.getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
-            } else {
-                String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
-                gameInstance.getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
-            }
-        }
     }
 
 }

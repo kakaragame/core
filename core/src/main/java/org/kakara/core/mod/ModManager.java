@@ -1,7 +1,6 @@
 package org.kakara.core.mod;
 
 import org.kakara.core.GameInstance;
-import org.kakara.core.mod.annotations.LoadingStage;
 
 import java.io.File;
 import java.util.List;

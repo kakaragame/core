@@ -27,10 +27,6 @@ public abstract class GameMod implements Mod {
 
     }
 
-    public void setGameInstance(GameInstance Kakara) {
-        this.gameInstance = Kakara;
-    }
-
     public String getName() {
         return modRules.getName();
     }
@@ -55,10 +51,13 @@ public abstract class GameMod implements Mod {
         return modRules.getModType();
     }
 
-
     @Override
     public GameInstance getGameInstance() {
         return gameInstance;
+    }
+
+    public void setGameInstance(GameInstance Kakara) {
+        this.gameInstance = Kakara;
     }
 
     protected void registerResource(String path, ResourceType type) {

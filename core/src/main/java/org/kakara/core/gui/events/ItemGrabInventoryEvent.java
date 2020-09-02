@@ -6,12 +6,12 @@ import org.kakara.core.game.ItemStack;
 import org.kakara.core.gui.Inventory;
 import org.kakara.core.player.Player;
 
-public class ItemGrabEvent extends InventoryEvent implements Cancellable {
+public class ItemGrabInventoryEvent extends InventoryEvent implements Cancellable {
     private boolean cancelled = false;
     private ItemStack itemStack;
     private final static HandlerList HANDLERLIST = new HandlerList(ItemGrabEvent.class);
 
-    public ItemGrabEvent(Player player, Inventory menu, ItemStack itemStack) {
+    public ItemGrabInventoryEvent(Player player, Inventory menu, ItemStack itemStack) {
         super(player, menu);
         this.itemStack = itemStack;
     }

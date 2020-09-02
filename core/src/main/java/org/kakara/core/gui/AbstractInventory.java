@@ -2,9 +2,7 @@ package org.kakara.core.gui;
 
 import org.jetbrains.annotations.NotNull;
 import org.kakara.core.game.ItemStack;
-import org.kakara.core.gui.Inventory;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,11 +18,20 @@ public abstract class AbstractInventory implements Inventory {
     @Override
     public void addItemStack(@NotNull ItemStack itemStack) {
         for (int i = 0; i < contents.size(); i++) {
-            if (contents.get(i).getItem().getId() == 0) {
+            if (contents.get(i).equalsIgnoreCount(itemStack)) {
+                contents.get(i).setCount(contents.get(i).getCount() + itemStack.getCount());
+                break;
+            } else if (contents.get(i).getItem().getId() == 0) {
                 contents.set(i, itemStack);
-                return;
+                break;
             }
         }
+        redraw();
+    }
+
+    @Override
+    public void clear() {
+        contents.clear();
     }
 
     @Override

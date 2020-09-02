@@ -5,7 +5,8 @@ import com.google.gson.GsonBuilder;
 import org.kakara.core.serializers.gson.GsonSerializerRegistar;
 
 public class Utils {
-    private static Gson gson;
+    public static final String ITEM_PATTERN = "[a-zA-Z0-9_]*:[a-zA-Z0-9_]*";
+    private static final Gson gson;
 
     static {
         GsonBuilder js = new GsonBuilder();
@@ -17,8 +18,6 @@ public class Utils {
     private Utils() {
 
     }
-
-    public static final String ITEM_PATTERN = "[a-zA-Z0-9_]*:[a-zA-Z0-9_]*";
 
     public static boolean isValidItemPattern(String s) {
         return s.matches(ITEM_PATTERN);

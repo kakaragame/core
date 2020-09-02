@@ -1,8 +1,8 @@
 package org.kakara.core.sound;
 
-import org.kakara.core.world.Location;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.player.Player;
+import org.kakara.core.world.Location;
 
 public interface SoundManager {
 

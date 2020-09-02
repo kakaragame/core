@@ -15,14 +15,10 @@ public enum TextureResolution {
      */
     _2048(2048);
 
-    private int resolution;
+    private final int resolution;
 
     TextureResolution(int resolution) {
         this.resolution = resolution;
-    }
-
-    public int getResolution() {
-        return resolution;
     }
 
     public static TextureResolution get(int resolution) {
@@ -30,5 +26,9 @@ public enum TextureResolution {
             if (r.resolution == resolution) return r;
         }
         return null;
+    }
+
+    public int getResolution() {
+        return resolution;
     }
 }

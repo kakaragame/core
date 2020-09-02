@@ -1,13 +1,8 @@
 package org.kakara.core.mod;
 
-import com.google.gson.JsonObject;
-import org.kakara.core.mod.game.ModClassLoader;
-
-import java.util.Properties;
-
 public class UnModObject {
-    private ModRules modRules;
-    private ClassLoader modClassLoader;
+    private final ModRules modRules;
+    private final ClassLoader modClassLoader;
 
     public UnModObject(ModRules modRules, ClassLoader modClassLoader) {
         this.modRules = modRules;

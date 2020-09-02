@@ -1,7 +1,6 @@
 package org.kakara.core.world.region;
 
 import org.kakara.core.Identifiable;
-import org.kakara.core.NameKey;
 import org.kakara.core.game.Entity;
 import org.kakara.core.world.ChunkLocation;
 import org.kakara.core.world.GameBlock;

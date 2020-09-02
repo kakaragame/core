@@ -7,6 +7,10 @@ public interface GameEntity {
     @NotNull
     Location getLocation();
 
+    boolean isLiving();
+
+    boolean kill();
+
     void teleport(@NotNull Location location);
 
     /**

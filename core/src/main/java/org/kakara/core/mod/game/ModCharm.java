@@ -10,9 +10,9 @@ import java.util.Objects;
 
 public abstract class ModCharm implements Charm {
     private final NameKey nameKey;
-    private Mod mod;
-    private String name;
-    private int id;
+    private final Mod mod;
+    private final String name;
+    private final int id;
 
     public ModCharm(Mod mod) {
         this.mod = mod;
@@ -56,6 +56,7 @@ public abstract class ModCharm implements Charm {
     public String getKey() {
         return nameKey.getKey();
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(getId(), mod.getName());

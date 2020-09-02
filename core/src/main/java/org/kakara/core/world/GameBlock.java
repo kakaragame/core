@@ -6,8 +6,10 @@ import org.kakara.core.game.ItemStack;
 import java.util.Objects;
 
 public class GameBlock {
-    @NotNull private Location location;
-    @NotNull private ItemStack itemStack;
+    @NotNull
+    private Location location;
+    @NotNull
+    private ItemStack itemStack;
 
     public GameBlock(@NotNull Location location, @NotNull ItemStack itemStack) {
         this.location = location;

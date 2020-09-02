@@ -2,7 +2,6 @@ package org.kakara.core.client;
 
 import org.kakara.core.modinstance.ModInstance;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 

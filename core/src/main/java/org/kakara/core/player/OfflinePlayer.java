@@ -2,7 +2,6 @@ package org.kakara.core.player;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kakara.core.command.CommandSender;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;

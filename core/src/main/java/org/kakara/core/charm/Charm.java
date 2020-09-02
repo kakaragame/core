@@ -1,7 +1,6 @@
 package org.kakara.core.charm;
 
 import org.kakara.core.Identifiable;
-import org.kakara.core.NameKey;
 import org.kakara.core.game.Item;
 
 /**

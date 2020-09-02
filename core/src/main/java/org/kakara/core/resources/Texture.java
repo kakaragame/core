@@ -3,15 +3,14 @@ package org.kakara.core.resources;
 import org.kakara.core.Kakara;
 import org.kakara.core.mod.Mod;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Texture {
-    private Map<TextureResolution, Resource> resolutionResourceMap = new HashMap<>();
-    private String path;
-    private Mod mod;
+    private final Map<TextureResolution, Resource> resolutionResourceMap = new HashMap<>();
+    private final String path;
+    private final Mod mod;
     private TextureResolution defaultResolution = TextureResolution._16;
+    private final Set<String> properties = new HashSet<>();
 
     public Texture(String path, Mod mod) {
         this.path = path;
@@ -52,11 +51,6 @@ public class Texture {
         return getByResolution(defaultResolution);
     }
 
-    public void setDefaultResolution(TextureResolution defaultResolution) {
-        this.defaultResolution = defaultResolution;
-        recalibrateDefaultResolution();
-    }
-
     public Resource getByResolution(TextureResolution resolution) {
         if (resolutionResourceMap.containsKey(resolution)) return resolutionResourceMap.get(resolution);
         return get();
@@ -68,6 +62,14 @@ public class Texture {
 
     public Mod getMod() {
         return mod;
+    }
+
+    public void addProperty(String property) {
+        properties.add(property);
+    }
+
+    public Set<String> getProperties() {
+        return properties;
     }
 
     @Override
@@ -86,5 +88,10 @@ public class Texture {
 
     public TextureResolution getDefaultResolution() {
         return defaultResolution;
+    }
+
+    public void setDefaultResolution(TextureResolution defaultResolution) {
+        this.defaultResolution = defaultResolution;
+        recalibrateDefaultResolution();
     }
 }
