@@ -8,12 +8,16 @@ import org.kakara.core.world.GameBlock;
  * This is an event called when a Block is placed by a Player.
  */
 public class PlaceEvent extends PlayerEvent {
-    private GameBlock gameBlock;
-    private static HandlerList handlerList = new HandlerList(PlaceEvent.class);
+    private static final HandlerList handlerList = new HandlerList(PlaceEvent.class);
+    private final GameBlock gameBlock;
 
     public PlaceEvent(Player player, GameBlock gameBlock) {
         super(player);
         this.gameBlock = gameBlock;
+    }
+
+    public static HandlerList getHandlers() {
+        return handlerList;
     }
 
     /**
@@ -25,10 +29,6 @@ public class PlaceEvent extends PlayerEvent {
 
     @Override
     public HandlerList getHandlerList() {
-        return handlerList;
-    }
-
-    public static HandlerList getHandlers() {
         return handlerList;
     }
 }

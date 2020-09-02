@@ -9,10 +9,10 @@ import org.kakara.core.world.GameBlock;
  * This is an event called when a Block is clicked by a Player.
  */
 public class ClickEvent extends PlayerEvent {
-    private GameBlock gameBlock;
-    private ClickType clickType;
-    private MouseButtonType mouseButtonType;
-    private static HandlerList handlerList = new HandlerList(ClickEvent.class);
+    private static final HandlerList handlerList = new HandlerList(ClickEvent.class);
+    private final GameBlock gameBlock;
+    private final ClickType clickType;
+    private final MouseButtonType mouseButtonType;
 
     /**
      * @param player          the Player used by the event.
@@ -25,6 +25,10 @@ public class ClickEvent extends PlayerEvent {
         this.gameBlock = gameBlock;
         this.clickType = clickType;
         this.mouseButtonType = mouseButtonType;
+    }
+
+    public static HandlerList getHandlers() {
+        return handlerList;
     }
 
     /**
@@ -50,10 +54,6 @@ public class ClickEvent extends PlayerEvent {
 
     @Override
     public HandlerList getHandlerList() {
-        return handlerList;
-    }
-
-    public static HandlerList getHandlers() {
         return handlerList;
     }
 }

@@ -9,8 +9,8 @@ public class Texture {
     private final Map<TextureResolution, Resource> resolutionResourceMap = new HashMap<>();
     private final String path;
     private final Mod mod;
-    private TextureResolution defaultResolution = TextureResolution._16;
     private final Set<String> properties = new HashSet<>();
+    private TextureResolution defaultResolution = TextureResolution._16;
 
     public Texture(String path, Mod mod) {
         this.path = path;

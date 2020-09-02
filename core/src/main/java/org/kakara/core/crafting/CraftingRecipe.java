@@ -9,9 +9,9 @@ import java.util.Objects;
  * This represents a crafting recipe in Kakara.
  */
 public class CraftingRecipe {
+    private final boolean shaped;
     private List<CraftingItem> ingredients;
     private ItemStack result;
-    private final boolean shaped;
 
     /**
      * In shaped recipes, null represents an empty slot.

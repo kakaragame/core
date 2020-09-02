@@ -2,7 +2,6 @@ package org.kakara.core.events.entity;
 
 import org.kakara.core.events.Cancellable;
 import org.kakara.core.events.Event;
-import org.kakara.core.events.HandlerList;
 import org.kakara.core.world.GameEntity;
 
 /**
@@ -10,7 +9,7 @@ import org.kakara.core.world.GameEntity;
  */
 public abstract class EntityEvent implements Event, Cancellable {
     private boolean cancelled;
-    private GameEntity gameEntity;
+    private final GameEntity gameEntity;
 
     /**
      * @param gameEntity the GameEntity used by the event.

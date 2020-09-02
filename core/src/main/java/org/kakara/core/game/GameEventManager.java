@@ -9,9 +9,6 @@ import org.kakara.core.events.player.Listener;
 import org.kakara.core.mod.Mod;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class GameEventManager implements EventManager {
     private GameInstance GameInstance;

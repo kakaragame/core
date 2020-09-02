@@ -5,7 +5,7 @@ import org.kakara.core.Kakara;
 import java.lang.reflect.InvocationTargetException;
 
 public class EventUtils {
-    public static HandlerList getHandlerList(Class<? extends Event> eventClass){
+    public static HandlerList getHandlerList(Class<? extends Event> eventClass) {
         try {
             return (HandlerList) eventClass.getMethod("getHandlers").invoke(null);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {

@@ -1,7 +1,5 @@
 package org.kakara.core.events;
 
-import jdk.jfr.Event;
-
 public class EventException extends Exception {
     public EventException() {
     }

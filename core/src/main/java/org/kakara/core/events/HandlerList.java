@@ -1,6 +1,5 @@
 package org.kakara.core.events;
 
-import org.checkerframework.checker.units.qual.A;
 import org.kakara.core.events.player.Listener;
 import org.kakara.core.mod.Mod;
 
@@ -10,8 +9,8 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public class HandlerList {
-    private List<RegisteredListener> listenerList = new CopyOnWriteArrayList<>();
     private final Class<? extends Event> eventClass;
+    private List<RegisteredListener> listenerList = new CopyOnWriteArrayList<>();
 
     public HandlerList(Class<? extends Event> eventClass) {
         this.eventClass = eventClass;

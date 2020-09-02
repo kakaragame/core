@@ -8,8 +8,8 @@ import org.kakara.core.world.GameEntity;
  * This is an event called when a Block is stepped on.
  */
 public class StepOnEvent extends EntityEvent {
-    private GameBlock blockSteppedOn;
-    private static HandlerList handlerList = new HandlerList(StepOnEvent.class);
+    private static final HandlerList handlerList = new HandlerList(StepOnEvent.class);
+    private final GameBlock blockSteppedOn;
 
     /**
      * @param gameEntity     the GameEntity used by the event.
@@ -18,6 +18,10 @@ public class StepOnEvent extends EntityEvent {
     public StepOnEvent(GameEntity gameEntity, GameBlock blockSteppedOn) {
         super(gameEntity);
         this.blockSteppedOn = blockSteppedOn;
+    }
+
+    public static HandlerList getHandlers() {
+        return handlerList;
     }
 
     /**
@@ -29,10 +33,6 @@ public class StepOnEvent extends EntityEvent {
 
     @Override
     public HandlerList getHandlerList() {
-        return handlerList;
-    }
-
-    public static HandlerList getHandlers() {
         return handlerList;
     }
 }

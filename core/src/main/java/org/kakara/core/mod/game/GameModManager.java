@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 
 public class GameModManager implements ModManager {
     private final List<Mod> loadedMods = new ArrayList<>();
-    private ModLoader modLoader;
     private final Mod coreMod;
+    private ModLoader modLoader;
     private GameInstance gameInstance;
 
     public GameModManager(Mod coreMod) {

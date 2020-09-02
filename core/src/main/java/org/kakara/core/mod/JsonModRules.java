@@ -11,8 +11,8 @@ public class JsonModRules implements ModRules {
     private final String mainClass;
     private final String[] softDepends;
     private final String[] depends;
-    private String[] authors;
     private final ModType modType;
+    private String[] authors;
 
     public JsonModRules(JsonObject jsonObject) {
         name = jsonObject.get("name").getAsString();
