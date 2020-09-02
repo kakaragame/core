@@ -4,7 +4,6 @@ import com.google.gson.*;
 import org.kakara.core.modinstance.ModInstance;
 import org.kakara.core.modinstance.ModInstanceBuilder;
 import org.kakara.core.modinstance.ModInstanceType;
-import org.kakara.core.world.GameBlock;
 
 import java.io.File;
 import java.lang.reflect.Type;

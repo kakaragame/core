@@ -9,15 +9,15 @@ import java.lang.reflect.Method;
  * An EventHandler as a Java object.
  */
 public class EventHandlerObject {
-    private Method targetMethod;
-    private Class<? extends Event> eventType;
-    private Mod mod;
-    private Object eventHandler;
+    private final Method targetMethod;
+    private final Class<? extends Event> eventType;
+    private final Mod mod;
+    private final Object eventHandler;
 
     /**
      * @param targetMethod the method to execute on the event call.
-     * @param eventType the type of Event.
-     * @param mod the Mod of the EventHandler.
+     * @param eventType    the type of Event.
+     * @param mod          the Mod of the EventHandler.
      * @param eventHandler the raw EventHandler.
      */
     public EventHandlerObject(Method targetMethod, Class<? extends Event> eventType, Mod mod, Object eventHandler) {
@@ -29,6 +29,7 @@ public class EventHandlerObject {
 
     /**
      * Calls the event.
+     *
      * @param event the event to be used in calling.
      */
     public void invokeEvent(Event event) {

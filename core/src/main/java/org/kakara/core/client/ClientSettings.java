@@ -11,8 +11,8 @@ public class ClientSettings extends GameSettings {
     /**
      * @param authServer the link to the authentication server.
      * @param modServers the array of links to the mod servers.
-     * @param testMode is the client in test mode?
-     * @param authToken the authentication token for the client.
+     * @param testMode   is the client in test mode?
+     * @param authToken  the authentication token for the client.
      */
     public ClientSettings(String authServer, String[] modServers, boolean testMode, String authToken) {
         super(authServer, modServers, testMode);

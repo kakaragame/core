@@ -10,13 +10,13 @@ import java.util.Objects;
  * e.g. If MyItem extends AItem (which would extend Item), you create a new DynamicCraftingItem with AItem.class, and it would except any sub-class of it, MyItem being one of them.
  */
 public class DynamicCraftingItem implements CraftingItem {
-    private int x;
-    private int y;
-    private Class<? extends Item> baseClass;
+    private final int x;
+    private final int y;
+    private final Class<? extends Item> baseClass;
 
     /**
-     * @param x the x coordinate of this item in the CraftingRecipe.
-     * @param y the y coordinate of this item in the CraftingRecipe.
+     * @param x         the x coordinate of this item in the CraftingRecipe.
+     * @param y         the y coordinate of this item in the CraftingRecipe.
      * @param baseClass the Item base Class which other items would extend (generally abstract).
      */
     public DynamicCraftingItem(int x, int y, Class<? extends Item> baseClass) {

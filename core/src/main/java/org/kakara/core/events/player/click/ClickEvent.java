@@ -8,14 +8,14 @@ import org.kakara.core.world.GameBlock;
  * This is an event called when a Block is clicked by a Player.
  */
 public class ClickEvent extends PlayerEvent {
-    private GameBlock gameBlock;
-    private ClickType clickType;
-    private MouseButtonType mouseButtonType;
+    private final GameBlock gameBlock;
+    private final ClickType clickType;
+    private final MouseButtonType mouseButtonType;
 
     /**
-     * @param player the Player used by the event.
-     * @param gameBlock the GameBlock which was clicked.
-     * @param clickType the type of click.
+     * @param player          the Player used by the event.
+     * @param gameBlock       the GameBlock which was clicked.
+     * @param clickType       the type of click.
      * @param mouseButtonType the mouse button used to click.
      */
     public ClickEvent(Player player, GameBlock gameBlock, ClickType clickType, MouseButtonType mouseButtonType) {

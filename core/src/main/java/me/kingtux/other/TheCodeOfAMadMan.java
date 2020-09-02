@@ -73,7 +73,7 @@ public class TheCodeOfAMadMan {
     /**
      * Get the Resource Files inside the Jar File
      *
-     * @param jarFile         the file
+     * @param jarFile      the file
      * @param baseDir      What should the files path begin with
      * @param excludeClass Do you want to exclude Class Files.
      * @return a list of path to use in Class.getResource

@@ -1,11 +1,10 @@
 package org.kakara.core.gui.events;
 
 import org.kakara.core.gui.Inventory;
-import org.kakara.core.gui.Menu;
 import org.kakara.core.player.Player;
 
 public class InventoryEvent extends MenuEvent {
-    private Inventory inventory;
+    private final Inventory inventory;
 
     public InventoryEvent(Player player, Inventory menu) {
         super(player, menu);

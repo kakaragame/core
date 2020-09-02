@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 public interface CommandSender {
     /**
      * Sends a message to the command sender
+     *
      * @param message the message to be sent
      */
     void sendMessage(@NotNull String message);

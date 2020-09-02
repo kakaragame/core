@@ -1,6 +1,8 @@
 package org.kakara.core.serializers.ods;
 
-import me.ryandw11.ods.tags.*;
+import me.ryandw11.ods.tags.IntTag;
+import me.ryandw11.ods.tags.ObjectTag;
+import me.ryandw11.ods.tags.StringTag;
 import org.kakara.core.Kakara;
 import org.kakara.core.world.ChunkLocation;
 import org.kakara.core.world.World;
@@ -18,18 +20,6 @@ public class ChunkLocationTag extends ObjectTag {
         addTag(new IntTag("z", loc.getZ()));
     }
 
-    public ChunkLocation getChunkLocation() {
-        World w = null;
-        if (hasTag("world"))
-            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
-        int x = (Integer) getTag("x").getValue();
-        int y = (Integer) getTag("y").getValue();
-        int z = (Integer) getTag("z").getValue();
-
-
-        return new ChunkLocation(w, x, y, z);
-    }
-
     public static ChunkLocation getChunkLocation(ObjectTag tag) {
         World w = null;
         if (tag.hasTag("world"))
@@ -37,6 +27,18 @@ public class ChunkLocationTag extends ObjectTag {
         int x = (Integer) tag.getTag("x").getValue();
         int y = (Integer) tag.getTag("y").getValue();
         int z = (Integer) tag.getTag("z").getValue();
+
+
+        return new ChunkLocation(w, x, y, z);
+    }
+
+    public ChunkLocation getChunkLocation() {
+        World w = null;
+        if (hasTag("world"))
+            w = Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
+        int x = (Integer) getTag("x").getValue();
+        int y = (Integer) getTag("y").getValue();
+        int z = (Integer) getTag("z").getValue();
 
 
         return new ChunkLocation(w, x, y, z);

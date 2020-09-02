@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -58,13 +57,13 @@ public class ChunkLocation {
         return Optional.ofNullable(world);
     }
 
+    public void setWorld(@Nullable World world) {
+        this.world = world;
+    }
+
     @Nullable
     public World getNullableWorld() {
         return world;
-    }
-
-    public void setWorld(@Nullable World world) {
-        this.world = world;
     }
 
     @NotNull

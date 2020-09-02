@@ -12,14 +12,6 @@ public class Size9BoxedInventory extends BasicNineBoxedInventory {
         super(9);
     }
 
-    public static void setRenderer(InventoryRenderer renderer) {
-        if (Size9BoxedInventory.renderer != null) {
-            throw new IllegalStateException("InventoryRenderer already set");
-        }
-        Size9BoxedInventory.renderer = renderer;
-    }
-
-
     @Override
     public void redraw() {
         renderer.redraw(this);
@@ -28,5 +20,12 @@ public class Size9BoxedInventory extends BasicNineBoxedInventory {
     @Override
     public InventoryRenderer getRenderer() {
         return renderer;
+    }
+
+    public static void setRenderer(InventoryRenderer renderer) {
+        if (Size9BoxedInventory.renderer != null) {
+            throw new IllegalStateException("InventoryRenderer already set");
+        }
+        Size9BoxedInventory.renderer = renderer;
     }
 }

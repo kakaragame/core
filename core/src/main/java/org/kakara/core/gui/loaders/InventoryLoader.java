@@ -21,7 +21,7 @@ public class InventoryLoader {
             for (JsonElement slot : jsonObject.get("slots").getAsJsonArray()) {
                 if (slot.getAsJsonObject().get("type").getAsString().equals("slot")) {
                     elements.add(new ItemStackElement(slot.getAsJsonObject()));
-                }else if(slot.getAsJsonObject().get("type").getAsString().equals("title")){
+                } else if (slot.getAsJsonObject().get("type").getAsString().equals("title")) {
 
                 }
             }

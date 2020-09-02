@@ -1,7 +1,6 @@
 package org.kakara.core.gui.events;
 
 import org.kakara.core.events.Cancellable;
-import org.kakara.core.events.FunctionalEvent;
 import org.kakara.core.game.ItemStack;
 import org.kakara.core.gui.Inventory;
 import org.kakara.core.player.Player;
@@ -18,6 +17,7 @@ public class ItemPlaceInventoryEvent extends InventoryEvent implements Cancellab
     public void setItemStack(ItemStack itemStack) {
         this.itemStack = itemStack;
     }
+
     @Override
     public boolean isCancelled() {
         return cancelled;

@@ -9,19 +9,27 @@ import java.util.Objects;
  * This represents a CraftingItem which is a list of possible ItemStacks a recipe can accept.
  */
 public class StaticCraftingItem implements CraftingItem {
-    private int x;
-    private int y;
-    private List<ItemStack> itemStacks;
+    private final int x;
+    private final int y;
+    private final List<ItemStack> itemStacks;
 
     /**
-     * @param x the x coordinate of this item in the CraftingRecipe.
-     * @param y the y coordinate of this item in the CraftingRecipe.
+     * @param x          the x coordinate of this item in the CraftingRecipe.
+     * @param y          the y coordinate of this item in the CraftingRecipe.
      * @param itemStacks the list items which the recipe can accept as valid.
      */
     public StaticCraftingItem(int x, int y, List<ItemStack> itemStacks) {
         this.x = x;
         this.y = y;
         this.itemStacks = itemStacks;
+    }
+
+    private static boolean hasMatchingItemStack(List<ItemStack> list, List<ItemStack> list2) {
+        for (ItemStack itemStack : list) {
+            if (list2.contains(itemStack)) return true;
+        }
+
+        return false;
     }
 
     /**
@@ -69,13 +77,5 @@ public class StaticCraftingItem implements CraftingItem {
     @Override
     public int hashCode() {
         return Objects.hash(x, y, itemStacks);
-    }
-
-    private static boolean hasMatchingItemStack(List<ItemStack> list, List<ItemStack> list2) {
-        for (ItemStack itemStack : list) {
-            if (list2.contains(itemStack)) return true;
-        }
-
-        return false;
     }
 }

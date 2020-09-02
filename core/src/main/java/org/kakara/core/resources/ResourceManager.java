@@ -3,7 +3,6 @@ package org.kakara.core.resources;
 import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 

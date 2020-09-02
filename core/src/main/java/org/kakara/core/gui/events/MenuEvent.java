@@ -1,12 +1,11 @@
 package org.kakara.core.gui.events;
 
-import org.kakara.core.events.Event;
 import org.kakara.core.events.player.PlayerEvent;
 import org.kakara.core.gui.Menu;
 import org.kakara.core.player.Player;
 
 public abstract class MenuEvent extends PlayerEvent {
-    private Menu menu;
+    private final Menu menu;
 
     public MenuEvent(Player player, Menu menu) {
         super(player);

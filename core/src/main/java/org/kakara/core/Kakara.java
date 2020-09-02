@@ -3,7 +3,10 @@ package org.kakara.core;
 import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
 import org.kakara.core.events.EventManager;
-import org.kakara.core.game.*;
+import org.kakara.core.game.GameSettings;
+import org.kakara.core.game.Item;
+import org.kakara.core.game.ItemManager;
+import org.kakara.core.game.ItemStack;
 import org.kakara.core.game.entity.EntityManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.player.OfflinePlayer;
@@ -18,8 +21,8 @@ import java.io.File;
 import java.util.UUID;
 
 public class Kakara {
-    private static GameInstance gameInstance;
     public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
+    private static GameInstance gameInstance;
 
     public static GameInstance getGameInstance() {
         return gameInstance;

@@ -2,7 +2,6 @@ package org.kakara.core.gui;
 
 import org.jetbrains.annotations.NotNull;
 import org.kakara.core.game.ItemStack;
-import org.kakara.core.gui.BoxedInventory;
 
 import java.awt.*;
 
@@ -14,11 +13,11 @@ public abstract class AbstractBoxedInventory extends AbstractInventory implement
         }
     }
 
-    public abstract int rowSize();
-
     public static int pointToIndex(Point point, int rowSize) {
         return (point.y - 1) * rowSize + point.x - 1;
     }
+
+    public abstract int rowSize();
 
     @Override
     public @NotNull ItemStack getItemStack(@NotNull Point point) {

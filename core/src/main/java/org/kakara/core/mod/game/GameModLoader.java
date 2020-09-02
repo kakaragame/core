@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import java.util.Properties;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -21,8 +20,8 @@ import java.util.jar.JarFile;
 public class GameModLoader implements ModLoader {
     public static final String MOD_PROPERTIES = "mod.properties";
     public static final String MAIN_CLASS = "main.class";
-    private GameInstance gameInstance;
-    private List<ModClassLoader> modClassLoaders = new CopyOnWriteArrayList<>();
+    private final GameInstance gameInstance;
+    private final List<ModClassLoader> modClassLoaders = new CopyOnWriteArrayList<>();
 
     public GameModLoader(GameInstance Kakara) {
         this.gameInstance = Kakara;

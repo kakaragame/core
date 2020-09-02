@@ -2,7 +2,6 @@ package org.kakara.core.command;
 
 import org.jetbrains.annotations.NotNull;
 import org.kakara.core.mod.LoadStage;
-import org.kakara.core.mod.annotations.LoadingStage;
 
 import java.util.Set;
 

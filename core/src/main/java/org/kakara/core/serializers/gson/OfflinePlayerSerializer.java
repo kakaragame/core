@@ -2,7 +2,6 @@ package org.kakara.core.serializers.gson;
 
 import com.google.gson.*;
 import org.kakara.core.Kakara;
-import org.kakara.core.game.ItemStack;
 import org.kakara.core.player.OfflinePlayer;
 
 import java.lang.reflect.Type;

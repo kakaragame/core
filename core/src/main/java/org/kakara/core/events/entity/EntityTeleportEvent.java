@@ -5,10 +5,11 @@ import org.kakara.core.world.GameEntity;
 import org.kakara.core.world.Location;
 
 public class EntityTeleportEvent extends EntityEvent implements Cancellable {
-    private Location oldLocation;
+    private final Location oldLocation;
     private Location newLocation;
+
     /**
-     * @param gameEntity the GameEntity used by the event.
+     * @param gameEntity  the GameEntity used by the event.
      * @param oldLocation The GameEntity starting location
      * @param newLocation the GameEntity new location
      */

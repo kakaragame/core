@@ -10,9 +10,9 @@ import java.awt.*;
 
 public class ItemStackElement implements MenuElement {
     private final Point position;
+    private final int slot;
     private FunctionalEvent<ItemGrabInventoryEvent> itemGrabEvent;
     private FunctionalEvent<ItemPlaceInventoryEvent> itemPlaceEvent;
-    private final int slot;
 
     public ItemStackElement(Point position, int slot) {
         this.position = position;

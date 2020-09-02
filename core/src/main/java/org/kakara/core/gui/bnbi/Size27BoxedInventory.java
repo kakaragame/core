@@ -13,19 +13,20 @@ public class Size27BoxedInventory extends BasicNineBoxedInventory {
         super(27);
     }
 
+    @Override
+    public void redraw() {
+        renderer.redraw(this);
+    }
+
+    @Override
+    public InventoryRenderer getRenderer() {
+        return renderer;
+    }
+
     public static void setRenderer(InventoryRenderer renderer) {
         if (Size27BoxedInventory.renderer != null) {
             throw new IllegalStateException("InventoryRenderer already set");
         }
         Size27BoxedInventory.renderer = renderer;
-    }
-
-    @Override
-    public void redraw() {
-        renderer.redraw(this);
-    }
-    @Override
-    public InventoryRenderer getRenderer() {
-        return renderer;
     }
 }
