@@ -1,6 +1,6 @@
 package org.kakara.core.mod.game;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.annotations.Key;
 import org.kakara.core.annotations.Model;
 import org.kakara.core.annotations.Name;
@@ -11,7 +11,7 @@ import org.kakara.core.mod.Mod;
 import java.util.Objects;
 
 public abstract class ModEntity implements Entity {
-    protected final NameKey nameKey;
+    protected final ControllerKey nameKey;
     protected final Mod mod;
     protected final String name;
     protected final int id;
@@ -21,7 +21,7 @@ public abstract class ModEntity implements Entity {
         Name nameA = getClass().getAnnotation(Name.class);
         this.name = nameA == null ? getClass().getSimpleName() : nameA.value();
         Key keyA = getClass().getAnnotation(Key.class);
-        this.nameKey = new NameKey(mod, keyA == null ? getClass().getSimpleName() : keyA.value());
+        this.nameKey = new ControllerKey(mod, keyA == null ? getClass().getSimpleName() : keyA.value());
         this.id = nameKey.hashCode();
     }
 
@@ -37,7 +37,7 @@ public abstract class ModEntity implements Entity {
     }
 
     @Override
-    public NameKey getNameKey() {
+    public ControllerKey getControllerKey() {
         return nameKey;
     }
 

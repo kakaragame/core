@@ -1,6 +1,6 @@
 package org.kakara.core.mod.game;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.annotations.Key;
 import org.kakara.core.annotations.Name;
 import org.kakara.core.charm.Charm;
@@ -9,7 +9,7 @@ import org.kakara.core.mod.Mod;
 import java.util.Objects;
 
 public abstract class ModCharm implements Charm {
-    private final NameKey nameKey;
+    private final ControllerKey nameKey;
     private final Mod mod;
     private final String name;
     private final int id;
@@ -19,7 +19,7 @@ public abstract class ModCharm implements Charm {
         Name nameA = getClass().getAnnotation(Name.class);
         this.name = nameA == null ? getClass().getSimpleName() : nameA.value();
         Key keyA = getClass().getAnnotation(Key.class);
-        this.nameKey = new NameKey(mod, keyA == null ? getClass().getSimpleName() : keyA.value());
+        this.nameKey = new ControllerKey(mod, keyA == null ? getClass().getSimpleName() : keyA.value());
         this.id = nameKey.hashCode();
     }
 
@@ -30,7 +30,7 @@ public abstract class ModCharm implements Charm {
     }
 
     @Override
-    public NameKey getNameKey() {
+    public ControllerKey getControllerKey() {
         return nameKey;
     }
 

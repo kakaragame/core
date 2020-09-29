@@ -1,6 +1,6 @@
 package org.kakara.core.mod.game;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.command.Command;
 import org.kakara.core.command.CommandSender;
 import org.kakara.core.command.TabCompleter;
@@ -11,15 +11,15 @@ import java.util.List;
 import java.util.Set;
 
 public abstract class ModCommand implements Command, TabCompleter {
-    private Set<String> aliases;
-    private String description;
+    private final Set<String> aliases;
+    private final String description;
     private Mod mod;
-    private NameKey nameKey;
+    private final ControllerKey nameKey;
 
     public ModCommand(Set<String> aliases, String description, Mod mod, String command) {
         this.aliases = aliases;
         this.description = description;
-        nameKey = new NameKey(mod, command);
+        nameKey = new ControllerKey(mod, command);
     }
 
     @Override
@@ -39,7 +39,7 @@ public abstract class ModCommand implements Command, TabCompleter {
     }
 
     @Override
-    public NameKey command() {
+    public ControllerKey command() {
         return nameKey;
     }
 }

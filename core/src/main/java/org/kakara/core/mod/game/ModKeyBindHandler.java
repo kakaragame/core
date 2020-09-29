@@ -1,22 +1,22 @@
 package org.kakara.core.mod.game;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.annotations.Key;
 import org.kakara.core.annotations.Name;
 import org.kakara.core.key.KeyBindHandler;
 import org.kakara.core.mod.Mod;
 
 public abstract class ModKeyBindHandler implements KeyBindHandler {
-    private Mod mod;
-    private NameKey nameKey;
+    private final Mod mod;
+    private final ControllerKey nameKey;
 
     public ModKeyBindHandler(Mod mod) {
         this.mod = mod;
-        this.nameKey = new NameKey(mod, getID());
+        this.nameKey = new ControllerKey(mod, getID());
     }
 
     @Override
-    public NameKey getNameKey() {
+    public ControllerKey getNameKey() {
         return nameKey;
     }
 

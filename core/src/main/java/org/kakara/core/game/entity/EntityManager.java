@@ -1,7 +1,7 @@
 package org.kakara.core.game.entity;
 
 import org.jetbrains.annotations.NotNull;
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.game.Entity;
 import org.kakara.core.mod.LoadStage;
 
@@ -14,10 +14,10 @@ public interface EntityManager extends LoadStage {
     Optional<Entity> getEntity(int id);
 
     default Optional<Entity> getEntity(String entity) {
-        return getEntity(new NameKey(entity.toLowerCase()));
+        return getEntity(new ControllerKey(entity.toLowerCase()));
     }
 
-    default Optional<Entity> getEntity(NameKey entity) {
+    default Optional<Entity> getEntity(ControllerKey entity) {
         return getEntity(entity.hashCode());
     }
 

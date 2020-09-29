@@ -1,7 +1,7 @@
 package org.kakara.core.game;
 
+import org.kakara.core.ControllerKey;
 import org.kakara.core.GameInstance;
-import org.kakara.core.NameKey;
 import org.kakara.core.mod.LoadStage;
 
 import java.util.List;
@@ -26,10 +26,10 @@ public interface ItemManager extends LoadStage {
     void deregisterItems(String key);
 
     default Item getItem(String item) {
-        return getItem(new NameKey(item.toLowerCase()));
+        return getItem(new ControllerKey(item.toLowerCase()));
     }
 
-    default Item getItem(NameKey item) {
+    default Item getItem(ControllerKey item) {
         return getItem(item.hashCode());
     }
 

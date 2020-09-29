@@ -1,6 +1,6 @@
 package org.kakara.core.mod.game;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.annotations.Key;
 import org.kakara.core.annotations.Name;
 import org.kakara.core.mod.Mod;
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public abstract class ModWorldGenerator implements WorldGenerator {
     protected final Mod mod;
-    protected final NameKey nameKey;
+    protected final ControllerKey nameKey;
     protected final int id;
     protected final String name;
     protected final String key;
@@ -21,14 +21,14 @@ public abstract class ModWorldGenerator implements WorldGenerator {
         this.name = nameA == null ? getClass().getSimpleName() : nameA.value();
         Key keyA = getClass().getAnnotation(Key.class);
         key = keyA == null ? getClass().getSimpleName() : keyA.value();
-        this.nameKey = new NameKey(mod, key);
+        this.nameKey = new ControllerKey(mod, key);
 
         this.id = nameKey.hashCode();
     }
 
 
     @Override
-    public NameKey getNameKey() {
+    public ControllerKey getControllerKey() {
         return nameKey;
     }
 

@@ -1,12 +1,12 @@
 package org.kakara.core.player;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.game.entity.EntitySpawningPattern;
 import org.kakara.core.game.entity.PathFinder;
 
 public class PlayerEntity extends HumanoidEntity {
-    private NameKey nameKey = new NameKey("kakara", "player");
-    private String name;
+    private final ControllerKey nameKey = new ControllerKey("kakara", "player");
+    private final String name;
 
     public PlayerEntity(String name) {
         this.name = name;
@@ -34,7 +34,7 @@ public class PlayerEntity extends HumanoidEntity {
     }
 
     @Override
-    public NameKey getNameKey() {
+    public ControllerKey getControllerKey() {
         return nameKey;
     }
 

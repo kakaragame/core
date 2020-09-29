@@ -1,19 +1,19 @@
 package org.kakara.core.serializers.gson;
 
 import com.google.gson.*;
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 
 import java.lang.reflect.Type;
 
-public class NameKeySerializer implements JsonSerializer<NameKey>, JsonDeserializer<NameKey> {
+public class NameKeySerializer implements JsonSerializer<ControllerKey>, JsonDeserializer<ControllerKey> {
 
     @Override
-    public NameKey deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        return new NameKey(jsonElement.getAsString());
+    public ControllerKey deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        return new ControllerKey(jsonElement.getAsString());
     }
 
     @Override
-    public JsonElement serialize(NameKey nameKey, Type type, JsonSerializationContext jsonSerializationContext) {
+    public JsonElement serialize(ControllerKey nameKey, Type type, JsonSerializationContext jsonSerializationContext) {
         return new JsonPrimitive(nameKey.toString());
     }
 }

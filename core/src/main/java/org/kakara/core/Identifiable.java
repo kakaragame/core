@@ -3,7 +3,6 @@ package org.kakara.core;
 public interface Identifiable {
     /**
      * The actual name of the item
-     * *This is not the same value as the NameKey.getName*
      *
      * @return the actual name
      */
@@ -17,14 +16,15 @@ public interface Identifiable {
     int getId();
 
     /**
-     * The Name Key for the item
+     * The ControllerKey for the item
      *
-     * @return the namekey for the item
+     * @return the ControllerKey for the item
      */
-    NameKey getNameKey();
+    ControllerKey getControllerKey();
 
     /**
      * The key for the item
+     * *Might be Removed*
      *
      * @return the name key
      */

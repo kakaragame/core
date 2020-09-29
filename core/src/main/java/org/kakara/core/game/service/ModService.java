@@ -1,19 +1,19 @@
 package org.kakara.core.game.service;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.service.Service;
 
 public abstract class ModService implements Service {
-    private final NameKey implementationNameKey;
-    private final NameKey serviceNameKey;
+    private final ControllerKey implementationNameKey;
+    private final ControllerKey serviceNameKey;
 
-    public ModService(NameKey implementationNameKey, NameKey serviceNameKey) {
+    public ModService(ControllerKey implementationNameKey, ControllerKey serviceNameKey) {
         this.implementationNameKey = implementationNameKey;
         this.serviceNameKey = serviceNameKey;
     }
 
     @Override
-    public final NameKey getImplementationNameKey() {
+    public final ControllerKey getImplementationNameKey() {
         return implementationNameKey;
     }
 
@@ -28,7 +28,7 @@ public abstract class ModService implements Service {
     }
 
     @Override
-    public final NameKey getNameKey() {
+    public final ControllerKey getControllerKey() {
         return serviceNameKey;
     }
 

@@ -9,8 +9,8 @@ public class Main {
     private static final Gson gson = new Gson();
 
     public static void main(String[] args) {
-        NameKey nameKey = new NameKey("bob", "key");
-        NameKey nameKeyTwo = new NameKey("bob", "kesy");
+        ControllerKey nameKey = new ControllerKey("bob", "key");
+        ControllerKey nameKeyTwo = new ControllerKey("bob", "kesy");
         System.out.println(nameKey.hashCode());
         System.out.println(nameKeyTwo.hashCode());
         Map<Integer, String> map = new HashMap<>();
@@ -18,7 +18,7 @@ public class Main {
         System.out.println(start);
         for (int i = 0; i < 12000000; i++) {
             map.put(i, String.valueOf(i));
-            NameKey one = new NameKey("bob", "key");
+            ControllerKey one = new ControllerKey("bob", "key");
             one.hashCode();
             nameKey.equals(nameKeyTwo);
         }

@@ -1,10 +1,10 @@
 package org.kakara.core.service;
 
+import org.kakara.core.ControllerKey;
 import org.kakara.core.Identifiable;
-import org.kakara.core.NameKey;
 
 public interface Service extends Identifiable {
-    NameKey getImplementationNameKey();
+    ControllerKey getImplementationNameKey();
 
     String getImplementationName();
 

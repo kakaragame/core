@@ -2,8 +2,8 @@ package org.kakara.core.world;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kakara.core.ControllerKey;
 import org.kakara.core.GameInstance;
-import org.kakara.core.NameKey;
 import org.kakara.core.mod.LoadStage;
 import org.kakara.core.world.region.Region;
 
@@ -15,11 +15,11 @@ public interface WorldGenerationManager extends LoadStage {
     void registerChunkGenerator(@NotNull WorldGenerator worldGenerator);
 
     @Nullable
-    WorldGenerator getGenerator(NameKey nameKey);
+    WorldGenerator getGenerator(ControllerKey nameKey);
 
     @Nullable
     default WorldGenerator getGenerator(@NotNull String name) {
-        return getGenerator(new NameKey(name));
+        return getGenerator(new ControllerKey(name));
     }
 
     @NotNull

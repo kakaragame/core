@@ -25,7 +25,7 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
     @Override
     public JsonElement serialize(ItemStack itemStack, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("type", itemStack.getItem().getNameKey().toString());
+        jsonObject.addProperty("type", itemStack.getItem().getControllerKey().toString());
         jsonObject.addProperty("name", itemStack.getName());
         jsonObject.addProperty("count", itemStack.getCount());
         jsonObject.add("lore", jsonSerializationContext.serialize(itemStack.getLore()));

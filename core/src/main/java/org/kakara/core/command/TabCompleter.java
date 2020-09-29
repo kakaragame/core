@@ -1,12 +1,12 @@
 package org.kakara.core.command;
 
-import org.kakara.core.NameKey;
+import org.kakara.core.ControllerKey;
 
 import java.util.List;
 import java.util.Set;
 
 public interface TabCompleter {
-    NameKey command();
+    ControllerKey command();
 
     Set<String> getAliases();
 

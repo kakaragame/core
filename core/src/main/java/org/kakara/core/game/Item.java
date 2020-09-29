@@ -1,8 +1,8 @@
 package org.kakara.core.game;
 
 
+import org.kakara.core.ControllerKey;
 import org.kakara.core.Identifiable;
-import org.kakara.core.NameKey;
 import org.kakara.core.events.player.click.ClickEvent;
 import org.kakara.core.mod.Mod;
 
@@ -14,7 +14,7 @@ public interface Item extends Identifiable {
     String getModel();
 
 
-    NameKey getNameKey();
+    ControllerKey getControllerKey();
 
     Mod getMod();
 
