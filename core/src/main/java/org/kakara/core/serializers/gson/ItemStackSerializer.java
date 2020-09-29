@@ -12,7 +12,7 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
     @Override
     public ItemStack deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         JsonObject js = jsonElement.getAsJsonObject();
-        Item item = Kakara.getItemManager().getItem(js.get("type").getAsString()).orElseThrow(RuntimeException::new);
+        Item item = Kakara.getItemManager().getItem(js.get("type").getAsString());
         if (item == null) {
             throw new JsonParseException(new MissingItemException(js.get("type").getAsString()));
 

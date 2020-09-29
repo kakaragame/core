@@ -5,7 +5,6 @@ import org.kakara.core.NameKey;
 import org.kakara.core.mod.LoadStage;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface ItemManager extends LoadStage {
     /**
@@ -26,15 +25,15 @@ public interface ItemManager extends LoadStage {
 
     void deregisterItems(String key);
 
-    default Optional<Item> getItem(String item) {
+    default Item getItem(String item) {
         return getItem(new NameKey(item.toLowerCase()));
     }
 
-    default Optional<Item> getItem(NameKey item) {
+    default Item getItem(NameKey item) {
         return getItem(item.hashCode());
     }
 
-    Optional<Item> getItem(int id);
+    Item getItem(int id);
 
     void load(GameInstance GameInstance);
 }
