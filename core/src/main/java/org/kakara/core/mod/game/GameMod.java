@@ -1,5 +1,6 @@
 package org.kakara.core.mod.game;
 
+import org.kakara.core.ControllerKey;
 import org.kakara.core.GameInstance;
 import org.kakara.core.mod.Mod;
 import org.kakara.core.mod.ModRules;
@@ -89,6 +90,16 @@ public abstract class GameMod implements Mod {
     void setModRules(ModRules modRules) {
         this.modRules = modRules;
         upperCaseName = modRules.getName().toUpperCase();
+    }
+
+    /**
+     * Creates a ControllerKey with the mod
+     *
+     * @param key the key
+     * @return the new ControllerKey
+     */
+    public ControllerKey createControllerKey(String key) {
+        return new ControllerKey(this, key);
     }
 
     @Override

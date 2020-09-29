@@ -38,7 +38,7 @@ public class ControllerKey {
     }
 
     public ControllerKey(Mod mod, String key) {
-        this(mod.getUppercaseName(), key);
+        this(mod.getUppercaseName(), key.toUpperCase());
     }
 
     /**
@@ -73,6 +73,17 @@ public class ControllerKey {
         return key;
     }
 
+    /**
+     * Creates a ControllerKey ensuring values are UpperCase
+     * Calling toUpperCase is slow and we have to create ControllerKeys within the game a lot. So we needed the constructor to ignore case because we know what we are doing
+     *
+     * @param controller the controller
+     * @param key        the key
+     * @return ControllerKey with correct casing
+     */
+    public static ControllerKey create(String controller, String key) {
+        return new ControllerKey(controller.toUpperCase(), key.toUpperCase());
+    }
 
     //OVERIDE METHODS
     @Override
