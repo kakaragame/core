@@ -2,7 +2,7 @@ package org.kakara.core.world;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kakara.core.Statusable;
+import org.kakara.core.ManagedObject;
 import org.kakara.core.game.Block;
 import org.kakara.core.game.ItemStack;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
-public interface World extends Statusable {
+public interface World extends ManagedObject {
     @NotNull
     Set<Chunk> getChunks();
 

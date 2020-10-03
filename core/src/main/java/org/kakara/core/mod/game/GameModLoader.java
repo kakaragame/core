@@ -47,7 +47,7 @@ public class GameModLoader implements ModLoader {
         Class<?> mod = classLoader.findClass(unModObject.getModRules().getMainClass(), false);
 
         if (!GameMod.class.isAssignableFrom(mod)) {
-            throw new IllegalModException("sounds like a personal problem. Error 32");
+            throw new IllegalModException("ModClass must extend GameMod");
         }
         GameMod gameMod = easyCreate(mod);
         if (gameMod == null) return null;

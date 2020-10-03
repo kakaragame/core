@@ -1,6 +1,5 @@
 package org.kakara.core;
 
-
-public interface Statusable {
+public interface ManagedObject {
     Status getStatus();
 }
