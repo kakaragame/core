@@ -113,6 +113,91 @@ public class Location {
         return new Location(world, x - location.getX(), y - location.y, z - location.z, pitch - location.pitch, yaw - location.yaw);
     }
 
+    /**
+     * Set this location equal to another without mutation.
+     * <p>This effectively makes a copy of the location provided.</p>
+     *
+     * @param location The location to set this location equal to.
+     * @return The location after being set.
+     */
+    @NotNull
+    public Location set(Location location) {
+        this.world = location.world;
+        this.x = location.x;
+        this.y = location.y;
+        this.z = location.z;
+        this.pitch = location.pitch;
+        this.yaw = location.yaw;
+        return this;
+    }
+
+    /**
+     * Set the x, y, and z value of the location.
+     *
+     * @param x The x value.
+     * @param y The y value.
+     * @param z The z value.
+     * @return The instance of the location object.
+     */
+    @NotNull
+    public Location set(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        return this;
+    }
+
+    /**
+     * Set the x, y, z, pitch, and yaw value of the location.
+     *
+     * @param x     The x value.
+     * @param y     The y value.
+     * @param z     The z value.
+     * @param pitch The pitch value.
+     * @param yaw   The yaw value.
+     * @return The instance of the location object.
+     */
+    @NotNull
+    public Location set(double x, double y, double z, float pitch, float yaw) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.pitch = pitch;
+        this.yaw = yaw;
+        return this;
+    }
+
+    /**
+     * Set the pitch and yaw of the location.
+     *
+     * @param pitch The pitch value.
+     * @param yaw   The yaw value.
+     * @return The instance of the location object.
+     */
+    @NotNull
+    public Location set(float pitch, float yaw) {
+        this.pitch = pitch;
+        this.yaw = yaw;
+        return this;
+    }
+
+    /**
+     * Check to see if a location is similar to another.
+     * <p>This method is similar to #equals but ignores the world of the location.</p>
+     *
+     * @param location The location to compare.
+     * @return If the location is similar.
+     */
+    public boolean isSimilar(Location location) {
+        if (this == location) return true;
+        if (location == null) return false;
+        return Double.compare(location.x, x) == 0 &&
+                Double.compare(location.y, y) == 0 &&
+                Double.compare(location.z, z) == 0 &&
+                Float.compare(location.pitch, pitch) == 0 &&
+                Float.compare(location.yaw, yaw) == 0;
+    }
+
 
     @Override
     public String toString() {
