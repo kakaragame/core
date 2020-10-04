@@ -38,6 +38,11 @@ public class EngineInventoryRenderer implements InventoryRenderer {
         engineController.redraw(inventory, inventoryBackground, elementList, properties);
     }
 
+    @Override
+    public InventoryProperties getProperties() {
+        return properties;
+    }
+
     public void setEngineController(EngineController engineController) {
         this.engineController = engineController;
     }
