@@ -12,7 +12,7 @@ public class EventUtils {
      * @param <T>             the Event Type
      * @see FunctionalEvent
      */
-    public <T extends Event> void executeIfNotNull(FunctionalEvent<T> functionalEvent, T t) {
+    public static <T extends Event> void executeIfNotNull(FunctionalEvent<T> functionalEvent, T t) {
         if (functionalEvent != null) functionalEvent.execute(t);
     }
 }
