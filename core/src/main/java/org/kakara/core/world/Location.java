@@ -197,7 +197,7 @@ public class Location {
      * <p>This method is similar to #equals but ignores the world of the location.</p>
      *
      * @param location       The location to compare.
-     * @param ignorePitchYaw Sets if you would like to ignore pitch & yaw
+     * @param ignorePitchYaw Sets if you would like to ignore pitch and yaw
      * @return If the location is similar.
      */
     public boolean isSimilar(Location location, boolean ignorePitchYaw) {

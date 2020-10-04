@@ -36,7 +36,7 @@ public class Kakara {
      * Can only be called once.
      * Will be called upon creating an instance
      *
-     * @param gameInstance
+     * @param gameInstance the gameinstance
      */
     public static void setGameInstance(GameInstance gameInstance) {
         if (Kakara.gameInstance != null) {
