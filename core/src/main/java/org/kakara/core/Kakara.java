@@ -20,6 +20,9 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.UUID;
 
+/**
+ * Represents the core of the Kakara API.
+ */
 public class Kakara {
     public static final Logger LOGGER = LoggerFactory.getLogger("Kakara Core");
     private static GameInstance gameInstance;
@@ -28,6 +31,12 @@ public class Kakara {
         return gameInstance;
     }
 
+    /**
+     * Can only be called once.
+     * Will be called upon creating an instance
+     *
+     * @param gameInstance
+     */
     public static void setGameInstance(GameInstance gameInstance) {
         if (Kakara.gameInstance != null) {
             throw new IllegalArgumentException("GameInstance has already been set. ");
@@ -36,63 +45,63 @@ public class Kakara {
     }
 
     public static GameSettings getGameSettings() {
-        return gameInstance.getGameSettings();
+        return getGameInstance().getGameSettings();
     }
 
     public static ItemStack createItemStack(Item item) {
-        return gameInstance.createItemStack(item);
+        return getGameInstance().createItemStack(item);
     }
 
     public static ResourceManager getResourceManager() {
-        return gameInstance.getResourceManager();
+        return getGameInstance().getResourceManager();
     }
 
     public static SoundManager getSoundManager() {
-        return gameInstance.getSoundManager();
+        return getGameInstance().getSoundManager();
     }
 
     public static ItemManager getItemManager() {
-        return gameInstance.getItemManager();
+        return getGameInstance().getItemManager();
     }
 
     public static CraftingManager getCraftingManager() {
-        return gameInstance.getCraftingManager();
+        return getGameInstance().getCraftingManager();
     }
 
     public static WorldManager getWorldManager() {
-        return gameInstance.getWorldManager();
+        return getGameInstance().getWorldManager();
     }
 
     public static ModManager getModManager() {
-        return gameInstance.getModManager();
+        return getGameInstance().getModManager();
     }
 
     public static File getWorkingDirectory() {
-        return gameInstance.getWorkingDirectory();
+        return getGameInstance().getWorkingDirectory();
     }
 
     public static EventManager getEventManager() {
-        return gameInstance.getEventManager();
+        return getGameInstance().getEventManager();
     }
 
     public static CommandManager getCommandManager() {
-        return gameInstance.getCommandManager();
+        return getGameInstance().getCommandManager();
     }
 
     public static WorldGenerationManager getWorldGenerationManager() {
-        return gameInstance.getWorldGenerationManager();
+        return getGameInstance().getWorldGenerationManager();
     }
 
     public static EntityManager getEntityManager() {
-        return gameInstance.getEntityManager();
+        return getGameInstance().getEntityManager();
     }
 
 
     public static GameTypes getType() {
-        return gameInstance.getType();
+        return getGameInstance().getType();
     }
 
     public static OfflinePlayer getOfflinePlayer(UUID uuid) {
-        return gameInstance.getOfflinePlayer(uuid);
+        return getGameInstance().getOfflinePlayer(uuid);
     }
 }

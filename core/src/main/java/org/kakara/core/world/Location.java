@@ -189,13 +189,33 @@ public class Location {
      * @return If the location is similar.
      */
     public boolean isSimilar(Location location) {
+        return isSimilar(location, false);
+    }
+
+    /**
+     * Check to see if a location is similar to another.
+     * <p>This method is similar to #equals but ignores the world of the location.</p>
+     *
+     * @param location       The location to compare.
+     * @param ignorePitchYaw Sets if you would like to ignore pitch & yaw
+     * @return If the location is similar.
+     */
+    public boolean isSimilar(Location location, boolean ignorePitchYaw) {
         if (this == location) return true;
         if (location == null) return false;
-        return Double.compare(location.x, x) == 0 &&
-                Double.compare(location.y, y) == 0 &&
-                Double.compare(location.z, z) == 0 &&
-                Float.compare(location.pitch, pitch) == 0 &&
-                Float.compare(location.yaw, yaw) == 0;
+        boolean b;
+        if (ignorePitchYaw) {
+            b = Double.compare(location.x, x) == 0 &&
+                    Double.compare(location.y, y) == 0 &&
+                    Double.compare(location.z, z) == 0;
+        } else {
+            b = Double.compare(location.x, x) == 0 &&
+                    Double.compare(location.y, y) == 0 &&
+                    Double.compare(location.z, z) == 0 &&
+                    Float.compare(location.pitch, pitch) == 0 &&
+                    Float.compare(location.yaw, yaw) == 0;
+        }
+        return b;
     }
 
 
@@ -217,12 +237,7 @@ public class Location {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
-        return Double.compare(location.x, x) == 0 &&
-                Double.compare(location.y, y) == 0 &&
-                Double.compare(location.z, z) == 0 &&
-                Float.compare(location.pitch, pitch) == 0 &&
-                Float.compare(location.yaw, yaw) == 0 &&
-                Objects.equals(world, location.world);
+        return isSimilar(location) && Objects.equals(world, location.world);
     }
 
     @Override

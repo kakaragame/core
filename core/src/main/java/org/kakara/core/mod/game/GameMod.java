@@ -28,6 +28,11 @@ public abstract class GameMod implements Mod {
 
     }
 
+    @Override
+    public void enableCompletion() {
+
+    }
+
     public String getName() {
         return modRules.getName();
     }

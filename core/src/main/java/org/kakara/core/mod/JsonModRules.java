@@ -11,7 +11,7 @@ public class JsonModRules implements ModRules {
     private final String mainClass;
     private final String[] softDepends;
     private final String[] depends;
-    private String[] authors;
+    private final String[] authors;
     private final ModType modType;
 
     public JsonModRules(JsonObject jsonObject) {
@@ -21,11 +21,14 @@ public class JsonModRules implements ModRules {
         mainClass = jsonObject.get("main-class").getAsString();
         modType = ModType.valueOf(tryToGet(jsonObject, "mod-type", "REGULAR"));
         softDepends = getOrDefaultArray(jsonObject, "soft-depends", new String[0]);
+        authors = getOrDefaultArray(jsonObject, "authors", new String[0]);
         depends = getOrDefaultArray(jsonObject, "depends", new String[0]);
     }
 
     public static void validate(JsonObject jsonObject) throws IllegalModException {
-        //TODO validate the jsonObject
+        if (!jsonObject.has("name")) throw new IllegalModException("Unable to find mod name");
+        if (!jsonObject.has("version")) throw new IllegalModException("Unable to find mod version");
+        if (!jsonObject.has("main-class")) throw new IllegalModException("Unable to find mod main-class");
     }
 
     public static String tryToGet(JsonObject jsonObj, String key, String defaultValue) {

@@ -12,6 +12,12 @@ import java.util.Set;
 // resources/{resource_type}/path
 // resources/texture/{resolution}/path
 public interface ResourceManager {
+    /**
+     * This returns a set of all Loaded Textures
+     *
+     * @return all loaded textures
+     * @see Texture
+     */
     Set<Texture> getAllTextures();
 
     void registerResource(String path, ResourceType resourceType, Mod mod);
