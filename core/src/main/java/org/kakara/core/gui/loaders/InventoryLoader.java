@@ -3,6 +3,7 @@ package org.kakara.core.gui.loaders;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.kakara.core.Utils;
+import org.kakara.core.gui.InventoryProperties;
 import org.kakara.core.gui.menu.items.ItemStackElement;
 import org.kakara.core.gui.menu.items.MenuElement;
 import org.kakara.core.resources.Resource;
@@ -30,5 +31,17 @@ public class InventoryLoader {
             e.printStackTrace();
         }
         return Collections.emptySet();
+    }
+
+    public static InventoryProperties loadProperties(Resource resource) {
+        try {
+            JsonObject jsonObject = Utils.getGson().fromJson(new FileReader(resource.getFile()), JsonObject.class);
+            JsonObject properties = jsonObject.get("properties").getAsJsonObject();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

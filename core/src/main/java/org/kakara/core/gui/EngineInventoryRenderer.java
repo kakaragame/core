@@ -9,10 +9,12 @@ public class EngineInventoryRenderer implements InventoryRenderer {
     private final Texture inventoryBackground;
     private final Set<MenuElement> elementList;
     private EngineController engineController;
+    private final InventoryProperties properties;
 
-    public EngineInventoryRenderer(Texture inventoryBackground, Set<MenuElement> elementList) {
+    public EngineInventoryRenderer(Texture inventoryBackground, Set<MenuElement> elementList, InventoryProperties properties) {
         this.inventoryBackground = inventoryBackground;
         this.elementList = elementList;
+        this.properties = properties;
     }
 
     @Override
@@ -20,7 +22,7 @@ public class EngineInventoryRenderer implements InventoryRenderer {
         if (engineController == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        engineController.render(inventory, inventoryBackground, elementList);
+        engineController.render(inventory, inventoryBackground, elementList, properties);
     }
 
     @Override
@@ -33,7 +35,7 @@ public class EngineInventoryRenderer implements InventoryRenderer {
         if (engineController == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        engineController.redraw(inventory, inventoryBackground, elementList);
+        engineController.redraw(inventory, inventoryBackground, elementList, properties);
     }
 
     public void setEngineController(EngineController engineController) {
