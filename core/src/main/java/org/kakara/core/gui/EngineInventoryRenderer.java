@@ -1,14 +1,18 @@
 package org.kakara.core.gui;
 
+import org.kakara.core.engine.EngineCore;
 import org.kakara.core.gui.menu.items.MenuElement;
 import org.kakara.core.resources.Texture;
 
 import java.util.Set;
 
+/**
+ * This InventoryRenderer is an indirect way of talking with the Engine.
+ * Kakara Client will take data passed and actually render it.
+ */
 public class EngineInventoryRenderer implements InventoryRenderer {
     private final Texture inventoryBackground;
     private final Set<MenuElement> elementList;
-    private EngineController engineController;
     private final InventoryProperties properties;
 
     public EngineInventoryRenderer(Texture inventoryBackground, Set<MenuElement> elementList, InventoryProperties properties) {
@@ -19,26 +23,23 @@ public class EngineInventoryRenderer implements InventoryRenderer {
 
     @Override
     public void render(Inventory inventory) {
-        if (engineController == null) {
+        if (EngineCore.getEngineController() == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        engineController.render(inventory, inventoryBackground, elementList, properties);
+        EngineCore.getEngineController().render(inventory, inventoryBackground, elementList, properties);
     }
 
     @Override
     public void closeInventory() {
-        engineController.close();
+        EngineCore.getEngineController().close();
     }
 
     @Override
     public void redraw(Inventory inventory) {
-        if (engineController == null) {
+        if (EngineCore.getEngineController() == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        engineController.redraw(inventory, inventoryBackground, elementList, properties);
+        EngineCore.getEngineController().redraw(inventory, inventoryBackground, elementList, properties);
     }
 
-    public void setEngineController(EngineController engineController) {
-        this.engineController = engineController;
-    }
 }
