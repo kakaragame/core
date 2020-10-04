@@ -7,4 +7,6 @@ public interface InventoryRenderer {
     void closeInventory();
 
     void redraw(Inventory inventory);
+
+    InventoryProperties getProperties();
 }

@@ -1,18 +1,14 @@
 package org.kakara.core.gui;
 
-import org.kakara.core.engine.EngineCore;
 import org.kakara.core.gui.menu.items.MenuElement;
 import org.kakara.core.resources.Texture;
 
 import java.util.Set;
 
-/**
- * This InventoryRenderer is an indirect way of talking with the Engine.
- * Kakara Client will take data passed and actually render it.
- */
 public class EngineInventoryRenderer implements InventoryRenderer {
     private final Texture inventoryBackground;
     private final Set<MenuElement> elementList;
+    private EngineController engineController;
     private final InventoryProperties properties;
 
     public EngineInventoryRenderer(Texture inventoryBackground, Set<MenuElement> elementList, InventoryProperties properties) {
@@ -23,23 +19,31 @@ public class EngineInventoryRenderer implements InventoryRenderer {
 
     @Override
     public void render(Inventory inventory) {
-        if (EngineCore.getEngineController() == null) {
+        if (engineController == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        EngineCore.getEngineController().render(inventory, inventoryBackground, elementList, properties);
+        engineController.render(inventory, inventoryBackground, elementList, properties);
     }
 
     @Override
     public void closeInventory() {
-        EngineCore.getEngineController().close();
+        engineController.close();
     }
 
     @Override
     public void redraw(Inventory inventory) {
-        if (EngineCore.getEngineController() == null) {
+        if (engineController == null) {
             throw new IllegalStateException("Engine Controller is not ready");
         }
-        EngineCore.getEngineController().redraw(inventory, inventoryBackground, elementList, properties);
+        engineController.redraw(inventory, inventoryBackground, elementList, properties);
     }
 
+    @Override
+    public InventoryProperties getProperties() {
+        return properties;
+    }
+
+    public void setEngineController(EngineController engineController) {
+        this.engineController = engineController;
+    }
 }
