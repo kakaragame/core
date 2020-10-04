@@ -13,7 +13,7 @@ public abstract class ModService implements Service {
     }
 
     @Override
-    public final ControllerKey getImplementationNameKey() {
+    public final ControllerKey getImplementationControllerKey() {
         return implementationNameKey;
     }
 
@@ -34,6 +34,11 @@ public abstract class ModService implements Service {
 
     @Override
     public final String getName() {
+        return serviceNameKey.getKey();
+    }
+
+    @Override
+    public String getKey() {
         return serviceNameKey.getKey();
     }
 

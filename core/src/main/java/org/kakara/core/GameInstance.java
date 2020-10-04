@@ -12,6 +12,7 @@ import org.kakara.core.key.KeyBindManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
+import org.kakara.core.service.ServiceManager;
 import org.kakara.core.sound.SoundManager;
 import org.kakara.core.world.WorldGenerationManager;
 import org.kakara.core.world.WorldManager;
@@ -39,6 +40,8 @@ public interface GameInstance {
     WorldManager getWorldManager();
 
     KeyBindManager getKeyBindManager();
+
+    ServiceManager getServiceManager();
 
     File getWorkingDirectory();
 
