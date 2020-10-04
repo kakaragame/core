@@ -29,4 +29,6 @@ public interface Service extends Identifiable {
      * @return the id for the implementation ID
      */
     int getImplementationId();
+
+    Class<? extends Service> getServiceClass();
 }
