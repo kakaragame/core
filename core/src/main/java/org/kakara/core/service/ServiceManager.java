@@ -1,6 +1,7 @@
 package org.kakara.core.service;
 
 import org.kakara.core.ControllerKey;
+import org.kakara.core.mod.LoadStage;
 
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -8,7 +9,7 @@ import java.util.function.Consumer;
 /**
  * The service manager
  */
-public interface ServiceManager {
+public interface ServiceManager extends LoadStage {
     /**
      * Look for the Service with the ControllerKey
      *
@@ -31,7 +32,7 @@ public interface ServiceManager {
      * @param service       the consumer to use once the service has been found
      * @param serviceToFind the service to find class
      */
-    void executeOnceServiceIsFound(Consumer<Service> service, Class<? extends Service> serviceToFind);
+    <T extends Service> void executeOnceServiceIsFound(Consumer<T> service, Class<? extends Service> serviceToFind);
 
     /**
      * Will execute the Consumer once the implementation has been registered.
@@ -39,7 +40,7 @@ public interface ServiceManager {
      * @param service       the consumer to use once the service has been found
      * @param controllerKey the service controllerkey
      */
-    void executeOnceServiceIsFound(Consumer<Service> service, ControllerKey controllerKey);
+    <T extends Service> void executeOnceServiceIsFound(Consumer<T> service, ControllerKey controllerKey);
 
     /**
      * Register the Service implementation
@@ -48,4 +49,9 @@ public interface ServiceManager {
      * @see Service
      */
     void registerService(Service service);
+
+    @Override
+    default Class<?> getStageClass() {
+        return ServiceManager.class;
+    }
 }
