@@ -47,7 +47,7 @@ public interface GameInstance {
 
     EventManager getEventManager();
 
-    GameTypes getType();
+    EnvType getType();
 
     WorldGenerationManager getWorldGenerationManager();
 

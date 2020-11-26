@@ -1,7 +1,7 @@
 package org.kakara.core.test;
 
-import org.kakara.core.GameTypes;
-import org.kakara.core.annotations.GameType;
+import org.kakara.core.EnvType;
+import org.kakara.core.annotations.Environment;
 import org.kakara.core.game.ItemManager;
 import org.kakara.core.game.entity.EntityManager;
 import org.kakara.core.mod.annotations.LoadingStage;
@@ -25,13 +25,13 @@ public class KakaraTestMod extends GameMod {
     }
 
     @LoadingStage
-    @GameType(GameTypes.SERVER)
+    @Environment(EnvType.SERVER)
     public void serverGeneralLoad() {
 
     }
 
     @LoadingStage
-    @GameType(GameTypes.CLIENT)
+    @Environment(EnvType.CLIENT)
     public void clientGeneralLoad() {
 
     }

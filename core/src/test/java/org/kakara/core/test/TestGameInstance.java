@@ -1,7 +1,7 @@
 package org.kakara.core.test;
 
+import org.kakara.core.EnvType;
 import org.kakara.core.GameInstance;
-import org.kakara.core.GameTypes;
 import org.kakara.core.client.ClientSettingsBuilder;
 import org.kakara.core.command.CommandManager;
 import org.kakara.core.crafting.CraftingManager;
@@ -90,7 +90,7 @@ public class TestGameInstance implements GameInstance {
     }
 
     @Override
-    public GameTypes getType() {
+    public EnvType getType() {
         return null;
     }
 

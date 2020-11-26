@@ -5,7 +5,7 @@ import me.kingtux.simpleannotation.MethodFinder;
 import org.apache.commons.lang3.StringUtils;
 import org.kakara.core.GameInstance;
 import org.kakara.core.Kakara;
-import org.kakara.core.annotations.GameType;
+import org.kakara.core.annotations.Environment;
 import org.kakara.core.exceptions.IllegalModException;
 import org.kakara.core.mod.*;
 import org.kakara.core.mod.annotations.LoadingStage;
@@ -129,9 +129,9 @@ public class GameModManager implements ModManager {
             if (loadStage.getStageClass() != meth.getParameterTypes()[0]) {
                 continue;
             }
-            if (meth.isAnnotationPresent(GameType.class)) {
-                GameType gameType = meth.getAnnotation(GameType.class);
-                if (gameType.value() != gameInstance.getType()) continue;
+            if (meth.isAnnotationPresent(Environment.class)) {
+                Environment environment = meth.getAnnotation(Environment.class);
+                if (environment.value() != gameInstance.getType()) continue;
             }
             method = meth;
             break;

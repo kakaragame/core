@@ -98,7 +98,7 @@ public class Kakara {
     }
 
 
-    public static GameTypes getType() {
+    public static EnvType getType() {
         return getGameInstance().getType();
     }
 
