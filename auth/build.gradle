@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'maven'
-    id "com.github.johnrengelman.shadow" version "6.0.0"
+    id "com.github.johnrengelman.shadow" version "6.1.0"
 
 }
 compileJava {
@@ -31,7 +31,7 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.30'
     compile 'org.apache.commons:commons-lang3:3.11'
     compile 'com.google.code.gson:gson:2.8.6'
-    compile 'com.google.guava:guava:29.0-jre'
+    compile 'com.google.guava:guava:30.0-jre'
 }
 
 
