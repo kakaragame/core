@@ -93,6 +93,16 @@ public class Kakara {
         return getGameInstance().getWorldGenerationManager();
     }
 
+    /**
+     * Warning. Doing this without properly closing down the rest of the game could result in destrctuction of anything within the game.
+     * <p>
+     * This should only be called by Kakara itself.
+     */
+    public void coreClose() {
+        Kakara.gameInstance = null;
+
+    }
+
     public static EntityManager getEntityManager() {
         return getGameInstance().getEntityManager();
     }
