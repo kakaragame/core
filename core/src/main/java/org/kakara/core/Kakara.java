@@ -98,7 +98,7 @@ public class Kakara {
      * <p>
      * This should only be called by Kakara itself.
      */
-    public void coreClose() {
+    public static void coreClose() {
         Kakara.gameInstance = null;
 
     }
