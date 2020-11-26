@@ -46,7 +46,7 @@ dependencies {
     compileOnly 'me.ryandw11:ods:1.0-MEM-SNAPSHOT'
 }
 
-group = 'org.kakara.core'
+group = 'org.kakara'
 version = '1.0-KT-SNAPSHOT'
 jar {
 

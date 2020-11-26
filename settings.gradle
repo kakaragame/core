@@ -8,5 +8,14 @@
  */
 
 rootProject.name = 'core'
-include("auth")
+include("core-auth")
+include("core-modloader")
+include("core-network")
+include("core-server")
+include("core-client")
+include("core-menu")
+include("core-game")
+include("core-sgame")
+
+
 include("core")
