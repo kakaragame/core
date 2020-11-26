@@ -1,7 +1,7 @@
 package org.kakara.core.game.events.entity;
 
-import org.kakara.core.world.GameBlock;
-import org.kakara.core.world.GameEntity;
+import org.kakara.core.game.world.GameBlock;
+import org.kakara.core.game.world.GameEntity;
 
 /**
  * This is an event called when a Block is stepped on.

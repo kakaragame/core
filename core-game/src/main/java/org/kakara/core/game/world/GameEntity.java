@@ -1,7 +1,7 @@
 package org.kakara.core.game.world;
 
 import org.jetbrains.annotations.NotNull;
-import org.kakara.core.game.Entity;
+import org.kakara.core.game.game.Entity;
 
 public interface GameEntity {
     @NotNull

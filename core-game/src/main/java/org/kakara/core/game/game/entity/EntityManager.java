@@ -2,7 +2,7 @@ package org.kakara.core.game.game.entity;
 
 import org.jetbrains.annotations.NotNull;
 import org.kakara.core.ControllerKey;
-import org.kakara.core.game.Entity;
+import org.kakara.core.game.game.Entity;
 import org.kakara.core.mod.LoadStage;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package org.kakara.core.game.world;
 
 import org.jetbrains.annotations.NotNull;
-import org.kakara.core.game.ItemStack;
+import org.kakara.core.game.game.ItemStack;
 
 import java.util.Objects;
 

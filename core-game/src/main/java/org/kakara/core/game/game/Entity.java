@@ -1,8 +1,8 @@
 package org.kakara.core.game.game;
 
 import org.kakara.core.Identifiable;
-import org.kakara.core.game.entity.EntitySpawningPattern;
-import org.kakara.core.game.entity.PathFinder;
+import org.kakara.core.game.game.entity.EntitySpawningPattern;
+import org.kakara.core.game.game.entity.PathFinder;
 
 public interface Entity extends Identifiable {
 

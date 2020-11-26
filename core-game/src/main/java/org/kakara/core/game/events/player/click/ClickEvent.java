@@ -1,6 +1,6 @@
 package org.kakara.core.game.events.player.click;
 
-import org.kakara.core.events.player.PlayerEvent;
+import org.kakara.core.game.events.player.PlayerEvent;
 import org.kakara.core.player.Player;
 import org.kakara.core.world.GameBlock;
 

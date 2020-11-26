@@ -1,7 +1,7 @@
 package org.kakara.core.game.events.player;
 
-import org.kakara.core.events.Cancellable;
-import org.kakara.core.events.Event;
+import org.kakara.core.game.events.Cancellable;
+import org.kakara.core.game.events.Event;
 import org.kakara.core.player.Player;
 
 /**

@@ -1,7 +1,7 @@
 package org.kakara.core.game.charm;
 
 import org.kakara.core.Identifiable;
-import org.kakara.core.game.Item;
+import org.kakara.core.game.game.Item;
 
 /**
  * This defines a type of charm in Kakara used to modify items in specific ways.

@@ -43,7 +43,7 @@ dependencies {
     compile 'org.apache.commons:commons-lang3:3.11'
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'com.google.guava:guava:30.0-jre'
-    compile group: 'org.kakara', name: 'core', version: getVersion()
+    compile project(":core")
 
     compile group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
     compileOnly 'me.ryandw11:ods:1.0-MEM-SNAPSHOT'

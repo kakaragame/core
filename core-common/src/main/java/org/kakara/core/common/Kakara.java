@@ -1,20 +1,20 @@
 package org.kakara.core.common;
 
+import org.kakara.core.EnvType;
 import org.kakara.core.command.CommandManager;
-import org.kakara.core.crafting.CraftingManager;
-import org.kakara.core.events.EventManager;
-import org.kakara.core.game.GameSettings;
-import org.kakara.core.game.Item;
-import org.kakara.core.game.ItemManager;
-import org.kakara.core.game.ItemStack;
-import org.kakara.core.game.entity.EntityManager;
+import org.kakara.core.game.events.EventManager;
+import org.kakara.core.game.game.GameSettings;
+import org.kakara.core.game.game.Item;
+import org.kakara.core.game.game.ItemManager;
+import org.kakara.core.game.game.ItemStack;
+import org.kakara.core.game.game.entity.EntityManager;
+import org.kakara.core.game.world.WorldGenerationManager;
+import org.kakara.core.game.world.WorldManager;
 import org.kakara.core.mod.ModManager;
 import org.kakara.core.player.OfflinePlayer;
 import org.kakara.core.resources.ResourceManager;
 import org.kakara.core.service.ServiceManager;
 import org.kakara.core.sound.SoundManager;
-import org.kakara.core.world.WorldGenerationManager;
-import org.kakara.core.world.WorldManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,9 +65,6 @@ public class Kakara {
         return getGameInstance().getItemManager();
     }
 
-    public static CraftingManager getCraftingManager() {
-        return getGameInstance().getCraftingManager();
-    }
 
     public static WorldManager getWorldManager() {
         return getGameInstance().getWorldManager();

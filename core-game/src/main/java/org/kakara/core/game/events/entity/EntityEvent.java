@@ -1,8 +1,8 @@
 package org.kakara.core.game.events.entity;
 
-import org.kakara.core.events.Cancellable;
-import org.kakara.core.events.Event;
-import org.kakara.core.world.GameEntity;
+import org.kakara.core.game.events.Cancellable;
+import org.kakara.core.game.events.Event;
+import org.kakara.core.game.world.GameEntity;
 
 /**
  * This an a GameEntity based event.

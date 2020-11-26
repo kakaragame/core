@@ -1,7 +1,7 @@
 package org.kakara.core.game.game;
 
 
-import org.kakara.core.charm.Charm;
+import org.kakara.core.game.charm.Charm;
 
 import java.util.List;
 import java.util.Map;
