@@ -16,6 +16,7 @@ include("core-client")
 include("core-menu")
 include("core-game")
 include("core-sgame")
+include("core-common")
 
 
 include("core")
