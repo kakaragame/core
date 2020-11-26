@@ -47,7 +47,7 @@ dependencies {
 }
 
 group = 'org.kakara'
-version = '1.0-KT-SNAPSHOT'
+version = '1.0-RC-SNAPSHOT'
 jar {
 
     from {
