@@ -25,7 +25,6 @@ public interface World extends ManagedObject, Serverable {
     @NotNull
     Optional<GameBlock> getBlockAt(Location location);
 
-
     @NotNull
     Location getWorldSpawn();
 
