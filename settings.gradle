@@ -8,15 +8,9 @@
  */
 
 rootProject.name = 'core'
-include("core")
-include("core-menu")
-include("core-game")
-include("core-sgame")
-include("core-auth")
-include("core-modloader")
-include("core-network")
-include("core-server")
-include("core-client")
+include("common")
+include("client")
+include("server")
 
 include("core-common")
 
