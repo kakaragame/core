@@ -27,8 +27,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.google.guava:guava:30.0-jre")
     implementation("org.jetbrains", "annotations", "20.1.0")
-    implementation(project(":network"))
-    implementation(project(":auth"))
     compileOnly("me.ryandw11:ods:1.0-MEM-SNAPSHOT")
 }
 
@@ -41,7 +39,7 @@ tasks {
 
     jar {
         from(
-            *configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) }.toTypedArray()
+                *configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) }.toTypedArray()
         )
     }
 
