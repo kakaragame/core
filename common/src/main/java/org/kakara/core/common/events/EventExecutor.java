@@ -1,21 +1,25 @@
 package org.kakara.core.common.events;
 
 
+import org.kakara.core.common.Kakara;
+
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class EventExecutor {
-    private final Method method;
-    private final Listener listener;
+    private RegisteredListener registeredListener;
 
-    public EventExecutor(Method method, Listener listener) {
-        this.method = method;
-        this.listener = listener;
+    public EventExecutor(RegisteredListener registeredListener) {
+        this.registeredListener = registeredListener;
     }
 
     public void execute(Event event) throws EventException {
+        if (registeredListener.getEnvType() != null) {
+            if (Kakara.getEnvironmentInstance().getType() != registeredListener.getEnvType()) {
+                return;
+            }
+        }
         try {
-            method.invoke(listener, event);
+            registeredListener.getHandlerMethod().invoke(registeredListener.getListener(), event);
         } catch (IllegalAccessException e) {
             throw new EventException("Unable to access event handler", e);
         } catch (InvocationTargetException e) {

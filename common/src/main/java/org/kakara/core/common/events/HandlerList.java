@@ -16,9 +16,6 @@ public class HandlerList {
         this.eventClass = eventClass;
     }
 
-    public void addHandler(Mod mod, Listener listener) {
-        listenerList.add(new RegisteredListener(listener, mod, eventClass));
-    }
 
     public void addHandler(Mod mod, Listener listener, Method method) {
         listenerList.add(new RegisteredListener(listener, mod, method, eventClass));
