@@ -4,7 +4,6 @@ import org.kakara.core.common.game.GameSettings;
 import org.kakara.core.common.resources.ResourceManager;
 
 public interface GameInstance extends Serverable {
-
     default EnvironmentInstance getEnvironment() {
         return Kakara.getEnvironmentInstance();
     }

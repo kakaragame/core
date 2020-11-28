@@ -1,6 +1,5 @@
 package org.kakara.core.server.gui;
 
-
 import org.apache.commons.lang3.Validate;
 import org.kakara.core.common.EnvType;
 import org.kakara.core.common.Kakara;
