@@ -1,6 +1,7 @@
-package org.kakara.core.common.world;
+package org.kakara.core.server.world;
 
 import org.jetbrains.annotations.Nullable;
+import org.kakara.core.common.world.World;
 
 import java.util.UUID;
 
