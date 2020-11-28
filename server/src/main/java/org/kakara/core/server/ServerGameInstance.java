@@ -2,9 +2,9 @@ package org.kakara.core.server;
 
 import org.kakara.core.common.GameInstance;
 import org.kakara.core.common.game.Item;
-import org.kakara.core.common.game.ItemStack;
+import org.kakara.core.server.game.ServerItemStack;
 
 public interface ServerGameInstance extends GameInstance {
 
-    ItemStack createItemStack(Item item);
+    ServerItemStack createItemStack(Item item);
 }
