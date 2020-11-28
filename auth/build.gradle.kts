@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.kakara.core"
-version = "1.0-SNAPSHOT"
+version = "1.0-RW-SNAPSHOT"
 
 configurations {
     shadow
