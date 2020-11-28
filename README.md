@@ -12,6 +12,6 @@ The API/Mod API core for Kakara.
                 <dependency>
                     <groupId>org.kakara</groupId>
                     <artifactId>core</artifactId>
-                    <version>1.0-SNAPSHOT</version>
+                    <version>1.0-RW-SNAPSHOT</version>
                 </dependency>
         ```
