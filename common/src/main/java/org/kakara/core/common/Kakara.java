@@ -37,6 +37,8 @@ public class Kakara {
 
     public static void setGameInstance(GameInstance gameInstance) {
         Kakara.gameInstance = gameInstance;
+        //Reloading Utils with proper tools
+        Utils.init();
     }
 
     /**

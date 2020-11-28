@@ -1,5 +1,6 @@
 package org.kakara.core.common;
 
+import org.kakara.core.common.game.GameSettings;
 import org.kakara.core.common.resources.ResourceManager;
 
 public interface GameInstance extends Serverable {
@@ -12,4 +13,6 @@ public interface GameInstance extends Serverable {
     }
 
     ResourceManager getResourceManager();
+
+    GameSettings getGameSettings();
 }
