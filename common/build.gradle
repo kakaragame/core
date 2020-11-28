@@ -43,6 +43,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'com.google.guava:guava:30.0-jre'
     compile group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
+    compile project(":network")
+    compile project(":auth")
     compileOnly 'me.ryandw11:ods:1.0-MEM-SNAPSHOT'
 }
 
