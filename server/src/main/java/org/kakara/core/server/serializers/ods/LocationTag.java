@@ -4,10 +4,15 @@ import me.ryandw11.ods.tags.DoubleTag;
 import me.ryandw11.ods.tags.FloatTag;
 import me.ryandw11.ods.tags.ObjectTag;
 import me.ryandw11.ods.tags.StringTag;
+import org.kakara.core.common.Kakara;
 import org.kakara.core.common.world.Location;
 import org.kakara.core.common.world.World;
+import org.kakara.core.server.ServerGameInstance;
+
+import java.util.UUID;
 
 public class LocationTag extends ObjectTag {
+
 
     public LocationTag(String key, Location loc) {
         super(key);
@@ -23,7 +28,7 @@ public class LocationTag extends ObjectTag {
     public static Location getLocation(ObjectTag tag) {
         World w = null;
         if (tag.hasTag("world")) {
-            w = null;//Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
+            w = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
         }
         double x = (Double) tag.getTag("x").getValue();
         double y = (Double) tag.getTag("y").getValue();
@@ -38,7 +43,7 @@ public class LocationTag extends ObjectTag {
     public Location getLocation() {
         World w = null;
         if (hasTag("world"))
-            w = null;//Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
+            w = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
         double x = (Double) getTag("x").getValue();
         double y = (Double) getTag("y").getValue();
         double z = (Double) getTag("z").getValue();

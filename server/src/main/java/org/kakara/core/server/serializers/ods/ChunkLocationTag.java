@@ -3,8 +3,13 @@ package org.kakara.core.server.serializers.ods;
 import me.ryandw11.ods.tags.IntTag;
 import me.ryandw11.ods.tags.ObjectTag;
 import me.ryandw11.ods.tags.StringTag;
+import org.kakara.core.common.KValidate;
+import org.kakara.core.common.Kakara;
 import org.kakara.core.common.world.ChunkLocation;
 import org.kakara.core.common.world.World;
+import org.kakara.core.server.ServerGameInstance;
+
+import java.util.UUID;
 
 public class ChunkLocationTag extends ObjectTag {
 
@@ -20,7 +25,8 @@ public class ChunkLocationTag extends ObjectTag {
     public static ChunkLocation getChunkLocation(ObjectTag tag) {
         World w = null;
         if (tag.hasTag("world"))
-            w = null;//Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
+            KValidate.checkServer();
+            w = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
         int x = (Integer) tag.getTag("x").getValue();
         int y = (Integer) tag.getTag("y").getValue();
         int z = (Integer) tag.getTag("z").getValue();
@@ -32,7 +38,8 @@ public class ChunkLocationTag extends ObjectTag {
     public ChunkLocation getChunkLocation() {
         World w = null;
         if (hasTag("world"))
-            w = null;//Kakara.getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
+            KValidate.checkServer();
+        w = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
         int x = (Integer) getTag("x").getValue();
         int y = (Integer) getTag("y").getValue();
         int z = (Integer) getTag("z").getValue();

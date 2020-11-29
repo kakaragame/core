@@ -1,10 +1,14 @@
 package org.kakara.core.server.serializers.gson;
 
 import com.google.gson.*;
+import org.kakara.core.common.KValidate;
+import org.kakara.core.common.Kakara;
 import org.kakara.core.common.world.Location;
 import org.kakara.core.common.world.World;
+import org.kakara.core.server.ServerGameInstance;
 
 import java.lang.reflect.Type;
+import java.util.UUID;
 
 public class LocationSerializer implements JsonSerializer<Location>, JsonDeserializer<Location> {
     @Override
@@ -12,7 +16,8 @@ public class LocationSerializer implements JsonSerializer<Location>, JsonDeseria
         JsonObject o = jsonElement.getAsJsonObject();
         World world = null;
         if (o.has("world")) {
-            world = null;//Kakara.getGameInstance().getWorldManager().getWorldByUUID(UUID.fromString(o.get("world").getAsString()));
+            KValidate.isServer();
+            world = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString(o.get("world").getAsString()));
         }
         double x = o.get("x").getAsDouble();
         double y = o.get("y").getAsDouble();

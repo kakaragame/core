@@ -1,14 +1,19 @@
 package org.kakara.core.server.serializers.gson;
 
 import com.google.gson.*;
+import org.kakara.core.common.KValidate;
+import org.kakara.core.common.Kakara;
 import org.kakara.core.common.world.World;
+import org.kakara.core.server.ServerGameInstance;
 
 import java.lang.reflect.Type;
+import java.util.UUID;
 
 public class WorldSerializer implements JsonSerializer<World>, JsonDeserializer<World> {
     @Override
     public World deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        return null;//Kakara.getWorldManager().getWorldByUUID(UUID.fromString(jsonElement.getAsString()));
+        KValidate.checkServer();
+        return ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString(jsonElement.getAsString()));
     }
 
     @Override
