@@ -11,4 +11,13 @@ public class KValidate {
         if (isServer())
             throw new IncompatibleEnvironmentException(EnvType.SERVER);
     }
+
+    public static boolean isClient() {
+        return (Kakara.getEnvironmentInstance().getType() == EnvType.CLIENT);
+    }
+
+    public static void checkClient() throws IncompatibleEnvironmentException {
+        if (isClient())
+            throw new IncompatibleEnvironmentException(EnvType.CLIENT);
+    }
 }
