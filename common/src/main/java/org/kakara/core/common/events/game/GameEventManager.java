@@ -2,6 +2,7 @@ package org.kakara.core.common.events.game;
 
 import me.kingtux.simpleannotation.MethodFinder;
 import org.kakara.core.common.GameInstance;
+import org.kakara.core.common.GameObject;
 import org.kakara.core.common.Kakara;
 import org.kakara.core.common.events.*;
 import org.kakara.core.common.events.annotations.EventHandler;
@@ -16,9 +17,8 @@ public class GameEventManager implements EventManager {
 
     @Override
     public void registerEventHandler(Listener handler, Mod mod) {
-        if(handler instanceof Item){
-            //TODO: add a common interface for all game objects(Items, Entities, etc).
-            throw new IllegalArgumentException("Game Object listeners may not be registered this way. ");
+        if(handler instanceof GameObject){
+            throw new IllegalArgumentException("GameObject listeners may not be registered this way. ");
         }
         Method[] methods = MethodFinder.getAllMethodsWithAnnotation(handler.getClass(), EventHandler.class, false);
         for (Method method : methods) {
