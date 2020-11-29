@@ -1,6 +1,7 @@
 package org.kakara.core.common;
 
 import org.kakara.core.common.mod.ModManager;
+import org.kakara.core.common.resources.ResourceManager;
 
 import java.io.File;
 
@@ -10,6 +11,8 @@ public interface EnvironmentInstance {
     File getWorkingDirectory();
 
     EnvType getType();
+
+    ResourceManager getResourceManager();
 
 }
 

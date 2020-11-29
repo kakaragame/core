@@ -1,4 +1,4 @@
-package org.kakara.core.common.mod.game;
+package org.kakara.core.common.mod.environment;
 
 import me.kingtux.other.TheCodeOfAMadMan;
 import me.kingtux.simpleannotation.MethodFinder;
@@ -23,13 +23,13 @@ import java.util.List;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
 
-public class GameModManager implements ModManager {
+public class EnvironmentModManager implements ModManager {
     private final List<Mod> loadedMods = new ArrayList<>();
     private ModLoader modLoader;
     private final Mod coreMod;
     private GameInstance gameInstance;
 
-    public GameModManager(Mod coreMod) {
+    public EnvironmentModManager(Mod coreMod) {
         this.coreMod = coreMod;
     }
 
@@ -41,10 +41,10 @@ public class GameModManager implements ModManager {
             try {
                 if (splitPath[0].equalsIgnoreCase("texture")) {
                     String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 2, splitPath.length);
-                    Kakara.getGameInstance().getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
+                    Kakara.getEnvironmentInstance().getResourceManager().registerTexture(newPath, TextureResolution.get(Integer.parseInt(splitPath[1])), mod);
                 } else {
                     String newPath = StringUtils.join(Arrays.stream(splitPath).collect(Collectors.toList()), "/", 1, splitPath.length);
-                    Kakara.getGameInstance().getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
+                    Kakara.getEnvironmentInstance().getResourceManager().registerResource(newPath, ResourceType.valueOf(splitPath[0].toUpperCase()), mod);
                 }
             } catch (IllegalArgumentException e) {
 
@@ -71,6 +71,7 @@ public class GameModManager implements ModManager {
             UnModObject unModObject = null;
             try {
                 unModObject = modLoader.load(file);
+
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (IllegalModException e) {
@@ -79,7 +80,7 @@ public class GameModManager implements ModManager {
             if (unModObject == null) {
                 continue;
             }
-            if (unModObject.getModRules().getTarget() != ModRules.ModTarget.GAME) {
+            if (unModObject.getModRules().getTarget() != ModRules.ModTarget.ENVIRONMENT) {
                 continue;
             }
             objects.add(unModObject);
@@ -95,9 +96,9 @@ public class GameModManager implements ModManager {
     @Override
     public void loadMods(List<UnModObject> modsToLoad) {
         for (UnModObject modObject : modsToLoad) {
-            GameMod gameMod = null;
+            EnvironmentMod gameMod = null;
             try {
-                gameMod = (GameMod) modLoader.createMod(modObject);
+                gameMod = (EnvironmentMod) modLoader.createMod(modObject);
             } catch (ClassNotFoundException e) {
                 Kakara.LOGGER.error("unable to locate class", e);
             } catch (IllegalModException e) {

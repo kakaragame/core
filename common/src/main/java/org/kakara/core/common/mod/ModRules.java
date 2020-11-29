@@ -1,5 +1,6 @@
 package org.kakara.core.common.mod;
 
+
 /**
  * The details about the a mod
  */
@@ -61,4 +62,11 @@ public interface ModRules {
      * @return the mods this mod depends on
      */
     String[] getDepends();
+
+    ModTarget getTarget();
+
+    enum  ModTarget {
+        ENVIRONMENT,
+        GAME
+    }
 }

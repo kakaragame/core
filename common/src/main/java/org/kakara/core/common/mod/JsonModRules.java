@@ -13,6 +13,7 @@ public class JsonModRules implements ModRules {
     private final String[] depends;
     private final String[] authors;
     private final ModType modType;
+    private final ModTarget target;
 
     public JsonModRules(JsonObject jsonObject) {
         name = jsonObject.get("name").getAsString();
@@ -20,6 +21,7 @@ public class JsonModRules implements ModRules {
         description = tryToGet(jsonObject, "description", "");
         mainClass = jsonObject.get("main-class").getAsString();
         modType = ModType.valueOf(tryToGet(jsonObject, "mod-type", "REGULAR"));
+        target = ModTarget.valueOf(tryToGet(jsonObject, "target", "GAME"));
         softDepends = getOrDefaultArray(jsonObject, "soft-depends", new String[0]);
         authors = getOrDefaultArray(jsonObject, "authors", new String[0]);
         depends = getOrDefaultArray(jsonObject, "depends", new String[0]);
@@ -90,5 +92,10 @@ public class JsonModRules implements ModRules {
     @Override
     public String[] getDepends() {
         return depends;
+    }
+
+    @Override
+    public ModTarget getTarget() {
+        return target;
     }
 }
