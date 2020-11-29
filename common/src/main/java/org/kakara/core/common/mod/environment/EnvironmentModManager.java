@@ -157,6 +157,11 @@ public class EnvironmentModManager implements ModManager {
         //this.modLoader = new GameModLoader(gameInstance);
     }
 
+    @Override
+    public void load(GameInstance gameInstance) {
+
+    }
+
     public void postEnable() {
         loadedMods.forEach(Mod::postEnable);
     }

@@ -4,6 +4,7 @@ package org.kakara.core.common.resources;
 import org.kakara.core.common.GameInstance;
 import org.kakara.core.common.mod.Mod;
 
+import java.io.File;
 import java.util.Optional;
 import java.util.Set;
 
@@ -31,6 +32,6 @@ public interface ResourceManager {
 
     Optional<Texture> getTexture(String path, Mod mod);
 
-    void load(GameInstance kakaraCore);
+    void load(File baseLocation);
 
 }

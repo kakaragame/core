@@ -2,6 +2,7 @@ package org.kakara.core.common.mod;
 
 
 import org.kakara.core.common.EnvironmentInstance;
+import org.kakara.core.common.GameInstance;
 
 import java.io.File;
 import java.util.List;
@@ -24,4 +25,6 @@ public interface ModManager {
     void loadStage(LoadStage loadStage);
 
     void load(EnvironmentInstance gameInstance);
+
+    void load(GameInstance gameInstance);
 }
