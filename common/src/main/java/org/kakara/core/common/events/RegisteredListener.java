@@ -18,7 +18,7 @@ public class RegisteredListener {
         this.mod = mod;
         this.handlerMethod = handlerMethod;
         this.eventClass = eventClass;
-        if(eventClass.isAnnotationPresent(Environment.class))
+        if(listener.getClass().isAnnotationPresent(Environment.class))
             envType = eventClass.getAnnotation(Environment.class).value();
         else if (handlerMethod.isAnnotationPresent(Environment.class))
             envType = handlerMethod.getAnnotation(Environment.class).value();
