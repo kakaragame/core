@@ -1,5 +1,7 @@
 package org.kakara.core.common.gui;
 
+import org.kakara.core.common.gui.container.InventoryContainer;
+
 public interface InventoryManager {
     /**
      * Creates a new InventoryBased
@@ -9,4 +11,5 @@ public interface InventoryManager {
      * @return a new instance of the InventoryBuilder
      */
     <T extends InventoryBuilder> T createInventory(Class<?> inventoryClass);
+
 }

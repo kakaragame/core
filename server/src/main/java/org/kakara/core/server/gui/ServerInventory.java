@@ -10,4 +10,6 @@ public interface ServerInventory extends Inventory {
     void setItemStack(@NotNull ItemStack itemStack, int index);
 
     void clear();
+
+
 }

@@ -4,6 +4,7 @@ import org.kakara.core.common.command.CommandManager;
 import org.kakara.core.common.events.EventManager;
 import org.kakara.core.common.game.GameSettings;
 import org.kakara.core.common.game.ItemManager;
+import org.kakara.core.common.gui.container.ContainerUtils;
 import org.kakara.core.common.mod.ModManager;
 import org.kakara.core.common.resources.ResourceManager;
 
@@ -31,4 +32,6 @@ public interface GameInstance extends Serverable {
     EventManager getEventManager();
 
     ModManager getModManager();
+
+    ContainerUtils getContainerUtils();
 }
