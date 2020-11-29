@@ -7,7 +7,7 @@ import org.kakara.core.common.gui.container.InventoryContainer;
 
 import java.awt.*;
 
-public interface ServerBoxedInventoryContainer extends InventoryContainer, BoxedInventoryContainer {
+public interface ServerBoxedInventoryContainer extends ServerInventoryContainer, BoxedInventoryContainer {
     void setItemStack(@NotNull ItemStack itemStack, @NotNull Point point);
 
 }
