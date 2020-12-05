@@ -1,21 +1,34 @@
 package org.kakara.core.common.game;
 
+import me.kingtux.simpleannotation.MethodFinder;
 import org.kakara.core.common.GameObject;
+import org.kakara.core.common.events.Event;
 import org.kakara.core.common.events.RegisteredListener;
+import org.kakara.core.common.events.annotations.EventHandler;
+import org.kakara.core.common.mod.Mod;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class SimpleGameObject implements GameObject {
-    public Set<RegisteredListener> listeners = new HashSet<>();
+    protected final Map<Class<? extends Event>, RegisteredListener> listeners = new HashMap<>();
 
     public SimpleGameObject() {
-        //TODO load listeners
-
+        Method[] methods = MethodFinder.getAllMethodsWithAnnotation(getClass(), EventHandler.class, false);
+        for (Method method : methods) {
+            if (method.getParameterTypes().length == 1) {
+                Class<? extends Event> event = (Class<? extends Event>) method.getParameterTypes()[0];
+                listeners.put(event, new RegisteredListener(this, getMod(), method, event));
+            }
+        }
     }
 
+
+    abstract Mod getMod();
+
     @Override
-    public Set<RegisteredListener> getRegisteredListeners() {
+    public Map<Class<? extends Event>, RegisteredListener> getRegisteredListeners() {
         return listeners;
     }
 }
