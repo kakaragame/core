@@ -5,7 +5,7 @@ import org.kakara.core.common.game.Item;
 import org.kakara.core.common.game.SimpleGameObject;
 import org.kakara.core.common.mod.Mod;
 
-public class ItemTest extends SimpleGameObject implements Item {
+public abstract class ItemTest extends SimpleGameObject implements Item {
     private final String name;
     private final String texture;
 private final String model;
