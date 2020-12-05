@@ -13,4 +13,10 @@ public interface ServerGameInstance extends GameInstance {
     WorldManager getWorldManager();
 
     WorldGenerationManager getWorldGenerationManager();
+
+    /**
+     * This will tell you if you are on an actual server or just the IntegratedServer
+     * @return
+     */
+    boolean isIntegratedServer();
 }
