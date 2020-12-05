@@ -1,7 +1,6 @@
 package org.kakara.core.common.player;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.kakara.core.common.Serverable;
 import org.kakara.core.common.command.CommandSender;
 import org.kakara.core.common.game.GameMode;

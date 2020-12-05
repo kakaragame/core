@@ -4,7 +4,6 @@ import org.kakara.core.common.EnvType;
 import org.kakara.core.common.Kakara;
 import org.kakara.core.common.command.CommandSender;
 import org.kakara.core.common.game.Item;
-import org.kakara.core.common.gui.Inventory;
 import org.kakara.core.common.mod.Mod;
 import org.kakara.core.common.mod.game.ModCommand;
 import org.kakara.core.common.player.Player;

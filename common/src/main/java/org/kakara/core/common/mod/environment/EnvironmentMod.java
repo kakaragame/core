@@ -6,7 +6,6 @@ import org.kakara.core.common.Kakara;
 import org.kakara.core.common.mod.Mod;
 import org.kakara.core.common.mod.ModRules;
 import org.kakara.core.common.mod.ModType;
-import org.kakara.core.common.mod.game.ModClassLoader;
 import org.kakara.core.common.resources.ResourceType;
 import org.slf4j.Logger;
 

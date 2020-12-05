@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.zip.ZipFile;
 
 public class GameModLoader implements ModLoader {
     public static final String MOD_PROPERTIES = "mod.properties";
@@ -31,7 +32,7 @@ public class GameModLoader implements ModLoader {
         //You screwed up somewhere?
         if (!file.exists()) return null;
 
-        JarFile jarFile = new JarFile(file);
+        JarFile jarFile = new JarFile(file, true, ZipFile.OPEN_READ, Runtime.version());
 
         ModClassLoader classLoader = new ModClassLoader(file.toURI().toURL(), ClassLoader.getSystemClassLoader(), this, jarFile);
         modClassLoaders.add(classLoader);

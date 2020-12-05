@@ -6,9 +6,7 @@ import org.kakara.core.common.GameObject;
 import org.kakara.core.common.Kakara;
 import org.kakara.core.common.events.*;
 import org.kakara.core.common.events.annotations.EventHandler;
-import org.kakara.core.common.game.Item;
 import org.kakara.core.common.mod.Mod;
-
 
 import java.lang.reflect.Method;
 

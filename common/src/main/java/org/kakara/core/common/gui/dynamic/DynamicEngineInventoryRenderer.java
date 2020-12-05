@@ -5,6 +5,7 @@ import org.kakara.core.common.gui.InventoryProperties;
 import org.kakara.core.common.gui.InventoryRenderer;
 
 public class DynamicEngineInventoryRenderer implements InventoryRenderer {
+
     @Override
     public void render(Inventory inventory) {
 

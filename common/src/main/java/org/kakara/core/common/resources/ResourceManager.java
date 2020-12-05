@@ -1,7 +1,6 @@
 package org.kakara.core.common.resources;
 
 
-import org.kakara.core.common.GameInstance;
 import org.kakara.core.common.mod.Mod;
 
 import java.io.File;
