@@ -25,7 +25,7 @@ public abstract class SimpleGameObject implements GameObject {
     }
 
 
-    abstract Mod getMod();
+    public abstract Mod getMod();
 
     @Override
     public Map<Class<? extends Event>, RegisteredListener> getRegisteredListeners() {

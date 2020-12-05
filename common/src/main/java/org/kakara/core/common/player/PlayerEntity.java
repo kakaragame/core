@@ -4,6 +4,7 @@ package org.kakara.core.common.player;
 import org.kakara.core.common.ControllerKey;
 import org.kakara.core.common.game.entity.EntitySpawningPattern;
 import org.kakara.core.common.game.entity.PathFinder;
+import org.kakara.core.common.mod.Mod;
 
 public class PlayerEntity extends HumanoidEntity {
     private final ControllerKey nameKey = new ControllerKey("kakara", "player");
@@ -52,5 +53,10 @@ public class PlayerEntity extends HumanoidEntity {
     @Override
     public EntitySpawningPattern getEntitySpawningPattern() {
         return world -> null;
+    }
+
+    @Override
+    public Mod getMod() {
+        return null;
     }
 }
