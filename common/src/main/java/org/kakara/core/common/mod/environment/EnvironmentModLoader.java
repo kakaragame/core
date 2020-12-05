@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import org.kakara.core.common.GameInstance;
 import org.kakara.core.common.Kakara;
 import org.kakara.core.common.exceptions.IllegalModException;
+import org.kakara.core.common.exceptions.ModLoadException;
 import org.kakara.core.common.mod.*;
 import org.kakara.core.common.mod.game.GameMod;
 import org.kakara.core.common.mod.logger.ModLogger;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.zip.ZipFile;
 
 public class EnvironmentModLoader implements ModLoader {
     public static final String MOD_PROPERTIES = "mod.properties";
@@ -32,7 +34,7 @@ public class EnvironmentModLoader implements ModLoader {
         //You screwed up somewhere?
         if (!file.exists()) return null;
 
-        JarFile jarFile = new JarFile(file);
+        JarFile jarFile = new JarFile(file, true, ZipFile.OPEN_READ, Runtime.version());
 
         EnvironmentClassLoader classLoader = new EnvironmentClassLoader(file.toURI().toURL(), ClassLoader.getSystemClassLoader(), this, jarFile);
         environmentClassLoaders.add(classLoader);
@@ -48,7 +50,12 @@ public class EnvironmentModLoader implements ModLoader {
         if (!GameMod.class.isAssignableFrom(mod)) {
             throw new IllegalModException("ModClass must extend GameMod");
         }
-        EnvironmentMod gameMod = easyCreate(mod);
+        EnvironmentMod gameMod = null;
+        try {
+            gameMod = easyCreate(mod);
+        } catch (ModLoadException e) {
+            e.printStackTrace();
+        }
         if (gameMod == null) return null;
         //gameMod.setGameInstance(gameInstance);
         gameMod.setLogger(new ModLogger(unModObject.getModRules().getName()));
@@ -59,20 +66,18 @@ public class EnvironmentModLoader implements ModLoader {
         return gameMod;
     }
 
-    private EnvironmentMod easyCreate(Class<?> mod) {
+    private  EnvironmentMod easyCreate(Class<?> mod) throws ModLoadException {
         try {
             return (EnvironmentMod) mod.getConstructor().newInstance();
         } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new ModLoadException("Abnormal Mod type", e);
+        } catch (IllegalAccessException | NoSuchMethodException e) {
+            throw new ModLoadException("No public constructor with 0 args", e);
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            throw new ModLoadException("Unable to load mod due to internal coding", e.getTargetException());
         }
-        return null;
     }
+
 
     private ModRules getModRules(JarFile jarFile) throws IOException, IllegalModException {
         JarEntry entry = jarFile.getJarEntry("mod.json");

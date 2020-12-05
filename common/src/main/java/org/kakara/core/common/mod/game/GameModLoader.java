@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import org.kakara.core.common.GameInstance;
 import org.kakara.core.common.Kakara;
 import org.kakara.core.common.exceptions.IllegalModException;
+import org.kakara.core.common.exceptions.ModLoadException;
 import org.kakara.core.common.mod.*;
 import org.kakara.core.common.mod.logger.ModLogger;
 
@@ -48,7 +49,12 @@ public class GameModLoader implements ModLoader {
         if (!GameMod.class.isAssignableFrom(mod)) {
             throw new IllegalModException("ModClass must extend GameMod");
         }
-        GameMod gameMod = easyCreate(mod);
+        GameMod gameMod = null;
+        try {
+            gameMod = easyCreate(mod);
+        } catch (ModLoadException e) {
+            e.printStackTrace();
+        }
         if (gameMod == null) return null;
         gameMod.setGameInstance(gameInstance);
         gameMod.setLogger(new ModLogger(unModObject.getModRules().getName()));
@@ -59,19 +65,16 @@ public class GameModLoader implements ModLoader {
         return gameMod;
     }
 
-    private GameMod easyCreate(Class<?> mod) {
+    private  GameMod easyCreate(Class<?> mod) throws ModLoadException {
         try {
             return (GameMod) mod.getConstructor().newInstance();
         } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new ModLoadException("Abnormal Mod type", e);
+        } catch (IllegalAccessException | NoSuchMethodException e) {
+            throw new ModLoadException("No public constructor with 0 args", e);
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
+            throw new ModLoadException("Unable to load mod due to internal coding", e.getTargetException());
         }
-        return null;
     }
 
     private ModRules getModRules(JarFile jarFile) throws IOException, IllegalModException {
