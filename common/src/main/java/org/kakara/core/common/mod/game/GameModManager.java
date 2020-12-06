@@ -158,7 +158,8 @@ public class GameModManager implements ModManager {
 
     @Override
     public void load(GameInstance gameInstance) {
-
+        this.gameInstance = gameInstance;
+        this.modLoader = new GameModLoader(gameInstance);
     }
 
     public void postEnable() {
