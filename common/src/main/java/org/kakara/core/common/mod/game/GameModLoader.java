@@ -3,6 +3,7 @@ package org.kakara.core.common.mod.game;
 import com.google.gson.JsonObject;
 import org.kakara.core.common.GameInstance;
 import org.kakara.core.common.Kakara;
+import org.kakara.core.common.Utils;
 import org.kakara.core.common.exceptions.IllegalModException;
 import org.kakara.core.common.exceptions.ModLoadException;
 import org.kakara.core.common.mod.*;
@@ -10,6 +11,7 @@ import org.kakara.core.common.mod.logger.ModLogger;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -82,7 +84,7 @@ public class GameModLoader implements ModLoader {
         if (entry == null) {
             throw new IllegalModException("Unable to locate mod.json");
         }
-        JsonObject jsonObject = null;//Utils.getGson().fromJson(new InputStreamReader(jarFile.getInputStream(entry)), JsonObject.class);
+        JsonObject jsonObject = Utils.getGson().fromJson(new InputStreamReader(jarFile.getInputStream(entry)), JsonObject.class);
         JsonModRules.validate(jsonObject);
         return new JsonModRules(jsonObject);
     }
