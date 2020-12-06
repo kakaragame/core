@@ -2,6 +2,7 @@ package org.kakara.core.common.world;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kakara.core.common.game.ItemStack;
 import org.kakara.core.common.world.region.RegionGrid;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class ChunkBase {
         return regionGrid;
     }
 
-    //public void setBlock(final int x, final int y, final int z, @NotNull final ItemStack itemStack) {
-    //   gameBlocks.add(new GameBlock(new Location(world, x, y, z), itemStack));
-    //}
+    public void setBlock(final int x, final int y, final int z, @NotNull final ItemStack itemStack) {
+       gameBlocks.add(new GameBlock(new Location(world, x, y, z), itemStack));
+    }
 }
