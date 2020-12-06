@@ -1,14 +1,60 @@
 plugins {
     java
-    maven
+    `java-library`
+    `maven-publish`
+    signing
     id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "org.kakara.core"
 version = "1.0-RW-SNAPSHOT"
 
-configurations {
-    shadow
+val artifactName = "client"
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+    targetCompatibility = org.gradle.api.JavaVersion.VERSION_11
+    sourceCompatibility = org.gradle.api.JavaVersion.VERSION_11
+
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+
+            artifactId = artifactName
+            from(components["java"])
+            versionMapping {
+                usage("java-api") {
+                    fromResolutionOf("runtimeClasspath")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name.set(artifactName)
+            }
+        }
+    }
+    repositories {
+        maven {
+
+            val releasesRepoUrl = uri("https://repo.kingtux.me/storages/maven/kakara")
+            val snapshotsRepoUrl = uri("https://repo.kingtux.me/storages/maven/kakara")
+            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+            credentials(PasswordCredentials::class)
+
+        }
+        mavenLocal()
+    }
+}
+
+tasks.javadoc {
+    if (JavaVersion.current().isJava9Compatible) {
+        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+    }
 }
 
 repositories {
@@ -31,50 +77,3 @@ dependencies {
     compileOnly("me.ryandw11:ods:1.0-MEM-SNAPSHOT")
 }
 
-tasks {
-    compileJava {
-        targetCompatibility = JavaVersion.VERSION_11.toString()
-        sourceCompatibility = JavaVersion.VERSION_11.toString()
-        options.encoding = "UTF-8"
-    }
-
-    jar {
-        from(
-                *configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) }.toTypedArray()
-        )
-    }
-
-    "uploadArchives"(Upload::class) {
-        repositories {
-            withConvention(MavenRepositoryHandlerConvention::class) {
-                mavenDeployer {
-                    withGroovyBuilder {
-                        "repository"("url" to "https://repo.kingtux.me/storages/maven/kakara") {
-                            "authentication"(
-                                    "userName" to System.getProperty("credentials.username"),
-                                    "password" to System.getProperty("credentials.password")
-                            )
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    val sourcesJar by creating(Jar::class) {
-        archiveClassifier.set("sources")
-        from(sourceSets.main.get().allSource)
-    }
-
-    val javadocJar by creating(Jar::class) {
-        dependsOn.add(javadoc)
-        archiveClassifier.set("javadoc")
-        from(javadoc)
-    }
-
-    artifacts {
-        archives(sourcesJar)
-        archives(javadocJar)
-        archives(shadowJar)
-    }
-}
