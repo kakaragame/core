@@ -8,7 +8,7 @@ public class KValidate {
     }
 
     public static void checkServer() throws IncompatibleEnvironmentException {
-        if (isServer())
+        if (!isServer())
             throw new IncompatibleEnvironmentException(EnvType.SERVER);
     }
 
@@ -17,7 +17,7 @@ public class KValidate {
     }
 
     public static void checkClient() throws IncompatibleEnvironmentException {
-        if (isClient())
+        if (!isClient())
             throw new IncompatibleEnvironmentException(EnvType.CLIENT);
     }
 }
