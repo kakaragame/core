@@ -10,6 +10,11 @@ public interface EnvironmentInstance {
 
     File getWorkingDirectory();
 
+    /**
+     * EnvType for Environment.
+     *
+     * @return environment
+     */
     EnvType getType();
 
     ResourceManager getResourceManager();

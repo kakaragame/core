@@ -25,7 +25,7 @@ public class ChunkLocationTag extends ObjectTag {
     public static ChunkLocation getChunkLocation(ObjectTag tag) {
         World w = null;
         if (tag.hasTag("world"))
-            KValidate.checkServer();
+            KValidate.gameInstanceCheckServer();
             w = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString((String) tag.getTag("world").getValue()));
         int x = (Integer) tag.getTag("x").getValue();
         int y = (Integer) tag.getTag("y").getValue();
@@ -38,7 +38,7 @@ public class ChunkLocationTag extends ObjectTag {
     public ChunkLocation getChunkLocation() {
         World w = null;
         if (hasTag("world"))
-            KValidate.checkServer();
+            KValidate.gameInstanceCheckServer();
         w = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString((String) getTag("world").getValue()));
         int x = (Integer) getTag("x").getValue();
         int y = (Integer) getTag("y").getValue();

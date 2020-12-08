@@ -16,7 +16,7 @@ public class LocationSerializer implements JsonSerializer<Location>, JsonDeseria
         JsonObject o = jsonElement.getAsJsonObject();
         World world = null;
         if (o.has("world")) {
-            KValidate.isServer();
+            KValidate.gameInstanceCheckServer();
             world = ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString(o.get("world").getAsString()));
         }
         double x = o.get("x").getAsDouble();

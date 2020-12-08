@@ -11,7 +11,7 @@ import java.util.List;
 
 public class InventoryUtils {
     public static ServerItemStack[] arrayWithAir(int capacity) {
-        KValidate.checkServer();
+        KValidate.gameInstanceCheckServer();
         ServerItemStack[] serverItemStacks = new ServerItemStack[capacity];
         for (int i = 0; i < capacity; i++) {
             serverItemStacks[i] = ((ServerGameInstance) Kakara.getGameInstance()).createItemStack(Kakara.getGameInstance().getItemManager().getItem(0));

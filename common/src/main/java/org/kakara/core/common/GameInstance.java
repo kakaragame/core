@@ -15,9 +15,17 @@ public interface GameInstance extends Serverable {
         return Kakara.getEnvironmentInstance();
     }
 
-    default EnvType getType() {
-        return getEnvironment().getType();
-    }
+    /**
+     * EnvType for GameInstance.
+     * <p>
+     * If this is a Client on a IntegratedServer it will return server.
+     * If this is a Client on a external server it will return Client.
+     * Server is always server.
+     *
+     * @return EnvType
+     */
+    EnvType getType();
+
 
     File getWorkingDirectory();
 

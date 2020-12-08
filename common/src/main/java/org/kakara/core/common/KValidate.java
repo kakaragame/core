@@ -3,21 +3,39 @@ package org.kakara.core.common;
 import org.kakara.core.common.exceptions.IncompatibleEnvironmentException;
 
 public class KValidate {
-    public static boolean isServer() {
+    public static boolean isEnvironmentServer() {
         return (Kakara.getEnvironmentInstance().getType() == EnvType.SERVER);
     }
 
-    public static void checkServer() throws IncompatibleEnvironmentException {
-        if (!isServer())
+    public static void environmentCheckServer() throws IncompatibleEnvironmentException {
+        if (!isEnvironmentServer())
             throw new IncompatibleEnvironmentException(EnvType.SERVER);
     }
 
-    public static boolean isClient() {
+    public static boolean isEnvironmentClient() {
         return (Kakara.getEnvironmentInstance().getType() == EnvType.CLIENT);
     }
 
-    public static void checkClient() throws IncompatibleEnvironmentException {
-        if (!isClient())
+    public static void environmentCheckClient() throws IncompatibleEnvironmentException {
+        if (!isEnvironmentClient())
+            throw new IncompatibleEnvironmentException(EnvType.CLIENT);
+    }
+
+    public static boolean isGameInstanceServer() {
+        return (Kakara.getEnvironmentInstance().getType() == EnvType.SERVER);
+    }
+
+    public static void gameInstanceCheckServer() throws IncompatibleEnvironmentException {
+        if (!isGameInstanceServer())
+            throw new IncompatibleEnvironmentException(EnvType.SERVER);
+    }
+
+    public static boolean isGameInstanceClient() {
+        return (Kakara.getEnvironmentInstance().getType() == EnvType.CLIENT);
+    }
+
+    public static void gameInstanceCheckClient() throws IncompatibleEnvironmentException {
+        if (!isGameInstanceClient())
             throw new IncompatibleEnvironmentException(EnvType.CLIENT);
     }
 }

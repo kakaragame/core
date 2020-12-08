@@ -12,7 +12,7 @@ import java.util.UUID;
 public class WorldSerializer implements JsonSerializer<World>, JsonDeserializer<World> {
     @Override
     public World deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        KValidate.checkServer();
+        KValidate.gameInstanceCheckServer();
         return ((ServerGameInstance) Kakara.getGameInstance()).getWorldManager().getWorldByUUID(UUID.fromString(jsonElement.getAsString()));
     }
 
