@@ -4,6 +4,8 @@ plugins {
     `maven-publish`
     signing
     id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("org.sonarqube") version "3.0"
+
 }
 
 group = "org.kakara.core"
@@ -18,7 +20,14 @@ java {
     sourceCompatibility = org.gradle.api.JavaVersion.VERSION_11
 
 }
-
+sonarqube {
+    properties {
+        property("sonar.projectKey", "kakaragame_core_client")
+        property("sonar.organization", "kakaragame")
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.sources", "src")
+    }
+}
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {

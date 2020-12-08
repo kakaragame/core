@@ -4,6 +4,8 @@ plugins {
     `maven-publish`
     signing
     id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("org.sonarqube") version "3.0"
+
 }
 
 group = "org.kakara.core"
@@ -52,7 +54,14 @@ publishing {
 }
 
 
-
+sonarqube {
+    properties {
+        property("sonar.projectKey", "kakaragame_core_network")
+        property("sonar.organization", "kakaragame")
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.sources", "src")
+    }
+}
 tasks.javadoc {
     if (JavaVersion.current().isJava9Compatible) {
         (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
