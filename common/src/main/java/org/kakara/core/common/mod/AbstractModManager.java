@@ -23,12 +23,13 @@ import java.util.stream.Collectors;
 
 public abstract class AbstractModManager implements ModManager {
     private final List<Mod> loadedMods = new ArrayList<>();
-    private ModLoader modLoader;
+    protected ModLoader modLoader;
     private final Mod coreMod;
     private EnvTypeable envTypeable;
 
     public AbstractModManager(Mod coreMod) {
         this.coreMod = coreMod;
+
     }
 
     public static void loadResources(Mod mod, JarFile file) throws IOException {
