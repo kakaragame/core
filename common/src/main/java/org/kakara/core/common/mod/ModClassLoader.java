@@ -1,4 +1,6 @@
-package org.kakara.core.common.mod.game;
+package org.kakara.core.common.mod;
+
+import org.kakara.core.common.mod.game.GameModLoader;
 
 import java.io.IOException;
 import java.net.URL;
@@ -6,10 +8,10 @@ import java.net.URLClassLoader;
 import java.util.jar.JarFile;
 
 public class ModClassLoader extends URLClassLoader {
-    private final GameModLoader loader;
+    private final ModLoader loader;
     private final JarFile file;
 
-    public ModClassLoader(URL urls, ClassLoader parent, GameModLoader loader, JarFile jarFile) {
+    public ModClassLoader(URL urls, ClassLoader parent, ModLoader loader, JarFile jarFile) {
         super(new URL[]{
                 urls
         }, parent);

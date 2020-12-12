@@ -14,10 +14,10 @@ import java.util.Set;
 public abstract class ModCommand implements Command, TabCompleter {
     private final Set<String> aliases;
     private final String description;
-    private Mod mod;
+    private GameMod mod;
     private final ControllerKey nameKey;
 
-    public ModCommand(Set<String> aliases, String description, Mod mod, String command) {
+    public ModCommand(Set<String> aliases, String description, GameMod mod, String command) {
         this.aliases = aliases;
         this.description = description;
         nameKey = new ControllerKey(mod, command);

@@ -11,13 +11,13 @@ import org.kakara.core.common.world.WorldGenerator;
 import java.util.Objects;
 
 public abstract class ModWorldGenerator implements WorldGenerator {
-    protected final Mod mod;
+    protected final GameMod mod;
     protected final ControllerKey nameKey;
     protected final int id;
     protected final String name;
     protected final String key;
 
-    public ModWorldGenerator(Mod mod) {
+    public ModWorldGenerator(GameMod mod) {
         this.mod = mod;
         Name nameA = getClass().getAnnotation(Name.class);
         this.name = nameA == null ? getClass().getSimpleName() : nameA.value();

@@ -5,7 +5,7 @@ import org.kakara.core.common.resources.ResourceManager;
 
 import java.io.File;
 
-public interface EnvironmentInstance {
+public interface EnvironmentInstance extends EnvTypeable {
     ModManager getModManager();
 
     File getWorkingDirectory();

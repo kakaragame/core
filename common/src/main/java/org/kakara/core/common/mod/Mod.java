@@ -34,8 +34,6 @@ public interface Mod {
 
     Logger getLogger();
 
-    GameInstance getGameInstance();
-
     /**
      * Called before loading any mod stages. use this to create any classes you might need to.
      */

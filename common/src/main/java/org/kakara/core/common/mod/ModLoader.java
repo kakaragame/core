@@ -13,4 +13,6 @@ public interface ModLoader {
     Mod createMod(UnModObject unModObject) throws ClassNotFoundException, IllegalModException;
 
     void unload(Mod mod) throws IOException;
+
+    Class<?> getClassByName(String name);
 }

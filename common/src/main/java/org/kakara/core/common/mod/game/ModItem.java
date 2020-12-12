@@ -14,12 +14,12 @@ import java.util.Objects;
 
 public abstract class ModItem extends SimpleGameObject implements Item {
     protected final ControllerKey nameKey;
-    protected final Mod mod;
+    protected final GameMod mod;
     protected final String name;
     protected final int id;
     protected String texture;
 
-    public ModItem(Mod mod) {
+    public ModItem(GameMod mod) {
         super();
         this.mod = mod;
         Name nameA = getClass().getAnnotation(Name.class);

@@ -10,7 +10,7 @@ import org.kakara.core.common.resources.ResourceManager;
 
 import java.io.File;
 
-public interface GameInstance extends Serverable {
+public interface GameInstance extends Serverable, EnvTypeable{
     default EnvironmentInstance getEnvironment() {
         return Kakara.getEnvironmentInstance();
     }

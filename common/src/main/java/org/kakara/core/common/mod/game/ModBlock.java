@@ -6,7 +6,7 @@ import org.kakara.core.common.game.Block;
 import org.kakara.core.common.mod.Mod;
 
 public abstract class ModBlock extends ModItem implements Block {
-    public ModBlock(Mod mod) {
+    public ModBlock(GameMod mod) {
         super(mod);
     }
 

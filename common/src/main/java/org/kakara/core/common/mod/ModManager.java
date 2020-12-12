@@ -1,6 +1,7 @@
 package org.kakara.core.common.mod;
 
 
+import org.kakara.core.common.EnvTypeable;
 import org.kakara.core.common.EnvironmentInstance;
 import org.kakara.core.common.GameInstance;
 
@@ -24,7 +25,6 @@ public interface ModManager {
 
     void loadStage(LoadStage loadStage);
 
-    void load(EnvironmentInstance gameInstance);
 
-    void load(GameInstance gameInstance);
+    void load(EnvTypeable typeable);
 }
