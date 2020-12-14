@@ -3,20 +3,16 @@ package org.kakara.core.common.settings;
 import org.kakara.core.common.ControllerKey;
 
 public class SettingsValue {
-    private ControllerKey settingKey;
+    private Setting<?> settingKey;
     private String value;
 
-    public SettingsValue(ControllerKey settingKey, String value) {
+    public SettingsValue(Setting<?> settingKey, String value) {
         this.settingKey = settingKey;
         this.value = value;
     }
 
-    public ControllerKey getSettingKey() {
+    public Setting<?> getSettingKey() {
         return settingKey;
-    }
-
-    public void setSettingKey(ControllerKey settingKey) {
-        this.settingKey = settingKey;
     }
 
     public String getValue() {

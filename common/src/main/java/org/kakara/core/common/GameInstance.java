@@ -7,6 +7,7 @@ import org.kakara.core.common.game.ItemManager;
 import org.kakara.core.common.gui.container.ContainerUtils;
 import org.kakara.core.common.mod.ModManager;
 import org.kakara.core.common.resources.ResourceManager;
+import org.kakara.core.common.service.ServiceManager;
 import org.kakara.core.common.settings.SettingManager;
 
 import java.io.File;
@@ -49,4 +50,6 @@ public interface GameInstance extends Serverable, EnvTypeable {
     ModManager getModManager();
 
     ContainerUtils getContainerUtils();
+
+    ServiceManager getServiceManager();
 }
