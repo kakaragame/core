@@ -1,6 +1,8 @@
 package org.kakara.core.common.mod;
 
 import org.kakara.core.common.ControllerKey;
+import org.kakara.core.common.Kakara;
+import org.kakara.core.common.settings.SettingsValue;
 import org.slf4j.Logger;
 
 public abstract class AbstractMod implements Mod {
@@ -87,6 +89,14 @@ public abstract class AbstractMod implements Mod {
      */
     public ControllerKey createControllerKey(String key) {
         return new ControllerKey(this, key);
+    }
+
+    public SettingsValue getGameSetting(String key) {
+        return Kakara.getGameInstance().getGameSettingsManager().getSettingValue(createControllerKey(key));
+    }
+
+    public SettingsValue getEnvironmentSetting(String key) {
+        return Kakara.getEnvironmentInstance().getEnvironmentSettingsManager().getSettingValue(createControllerKey(key));
     }
 
     @Override

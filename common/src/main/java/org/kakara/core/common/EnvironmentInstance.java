@@ -2,6 +2,7 @@ package org.kakara.core.common;
 
 import org.kakara.core.common.mod.ModManager;
 import org.kakara.core.common.resources.ResourceManager;
+import org.kakara.core.common.settings.SettingManager;
 
 import java.io.File;
 
@@ -19,5 +20,11 @@ public interface EnvironmentInstance extends EnvTypeable {
 
     ResourceManager getResourceManager();
 
+    /**
+     * The settings stored in here are for the entire Environment
+     *
+     * @return the environment's setting manager
+     */
+    SettingManager getEnvironmentSettingsManager();
 }
 
