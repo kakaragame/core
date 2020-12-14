@@ -12,7 +12,7 @@ public class ModInstance {
     private String modVersion;
     private ModSetting modSettings;
     private ModInstanceType type;
-    private File modFile;
+    private final File modFile;
 
     public ModInstance(String name, String modServer, String modVersion, ModSetting modSettings, ModInstanceType type, File modFile) {
         this.name = name;

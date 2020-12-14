@@ -3,7 +3,7 @@ package org.kakara.core.common.settings;
 import org.kakara.core.common.ControllerKey;
 
 public class SettingsValue {
-    private Setting<?> settingKey;
+    private final Setting<?> settingKey;
     private String value;
 
     public SettingsValue(Setting<?> settingKey, String value) {

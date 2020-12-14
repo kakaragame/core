@@ -28,7 +28,14 @@ public interface EnvironmentInstance extends EnvTypeable {
      */
     SettingManager getEnvironmentSettingsManager();
 
+    /**
+     * Creates a ControllerKey for the system
+     *
+     * @param key the key
+     * @return A ControllerKey
+     */
     ControllerKey createSystemKey(String key);
+
     ServiceManager getServiceManager();
 
 }

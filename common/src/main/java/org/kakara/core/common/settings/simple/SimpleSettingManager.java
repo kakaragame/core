@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SimpleSettingManager implements SettingManager {
-    private Map<ControllerKey, Setting<?>> settings = new HashMap<>();
+    private final Map<ControllerKey, Setting<?>> settings = new HashMap<>();
     private SettingControllerService settingControllerService;
 
     public SimpleSettingManager(ModTarget modTarget) {

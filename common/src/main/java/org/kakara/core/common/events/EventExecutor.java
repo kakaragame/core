@@ -6,7 +6,7 @@ import org.kakara.core.common.Kakara;
 import java.lang.reflect.InvocationTargetException;
 
 public class EventExecutor {
-    private RegisteredListener registeredListener;
+    private final RegisteredListener registeredListener;
 
     public EventExecutor(RegisteredListener registeredListener) {
         this.registeredListener = registeredListener;
