@@ -4,6 +4,8 @@ import org.kakara.core.common.ControllerKey;
 import org.kakara.core.common.Kakara;
 import org.kakara.core.common.service.Service;
 
+import java.io.File;
+
 public abstract class SettingControllerService implements Service {
     public static final ControllerKey SERVICE_KEY = Kakara.getEnvironmentInstance().createSystemKey("SETTINGS_CONTROLLER");
 
@@ -11,6 +13,8 @@ public abstract class SettingControllerService implements Service {
     public abstract void writeSetting(SettingsValue value);
 
     public abstract SettingsValue getSetting(Setting<?> setting);
+
+    public abstract void setFileLocation(File folder);
 
     //Overide Methods
     @Override
