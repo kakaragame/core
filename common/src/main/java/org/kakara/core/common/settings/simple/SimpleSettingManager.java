@@ -10,14 +10,17 @@ import org.kakara.core.common.settings.SettingControllerService;
 import org.kakara.core.common.settings.SettingManager;
 import org.kakara.core.common.settings.SettingsValue;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SimpleSettingManager implements SettingManager {
     private final Map<ControllerKey, Setting<?>> settings = new HashMap<>();
     private SettingControllerService settingControllerService;
+    private final File folder;
 
-    public SimpleSettingManager(ModTarget modTarget) {
+    public SimpleSettingManager(ModTarget modTarget, File folder) {
+        this.folder = folder;
         ServiceManager serviceManager;
         if (modTarget == ModTarget.ENVIRONMENT) {
             serviceManager = Kakara.getEnvironmentInstance().getServiceManager();
@@ -30,7 +33,7 @@ public class SimpleSettingManager implements SettingManager {
     @Override
     public SettingsValue getSettingValue(ControllerKey controllerKey) {
         Validate.notNull(settingControllerService);
-        return settingControllerService.getSetting(getSetting(controllerKey));
+        return settingControllerService.getSetting(getSetting(controllerKey), folder);
     }
 
     private Setting<?> getSetting(ControllerKey controllerKey) {
@@ -40,7 +43,7 @@ public class SimpleSettingManager implements SettingManager {
     @Override
     public void setSettingValue(SettingsValue value) {
         Validate.notNull(settingControllerService);
-        settingControllerService.writeSetting(value);
+        settingControllerService.writeSetting(value, folder);
     }
 
     @Override
