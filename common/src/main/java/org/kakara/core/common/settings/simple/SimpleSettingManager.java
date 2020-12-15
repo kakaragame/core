@@ -19,15 +19,9 @@ public class SimpleSettingManager implements SettingManager {
     private SettingControllerService settingControllerService;
     private final File folder;
 
-    public SimpleSettingManager(ModTarget modTarget, File folder) {
+    public SimpleSettingManager(File folder) {
         this.folder = folder;
-        ServiceManager serviceManager;
-        if (modTarget == ModTarget.ENVIRONMENT) {
-            serviceManager = Kakara.getEnvironmentInstance().getServiceManager();
-        } else {
-            serviceManager = Kakara.getGameInstance().getServiceManager();
-        }
-        serviceManager.executeOnceServiceIsFound(service -> settingControllerService = (SettingControllerService) service, SettingControllerService.SERVICE_KEY);
+
     }
 
     @Override
@@ -44,6 +38,16 @@ public class SimpleSettingManager implements SettingManager {
     public void setSettingValue(SettingsValue value) {
         Validate.notNull(settingControllerService);
         settingControllerService.writeSetting(value, folder);
+    }
+
+    public void init(ModTarget modTarget) {
+        ServiceManager serviceManager;
+        if (modTarget == ModTarget.ENVIRONMENT) {
+            serviceManager = Kakara.getEnvironmentInstance().getServiceManager();
+        } else {
+            serviceManager = Kakara.getGameInstance().getServiceManager();
+        }
+        serviceManager.executeOnceServiceIsFound(service -> settingControllerService = (SettingControllerService) service, SettingControllerService.SERVICE_KEY);
     }
 
     @Override
