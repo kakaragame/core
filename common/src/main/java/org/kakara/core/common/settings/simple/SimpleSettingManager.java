@@ -47,7 +47,10 @@ public class SimpleSettingManager implements SettingManager {
         } else {
             serviceManager = Kakara.getGameInstance().getServiceManager();
         }
-        serviceManager.executeOnceServiceIsFound(service -> settingControllerService = (SettingControllerService) service, SettingControllerService.SERVICE_KEY);
+        serviceManager.executeOnceServiceIsFound(service -> {
+            Kakara.LOGGER.debug(String.format("Using %s as SettingController", service.getImplementationName()));
+            settingControllerService = (SettingControllerService) service;
+        }, SettingControllerService.SERVICE_KEY);
     }
 
     @Override
