@@ -1,4 +1,3 @@
-
 plugins {
     java
     `java-library`
@@ -72,7 +71,7 @@ repositories {
     maven("https://repo.kingtux.me/storages/maven/kingtux-repo")
     maven("https://repo.kingtux.me/storages/maven/ryandw11")
     maven("https://jitpack.io")
-    maven("https://repo.ryandw11.com/repository/maven-snapshots/")
+    maven("https://repo.ryandw11.com/repository/maven-releases/")
 }
 
 dependencies {
@@ -83,5 +82,5 @@ dependencies {
     implementation("org.jetbrains", "annotations", "20.1.0")
     implementation(project(":network"))
     implementation(project(":auth"))
-    compileOnly("me.ryandw11:ods:1.0-MEM-SNAPSHOT")
+    compileOnly("me.ryandw11:ods:1.0.4")
 }
