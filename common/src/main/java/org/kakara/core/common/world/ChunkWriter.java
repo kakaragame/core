@@ -41,6 +41,8 @@ public interface ChunkWriter {
      */
     void writeChunks(List<ChunkContent> chunks) throws ChunkWriteException;
 
+    boolean supportsSingleBlockWrites();
+
     /**
      * writes a single block to its correct file and chunk
      *
