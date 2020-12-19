@@ -33,7 +33,7 @@ public class ItemStackTag extends ObjectTag {
 
     public static ItemStack getItemStack(ObjectTag tag) {
         Validate.isTrue(Kakara.getEnvironmentInstance().getType() == EnvType.SERVER);
-        Item item = null;//Kakara.getItemManager().getItem((Integer) tag.getTag("item").getValue())
+        Item item = Kakara.getGameInstance().getItemManager().getItem((Integer) tag.getTag("item").getValue());
         ServerItemStack itemStack = ((ServerGameInstance) Kakara.getGameInstance()).createItemStack(item);
         itemStack.setCount((Integer) tag.getTag("count").getValue());
         itemStack.setName(ODS.unwrap((StringTag) tag.getTag("name")));
