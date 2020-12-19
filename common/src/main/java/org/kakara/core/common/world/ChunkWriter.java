@@ -41,4 +41,20 @@ public interface ChunkWriter {
      */
     void writeChunks(List<ChunkContent> chunks) throws ChunkWriteException;
 
+    /**
+     * writes a single block to its correct file and chunk
+     *
+     * @param block the chunk
+     * @throws ChunkWriteException thrown when block fails to write
+     */
+    void writeBlock(GameBlock block) throws ChunkWriteException;
+
+    /**
+     * Writes a group of chunks. This will sort the locations so we don't have to open a file multiple times
+     *
+     * @param blocks the blocks to save
+     * @throws ChunkWriteException thrown when blocks fails to write.
+     */
+    void writeBlock(List<GameBlock> blocks) throws ChunkWriteException;
+
 }
