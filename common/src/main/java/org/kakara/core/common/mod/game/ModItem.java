@@ -2,11 +2,14 @@ package org.kakara.core.common.mod.game;
 
 
 import org.kakara.core.common.ControllerKey;
+import org.kakara.core.common.Kakara;
 import org.kakara.core.common.annotations.*;
 import org.kakara.core.common.game.Item;
 import org.kakara.core.common.game.SimpleGameObject;
 import org.kakara.core.common.game.md.ModelData;
+import org.kakara.core.common.game.md.ModelDataLoader;
 import org.kakara.core.common.mod.Mod;
+import org.kakara.core.common.resources.ResourceType;
 
 import java.util.Objects;
 
@@ -28,7 +31,7 @@ public abstract class ModItem extends SimpleGameObject implements Item {
         this.id = nameKey.hashCode();
         texture = getClass().getAnnotation(Texture.class).value();
         if (getClass().isAnnotationPresent(ModelDataFile.class)) {
-            modelData = ModelDataLoader.loadData(getClass().getAnnotation(ModelDataFile.class).value());
+            modelData = ModelDataLoader.loadData(Kakara.getGameInstance().getResourceManager().getResource(getClass().getAnnotation(ModelDataFile.class).value(), ResourceType.OTHER, mod));
         }
     }
 
