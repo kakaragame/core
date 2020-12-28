@@ -24,6 +24,12 @@ public class ControllerKey {
      * use ControllerKey#toString for access
      */
     private String value;
+    /**
+     * A int hash of  controller and key
+     * This is only a variable for faster execution
+     * use ControllerKey#hashKey for access
+     */
+    private int hashCode;
 
     /**
      * Constructor for Controller Key.
@@ -103,6 +109,7 @@ public class ControllerKey {
 
     @Override
     public int hashCode() {
-        return Objects.hash(controller, key);
+        if (hashCode == 0) hashCode = Objects.hash(controller, key);
+        return hashCode;
     }
 }
