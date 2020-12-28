@@ -15,7 +15,6 @@ subprojects {
         maven("https://repo.maven.apache.org/maven2")
         maven("https://repo.kingtux.me/storages/maven/kakara")
     }
-
 }
 tasks.register<Javadoc>("aggregatedJavadocs") {
     setDestinationDir(file("$buildDir/docs/javadoc"))
