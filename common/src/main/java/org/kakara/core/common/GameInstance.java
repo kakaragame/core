@@ -33,7 +33,7 @@ public interface GameInstance extends Serverable, EnvTypeable {
      *
      * @return the games setting manager
      */
-    SettingRegistry getSettingRegistry();
+    SettingRegistry getGameSettingRegistry();
 
     File getWorkingDirectory();
 

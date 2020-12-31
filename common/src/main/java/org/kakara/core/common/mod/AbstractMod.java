@@ -92,7 +92,7 @@ public abstract class AbstractMod implements Mod {
     }
 
     public SettingsValue getGameSetting(String key) {
-        return Kakara.getGameInstance().getSettingRegistry().getSettingValue(createControllerKey(key));
+        return Kakara.getGameInstance().getGameSettingRegistry().getSettingValue(createControllerKey(key));
     }
 
     public SettingsValue getEnvironmentSetting(String key) {
