@@ -9,7 +9,7 @@ import org.kakara.core.common.world.region.Region;
 
 import java.util.List;
 
-public interface WorldGenerationManager extends LoadStage {
+public interface WorldGenerationRegistry extends LoadStage {
     void registerRegion(@NotNull Region region);
 
     void registerChunkGenerator(@NotNull WorldGenerator worldGenerator);

@@ -7,7 +7,7 @@ import org.kakara.core.common.mod.LoadStage;
 
 import java.util.Optional;
 
-public interface EntityManager extends LoadStage {
+public interface EntityRegistry extends LoadStage {
 
     void registerEntity(@NotNull Entity entity);
 

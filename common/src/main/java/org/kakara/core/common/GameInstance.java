@@ -3,12 +3,12 @@ package org.kakara.core.common;
 import org.kakara.core.common.command.CommandManager;
 import org.kakara.core.common.events.EventManager;
 import org.kakara.core.common.game.GameSettings;
-import org.kakara.core.common.game.ItemManager;
+import org.kakara.core.common.game.ItemRegistry;
 import org.kakara.core.common.gui.container.ContainerUtils;
 import org.kakara.core.common.mod.ModManager;
 import org.kakara.core.common.resources.ResourceManager;
 import org.kakara.core.common.service.ServiceManager;
-import org.kakara.core.common.settings.SettingManager;
+import org.kakara.core.common.settings.SettingRegistry;
 
 import java.io.File;
 
@@ -33,7 +33,7 @@ public interface GameInstance extends Serverable, EnvTypeable {
      *
      * @return the games setting manager
      */
-    SettingManager getGameSettingsManager();
+    SettingRegistry getSettingRegistry();
 
     File getWorkingDirectory();
 
@@ -41,7 +41,7 @@ public interface GameInstance extends Serverable, EnvTypeable {
 
     GameSettings getGameSettings();
 
-    ItemManager getItemManager();
+    ItemRegistry getItemRegistry();
 
     CommandManager getCommandManager();
 
