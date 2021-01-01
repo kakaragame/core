@@ -12,7 +12,16 @@ import org.kakara.core.common.settings.SettingRegistry;
 
 import java.io.File;
 
+/**
+ * Unlike a EnvironmentInstance game instances are recreated everytime you join a new save or server.
+ * This is where you will access all controls for the game.
+ */
 public interface GameInstance extends Serverable, EnvTypeable {
+    /**
+     * Get the EnvironmentInstance
+     *
+     * @return the EnvironmentInstance
+     */
     default EnvironmentInstance getEnvironment() {
         return Kakara.getEnvironmentInstance();
     }
@@ -35,8 +44,18 @@ public interface GameInstance extends Serverable, EnvTypeable {
      */
     SettingRegistry getGameSettingRegistry();
 
+    /**
+     * The GameInstance working directory.
+     *
+     * @return the working directory
+     */
     File getWorkingDirectory();
 
+    /**
+     * GameInstance ResourceManager.
+     *
+     * @return game instance ResourceManager
+     */
     ResourceManager getResourceManager();
 
     GameSettings getGameSettings();
