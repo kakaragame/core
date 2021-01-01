@@ -28,7 +28,8 @@ public class ItemStackTag extends ObjectTag {
 //        });
 //        addTag(new MapTag<>("charms", charms));
         addTag(new StringTag("name", stack.getName()));
-        addTag(ODS.wrap("lore", stack.getLore()));
+        if (stack.getLore() != null)
+            addTag(ODS.wrap("lore", stack.getLore()));
     }
 
     public static ItemStack getItemStack(ObjectTag tag) {
@@ -37,7 +38,8 @@ public class ItemStackTag extends ObjectTag {
         ServerItemStack itemStack = ((ServerGameInstance) Kakara.getGameInstance()).createItemStack(item);
         itemStack.setCount((Integer) tag.getTag("count").getValue());
         itemStack.setName(ODS.unwrap((StringTag) tag.getTag("name")));
-        itemStack.setLore(ODS.unwrapListTag((ListTag<? extends Tag<String>>) tag.getTag("lore")));
+        if (tag.hasTag("lore"))
+            itemStack.setLore(ODS.unwrapListTag((ListTag<? extends Tag<String>>) tag.getTag("lore")));
         //TODO add support for charms.
         return itemStack;
     }
