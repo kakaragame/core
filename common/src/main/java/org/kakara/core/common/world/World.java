@@ -9,13 +9,31 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * A object representation of a World.
+ */
 public interface World extends ManagedObject, Serverable {
+    /**
+     * Get loaded chunks for the world.
+     *
+     * @return the loaded chunks.
+     */
     @NotNull
     Set<Chunk> getChunks();
 
+    /**
+     * Get World UUID
+     *
+     * @return world UUID.
+     */
     @NotNull
     UUID getUUID();
 
+    /**
+     * World Name
+     *
+     * @return world name.
+     */
     @NotNull
     String getName();
 
