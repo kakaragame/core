@@ -1,4 +1,4 @@
-# Kakara Core
+# Kakara Core  [![Kakara Core](https://cmb.potatocorp.dev/kakara/org.kakara.core/common/badge.png)](https://cmb.potatocorp.dev/)
 
 The API/Mod API core for Kakara.
 
