@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "org.kakara"
-version = "1.0-RC-SNAPSHOT"
+version = "1.0-SNAPSHOT"
 
 
 subprojects {

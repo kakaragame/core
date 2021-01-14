@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.kakara.core"
-version = "1.0-RW-SNAPSHOT"
+version = "1.0-SNAPSHOT"
 
 val artifactName = "network"
 
