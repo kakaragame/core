@@ -4,7 +4,7 @@ plugins {
     `maven-publish`
     signing
     id("com.github.johnrengelman.shadow") version "6.1.0"
-    id("org.sonarqube") version "3.0"
+    id("org.sonarqube") version "3.1"
 
 }
 
