@@ -13,6 +13,7 @@ public class ChunkLocation {
     private int x;
     private int y;
     private int z;
+    private int hashValue;
 
     public ChunkLocation(@Nullable World world, int x, int y, int z) {
         this.x = x;
@@ -34,6 +35,7 @@ public class ChunkLocation {
     }
 
     public void setX(int x) {
+        hashValue = 0;
         this.x = x;
     }
 
@@ -42,6 +44,7 @@ public class ChunkLocation {
     }
 
     public void setY(int y) {
+        hashValue = 0;
         this.y = y;
     }
 
@@ -50,7 +53,16 @@ public class ChunkLocation {
     }
 
     public void setZ(int z) {
+        hashValue = 0;
         this.z = z;
+    }
+
+    private ChunkLocation set(int x, int y, int z) {
+        hashValue = 0;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        return this;
     }
 
     public Optional<World> getWorld() {
@@ -67,6 +79,16 @@ public class ChunkLocation {
     }
 
     @NotNull
+    public ChunkLocation addMut(int x, int y, int z) {
+        return set(this.x + x, this.y + y, this.z + z);
+    }
+
+    @NotNull
+    public ChunkLocation addMut(ChunkLocation chunkLocation) {
+        return addMut(chunkLocation.getX(), chunkLocation.getY(), chunkLocation.z);
+    }
+
+
     public ChunkLocation add(int x, int y, int z) {
         return add(new ChunkLocation(x, y, z));
     }
@@ -84,6 +106,16 @@ public class ChunkLocation {
     @NotNull
     public ChunkLocation subtract(ChunkLocation location) {
         return new ChunkLocation(world, x - location.getX(), y - location.y, z - location.z);
+    }
+
+    @NotNull
+    public ChunkLocation subtractMut(int x, int y, int z) {
+        return set(this.x - x, this.y - y, this.z-z);
+    }
+
+    @NotNull
+    public ChunkLocation subtractMut(ChunkLocation location) {
+        return subtractMut(location.getX(),location.getY(), location.getZ());
     }
 
     public void forEach(Consumer<ChunkLocation> consumer) {
@@ -119,7 +151,8 @@ public class ChunkLocation {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(new Integer[]{x, y, z});
+        if (hashValue == 0) hashValue = Arrays.hashCode(new Integer[]{x, y, z});
+        return hashValue;
     }
 
     public String toSimpleString() {
