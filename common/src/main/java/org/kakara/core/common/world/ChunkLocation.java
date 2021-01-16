@@ -151,7 +151,7 @@ public class ChunkLocation {
 
     @Override
     public int hashCode() {
-        if (hashValue == 0) hashValue = Arrays.hashCode(new Integer[]{x, y, z});
+        if (hashValue == 0) hashValue = Arrays.hashCode(new int[]{x, y, z});
         return hashValue;
     }
 
