@@ -110,12 +110,12 @@ public class ChunkLocation {
 
     @NotNull
     public ChunkLocation subtractMut(int x, int y, int z) {
-        return set(this.x - x, this.y - y, this.z-z);
+        return set(this.x - x, this.y - y, this.z - z);
     }
 
     @NotNull
     public ChunkLocation subtractMut(ChunkLocation location) {
-        return subtractMut(location.getX(),location.getY(), location.getZ());
+        return subtractMut(location.getX(), location.getY(), location.getZ());
     }
 
     public void forEach(Consumer<ChunkLocation> consumer) {
