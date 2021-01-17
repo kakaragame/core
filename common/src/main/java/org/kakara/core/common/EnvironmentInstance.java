@@ -3,7 +3,7 @@ package org.kakara.core.common;
 import org.kakara.core.common.mod.ModManager;
 import org.kakara.core.common.resources.ResourceManager;
 import org.kakara.core.common.service.ServiceManager;
-import org.kakara.core.common.settings.SettingManager;
+import org.kakara.core.common.settings.SettingRegistry;
 
 import java.io.File;
 
@@ -26,7 +26,7 @@ public interface EnvironmentInstance extends EnvTypeable {
      *
      * @return the environment's setting manager
      */
-    SettingManager getEnvironmentSettingsManager();
+    SettingRegistry getEnvironmentSettingsRegistry();
 
     /**
      * Creates a ControllerKey for the system

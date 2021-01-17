@@ -1,5 +1,8 @@
 package org.kakara.core.common;
 
+/**
+ * Objects that implement this will have data that allows the game or the user to identify them.
+ */
 public interface Identifiable {
     /**
      * The actual name of the item

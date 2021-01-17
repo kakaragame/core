@@ -14,7 +14,7 @@ public class InventoryUtils {
         KValidate.gameInstanceCheckServer();
         ServerItemStack[] serverItemStacks = new ServerItemStack[capacity];
         for (int i = 0; i < capacity; i++) {
-            serverItemStacks[i] = ((ServerGameInstance) Kakara.getGameInstance()).createItemStack(Kakara.getGameInstance().getItemManager().getItem(0));
+            serverItemStacks[i] = ((ServerGameInstance) Kakara.getGameInstance()).createItemStack(Kakara.getGameInstance().getItemRegistry().getItem(0));
         }
         return serverItemStacks;
     }

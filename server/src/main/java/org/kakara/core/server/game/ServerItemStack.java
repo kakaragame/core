@@ -8,15 +8,32 @@ import org.kakara.core.common.game.meta.ItemMeta;
 import java.util.List;
 
 public interface ServerItemStack extends ItemStack {
+    /**
+     * Sets the number of items in the stack
+     *
+     * @param count
+     */
     void setCount(int count);
-
+    /**
+     * sets the name
+     *
+     * @param name the new name
+     */
     void setName(String name);
 
+    /**
+     * Sets the lore
+     *
+     * @param lore the item lore. Can be null
+     */
     void setLore(List<String> lore);
+    /**
+     * Clones the ItemStack exactly how it is now.
+     * @return the cloned ItemStack
+     */
+    ItemStack clone();
 
     void setItemMeta(ItemMeta itemMeta);
-
-    ItemStack clone();
 
     @Override
     default boolean isServerVersionAvailable() {

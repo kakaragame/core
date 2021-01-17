@@ -6,14 +6,21 @@ import org.kakara.core.common.GameObject;
 import org.kakara.core.common.Identifiable;
 import org.kakara.core.common.game.md.ModelData;
 import org.kakara.core.common.mod.Mod;
-
+/**
+ * This represents an Item in a game.
+ * <p>
+ * This is not the Item you hold. ItemStacks are the item you hold. This is just what tells the game about the Item.
+ */
 public interface Item extends Identifiable, GameObject {
+    /**
+     * The Item name.
+     *
+     * @return the item name.
+     */
     String getName();
 
-    @Deprecated
     String getTexture();
 
-    @Deprecated
     String getModel();
 
     ModelData getModelData();

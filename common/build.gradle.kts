@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.kakara.core"
-version = "1.0-RW-SNAPSHOT"
+version = "1.0-SNAPSHOT"
 val artifactName = "common"
 
 java {
@@ -78,7 +78,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.30")
     implementation("org.apache.commons:commons-lang3:3.11")
     implementation("com.google.code.gson:gson:2.8.6")
-    implementation("com.google.guava:guava:30.0-jre")
+    implementation("com.google.guava:guava:30.1-jre")
     implementation("org.jetbrains", "annotations", "20.1.0")
     implementation(project(":network"))
     implementation(project(":auth"))

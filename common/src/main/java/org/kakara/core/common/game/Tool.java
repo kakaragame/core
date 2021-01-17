@@ -1,30 +1,34 @@
 package org.kakara.core.common.game;
 
+import java.util.Set;
+
+/**
+ * Represents a Tool.
+ * Tools are extensions of Items. They have extra properties.
+ */
 public interface Tool extends Item {
+
     /**
-     * A number between
-     * 0.0-9.9
-     * If set to 10. It will be at the max. and Unbreakable.
+     * Hardness is used inside the game to calculate how long it will take to break.
      *
-     * @return the number the hardness is at
+     * @return the hardness.
      */
     float getHardness();
 
     /**
-     * Can be the actual block. Or a parent class or interface of a block.
-     * SO for example
-     * OakPlanks extends Wood
-     * and you can add the value Wood.class to it
-     * and it will apply to all classes that extend Wood.
-     * <p>
-     * Blocks to apply to the set hardness to. If a player doesnt use this tool against that block or block parent type.
-     * <p>
-     * The hardness will be lowered to 0.1 lower than that target block hardness. So it wont be able to break it.
-     * Unless the blocks hardness is less than 1.1. THen it will be .1 higher than the blocks hardness it.
-     * <p>
-     * If you want it to work on all Block types just keep the array empty.
+     * The HarvestLevel.
+     * Harvest level must be equal or greater on the tool or the block will not break.
      *
-     * @return the targeted block types
+     * @return the harvest level.
      */
-    Class<?>[] targetedBlocks();
+    int getHarvestLevel();
+
+    /**
+     * What is the ToolType of this object
+     * <p>
+     * A Tool can be multiple tool types. Allowing more advance tools
+     *
+     * @return what type of tool is this?
+     */
+    Set<ToolType> getToolType();
 }

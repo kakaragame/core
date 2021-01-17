@@ -24,7 +24,7 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
     public ItemStack deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         Validate.isTrue(Kakara.getEnvironmentInstance().getType() == EnvType.SERVER);
         JsonObject js = jsonElement.getAsJsonObject();
-        Item item = null;//Kakara.getItemManager().getItem(js.get("type").getAsString());
+        Item item = Kakara.getGameInstance().getItemRegistry().getItem(js.get("type").getAsString());
         if (item == null) {
             throw new JsonParseException(new MissingItemException(js.get("type").getAsString()));
 
@@ -40,7 +40,8 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
         jsonObject.addProperty("type", itemStack.getItem().getControllerKey().toString());
         jsonObject.addProperty("name", itemStack.getName());
         jsonObject.addProperty("count", itemStack.getCount());
-        jsonObject.add("lore", jsonSerializationContext.serialize(itemStack.getLore()));
+        if (itemStack.getLore() != null)
+            jsonObject.add("lore", jsonSerializationContext.serialize(itemStack.getLore()));
         return jsonObject;
     }
 }

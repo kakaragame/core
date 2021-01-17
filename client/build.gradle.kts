@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.kakara.core"
-version = "1.0-RW-SNAPSHOT"
+version = "1.0-SNAPSHOT"
 
 val artifactName = "client"
 
@@ -80,7 +80,7 @@ dependencies {
     implementation("org.slf4j:slf4j-api:1.7.30")
     implementation("org.apache.commons:commons-lang3:3.11")
     implementation("com.google.code.gson:gson:2.8.6")
-    implementation("com.google.guava:guava:30.0-jre")
+    implementation("com.google.guava:guava:30.1-jre")
     implementation("org.jetbrains", "annotations", "20.1.0")
     implementation(project(":common"))
     compileOnly("me.ryandw11:ods:1.0-MEM-SNAPSHOT")

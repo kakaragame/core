@@ -21,13 +21,33 @@ public interface ItemStack extends Serverable {
      */
     Item getItem();
 
+    /**
+     * Number of items inside stack
+     *
+     * @return number of items inside stack
+     */
     int getCount();
 
+    /**
+     * Returns the Item name
+     *
+     * @return name of the item.
+     */
     String getName();
 
-
+    /**
+     * Returns the Item lore.
+     *
+     * @return item lore. Null if not present.
+     */
     List<String> getLore();
 
+    /**
+     * Compares against another item stack. Ignoring the count
+     *
+     * @param itemStack the other ItemStack
+     * @return if they are equal
+     */
     boolean equalsIgnoreCount(ItemStack itemStack);
 
     ItemMeta getItemMeta();

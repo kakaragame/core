@@ -7,14 +7,14 @@ import org.kakara.core.common.mod.ModRules.ModTarget;
 import org.kakara.core.common.service.ServiceManager;
 import org.kakara.core.common.settings.Setting;
 import org.kakara.core.common.settings.SettingControllerService;
-import org.kakara.core.common.settings.SettingManager;
+import org.kakara.core.common.settings.SettingRegistry;
 import org.kakara.core.common.settings.SettingsValue;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SimpleSettingManager implements SettingManager {
+public class SimpleSettingManager implements SettingRegistry {
     private final Map<ControllerKey, Setting<?>> settings = new HashMap<>();
     private SettingControllerService settingControllerService;
     private final File folder;

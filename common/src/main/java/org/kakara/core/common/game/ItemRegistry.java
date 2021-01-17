@@ -7,7 +7,7 @@ import org.kakara.core.common.mod.LoadStage;
 
 import java.util.List;
 
-public interface ItemManager extends LoadStage {
+public interface ItemRegistry extends LoadStage {
     /**
      * Call this method if you want to register a Item, Block, Tool, or Weapon.
      * The Item does not be to be a sub type of ModBlock, ModItem, ModTool, or ModWeapon. Those classes just make things simple.

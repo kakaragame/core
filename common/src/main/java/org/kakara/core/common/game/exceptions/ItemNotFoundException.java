@@ -1,9 +1,11 @@
 package org.kakara.core.common.game.exceptions;
 
+import org.kakara.core.common.game.ItemRegistry;
+
 /**
  * Thrown whenever an Item is not found
  *
- * @see org.kakara.core.common.game.ItemManager For Infomation about pulling items
+ * @see ItemRegistry For Infomation about pulling items
  */
 public class ItemNotFoundException extends RuntimeException {
     public ItemNotFoundException() {

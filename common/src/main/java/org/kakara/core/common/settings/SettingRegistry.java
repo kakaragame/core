@@ -2,7 +2,7 @@ package org.kakara.core.common.settings;
 
 import org.kakara.core.common.ControllerKey;
 
-public interface SettingManager {
+public interface SettingRegistry {
 
     SettingsValue getSettingValue(ControllerKey controllerKey);
 
