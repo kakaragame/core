@@ -1,9 +1,11 @@
 package org.kakara.core;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Version {
     public static String CORE_VERSION = "1.0-SNAPSHOT";
+    public static List<String> branchBlacklist = List.of("master", "HEAD");
 
     /**
      * Generates the Core version based on the current branch.
@@ -17,7 +19,7 @@ public class Version {
         if (CORE_VERSION.endsWith("-SNAPSHOT")) {
             try {
                 String branch = execCmd("git rev-parse --abbrev-ref HEAD").replace("\n", "");
-                if (!branch.equalsIgnoreCase("master")) {
+                if (!branchBlacklist.contains(branch)) {
                     value = CORE_VERSION.replace("-SNAPSHOT", String.format("-%s-SNAPSHOT", branch.replace("/", "-")));
                 }
             } catch (IOException e) {
