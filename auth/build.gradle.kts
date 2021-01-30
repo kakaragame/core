@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.kakara.core"
-version = "1.0-SNAPSHOT"
+version = org.kakara.core.Version.getCoreVersion()
 
 val artifactName = "auth"
 
