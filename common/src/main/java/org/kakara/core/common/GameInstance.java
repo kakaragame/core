@@ -1,5 +1,6 @@
 package org.kakara.core.common;
 
+import org.kakara.core.common.calculator.CalculatorRegistry;
 import org.kakara.core.common.command.CommandManager;
 import org.kakara.core.common.events.EventManager;
 import org.kakara.core.common.game.GameSettings;
@@ -36,6 +37,8 @@ public interface GameInstance extends Serverable, EnvTypeable {
      * @return EnvType
      */
     EnvType getType();
+
+    CalculatorRegistry getCalculatorRegistry();
 
     /**
      * The settings stored in here are per game.
