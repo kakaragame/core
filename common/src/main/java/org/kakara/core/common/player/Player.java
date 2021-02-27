@@ -6,14 +6,11 @@ import org.kakara.core.common.command.CommandSender;
 import org.kakara.core.common.game.GameMode;
 import org.kakara.core.common.gui.Inventory;
 import org.kakara.core.common.permission.Permissible;
+import org.kakara.core.common.player.meter.PlayerMeterController;
 import org.kakara.core.common.world.GameEntity;
 
 
 public interface Player extends OfflinePlayer, GameEntity, CommandSender, Permissible, Serverable {
-
-    short getHealth();
-
-    short getHunger();
 
     @NotNull
     String getDisplayName();
@@ -22,5 +19,12 @@ public interface Player extends OfflinePlayer, GameEntity, CommandSender, Permis
     Inventory getInventory();
 
     GameMode getGameMode();
+
+    /**
+     * The players levels and meters.
+     *
+     * @return the meter controller.
+     */
+    PlayerMeterController getMeterController();
 
 }
