@@ -85,6 +85,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.google.guava:guava:30.1-jre")
     implementation("org.jetbrains", "annotations", "20.1.0")
-    compileOnly("me.ryandw11:ods:1.0-MEM-SNAPSHOT")
+    compileOnly("me.ryandw11:ods:1.0.5")
 }
 

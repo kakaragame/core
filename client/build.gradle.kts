@@ -83,6 +83,6 @@ dependencies {
     implementation("com.google.guava:guava:30.1-jre")
     implementation("org.jetbrains", "annotations", "20.1.0")
     implementation(project(":common"))
-    compileOnly("me.ryandw11:ods:1.0-MEM-SNAPSHOT")
+    compileOnly("me.ryandw11:ods:1.0.5")
 }
 
