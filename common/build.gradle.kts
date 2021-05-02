@@ -82,5 +82,5 @@ dependencies {
     implementation("org.jetbrains", "annotations", "20.1.0")
     implementation(project(":network"))
     implementation(project(":auth"))
-    compileOnly("me.ryandw11:ods:1.0.4")
+    compileOnly("me.ryandw11:ods:1.0.5")
 }
