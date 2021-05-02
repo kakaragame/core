@@ -76,7 +76,7 @@ repositories {
     maven("https://repo.kingtux.me/storages/maven/kingtux-repo")
     maven("https://repo.kingtux.me/storages/maven/ryandw11")
     maven("https://jitpack.io")
-    maven("https://repo.ryandw11.com/repository/maven-snapshots/")
+    maven("https://repo.ryandw11.com/repository/maven-releases/")
 }
 
 dependencies {
