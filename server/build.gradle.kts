@@ -3,7 +3,7 @@ plugins {
     `java-library`
     `maven-publish`
     signing
-    id("com.github.johnrengelman.shadow") version "6.1.0"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
     id("org.sonarqube") version "3.2.0"
 
 }
