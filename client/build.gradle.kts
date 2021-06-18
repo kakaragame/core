@@ -77,7 +77,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.slf4j:slf4j-api:1.7.30")
+    implementation("org.slf4j:slf4j-api:1.7.31")
     implementation("org.apache.commons:commons-lang3:3.12.0")
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("com.google.guava:guava:30.1.1-jre")
