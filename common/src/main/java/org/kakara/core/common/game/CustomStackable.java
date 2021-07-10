@@ -10,4 +10,11 @@ public interface CustomStackable {
      * @return the custom item stack
      */
     ItemStack createItemStack();
+
+    /**
+     * Create a custom ServerItemStack with your item.
+     *
+     * @return the custom item stack
+     */
+    ItemStack createServerItemStack();
 }

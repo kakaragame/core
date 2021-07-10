@@ -4,8 +4,8 @@ package org.kakara.core.common.game;
 import org.kakara.core.common.ControllerKey;
 import org.kakara.core.common.GameObject;
 import org.kakara.core.common.Identifiable;
+import org.kakara.core.common.game.md.ModelData;
 import org.kakara.core.common.mod.Mod;
-
 /**
  * This represents an Item in a game.
  * <p>
@@ -23,11 +23,8 @@ public interface Item extends Identifiable, GameObject {
 
     String getModel();
 
-    /**
-     * The controller key for the item
-     *
-     * @return the ControllerKey
-     */
+    ModelData getModelData();
+
     ControllerKey getControllerKey();
 
     Mod getMod();
