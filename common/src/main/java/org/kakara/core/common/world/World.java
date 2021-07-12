@@ -1,7 +1,7 @@
 package org.kakara.core.common.world;
 
 import org.jetbrains.annotations.NotNull;
-import org.kakara.core.common.ManagedObject;
+import org.kakara.core.common.LoadableObject;
 import org.kakara.core.common.Serverable;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * A object representation of a World.
  */
-public interface World extends ManagedObject, Serverable {
+public interface World extends LoadableObject, Serverable {
     /**
      * Get loaded chunks for the world.
      *
