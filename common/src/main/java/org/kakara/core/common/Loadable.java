@@ -3,7 +3,7 @@ package org.kakara.core.common;
 /**
  * An objected that is loadable.
  */
-public interface LoadableObject {
+public interface Loadable {
     /**
      * Get the status of the object.
      *
