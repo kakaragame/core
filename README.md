@@ -1,4 +1,4 @@
-# Kakara Core  [![Maven Version](https://mvnhelper.potatocorp.dev/kakara/org.kakara.core/common/badge.png)](https://mvnhelper.potatocorp.dev/kakara/org.kakara.core/common)
+# Kakara Core  [![kakara Repository](https://repo.kingtux.me/badge/maven/kakara/org/kakara.core/common/badge)](https://repo.kingtux.me/project/maven/kakara/org.kakara.core:common)
 The API/Mod API core for Kakara.
 
 ## Core Modules
