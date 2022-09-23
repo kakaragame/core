@@ -2,6 +2,7 @@ package org.kakara.core.common.game;
 
 
 import org.kakara.core.common.Serverable;
+import org.kakara.core.common.game.meta.ItemMeta;
 
 import java.util.List;
 
@@ -48,4 +49,6 @@ public interface ItemStack extends Serverable {
      * @return if they are equal
      */
     boolean equalsIgnoreCount(ItemStack itemStack);
+
+    ItemMeta getItemMeta();
 }
